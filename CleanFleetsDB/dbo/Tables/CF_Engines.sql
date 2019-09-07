@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[CF_Engines] (
+    [IDEngines]            UNIQUEIDENTIFIER NOT NULL,
+    [IDModifiedUser]       UNIQUEIDENTIFIER NULL,
+    [EnterDate]            DATETIME         CONSTRAINT [DF_CF_Engines_EnterDate] DEFAULT (getdate()) NULL,
+    [ModifiedDate]         DATETIME         NULL,
+    [IDProfileAccount]     INT              NULL,
+    [IDVehicles]           UNIQUEIDENTIFIER NULL,
+    [IDEngineManufacturer] INT              CONSTRAINT [DF_CF_Engines_IDEngineManufacturer] DEFAULT ((0)) NULL,
+    [EngineModel]          VARCHAR (50)     NULL,
+    [IDEngineStatus]       INT              CONSTRAINT [DF_CF_Engines_IDEngineStatus] DEFAULT ((0)) NULL,
+    [IDEngineFuelType]     INT              CONSTRAINT [DF_CF_Engines_IDEngineFuelType] DEFAULT ((0)) NULL,
+    [IDModelYear]          INT              CONSTRAINT [DF_CF_Engines_IDModelYear] DEFAULT ((0)) NULL,
+    [SerialNum]            VARCHAR (50)     NOT NULL,
+    [FamilyName]           VARCHAR (50)     NULL,
+    [SeriesModelNo]        VARCHAR (50)     NULL,
+    [Horsepower]           VARCHAR (50)     NULL,
+    [Description]          VARCHAR (MAX)    NULL,
+    [Hours]                VARCHAR (10)     NULL,
+    [Miles]                VARCHAR (10)     NULL,
+    [Notes]                VARCHAR (MAX)    NULL,
+    [NotesCF]              VARCHAR (MAX)    NULL,
+    [Displacement]         VARCHAR (20)     NULL,
+    [EstRetrofitCost]      MONEY            NULL,
+    CONSTRAINT [PK_CF_Engines] PRIMARY KEY CLUSTERED ([IDEngines] ASC),
+    CONSTRAINT [FK_CF_Engines_CF_Vehicles] FOREIGN KEY ([IDVehicles]) REFERENCES [dbo].[CF_Vehicles] ([IDVehicles]) ON DELETE CASCADE,
+    CONSTRAINT [IX_SerialNum] UNIQUE NONCLUSTERED ([SerialNum] ASC)
+);
+

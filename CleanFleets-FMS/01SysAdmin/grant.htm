@@ -1,0 +1,187 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+
+<table border="0" width="900" cellspacing="0" cellpadding="10">
+	<tr>
+		<td><font face="Arial" size="2">Sean,</font><p>
+		<font face="Arial" size="2">What you are requesting adds quite a bit of 
+		programming and database design to the application. I'll try to break 
+		this into the pieces the way I think it would need to be worked out page 
+		by page as laid out in the attachment you sent.</font></p>
+		<p><u><b><font face="Arial" size="2">Appendix A Page A-1</font></b></u></p>
+		<blockquote>
+			<p><font face="Arial" size="2">SECTION 2 – REQUIRED DOCUMENTATION 
+			FOR REPLACEMENT PROJECT </font></p>
+			<blockquote>
+				<p><font face="Arial" size="2">We would have to add the 
+				following fields to the Account Profile Table:</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Fleet Size<br>
+&nbsp;&nbsp;&nbsp;&nbsp; (if total is greater than the number of vehicles an 
+					account has in the system)<br>
+					Total number of vehicles in fleet with GVWR greater than 
+					14,000 lbs.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; (if total is greater than the number of vehicles an 
+					account has in the system)<br>
+					Annual Gross Income<br>
+					Number of employees</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p><u><b><font face="Arial" size="2">Appendix A Page A-2 - A-3</font></b></u></p>
+		<blockquote>
+			<p><font face="Arial" size="2">SECTION 3 – CURRENT VEHICLE 
+			INFORMATION</font></p>
+			<blockquote>
+				<p><font face="Arial" size="2">We would have to add the 
+				following fields to the Vehicles Table:</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Vehicle GVWR<br>
+					Vehicle Axle Configuration<br>
+					Odometer Reading<br>
+					Hubometer Reading</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p><font face="Arial" size="2">If the desire is to use the current 
+		system to also generate the information for the grant application and 
+		replacement vehicles, we would have to create at least four new database 
+		tables:</font></p>
+		<blockquote>
+			<blockquote>
+				<p><font face="Arial" size="2">Replacement Vehicle</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Vehicle Make:<br>
+					Vehicle Model:<br>
+					Vehicle Model Year:<br>
+					Vehicle GVWR:<br>
+					Does this Vehicle include a Glider Kit?<br>
+					Estimated Annual Distance Traveled (in miles)<br>
+					Will the new replacement truck be operated for 100% of the 
+					time in CA?<br>
+					% Use in Trade Corridors: Bay Area: _____% <br>
+					% Use in Trade Corridors: Central Valley: _____%<br>
+					% Use in Trade Corridors: LA/Inland Empire: ____% <br>
+					% Use in Trade Corridors: San Diego/Border Region: _____%
+					<br>
+					Total: _____% <br>
+					Estimated percentage of annual miles that were in the 
+					counties of Los Angeles, Orange, Riverside and/or San 
+					Bernardino _____%</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<blockquote>
+			<blockquote>
+				<p><font face="Arial" size="2">Replacement Engine</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Engine Make<br>
+					Engine Model<br>
+					Engine Model<br>
+					Year<br>
+					Horsepower Rating<br>
+					Engine Serial Number<br>
+					Fuel Type<br>
+					Engine Family Number</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<blockquote>
+			<blockquote>
+				<p><font face="Arial" size="2">Replacement Vehicle Dealer</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Vehicle Dealer Name<br>
+					Address<br>
+					City<br>
+					State<br>
+					Zip Code<br>
+					Contact Name<br>
+					Contact Title<br>
+					Phone Number<br>
+					Fax Number<br>
+					Email</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<blockquote>
+			<blockquote>
+				<p><font face="Arial" size="2">Grant Proposal</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Funding Requested: &#9633; $50,000 
+					&#9633; $100,000 for Alternative Fuel Vehicle &#9633; Other:<br>
+					Other Amount<br>
+					Purchasing Vehicle with a Lease to Own Program: &#9633; No &#9633; Yes<br>
+					Name of Lease to Own Program (if applicable):<br>
+					Total project cost including Program and non-Program 
+					dollars:<br>
+					Indicate if you are requesting: &#9633; Direct payment to vendor &#9633; 
+					Reimbursement</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p><font face="Arial" size="2">This item under Project Funding is 
+		problematic:</font></p>
+		<blockquote>
+			<p><font face="Arial" size="2">Source(s) and amount of other funding 
+			(private, local, other State, Federal)</font></p>
+			<p><font face="Arial" size="2">If there are only the four items 
+			'private, local, other State, Federal' then fields can be added to 
+			the Grant Proposal table to handle the data. However, if there can 
+			be more than four OR there can be more than one of any one type, 
+			then we would have to create one more table to manage this 
+			information.</font></p>
+			<blockquote>
+				<p><font face="Arial" size="2">Other Funding</font></p>
+				<blockquote>
+					<p><font face="Arial" size="2">Source<br>
+					Amount</font></p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p><u><b><font face="Arial" size="2">Programming</font></b></u></p>
+		<blockquote>
+			<p><font face="Arial" size="2">It would be necessary to create a 
+			programming module for the application perhaps called Grants.</font></p>
+			<p><font face="Arial" size="2">In the Grants module data entry forms 
+			would have to be create to collect all of the data related to the 
+			Grant Proposal, Replacement Vehicle, Replacement Dealers, and 
+			Replacement Engines.</font></p>
+			<p><font face="Arial" size="2">Business logic would have to be 
+			written to link any one existing vehicle/engine to the intended 
+			replacement vehicle/engine and relate the replacements with the 
+			Dealers.</font></p>
+			<p><font face="Arial" size="2">If it was desired to be able to scan 
+			and attached the necessary paperwork to the replacement vehicles 
+			such as Title, Registration Papers, Images, etc., it would be 
+			necessary to create business logic and file allocation space for 
+			these files.</font></p>
+			<p><font face="Arial" size="2">It would be necessary to create 
+			business logic to compute the calculations to provide sum totals for 
+			the requested vehicles and cost totals.</font></p>
+			<p><font face="Arial" size="2">It would be necessary to create the 
+			reports to output the data in either text file, PDF or print format.</font></p>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p><font face="Arial" size="2">Sean,</font></p>
+		<p><font face="Arial" size="2">This is a major change to the current 
+		application. Estimate at least 40 hours of programming time and 10 hours 
+		of testing to accomplish this.</font></p>
+		<p><font face="Arial" size="2">Give me a call on my cell at (714) 
+		313-7539 tomorrow if you have any more questions.</font></p>
+		<p>&nbsp;</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

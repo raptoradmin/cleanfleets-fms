@@ -1,0 +1,54 @@
+{"success":true,"message":"","result":[{"MarketName":"BTC-LTC","High":0.01670094,"Low":0.01610000,"Volume":47495.02156742,"Last":0.01628948,"BaseVolume":777.22088098,"TimeStamp":"2018-01-21T13:18:23","Bid":0.01624001,"Ask":0.01628948,"OpenBuyOrders":2146,"OpenSellOrders":8104,"PrevDay":0.01622000,"Created":"2014-02-13T00:00:00"}]}
+Want value of Last to be shown in textbox, so i tried to parse it with "Newtonsoft" as follows:
+
+  Dim jsonArray As JArray = JArray.Parse(rawresp)
+    For Each item As JObject In jsonArray
+        textboxLast.Text = item.SelectToken("Last").ToString
+
+    Next
+But getting error :(
+
+   
+
+
+accepted
+Dim json As String = rawresp
+Dim jsonObject As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(json)
+Dim jsonArray As JArray = jsonObject("result")
+
+For Each item As JObject In jsonArray
+    textboxLast.Text = item.SelectToken("Last").ToString
+Next
+It has to do with the format of the JSON. it is not an array, but an object that contains an array, so you have to first parse the object, and then take the array out of it to parse properly. You missed that one extra step, which I added in above code snippet
+
+shareimprove this answer
+edited Jan 22 at 8:27
+answered Jan 21 at 13:51
+
+Leo Muller
+589316
+1
+Good point, I added some explanation – Leo Muller Jan 22 at 8:28
+and if it was { "success": true, "message": "", "result": { "Currency": "BTC", "Balance": 0.00000020, "Available": 0.00000020, "Pending": 0.00000000, "CryptoAddress": "xxxxxxxxxxx" } } then how to parse its balance @leo-muller – Amit kumar Jan 29 at 17:30 
+
+just the first two lines, and then this: textboxLast.Text = jsonObject("result")("Currency") – Leo Muller Jan 30 at 11:54
+
+Dim json As String = rawresp
+Dim jsonObject As Newtonsoft.Json.Linq.JObject = Newtonsoft.Json.Linq.JObject.Parse(json)
+Dim jsonArray As JArray = jsonObject("result")
+
+For Each item As JObject In jsonArray
+    textboxLast.Text = item.SelectToken("Last").ToString
+Next
+It has to do with the format of the JSON. it is not an array, but an object that contains an array, so you have to first parse the object, and then take the array out of it to parse properly. You missed that one extra step, which I added in above code snippet
+
+shareimprove this answer
+edited Jan 22 at 8:27
+answered Jan 21 at 13:51
+
+Leo Muller
+589316
+1
+Good point, I added some explanation – Leo Muller Jan 22 at 8:28
+and if it was { "success": true, "message": "", "result": { "Currency": "BTC", "Balance": 0.00000020, "Available": 0.00000020, "Pending": 0.00000000, "CryptoAddress": "xxxxxxxxxxx" } } then how to parse its balance @leo-muller – Amit kumar Jan 29 at 17:30 
+just the first two lines, and then this: textboxLast.Text = jsonObject("result")("Currency") – Leo Muller Jan 30 at 11:54

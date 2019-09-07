@@ -1,0 +1,2055 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Application Project Summary 11/7</title>
+<style>
+<!--
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+-->
+</style>
+</head>
+
+<body>
+
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">System.Web.Security </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">System.Web.Security.Roles </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">System.Web.Security.Membership </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">System.Data </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">System.Data.SqlClient </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">Telerik.Web.UI </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Imports</code>
+        <code style="COLOR: #000">System.IO </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><span style="MARGIN-LEFT: 0px !important"><code style="COLOR: #000">
+        Partial </code><code style="COLOR: #069; FONT-WEIGHT: bold">Class</code>
+        <code style="COLOR: #000">employeedel </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Inherits</code>
+        <code style="COLOR: #000">System.Web.UI.Page </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Protected</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code>
+        <code style="COLOR: #000">rg_VehicleImages_NeedDataSource(</code><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">ByVal</code>
+        <code style="COLOR: #000">source </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Object</code><code 
+            style="COLOR: #000">, </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        ByVal</code> <code style="COLOR: #000">e </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code> <code style="COLOR: #000">
+        Telerik.Web.UI.GridNeedDataSourceEventArgs) </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Handles</code>
+        <code style="COLOR: #000">rg_VehicleImages.NeedDataSource </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDVehicles = Request.QueryString(</code><code style="COLOR: blue">&quot;IDVehicles&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Images WHERE IDVehicles = @IDVehicles&quot;</code><code style="COLOR: #000">, 
+        conn) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Parameters.Add(</code><code style="COLOR: blue">&quot;@IDVehicles&quot;</code><code 
+            style="COLOR: #000">, SqlDbType.VarChar, 50).Value = IDVehicles </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter.Fill(myDataSet) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">rg_VehicleImages.DataSource = myDataSet </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Protected</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code>
+        <code style="COLOR: #000">rg_EngineImages_NeedDataSource(</code><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">ByVal</code>
+        <code style="COLOR: #000">source </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Object</code><code 
+            style="COLOR: #000">, </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        ByVal</code> <code style="COLOR: #000">e </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code> <code style="COLOR: #000">
+        Telerik.Web.UI.GridNeedDataSourceEventArgs) </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Handles</code>
+        <code style="COLOR: #000">rg_EngineImages.NeedDataSource </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDVehicles = Request.QueryString(</code><code style="COLOR: blue">&quot;IDVehicles&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Images INNER JOIN (SELECT IDEngines FROM CF_Engines WHERE IDVehicles = 
+        @IDVehicles)AS CF_Engines ON CF_Engines.IDEngines = CF_Images.IDEngines&quot;</code><code 
+            style="COLOR: #000">, conn) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Parameters.Add(</code><code style="COLOR: blue">&quot;@IDVehicles&quot;</code><code 
+            style="COLOR: #000">, SqlDbType.VarChar, 50).Value = IDVehicles </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter.Fill(myDataSet) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">rg_EngineImages.DataSource = myDataSet </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Protected</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code>
+        <code style="COLOR: #000">rg_VehicleFiles_NeedDataSource(</code><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">ByVal</code>
+        <code style="COLOR: #000">source </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Object</code><code 
+            style="COLOR: #000">, </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        ByVal</code> <code style="COLOR: #000">e </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code> <code style="COLOR: #000">
+        Telerik.Web.UI.GridNeedDataSourceEventArgs) </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Handles</code>
+        <code style="COLOR: #000">rg_VehicleFiles.NeedDataSource </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDVehicles = Request.QueryString(</code><code style="COLOR: blue">&quot;IDVehicles&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Files WHERE IDVehicles = @IDVehicles&quot;</code><code style="COLOR: #000">, 
+        conn) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Parameters.Add(</code><code style="COLOR: blue">&quot;@IDVehicles&quot;</code><code 
+            style="COLOR: #000">, SqlDbType.VarChar, 50).Value = IDVehicles </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter.Fill(myDataSet) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">rg_VehicleFiles.DataSource = myDataSet </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Protected</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code>
+        <code style="COLOR: #000">rg_EngineFiles_NeedDataSource(</code><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">ByVal</code>
+        <code style="COLOR: #000">source </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Object</code><code 
+            style="COLOR: #000">, </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        ByVal</code> <code style="COLOR: #000">e </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code> <code style="COLOR: #000">
+        Telerik.Web.UI.GridNeedDataSourceEventArgs) </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Handles</code>
+        <code style="COLOR: #000">rg_EngineFiles.NeedDataSource </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDVehicles = Request.QueryString(</code><code style="COLOR: blue">&quot;IDVehicles&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Files INNER JOIN (SELECT IDEngines FROM CF_Engines WHERE IDVehicles = 
+        @IDVehicles)AS CF_Engines ON CF_Engines.IDEngines = CF_Files.IDEngines&quot;</code><code 
+            style="COLOR: #000">, conn) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Parameters.Add(</code><code style="COLOR: blue">&quot;@IDVehicles&quot;</code><code 
+            style="COLOR: #000">, SqlDbType.VarChar, 50).Value = IDVehicles </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter.Fill(myDataSet) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">rg_EngineFiles.DataSource = myDataSet </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Protected</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code>
+        <code style="COLOR: #000">btn_Delete_Click(</code><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">ByVal</code>
+        <code style="COLOR: #000">sender </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Object</code><code 
+            style="COLOR: #000">, </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        ByVal</code> <code style="COLOR: #000">e </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code> <code style="COLOR: #000">
+        System.EventArgs) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDVehicles = Request.QueryString(</code><code style="COLOR: blue">&quot;IDVehicles&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDEngine </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">HiddenField = </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">CType</code><code 
+            style="COLOR: #000">(fv_VehicleDelete.FindControl(</code><code 
+            style="COLOR: blue">&quot;hf_IDEngines&quot;</code><code style="COLOR: #000">), 
+        HiddenField) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDEngines </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= IDEngine.Value </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDDEC </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">HiddenField = </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">CType</code><code 
+            style="COLOR: #000">(fv_VehicleDelete.FindControl(</code><code 
+            style="COLOR: blue">&quot;hf_IDDECS&quot;</code><code style="COLOR: #000">), 
+        HiddenField) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDDECs </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= IDDEC.Value </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp; Delete Images&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Vehicle Image Files </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString_Vehicle_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn_Vehicle_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString_Vehicle_Images) </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm_Vehicle_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Images WHERE IDVehicles = @IDVehicles&quot;</code><code style="COLOR: #000">, 
+        conn_Vehicle_Images) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Vehicle_Images.Parameters.Add(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        SqlDbType.VarChar, 50).Value = IDVehicles </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Vehicle_Images.Connection.Open() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter_Vehicle_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm_Vehicle_Images) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet_Vehicle_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData_Vehicle_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow_Vehicle_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter_Vehicle_Images.Fill(myDataSet_Vehicle_Images)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">conn_Vehicle_Images.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow_Vehicle_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet_Vehicle_Images.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        FileName = dtRow_Vehicle_Images.Item(</code><code style="COLOR: blue">&quot;FileName&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">File.Delete(MapPath(</code><code style="COLOR: blue">&quot;.&quot;</code><code 
+            style="COLOR: #000">) &amp; </code><code style="COLOR: blue">
+        &quot;..\..\..\..\includes\imagemanager\imagefiles\&quot;</code> <code style="COLOR: #000">
+        &amp; FileName) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow_Vehicle_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet_Vehicle_Images.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        ThumbNailName = dtRow_Vehicle_Images.Item(</code><code style="COLOR: blue">&quot;ThumbNailName&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">File.Delete(MapPath(</code><code style="COLOR: blue">&quot;.&quot;</code><code 
+            style="COLOR: #000">) &amp; </code><code style="COLOR: blue">
+        &quot;..\..\..\..\includes\imagemanager\imagefiles\&quot;</code> <code style="COLOR: #000">
+        &amp; ThumbNailName) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Engine and DECS Image Files </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString_Engine_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn_Engine_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString_Engine_Images) </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm_Engine_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Images INNER JOIN (SELECT IDEngines FROM CF_Engines WHERE IDVehicles = 
+        @IDVehicles)AS CF_Engines ON CF_Engines.IDEngines = CF_Images.IDEngines&quot;</code><code 
+            style="COLOR: #000">, conn_Engine_Images) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Engine_Images.Parameters.Add(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        SqlDbType.VarChar, 50).Value = IDVehicles </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Engine_Images.Connection.Open() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter_Engine_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        As</code> <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm_Engine_Images) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet_Engine_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData_Engine_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow_Engine_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter_Engine_Images.Fill(myDataSet_Engine_Images)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">conn_Engine_Images.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow_Engine_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet_Engine_Images.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        FileName = dtRow_Engine_Images.Item(</code><code style="COLOR: blue">&quot;FileName&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">File.Delete(MapPath(</code><code style="COLOR: blue">&quot;.&quot;</code><code 
+            style="COLOR: #000">) &amp; </code><code style="COLOR: blue">
+        &quot;..\..\..\..\includes\imagemanager\imagefiles\&quot;</code> <code style="COLOR: #000">
+        &amp; FileName) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow_Engine_Images </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet_Engine_Images.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        ThumbNailName = dtRow_Engine_Images.Item(</code><code style="COLOR: blue">&quot;ThumbNailName&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">File.Delete(MapPath(</code><code style="COLOR: blue">&quot;.&quot;</code><code 
+            style="COLOR: #000">) &amp; </code><code style="COLOR: blue">
+        &quot;..\..\..\..\includes\imagemanager\imagefiles\&quot;</code> <code style="COLOR: #000">
+        &amp; ThumbNailName) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Engine and DECS Image Records from Image 
+        Table </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql_E_D_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString_E_D_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql_E_D_Images = </code><code style="COLOR: blue">
+        &quot;DELETE FROM CF_Images WHERE exists (SELECT CF_Vehicles.IDVehicles FROM 
+        CF_Vehicles INNER JOIN&nbsp; CF_Engines ON CF_Vehicles.IDVehicles = 
+        CF_Engines.IDVehicles WHERE CF_Images.IDEngines = CF_Engines.IDEngines AND 
+        CF_Vehicles.IDVehicles = @IDVehicles)&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection_E_D_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString_E_D_Images) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command_E_D_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql_E_D_Images, connection_E_D_Images)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command_E_D_Images.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command_E_D_Images.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_E_D_Images.Connection.Open() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_E_D_Images.ExecuteNonQuery() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_E_D_Images.Connection.Close() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Vehicle Image Records from Image Table </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql_V_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString_V_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql_V_Images = </code><code style="COLOR: blue">&quot;DELETE 
+        FROM CF_Images WHERE IDVehicles = @IDVehicles&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection_V_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString_V_Images) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command_V_Images </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql_V_Images, connection_V_Images) </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command_V_Images.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command_V_Images.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_V_Images.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_V_Images.ExecuteNonQuery() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_V_Images.Connection.Close() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp; Delete Files&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Vehicle Files </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString_Vehicle_Files </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn_Vehicle_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString_Vehicle_Files) </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm_Vehicle_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Images WHERE IDVehicles = @IDVehicles&quot;</code><code style="COLOR: #000">, 
+        conn_Vehicle_Files) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Vehicle_Files.Parameters.Add(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        SqlDbType.VarChar, 50).Value = IDVehicles </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Vehicle_Files.Connection.Open() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter_Vehicle_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        As</code> <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm_Vehicle_Files) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet_Vehicle_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData_Vehicle_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow_Vehicle_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter_Vehicle_Files.Fill(myDataSet_Vehicle_Files)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">conn_Vehicle_Files.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow_Vehicle_Files </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet_Vehicle_Files.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        FileName = dtRow_Vehicle_Files.Item(</code><code style="COLOR: blue">&quot;FileName&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">File.Delete(MapPath(</code><code style="COLOR: blue">&quot;.&quot;</code><code 
+            style="COLOR: #000">) &amp; </code><code style="COLOR: blue">
+        &quot;..\..\..\..\includes\filemanager\files\&quot;</code> <code style="COLOR: #000">&amp; 
+        FileName) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Engine and DECS Files </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connectionString_Engine_Files </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        DirectCast</code><code style="COLOR: #000">(ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString,
+        </code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        conn_Engine_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(connectionString_Engine_Files) </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        comm_Engine_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(</code><code style="COLOR: blue">&quot;SELECT * 
+        FROM CF_Files INNER JOIN (SELECT IDEngines FROM CF_Engines WHERE IDVehicles = 
+        @IDVehicles)AS CF_Engines ON CF_Engines.IDEngines = CF_Files.IDEngines&quot;</code><code 
+            style="COLOR: #000">, conn_Engine_Files) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Engine_Files.Parameters.Add(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        SqlDbType.VarChar, 50).Value = IDVehicles </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">comm_Engine_Files.Connection.Open() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataAdapter_Engine_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">
+        As</code> <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlDataAdapter(comm_Engine_Files) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        myDataSet_Engine_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataSet </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtData_Engine_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">DataTable </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        dtRow_Engine_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">DataRow </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">myDataAdapter_Engine_Files.Fill(myDataSet_Engine_Files)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">conn_Engine_Files.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">For</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Each</code>
+        <code style="COLOR: #000">dtRow_Engine_Files </code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">In</code> <code style="COLOR: #000">
+        myDataSet_Engine_Files.Tables(0).Rows </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        FileName = dtRow_Engine_Files.Item(</code><code style="COLOR: blue">&quot;FileName&quot;</code><code 
+            style="COLOR: #000">) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">File.Delete(MapPath(</code><code style="COLOR: blue">&quot;.&quot;</code><code 
+            style="COLOR: #000">) &amp; </code><code style="COLOR: blue">
+        &quot;..\..\..\..\includes\filemanager\files\&quot;</code> <code style="COLOR: #000">&amp; 
+        FileName) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Next</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Engine and DECS File Records from File Table
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql_E_D_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString_E_D_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql_E_D_Files = </code><code style="COLOR: blue">&quot;DELETE 
+        FROM CF_Files WHERE exists (SELECT CF_Vehicles.IDVehicles FROM CF_Vehicles INNER 
+        JOIN&nbsp; CF_Engines ON CF_Vehicles.IDVehicles = CF_Engines.IDVehicles WHERE 
+        CF_Files.IDEngines = CF_Engines.IDEngines AND CF_Vehicles.IDVehicles = 
+        @IDVehicles)&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection_E_D_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString_E_D_Files) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command_E_D_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql_E_D_Images, connection_E_D_Files)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command_E_D_Files.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command_E_D_Files.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_E_D_Files.Connection.Open() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_E_D_Files.ExecuteNonQuery() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_E_D_Files.Connection.Close() </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Vehicle File Records from File Table </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql_V_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString_V_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql_V_Files = </code><code style="COLOR: blue">&quot;DELETE 
+        FROM CF_FilesWHERE IDVehicles = @IDVehicles&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection_V_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString_V_Images) </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command_V_Files </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql_V_Images, connection_V_Images) </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command_V_Files.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command_V_Files.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_V_Files.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_V_Files.ExecuteNonQuery() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command_V_Files.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp; Delete Records 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete DECS Records from CF_DECS </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql2 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString2 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql2 = </code><code style="COLOR: blue">&quot;DELETE from 
+        CF_DECS where exists (select CF_Vehicles.IDVehicles from CF_Vehicles Inner Join&nbsp; 
+        CF_Engines on CF_Vehicles.IDVehicles = CF_Engines.IDVehicles Where 
+        CF_DECS.IDEngines = CF_Engines.IDEngines and CF_Vehicles.IDVehicles = 
+        @IDVehicles)&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection2 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString2) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command2 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql2, connection2) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command2.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command2.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command2.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command2.ExecuteNonQuery() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command2.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Engine Records from CF_Engines </code></span>
+        </span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql1 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString1 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql1 = </code><code style="COLOR: blue">&quot;DELETE FROM 
+        CF_Engines WHERE IDVehicles = @IDVehicles&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection1 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString1) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command1 </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql1, connection1) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command1.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command1.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command1.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command1.ExecuteNonQuery() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command1.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;Delete Vehicle Records from CF_Vehicles </code>
+        </span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #008200">&#39;**************************************************
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        sql </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        strConnString </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #000">[</code><code style="COLOR: #069; FONT-WEIGHT: bold">String</code><code 
+            style="COLOR: #000">] = 
+        System.Configuration.ConfigurationManager.ConnectionStrings(</code><code 
+            style="COLOR: blue">&quot;CF_SQL_Connection&quot;</code><code style="COLOR: #000">).ConnectionString()
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">sql = </code><code style="COLOR: blue">&quot;DELETE FROM 
+        CF_Vehicles WHERE IDVehicles = @IDVehicles&quot;</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        connection </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlConnection(strConnString) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        command </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">New</code>
+        <code style="COLOR: #000">SqlCommand(sql, connection) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">With</code> <code style="COLOR: #000">
+        command.Parameters </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 36px !important"><code 
+            style="COLOR: #000">command.Parameters.AddWithValue(</code><code 
+            style="COLOR: blue">&quot;@IDVehicles&quot;</code><code style="COLOR: #000">, 
+        IDVehicles) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">With</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command.Connection.Open() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command.ExecuteNonQuery() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">command.Connection.Close() </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDProfileTerminal </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= Request.QueryString(</code><code 
+            style="COLOR: blue">&quot;IDProfileTerminal&quot;</code><code style="COLOR: #000">)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDProfileAccount </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= Request.QueryString(</code><code 
+            style="COLOR: blue">&quot;IDProfileAccount&quot;</code><code style="COLOR: #000">)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">Dim</code> <code style="COLOR: #000">
+        IDProfilefleet </code><code style="COLOR: #069; FONT-WEIGHT: bold">As</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">String</code>
+        <code style="COLOR: #000">= Request.QueryString(</code><code 
+            style="COLOR: blue">&quot;IDProfilefleet&quot;</code><code style="COLOR: #000">)
+        </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 24px !important"><code 
+            style="COLOR: #000">Response.Redirect(</code><code style="COLOR: blue">&quot;vehicles.aspx?IDProfileTerminal=&quot;</code>
+        <code style="COLOR: #000">&amp; IDProfileTerminal &amp; </code>
+        <code style="COLOR: blue">&quot;&amp;IDProfileAccount=&quot;</code> <code style="COLOR: #000">
+        &amp; IDProfileAccount &amp; </code><code style="COLOR: blue">&quot;&amp;IDProfilefleet=&quot;</code>
+        <code style="COLOR: #000">&amp; IDProfilefleet) </code></span></span>
+    </div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;&nbsp;&nbsp;&nbsp;</code><span style="MARGIN-LEFT: 12px !important"><code 
+            style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Sub</code></span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #f8f8f8">
+        <span><code>&nbsp;</code><span style="MARGIN-LEFT: 3px !important">&nbsp;</span></span></div>
+    <div style="BACKGROUND-COLOR: #fff">
+        <span><span style="MARGIN-LEFT: 0px !important">
+        <code style="COLOR: #069; FONT-WEIGHT: bold">End</code>
+        <code style="COLOR: #069; FONT-WEIGHT: bold">Class</code></span></span></div>
+
+</body>
+
+</html>

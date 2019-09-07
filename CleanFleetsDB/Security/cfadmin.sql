@@ -1,0 +1,2 @@
+﻿CREATE USER [cfadmin] WITHOUT LOGIN;
+

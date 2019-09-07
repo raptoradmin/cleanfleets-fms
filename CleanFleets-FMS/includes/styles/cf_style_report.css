@@ -1,0 +1,123 @@
+﻿/*
+COLOR PALETTE
+*******************
+CF_Green_Dark
+44,117,0
+#2C7500
+*******************
+CF_Green_Light
+194,209,151
+#C2D197
+*******************
+CF_Orange_Dark
+237,135,1
+#ED8701
+*******************
+CF_Orange_Light
+252,231,204
+#FCE7CC
+*******************
+CF_Grey_Dark
+199,199,199
+#C7C7C7
+*******************
+CF_Grey_Light
+221,221,221
+#DDDDDD
+*******************
+
+*******************
+Text as Graphics Font
+Square721 BT
+*******************
+
+*/
+
+
+
+/* MasterPageSetup */
+
+
+
+body
+{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+
+
+/* Text Setup */
+
+p
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+h1
+{
+    color: #2C7500;
+    font-size: large;
+    font-weight: bold;
+}
+             
+h2
+{
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+}
+
+h3
+{
+    color: black;
+    font-size: small;
+    font-weight: bolder;
+}
+
+h4
+{
+    color: #FFFFFF;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+h5
+{
+    color: #ED8701;
+    font-size: medium;
+    font-weight: bold;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+h6
+{
+    color: #2C7500;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.tabletld
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: bold;
+    color: #2C7500;
+    text-align: right;
+}
+
+@media all
+{
+  .page-break  { display:none; }
+}
+
+@media print
+{
+  .page-break  { display:block; page-break-before:always; }
+  .page-break:last-of-type {page-break-before:auto;}
+}

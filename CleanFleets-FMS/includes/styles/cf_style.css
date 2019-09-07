@@ -1,0 +1,450 @@
+﻿/*
+COLOR PALETTE
+*******************
+CF_Green_Dark
+44,117,0
+#2C7500
+*******************
+CF_Green_Light
+194,209,151
+#C2D197
+*******************
+CF_Orange_Dark
+237,135,1
+#ED8701
+*******************
+CF_Orange_Light
+252,231,204
+#FCE7CC
+*******************
+CF_Grey_Dark
+199,199,199
+#C7C7C7
+*******************
+CF_Grey_Light
+221,221,221
+#DDDDDD
+*******************
+
+*******************
+Text as Graphics Font
+Square721 BT
+*******************
+
+*/
+
+/* MasterPageSetup */
+
+.greendark
+{
+    color: #2C7500;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+}
+
+.orangedark
+{
+    color: #ED8701;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tablecenter
+{
+    margin: auto;
+}
+
+body
+{
+    background-image: url('/images/cf_header.jpg');
+    background-repeat: repeat-x;
+    background-color: #2C7500;
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ .tablePageBodyContainer
+{
+    background-image: url('/images/cf_header.jpg');
+    background-repeat: repeat-x;
+    background-color: #2C7500;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-collapse: collapse;
+}
+
+ .tablePageHeader
+{
+    width: 100%;
+    height: 75px;
+    text-align: right;
+    border-collapse: collapse;
+}
+
+.tablePageHeaderColumn
+{
+    background-image: url('/images/cf_pageheader.jpg');
+    background-repeat: no-repeat;
+    vertical-align: top;
+    text-align: right;
+    padding-right: 25px;
+}
+
+ .divPageHeader
+{
+    background-image: url('/images/headerloginback.gif');
+    background-repeat: no-repeat;
+    top: 0px;
+    left: 0px;
+    width: 143px;
+    height: 36px;
+    vertical-align: top;
+    text-align: center;
+    float: right;
+}
+
+.spanLoginTitle
+{
+    text-decoration: none;
+    color: #2C7500;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-small;
+    font-weight: normal;
+    text-align: center;
+}
+
+.spanLoginUserName
+{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-small;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tablePageBody
+{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.tablePageBodyLeftColumn
+{
+    width: 180px;
+    vertical-align: top;
+    background-color: #2C7500;
+}
+
+.tablePageBodyRightColumn
+{
+    vertical-align: top;
+    font-size: small;
+    height: 400px;
+    background-color: white;
+    padding: 10px;
+}
+
+.tablePageFooter
+{
+    background-image: url('/images/cf_footer.jpg');
+    background-repeat:repeat-x;
+    width: 100%;
+    height: 75px;
+    vertical-align:top;
+}
+
+.Breadcrumb
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #2C7500;
+}
+
+a.Breadcrumb:link
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: #2C7500;
+}
+
+a.Breadcrumb:visited
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: #2C7500;
+
+}
+
+a.Breadcrumb:hover
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: #ED8701;
+}
+
+
+
+/* Vehicle Details Display Page vehicle.aspx */
+
+.cellFormView
+{
+    background-image: url('/images/cf_formviewheader.gif');
+    background-repeat:no-repeat;
+}
+
+.divlblScrollText
+{
+    height: 60px;
+    width: 600px;
+    overflow: auto;
+    padding: 5px;
+    text-align: justify;
+}
+
+.tdtable
+{
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: bold;
+    text-align: right;
+    color: #2C7500;
+}
+
+.tdtablebasic
+{
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: normal;
+    text-align: left;
+}
+
+
+/* Login Page Setup */
+
+ .tableLoginPageHeader
+{
+    background-image: url('/images/cf_pageheader.jpg');
+    background-repeat: no-repeat;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 75px;
+    vertical-align:top;
+}
+
+ .tableLoginPageBody
+{
+    width: 100%;
+    background-color: white;
+
+    text-align: center;
+}
+
+ .controlLogin
+{
+	margin: 0 auto;
+	width: 275px;
+	font-size: small;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+ .controlLoginName
+{
+	font-size: small;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+ .controlLoginStatus
+{
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+}
+
+ .controlLoginStatus a:link {color: #009900;}
+
+
+
+/* Reports Text Setup */
+
+
+
+ .tableReportPageBody
+{
+	width: 100%;
+	background-color: white;
+}
+
+/* Text Setup */
+
+p
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+h1
+{
+    color: #2C7500;
+    font-size: large;
+    font-weight: bold;
+}
+             
+h2
+{
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+}
+
+h3
+{
+    color: black;
+    font-size: small;
+    font-weight: bolder;
+}
+
+h4
+{
+    padding: 10px 0px 0px 0px;
+    color: #2C7500;
+    font-size: medium;
+    font-weight: bold;
+}
+
+h5
+{
+    color: #ED8701;
+    font-size: medium;
+    font-weight: bold;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+h6
+{
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+    color: #ED8701;
+    font-size: large;
+    font-weight: bold;
+}
+             
+a:link
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: #ED8701;
+}
+
+a:visited
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: #ED8701;
+
+}
+
+a:hover
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-decoration: none;
+    color: #C2D197;
+}
+
+ .radgrid a  
+    {  
+       color:#2C7500 !important;  
+    }  
+    
+ .radgrid a:hover  
+    {  
+       color:red !important;  
+    }
+    
+	
+select
+{
+	background-color: #E7F1D7;
+	border: solid 1px #648740;
+}
+/*Footer.ascx styles*/ 
+.footer{
+    height: 75px;
+}
+
+.style1
+{
+    text-align: center;
+}
+.style2
+{
+    color: #FFFFFF;
+}
+.style3
+{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.style4
+{
+    font-size: small;
+}   
+/*
+Eventually we'll need to enable this to fix a problem with RadPanel not highlighting links that span multiple lines
+.rpSelected, rpGroup a.rpSelected
+{
+	background-color:#F06603 !important;
+	font-weight:bold !important;
+	border:1px solid #000000;
+	border-radius: 3px 3px;
+}
+.rpSelected:hover
+{
+	background-color: #EBB31E !important;
+	font-weight:bold !important;
+	border: 1px solid #8F610A;
+
+}
+.rpGroup .rpOut, .rpGroup a.rpLink, .rpGroup .rpOut 
+{
+	background-image:none !important;
+
+}
+.rpSlide .rpItem:hover
+{
+	background-color: #EBB31E !important;
+	border: 1px solid #8F610A;
+	border-radius: 3px 3px;
+	background-image: linear-gradient(top, #EDB722 16%, #D57908 49%);
+	background-image: -o-linear-gradient(top, #EDB722 16%, #D57908 49%);
+	background-image: -moz-linear-gradient(top, #EDB722 16%, #D57908 49%);
+	background-image: -webkit-linear-gradient(top, #EDB722 16%, #D57908 49%);
+	background-image: -ms-linear-gradient(top, #EDB722 16%, #D57908 49%);
+	  
+}
+.rpSlide .rpLink:hover
+{
+	background-image:none !important;
+}
+.rpSlide .rpOut:hover 
+{
+	background-image:none !important;
+}*/

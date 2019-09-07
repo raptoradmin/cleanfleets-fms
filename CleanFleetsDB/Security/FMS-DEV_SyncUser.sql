@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [FMS-DEV\SyncUser]
+    FROM WINDOWS WITH DEFAULT_DATABASE = [distribution], DEFAULT_LANGUAGE = [us_english];
+

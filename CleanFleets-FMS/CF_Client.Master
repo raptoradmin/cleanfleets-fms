@@ -1,0 +1,88 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="CF_Client.master.vb" Inherits="cleanfleets_fms.CF_Client" %>
+
+<%@ Register Src="~/controls/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<title>Fleet Compliance Management System</title>
+	<link rel="stylesheet" type="text/css" href="~/includes/styles/cf_style.css" />
+	<script type="text/javascript" src="/includes/javascript/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/includes/javascript/cf_client_subs.js"></script>
+	
+	<asp:ContentPlaceHolder ID="head" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+<body>
+	<form runat="server" id="mainForm" method="post">
+	<table id="tablePageBodyContainer" class="tablePageBodyContainer">
+		<tr>
+			<td>
+				<table id="tablePageHeader" class="tablePageHeader">
+					<tr>
+						<td class="tablePageHeaderColumn">
+							<div class="divPageHeader">
+								<span style="font-size: small">Welcome:</span>
+								<asp:LoginName ID="LoginName" runat="server" CssClass="controlLoginName" />
+								<br />
+								<asp:LoginStatus ID="LoginStatus" runat="server" class="controlLoginStatus" onMouseOver="this.style.color='Black' "
+								  LogoutAction="Redirect" LogoutPageUrl="~/default.aspx"
+									onMouseOut="this.style.color='White' " CssClass="controlLoginStatus" ForeColor="White" />
+									
+									
+								<div id="GlobalSearch">
+									<input type="text" name="GlobalSearchVehicles" id="SearchVehicles" />
+									<span style="margin-left:-40px;"><button type="button" id="GlobalSearchVehiclesButton" style="width:32px;padding:0px;margin-right:auto; margin-left:auto;" ><img src="/images/searchglass.png" alt="Search" title="Search" /></button></span>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table id="tablePageBody" class="tablePageBody">
+		<tr>
+			<td class="tablePageBodyLeftColumn">
+				<telerik:radpanelbar id="RadPanelBar1" runat="server" datafieldid="DataFieldID" datafieldparentid="DataFieldParentID"
+					datanavigateurlfield="DataNavigateUrlField" datasourceid="sds_CF_Menu_Client"
+					datatextfield="DataTextField" datavaluefield="DataTextField" height="400px" skin="Forest"
+					width="180px" expandmode="FullExpandedItem" persiststateincookie="True">
+					</telerik:radpanelbar>
+			</td>
+			<td class="tablePageBodyRightColumn">
+				<asp:ContentPlaceHolder ID="RightColumnContentPlaceHolder" runat="server">
+				</asp:ContentPlaceHolder>
+			</td>
+		</tr>
+	</table>
+	<asp:SqlDataSource ID="sds_CF_Menu_Client" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [DataFieldID], [DataFieldParentID], [DataTextField], [DataNavigateUrlField], [ImageURL] FROM [CF_Menu_Client] ORDER BY [Sort]">
+	</asp:SqlDataSource>
+	<telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecoratedControls="Default, Textbox, Textarea, Fieldset, Label" Skin="Forest" />
+	<%--<telerik:radformdecorator id="rfd_CleanFleets" runat="server" skin="Forest" />--%>
+	<telerik:radscriptmanager id="rsm_CleanFleets" runat="server"></telerik:radscriptmanager>
+	</form>
+	<style type="text/css">
+        .style1
+        {
+            text-align: center;
+        }
+        .style2
+        {
+            color: #FFFFFF;
+        }
+        .style3
+        {
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+        .style4
+        {
+            font-size: small;
+        }
+    </style>
+    <uc1:Footer runat="server" id="Footer" />
+</body>
+</html>
