@@ -185,12 +185,67 @@ Public Class dpfcleaning
 
         Using theDoc As New Doc()
 
+            ' Dim rect As XRect = New XRect() Added this line On 9/10/2019.
+            ' rect.String = "10 10 200 100" Added this line On 9/10/2019.
+
+            Dim Rects_String_Array As String()
+            Dim See_Rect_String As String
+
             theDoc.Read(theSrc)
+
             Dim op As New TextOperation(theDoc)
+            Dim op_WO As New TextOperation(theDoc)
+            Dim op_Job As New TextOperation(theDoc)
+            Dim op_Company As New TextOperation(theDoc)
+            Dim op_VIN_UNIT As New TextOperation(theDoc)
+            Dim op_MAKE As New TextOperation(theDoc)
+            Dim op_MODEL As New TextOperation(theDoc)
             op.PageContents.AddPages()
-            Dim PDFPageText As String = op.GetText()
+            op_WO.PageContents.AddPages()
+            op_Job.PageContents.AddPages()
+            op_Company.PageContents.AddPages()
+            op_VIN_UNIT.PageContents.AddPages()
+            op_MAKE.PageContents.AddPages()
+            op_MODEL.PageContents.AddPages()
+
+            theDoc.Rect.String = "450 714 600 790"
+            Dim PDFPageText As String = op.GetText(theDoc.Rect, 1) ' Altered this line on 9/10/2019 to include arguments in GetText method.
             viewtextvariable.Visible = True
             viewtextvariable.InnerHtml = PDFPageText
+
+            ' PDFPageText = Nothing
+            ' theDoc.Rect.SetRect(450, 693, 122.4, 27)
+            ' theDoc.Rect.SetRect(300, 300, 300, 300)
+
+            theDoc.Rect.String = "450 693 600 720"
+            PDFPageText = op_WO.GetText(theDoc.Rect, 1)
+            viewtextvariable_WO.Visible = True
+            viewtextvariable_WO.InnerHtml = PDFPageText
+
+            theDoc.Rect.String = "450 666 600 693"
+            PDFPageText = op_Job.GetText(theDoc.Rect, 1)
+            viewtextvariable_Job.Visible = True
+            viewtextvariable_Job.InnerHtml = PDFPageText
+
+            theDoc.Rect.String = "297 575 558 612"
+            PDFPageText = op_Company.GetText(theDoc.Rect, 1)
+            viewtextvariable_Company.Visible = True
+            viewtextvariable_Company.InnerHtml = PDFPageText
+
+            theDoc.Rect.String = "297 552 558 575"
+            PDFPageText = op_VIN_UNIT.GetText(theDoc.Rect, 1)
+            viewtextvariable_VIN_UNIT.Visible = True
+            viewtextvariable_VIN_UNIT.InnerHtml = PDFPageText
+
+            theDoc.Rect.String = "297 535 558 552"
+            PDFPageText = op_MAKE.GetText(theDoc.Rect, 1)
+            viewtextvariable_MAKE.Visible = True
+            viewtextvariable_MAKE.InnerHtml = PDFPageText
+
+            theDoc.Rect.String = "297 518 558 535"
+            PDFPageText = op_MODEL.GetText(theDoc.Rect, 1)
+            viewtextvariable_MODEL.Visible = True
+            viewtextvariable_MODEL.InnerHtml = PDFPageText
 
         End Using
 
