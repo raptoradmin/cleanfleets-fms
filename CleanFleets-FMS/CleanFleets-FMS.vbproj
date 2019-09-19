@@ -209,6 +209,7 @@
     <Content Include="cf_console\accountmanager\03_vehicles\DECsadd.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\enginesadd.aspx" />
+    <Content Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehicles.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehiclesadd.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehiclesdel.aspx" />
@@ -387,6 +388,13 @@
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx.designer.vb">
+      <DependentUpon>Testing_File.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx.vb">
+      <DependentUpon>Testing_File.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="controls\GroupedDropDownList.vb" />
     <Compile Include="App_Code\IHangfireJob.vb" />
