@@ -189,7 +189,8 @@ Public Class dpfcleaning
             ' rect.String = "10 10 200 100" Added this line On 9/10/2019.
 
             ' I am testing to see whether or not this will show up in the remote repo!!!
-
+            ' I am testing to see whether or not another line will show up in the remote repo!!!
+            ' This is another comment to push to the remote!
             Dim Rects_String_Array As String()
             Dim See_Rect_String As String
 
