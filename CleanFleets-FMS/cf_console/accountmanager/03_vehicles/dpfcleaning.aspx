@@ -13,7 +13,9 @@
     <div id="viewtextvariable_VIN_UNIT" runat="server" visible="false"></div>
     <div id="viewtextvariable_MAKE" runat="server" visible="false"></div>
     <div id="viewtextvariable_MODEL" runat="server" visible="false"></div>
-    <div id="viewtextvariable_" runat="server" visible="false"></div>
+
+    <div id="viewtextvariable_theField" runat="server" visible="false"></div>
+    <div id="viewtextvariable_theFieldValues" runat="server" visible="false"></div>
 
     <%--End of what was Added by Andrew on 9/3/2019--%>
 

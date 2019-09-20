@@ -17,6 +17,7 @@ Imports System.Drawing
 Imports System.Web.Configuration
 Imports WebSupergoo.ABCpdf11
 Imports WebSupergoo.ABCpdf11.Operations
+Imports WebSupergoo.ABCpdf11.Objects 'Added this Imports line on 9/19/2019
 Public Class dpfcleaning
     Inherits BaseWebForm
 
@@ -188,13 +189,93 @@ Public Class dpfcleaning
             ' Dim rect As XRect = New XRect() Added this line On 9/10/2019.
             ' rect.String = "10 10 200 100" Added this line On 9/10/2019.
 
-            ' I am testing to see whether or not this will show up in the remote repo!!!
-            ' I am testing to see whether or not another line will show up in the remote repo!!!
-            ' This is another comment to push to the remote! Further modifying this comment line!!!
             Dim Rects_String_Array As String()
             Dim See_Rect_String As String
 
             theDoc.Read(theSrc)
+
+            Dim thisForm As XForm
+            Dim theField As Field
+            Dim theFieldString As String
+            Dim FieldNamesArray() As String
+            Dim CombinedFieldNames As String
+            Dim theFieldValue As String
+            Dim CombinedFieldValues As String
+
+            CombinedFieldNames = ""
+            CombinedFieldValues = ""
+            thisForm = theDoc.Form
+
+            FieldNamesArray = thisForm.GetFieldNames()
+
+            For Each theFieldString In FieldNamesArray
+
+                theField = thisForm.Item(theFieldString)
+                theFieldValue = theField.Value
+
+                CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
+                CombinedFieldValues = CombinedFieldValues & ", " & theFieldValue
+
+            Next
+
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = CombinedFieldNames
+
+            viewtextvariable_theFieldValues.Visible = True
+            viewtextvariable_theFieldValues.InnerHtml = CombinedFieldValues
+
+            Dim DPF_Dictionary As New Dictionary(Of String, String)()
+
+            theField = thisForm.Item(0)
+            theFieldValue = theField.Value
+            DPF_Dictionary.Add("REQUIRED MULTIPLE CLEANINGS", theFieldValue)
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                If (pair.Key = "REQUIRED MULTIPLE CLEANINGS") Then
+
+                    viewtextvariable_theField.Visible = True
+                    viewtextvariable_theField.InnerHtml = pair.Key & ": " & pair.Value
+
+                End If
+
+            Next
+
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = DPF_Dictionary("")
+
+            'theDoc.Read(theSrc)
+
+            ''Dim theDocSoup As ObjectSoup
+            'Dim thisForm As XForm
+            ''Dim theField As Field
+            'Dim theFieldString As String
+            'Dim FieldNamesArray() As String
+            'Dim CombinedFieldNames As String
+            ''Dim theDocSoupCount As Integer
+            ''Dim theIndirectObject As IndirectObject
+
+            'theDocSoup = theDoc.ObjectSoup
+            'CombinedFieldNames = ""
+            'thisForm = theDoc.Form
+
+            'FieldNamesArray = thisForm.GetFieldNames()
+            ''theField = theDocSoup(0)
+            ''theDocSoupCount = 0
+            ''theFieldString = Str(theDocSoupCount)
+            'For Each theFieldString In FieldNamesArray
+
+            '    'If (theIndirectObject.Equals(theField, ComparisonType.Object) = True) Then
+
+            '    CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
+            '    'theDocSoupCount = theDocSoupCount + 1
+
+            '    'End If
+
+            'Next
+            ''theFieldString = Str(theDocSoupCount)
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = CombinedFieldNames
 
             Dim op As New TextOperation(theDoc)
             Dim op_WO As New TextOperation(theDoc)

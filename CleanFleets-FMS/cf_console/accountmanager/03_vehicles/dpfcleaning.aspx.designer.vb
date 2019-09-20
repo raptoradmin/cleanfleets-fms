@@ -77,13 +77,22 @@ Partial Public Class dpfcleaning
     Protected WithEvents viewtextvariable_MODEL As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''viewtextvariable_ control.
+    '''viewtextvariable_theField control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents viewtextvariable_ As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents viewtextvariable_theField As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''viewtextvariable_theFieldValues control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents viewtextvariable_theFieldValues As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''dvSectionImport control.
