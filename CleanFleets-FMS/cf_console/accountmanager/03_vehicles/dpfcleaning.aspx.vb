@@ -234,8 +234,10 @@ Public Class dpfcleaning
 
                 If (pair.Key = "REQUIRED MULTIPLE CLEANINGS") Then
 
+                    Dim pair_string As String
+                    pair_string = pair.Key & ": " & pair.Value
                     viewtextvariable_theField.Visible = True
-                    viewtextvariable_theField.InnerHtml = pair.Key & ": " & pair.Value
+                    viewtextvariable_theField.InnerHtml = pair_string
 
                 End If
 
