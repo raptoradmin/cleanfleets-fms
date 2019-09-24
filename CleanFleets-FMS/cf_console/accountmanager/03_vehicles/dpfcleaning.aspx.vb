@@ -208,40 +208,83 @@ Public Class dpfcleaning
 
             FieldNamesArray = thisForm.GetFieldNames()
 
+            Dim PDF_Field_Names() As String
+            PDF_Field_Names = {"Required_Multiple_Cleanings", "DOC_Cleaned", "Cleaning_Date", "WO", "Job", "Company", "VIN_UNIT", "Make", "Model", "Plate", "Miles", "HRS", "Make_Model", "S_N", "Substrate", "P_N", "Wire_Test_Results", "Cleaning_Tech", "Notes", "Condition", "Weight_DPF_Initial", "Weight_DPF_Final", "Weight_DPF_Difference", "Doc1_Initial", "Doc1_Final", "Doc1_Difference", "Flow_Restriction_DPF_Initial", "Flow_Restriction_DPF_Final", "Flow_Restriction_DPF_Difference"}
+
+            Dim j As Integer
+            j = 0
+
+            Dim DPF_Dictionary As New Dictionary(Of String, String)()
+
             For Each theFieldString In FieldNamesArray
 
                 theField = thisForm.Item(theFieldString)
                 theFieldValue = theField.Value
 
-                CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
-                CombinedFieldValues = CombinedFieldValues & ", " & theFieldValue
+                DPF_Dictionary.Add(PDF_Field_Names(j), theFieldValue)
+
+                j = j + 1
+
+                'CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
+                'CombinedFieldValues = CombinedFieldValues & ", " & theFieldValue
 
             Next
 
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = CombinedFieldNames
 
-            viewtextvariable_theFieldValues.Visible = True
-            viewtextvariable_theFieldValues.InnerHtml = CombinedFieldValues
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = CombinedFieldValues
 
-            Dim DPF_Dictionary As New Dictionary(Of String, String)()
+            'Dim DPF_Dictionary As New Dictionary(Of String, String)()
+            Dim FieldValueVar As String
 
-            theField = thisForm.Item(0)
-            theFieldValue = theField.Value
-            DPF_Dictionary.Add("REQUIRED MULTIPLE CLEANINGS", theFieldValue)
+            'theField = thisForm.Item("Date")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Date", theFieldValue)
+            'FieldValueVar = DPF_Dictionary.Item("Date")
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = FieldValueVar
+
+            'theField = thisForm.Item("Date 2")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("WO#", theFieldValue)
+
+            'theField = thisForm.Item("Date 3")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Company", theFieldValue)
+
+            'theField = thisForm.Item("Date 6")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("VIN/UNIT#", theFieldValue)
+
+            'theField = thisForm.Item("Date 7")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Make", theFieldValue)
+
+            'theField = thisForm.Item("Date 8")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Model", theFieldValue)
+
+            'FieldValueVar = DPF_Dictionary.Item("Cleaning_Date")
+
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = "Cleaning Date: " & FieldValueVar
+
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = FieldValueVar
+
+            Dim pair_string As String
+            pair_string = ""
 
             For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
 
-                If (pair.Key = "REQUIRED MULTIPLE CLEANINGS") Then
-
-                    Dim pair_string As String
-                    pair_string = pair.Key & ": " & pair.Value
-                    viewtextvariable_theField.Visible = True
-                    viewtextvariable_theField.InnerHtml = pair_string
-
-                End If
+                pair_string = pair_string & ", " & pair.Key & ": " & pair.Value
 
             Next
+
+            viewtextvariable_theFieldValues.Visible = True
+            viewtextvariable_theFieldValues.InnerHtml = pair_string
 
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = DPF_Dictionary("")
