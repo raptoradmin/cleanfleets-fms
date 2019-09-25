@@ -17,6 +17,7 @@ Imports System.Drawing
 Imports System.Web.Configuration
 Imports WebSupergoo.ABCpdf11
 Imports WebSupergoo.ABCpdf11.Operations
+Imports WebSupergoo.ABCpdf11.Objects 'Added this Imports line on 9/19/2019
 Public Class dpfcleaning
     Inherits BaseWebForm
 
@@ -188,67 +189,211 @@ Public Class dpfcleaning
             ' Dim rect As XRect = New XRect() Added this line On 9/10/2019.
             ' rect.String = "10 10 200 100" Added this line On 9/10/2019.
 
-            ' I am testing to see whether or not this will show up in the remote repo!!!
-            ' I am testing to see whether or not another line will show up in the remote repo!!!
-            ' This is another comment to push to the remote! Further modifying this comment line to not undo previous commit!!!
-            Dim Rects_String_Array As String()
-            Dim See_Rect_String As String
+            'Dim Rects_String_Array As String()
+            'Dim See_Rect_String As String
 
             theDoc.Read(theSrc)
 
-            Dim op As New TextOperation(theDoc)
-            Dim op_WO As New TextOperation(theDoc)
-            Dim op_Job As New TextOperation(theDoc)
-            Dim op_Company As New TextOperation(theDoc)
-            Dim op_VIN_UNIT As New TextOperation(theDoc)
-            Dim op_MAKE As New TextOperation(theDoc)
-            Dim op_MODEL As New TextOperation(theDoc)
-            op.PageContents.AddPages()
-            op_WO.PageContents.AddPages()
-            op_Job.PageContents.AddPages()
-            op_Company.PageContents.AddPages()
-            op_VIN_UNIT.PageContents.AddPages()
-            op_MAKE.PageContents.AddPages()
-            op_MODEL.PageContents.AddPages()
+            Dim thisForm As XForm
+            Dim theField As Field
+            Dim theFieldString As String
+            Dim FieldNamesArray() As String
+            Dim CombinedFieldNames As String
+            Dim theFieldValue As String
+            Dim CombinedFieldValues As String
 
-            theDoc.Rect.String = "450 714 600 790"
-            Dim PDFPageText As String = op.GetText(theDoc.Rect, 1) ' Altered this line on 9/10/2019 to include arguments in GetText method.
-            viewtextvariable.Visible = True
-            viewtextvariable.InnerHtml = PDFPageText
+            CombinedFieldNames = ""
+            CombinedFieldValues = ""
+            thisForm = theDoc.Form
+
+            FieldNamesArray = thisForm.GetFieldNames()
+
+            Dim PDF_Field_Names() As String
+            PDF_Field_Names = {"Required_Multiple_Cleanings", "DOC_Cleaned", "Cleaning_Date", "WO", "Job", "Company", "VIN_UNIT", "Make", "Model", "Plate", "Miles", "HRS", "Make_Model", "S_N", "Substrate", "P_N", "Wire_Test_Results", "Cleaning_Tech", "Notes", "Condition", "Weight_DPF_Initial", "Weight_DPF_Final", "Weight_DPF_Difference", "Doc1_Initial", "Doc1_Final", "Doc1_Difference", "Flow_Restriction_DPF_Initial", "Flow_Restriction_DPF_Final", "Flow_Restriction_DPF_Difference"}
+
+            Dim j As Integer
+            j = 0
+
+            Dim DPF_Dictionary As New Dictionary(Of String, String)()
+
+            For Each theFieldString In FieldNamesArray
+
+                theField = thisForm.Item(theFieldString)
+                theFieldValue = theField.Value
+
+                DPF_Dictionary.Add(PDF_Field_Names(j), theFieldValue)
+
+                j = j + 1
+
+            Next
+
+            'CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
+            'CombinedFieldValues = CombinedFieldValues & ", " & theFieldValue
+
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = CombinedFieldNames
+
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = CombinedFieldValues
+
+            'Dim DPF_Dictionary As New Dictionary(Of String, String)()
+            'Dim FieldValueVar As String
+
+            'theField = thisForm.Item("Date")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Date", theFieldValue)
+            'FieldValueVar = DPF_Dictionary.Item("Date")
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = FieldValueVar
+
+            'theField = thisForm.Item("Date 2")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("WO#", theFieldValue)
+
+            'theField = thisForm.Item("Date 3")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Company", theFieldValue)
+
+            'theField = thisForm.Item("Date 6")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("VIN/UNIT#", theFieldValue)
+
+            'theField = thisForm.Item("Date 7")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Make", theFieldValue)
+
+            'theField = thisForm.Item("Date 8")
+            'theFieldValue = theField.Value
+            'DPF_Dictionary.Add("Model", theFieldValue)
+
+            'FieldValueVar = DPF_Dictionary.Item("Cleaning_Date")
+
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = "Cleaning Date: " & FieldValueVar
+
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = FieldValueVar
+
+            Dim pair_string As String
+            pair_string = ""
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                pair_string = pair_string & ", " & pair.Key & ": " & pair.Value
+
+            Next
+
+            viewtextvariable_theFieldValues.Visible = True
+            viewtextvariable_theFieldValues.InnerHtml = pair_string
+
+            Dim 
+
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = DPF_Dictionary("")
+
+            Dim DPF_conn As New SqlConnection("Server = SQL16\CFNET; Database = CleanFleets-DEV; Integrated Security = true")
+            Dim DPF_comm As New SqlCommand
+
+            If DPF_conn.State = ConnectionState.Closed Then
+
+                DPF_conn.Open()
+
+            End If
+
+            DPF_comm = New SqlCommand("INSERT INTO CF_DPF (IDDPF, IDModifiedUser, EnterDate, ModifiedDate, IDProfileAccount, IDVehicles, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes) " &
+                "VALUES ("
+
+            "INSERT INTO CF_Vehicles_Log_OpacityTests (IDVehicles, IDModifiedUser, EnterDate, ModifiedDate, AverageOpacity, TestResult, TestedBy, TestDate, RawTestResults, ScannerModel) " &
+                  "VALUES (@IDVehicles, @IDModifiedUser, GETDATE(), GETDATE(), @AverageOpacity, @TestResult, @TestedBy, DATEADD(dd, DATEDIFF(dd, 0, @TestDate), 0), @RawTestResults, @ScannerModel)", conn)
+            comm.Parameters.AddWithValue("@IDVehicles", IDVehicles)
+            comm.Parameters.AddWithValue("@IDModifiedUser", IDModifiedUser)
+
+            'theDoc.Read(theSrc)
+
+            ''Dim theDocSoup As ObjectSoup
+            'Dim thisForm As XForm
+            ''Dim theField As Field
+            'Dim theFieldString As String
+            'Dim FieldNamesArray() As String
+            'Dim CombinedFieldNames As String
+            ''Dim theDocSoupCount As Integer
+            ''Dim theIndirectObject As IndirectObject
+
+            'theDocSoup = theDoc.ObjectSoup
+            'CombinedFieldNames = ""
+            'thisForm = theDoc.Form
+
+            'FieldNamesArray = thisForm.GetFieldNames()
+            ''theField = theDocSoup(0)
+            ''theDocSoupCount = 0
+            ''theFieldString = Str(theDocSoupCount)
+            'For Each theFieldString In FieldNamesArray
+
+            '    'If (theIndirectObject.Equals(theField, ComparisonType.Object) = True) Then
+
+            '    CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
+            '    'theDocSoupCount = theDocSoupCount + 1
+
+            '    'End If
+
+            'Next
+            ''theFieldString = Str(theDocSoupCount)
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = CombinedFieldNames
+
+            'Dim op As New TextOperation(theDoc)
+            'Dim op_WO As New TextOperation(theDoc)
+            'Dim op_Job As New TextOperation(theDoc)
+            'Dim op_Company As New TextOperation(theDoc)
+            'Dim op_VIN_UNIT As New TextOperation(theDoc)
+            'Dim op_MAKE As New TextOperation(theDoc)
+            'Dim op_MODEL As New TextOperation(theDoc)
+            'op.PageContents.AddPages()
+            'op_WO.PageContents.AddPages()
+            'op_Job.PageContents.AddPages()
+            'op_Company.PageContents.AddPages()
+            'op_VIN_UNIT.PageContents.AddPages()
+            'op_MAKE.PageContents.AddPages()
+            'op_MODEL.PageContents.AddPages()
+
+            'theDoc.Rect.String = "450 714 600 790"
+            'Dim PDFPageText As String = op.GetText(theDoc.Rect, 1) ' Altered this line on 9/10/2019 to include arguments in GetText method.
+            'viewtextvariable.Visible = True
+            'viewtextvariable.InnerHtml = PDFPageText
 
             ' PDFPageText = Nothing
             ' theDoc.Rect.SetRect(450, 693, 122.4, 27)
             ' theDoc.Rect.SetRect(300, 300, 300, 300)
 
-            theDoc.Rect.String = "450 693 600 720"
-            PDFPageText = op_WO.GetText(theDoc.Rect, 1)
-            viewtextvariable_WO.Visible = True
-            viewtextvariable_WO.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "450 693 600 720"
+            '    PDFPageText = op_WO.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_WO.Visible = True
+            '    viewtextvariable_WO.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "450 666 600 693"
-            PDFPageText = op_Job.GetText(theDoc.Rect, 1)
-            viewtextvariable_Job.Visible = True
-            viewtextvariable_Job.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "450 666 600 693"
+            '    PDFPageText = op_Job.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_Job.Visible = True
+            '    viewtextvariable_Job.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 575 558 612"
-            PDFPageText = op_Company.GetText(theDoc.Rect, 1)
-            viewtextvariable_Company.Visible = True
-            viewtextvariable_Company.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 575 558 612"
+            '    PDFPageText = op_Company.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_Company.Visible = True
+            '    viewtextvariable_Company.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 552 558 575"
-            PDFPageText = op_VIN_UNIT.GetText(theDoc.Rect, 1)
-            viewtextvariable_VIN_UNIT.Visible = True
-            viewtextvariable_VIN_UNIT.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 552 558 575"
+            '    PDFPageText = op_VIN_UNIT.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_VIN_UNIT.Visible = True
+            '    viewtextvariable_VIN_UNIT.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 535 558 552"
-            PDFPageText = op_MAKE.GetText(theDoc.Rect, 1)
-            viewtextvariable_MAKE.Visible = True
-            viewtextvariable_MAKE.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 535 558 552"
+            '    PDFPageText = op_MAKE.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_MAKE.Visible = True
+            '    viewtextvariable_MAKE.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 518 558 535"
-            PDFPageText = op_MODEL.GetText(theDoc.Rect, 1)
-            viewtextvariable_MODEL.Visible = True
-            viewtextvariable_MODEL.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 518 558 535"
+            '    PDFPageText = op_MODEL.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_MODEL.Visible = True
+            '    viewtextvariable_MODEL.InnerHtml = PDFPageText
 
         End Using
 
