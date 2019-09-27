@@ -189,8 +189,8 @@ Public Class dpfcleaning
             ' Dim rect As XRect = New XRect() Added this line On 9/10/2019.
             ' rect.String = "10 10 200 100" Added this line On 9/10/2019.
 
-            Dim Rects_String_Array As String()
-            Dim See_Rect_String As String
+            'Dim Rects_String_Array As String()
+            'Dim See_Rect_String As String
 
             theDoc.Read(theSrc)
 
@@ -225,10 +225,10 @@ Public Class dpfcleaning
 
                 j = j + 1
 
-                'CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
-                'CombinedFieldValues = CombinedFieldValues & ", " & theFieldValue
-
             Next
+
+            'CombinedFieldNames = CombinedFieldNames & ", " & theFieldString
+            'CombinedFieldValues = CombinedFieldValues & ", " & theFieldValue
 
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = CombinedFieldNames
@@ -237,7 +237,7 @@ Public Class dpfcleaning
             'viewtextvariable_theFieldValues.InnerHtml = CombinedFieldValues
 
             'Dim DPF_Dictionary As New Dictionary(Of String, String)()
-            Dim FieldValueVar As String
+            'Dim FieldValueVar As String
 
             'theField = thisForm.Item("Date")
             'theFieldValue = theField.Value
@@ -289,6 +289,34 @@ Public Class dpfcleaning
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = DPF_Dictionary("")
 
+            Dim connection_string As String
+
+            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+            Dim DPF_conn As New SqlConnection(connection_string)
+
+            If DPF_conn.State = ConnectionState.Closed Then
+
+                DPF_conn.Open()
+
+            End If
+
+            Dim DPF_comm As SqlCommand
+
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, 'a321095', 9845602)", DPF_conn)
+
+            DPF_comm.ExecuteNonQuery()
+
+            DPF_conn.Close()
+
+            'DPF_comm = New SqlCommand("INSERT INTO CF_DPF (IDDPF, IDModifiedUser, EnterDate, ModifiedDate, IDProfileAccount, IDVehicles, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes) " &
+            '    "VALUES ("
+
+            '"INSERT INTO CF_Vehicles_Log_OpacityTests (IDVehicles, IDModifiedUser, EnterDate, ModifiedDate, AverageOpacity, TestResult, TestedBy, TestDate, RawTestResults, ScannerModel) " &
+            '      "VALUES (@IDVehicles, @IDModifiedUser, GETDATE(), GETDATE(), @AverageOpacity, @TestResult, @TestedBy, DATEADD(dd, DATEDIFF(dd, 0, @TestDate), 0), @RawTestResults, @ScannerModel)", conn)
+            'comm.Parameters.AddWithValue("@IDVehicles", IDVehicles)
+            'comm.Parameters.AddWithValue("@IDModifiedUser", IDModifiedUser)
+
             'theDoc.Read(theSrc)
 
             ''Dim theDocSoup As ObjectSoup
@@ -322,104 +350,104 @@ Public Class dpfcleaning
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = CombinedFieldNames
 
-            Dim op As New TextOperation(theDoc)
-            Dim op_WO As New TextOperation(theDoc)
-            Dim op_Job As New TextOperation(theDoc)
-            Dim op_Company As New TextOperation(theDoc)
-            Dim op_VIN_UNIT As New TextOperation(theDoc)
-            Dim op_MAKE As New TextOperation(theDoc)
-            Dim op_MODEL As New TextOperation(theDoc)
-            op.PageContents.AddPages()
-            op_WO.PageContents.AddPages()
-            op_Job.PageContents.AddPages()
-            op_Company.PageContents.AddPages()
-            op_VIN_UNIT.PageContents.AddPages()
-            op_MAKE.PageContents.AddPages()
-            op_MODEL.PageContents.AddPages()
+            'Dim op As New TextOperation(theDoc)
+            'Dim op_WO As New TextOperation(theDoc)
+            'Dim op_Job As New TextOperation(theDoc)
+            'Dim op_Company As New TextOperation(theDoc)
+            'Dim op_VIN_UNIT As New TextOperation(theDoc)
+            'Dim op_MAKE As New TextOperation(theDoc)
+            'Dim op_MODEL As New TextOperation(theDoc)
+            'op.PageContents.AddPages()
+            'op_WO.PageContents.AddPages()
+            'op_Job.PageContents.AddPages()
+            'op_Company.PageContents.AddPages()
+            'op_VIN_UNIT.PageContents.AddPages()
+            'op_MAKE.PageContents.AddPages()
+            'op_MODEL.PageContents.AddPages()
 
-            theDoc.Rect.String = "450 714 600 790"
-            Dim PDFPageText As String = op.GetText(theDoc.Rect, 1) ' Altered this line on 9/10/2019 to include arguments in GetText method.
-            viewtextvariable.Visible = True
-            viewtextvariable.InnerHtml = PDFPageText
+            'theDoc.Rect.String = "450 714 600 790"
+            'Dim PDFPageText As String = op.GetText(theDoc.Rect, 1) ' Altered this line on 9/10/2019 to include arguments in GetText method.
+            'viewtextvariable.Visible = True
+            'viewtextvariable.InnerHtml = PDFPageText
 
             ' PDFPageText = Nothing
             ' theDoc.Rect.SetRect(450, 693, 122.4, 27)
             ' theDoc.Rect.SetRect(300, 300, 300, 300)
 
-            theDoc.Rect.String = "450 693 600 720"
-            PDFPageText = op_WO.GetText(theDoc.Rect, 1)
-            viewtextvariable_WO.Visible = True
-            viewtextvariable_WO.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "450 693 600 720"
+            '    PDFPageText = op_WO.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_WO.Visible = True
+            '    viewtextvariable_WO.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "450 666 600 693"
-            PDFPageText = op_Job.GetText(theDoc.Rect, 1)
-            viewtextvariable_Job.Visible = True
-            viewtextvariable_Job.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "450 666 600 693"
+            '    PDFPageText = op_Job.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_Job.Visible = True
+            '    viewtextvariable_Job.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 575 558 612"
-            PDFPageText = op_Company.GetText(theDoc.Rect, 1)
-            viewtextvariable_Company.Visible = True
-            viewtextvariable_Company.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 575 558 612"
+            '    PDFPageText = op_Company.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_Company.Visible = True
+            '    viewtextvariable_Company.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 552 558 575"
-            PDFPageText = op_VIN_UNIT.GetText(theDoc.Rect, 1)
-            viewtextvariable_VIN_UNIT.Visible = True
-            viewtextvariable_VIN_UNIT.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 552 558 575"
+            '    PDFPageText = op_VIN_UNIT.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_VIN_UNIT.Visible = True
+            '    viewtextvariable_VIN_UNIT.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 535 558 552"
-            PDFPageText = op_MAKE.GetText(theDoc.Rect, 1)
-            viewtextvariable_MAKE.Visible = True
-            viewtextvariable_MAKE.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 535 558 552"
+            '    PDFPageText = op_MAKE.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_MAKE.Visible = True
+            '    viewtextvariable_MAKE.InnerHtml = PDFPageText
 
-            theDoc.Rect.String = "297 518 558 535"
-            PDFPageText = op_MODEL.GetText(theDoc.Rect, 1)
-            viewtextvariable_MODEL.Visible = True
-            viewtextvariable_MODEL.InnerHtml = PDFPageText
+            '    theDoc.Rect.String = "297 518 558 535"
+            '    PDFPageText = op_MODEL.GetText(theDoc.Rect, 1)
+            '    viewtextvariable_MODEL.Visible = True
+            '    viewtextvariable_MODEL.InnerHtml = PDFPageText
 
         End Using
 
         ' End of what was Added by Andrew on 9/3/2019.
 
         ' Initialize the DataSet object
-        myDataSet.Tables.Add()
+        'myDataSet.Tables.Add()
 
-        col = myDataSet.Tables(0).Columns.Add("IDImport", GetType(Integer))
-        col.AutoIncrement = True
+        'col = myDataSet.Tables(0).Columns.Add("IDImport", GetType(Integer))
+        'col.AutoIncrement = True
 
-        myDataSet.Tables(0).Columns.Add("IDProfileAccount", GetType(Integer))
-        myDataSet.Tables(0).Columns.Add("IDProfileTerminal", GetType(Integer))
+        'myDataSet.Tables(0).Columns.Add("IDProfileAccount", GetType(Integer))
+        'myDataSet.Tables(0).Columns.Add("IDProfileTerminal", GetType(Integer))
 
-        col = myDataSet.Tables(0).Columns.Add("IDProfileFleet", GetType(Integer))
-        col.DefaultValue = 0
+        'col = myDataSet.Tables(0).Columns.Add("IDProfileFleet", GetType(Integer))
+        'col.DefaultValue = 0
 
-        col = myDataSet.Tables(0).Columns.Add("IDVehicles", GetType(System.Guid))
-        col.DefaultValue = Guid.Empty
+        'col = myDataSet.Tables(0).Columns.Add("IDVehicles", GetType(System.Guid))
+        'col.DefaultValue = Guid.Empty
 
-        myDataSet.Tables(0).Columns.Add("CompanyName", GetType(String))
-        myDataSet.Tables(0).Columns.Add("TestCity", GetType(String))
-        myDataSet.Tables(0).Columns.Add("LicensePlate", GetType(String))
-        myDataSet.Tables(0).Columns.Add("Unit", GetType(String))
-        myDataSet.Tables(0).Columns.Add("TestDate", GetType(DateTime))
-        myDataSet.Tables(0).Columns.Add("TestedBy", GetType(String))
-        myDataSet.Tables(0).Columns.Add("AverageOpacity", GetType(Decimal))
-        myDataSet.Tables(0).Columns.Add("TestResult", GetType(String))
-        myDataSet.Tables(0).Columns.Add("Mileage", GetType(Integer))
-        myDataSet.Tables(0).Columns.Add("ScannerModel", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("CompanyName", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("TestCity", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("LicensePlate", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("Unit", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("TestDate", GetType(DateTime))
+        'myDataSet.Tables(0).Columns.Add("TestedBy", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("AverageOpacity", GetType(Decimal))
+        'myDataSet.Tables(0).Columns.Add("TestResult", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("Mileage", GetType(Integer))
+        'myDataSet.Tables(0).Columns.Add("ScannerModel", GetType(String))
 
         '' Mileage Import
         'col = myDataSet.Tables(0).Columns.Add("Mileage", GetType(String))
         'col.DefaultValue = ""
-        col = myDataSet.Tables(0).Columns.Add("IDSignature", GetType(System.Guid))
-        col.DefaultValue = Guid.Empty
+        'col = myDataSet.Tables(0).Columns.Add("IDSignature", GetType(System.Guid))
+        'col.DefaultValue = Guid.Empty
 
-        col = myDataSet.Tables(0).Columns.Add("TesterDetected", GetType(Boolean))
-        col.DefaultValue = False
+        'col = myDataSet.Tables(0).Columns.Add("TesterDetected", GetType(Boolean))
+        'col.DefaultValue = False
 
-        myDataSet.Tables(0).Columns.Add("RawTestResults", GetType(String))
-        myDataSet.Tables(0).Columns.Add("Errors", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("RawTestResults", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("Errors", GetType(String))
 
-        col = myDataSet.Tables(0).Columns.Add("OpacityTestsImportStatus", GetType(String))
-        col.DefaultValue = "pending"
+        'col = myDataSet.Tables(0).Columns.Add("OpacityTestsImportStatus", GetType(String))
+        'col.DefaultValue = "pending"
 
         ' Determine type of import file and process appropriate tests
 
