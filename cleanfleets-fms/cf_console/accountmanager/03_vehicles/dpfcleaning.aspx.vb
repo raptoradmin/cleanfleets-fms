@@ -209,7 +209,7 @@ Public Class dpfcleaning
             FieldNamesArray = thisForm.GetFieldNames()
 
             Dim PDF_Field_Names() As String
-            PDF_Field_Names = {"Required_Multiple_Cleanings", "DOC_Cleaned", "Cleaning_Date", "WO", "Job", "Company", "VIN_UNIT", "Make", "Model", "Plate", "Miles", "HRS", "Make_Model", "S_N", "Substrate", "P_N", "Wire_Test_Results", "Cleaning_Tech", "Notes", "Condition", "Weight_DPF_Initial", "Weight_DPF_Final", "Weight_DPF_Difference", "Doc1_Initial", "Doc1_Final", "Doc1_Difference", "Flow_Restriction_DPF_Initial", "Flow_Restriction_DPF_Final", "Flow_Restriction_DPF_Difference"}
+            PDF_Field_Names = {"MultipleCleanings", "DOCCleaned", "ModifiedDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitialFR", "DPFFinalFR", "DPFFRDiff"}
 
             Dim j As Integer
             j = 0
@@ -274,25 +274,26 @@ Public Class dpfcleaning
             'viewtextvariable_theFieldValues.Visible = True
             'viewtextvariable_theFieldValues.InnerHtml = FieldValueVar
 
-            Dim pair_string As String
-            pair_string = ""
+            'Dim pair_string As String
+            'pair_string = ""
 
-            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+            'For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
 
-                pair_string = pair_string & ", " & pair.Key & ": " & pair.Value
+            '    pair_string = pair_string & ", " & pair.Key & ": " & pair.Value
 
-            Next
+            'Next
 
-            viewtextvariable_theFieldValues.Visible = True
-            viewtextvariable_theFieldValues.InnerHtml = pair_string
-
-            Dim 
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = pair_string
 
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = DPF_Dictionary("")
 
-            Dim DPF_conn As New SqlConnection("Server = SQL16\CFNET; Database = CleanFleets-DEV; Integrated Security = true")
-            Dim DPF_comm As New SqlCommand
+            Dim connection_string As String
+
+            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+            Dim DPF_conn As New SqlConnection(connection_string)
 
             If DPF_conn.State = ConnectionState.Closed Then
 
@@ -300,13 +301,124 @@ Public Class dpfcleaning
 
             End If
 
-            DPF_comm = New SqlCommand("INSERT INTO CF_DPF (IDDPF, IDModifiedUser, EnterDate, ModifiedDate, IDProfileAccount, IDVehicles, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes) " &
-                "VALUES ("
+            Dim pre_comm_field_name_string As String
+            pre_comm_field_name_string = ""
 
-            "INSERT INTO CF_Vehicles_Log_OpacityTests (IDVehicles, IDModifiedUser, EnterDate, ModifiedDate, AverageOpacity, TestResult, TestedBy, TestDate, RawTestResults, ScannerModel) " &
-                  "VALUES (@IDVehicles, @IDModifiedUser, GETDATE(), GETDATE(), @AverageOpacity, @TestResult, @TestedBy, DATEADD(dd, DATEDIFF(dd, 0, @TestDate), 0), @RawTestResults, @ScannerModel)", conn)
-            comm.Parameters.AddWithValue("@IDVehicles", IDVehicles)
-            comm.Parameters.AddWithValue("@IDModifiedUser", IDModifiedUser)
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                pre_comm_field_name_string = pre_comm_field_name_string & ", " & pair.Key
+
+            Next
+
+            Dim comm_field_name_string() As String
+            comm_field_name_string = Split(pre_comm_field_name_string, ", ", 2)
+
+            Dim final_comm_field_name_string As String
+            final_comm_field_name_string = comm_field_name_string(1)
+
+            Dim combined_comm_string As String
+            combined_comm_string = "DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, " & final_comm_field_name_string & ") VALUES("
+
+
+            Dim pre_comm_field_value_string As String
+            pre_comm_field_value_string = ""
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                pre_comm_field_value_string = pre_comm_field_value_string & ", @" & pair.Key
+
+            Next
+
+            Dim comm_field_value_string() As String
+            comm_field_value_string = Split(pre_comm_field_value_string, ", ", 2)
+
+            Dim final_comm_field_value_string As String
+            final_comm_field_value_string = comm_field_value_string(1)
+
+
+            Dim complete_comm_string As String
+            complete_comm_string = combined_comm_string & final_comm_field_value_string & ")"
+
+            Dim DPF_comm As SqlCommand
+
+            DPF_comm = New SqlCommand(complete_comm_string, DPF_conn)
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                Dim temp_field_name_string As String
+                temp_field_name_string = pair.Key
+
+                Dim temp_field_value_string As String
+                temp_field_value_string = pair.Value
+
+                If (temp_field_name_string = "ModifiedDate") Then
+
+                    Dim temp_date_split() As String
+                    temp_date_split = Split(temp_field_value_string, "/")
+
+                    For i = 1 To UBound(temp_date_split)
+
+                        If (Len(temp_date_split(i - 1)) < 2) Then
+
+                            temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+
+                        End If
+
+                    Next
+
+                    temp_field_value_string = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0)
+
+                End If
+
+                If temp_field_name_string = "InvoiceNumber" Then
+
+                    Convert.ToInt32(temp_field_value_string)
+
+                End If
+
+                If temp_field_name_string = "Miles" Or temp_field_name_string = "Hours" Then
+
+                    If InStr(temp_field_value_string, ",") > 0 Then
+
+                        Dim temp_holder As String
+                        temp_holder = ""
+
+                        For i = 1 To Len(temp_field_value_string)
+
+                            If Mid(temp_field_value_string, i, 1) <> "," Then
+
+                                temp_holder = temp_holder & Mid(temp_field_value_string, i, 1)
+
+                            End If
+
+                        Next
+
+                        temp_field_value_string = temp_holder
+                        Convert.ToInt32(temp_field_value_string)
+
+                    End If
+
+                    Convert.ToInt32(temp_field_value_string)
+
+                End If
+
+                DPF_comm.Parameters.AddWithValue("@" & temp_field_name_string, temp_field_value_string)
+
+            Next
+
+            'DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, 'a321095', 9845602)", DPF_conn)
+
+            DPF_comm.ExecuteNonQuery()
+
+            DPF_conn.Close()
+
+            'DPF_comm = New SqlCommand("INSERT INTO CF_DPF (IDDPF, IDModifiedUser, EnterDate, ModifiedDate, IDProfileAccount, IDVehicles, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes) " &
+            '    "VALUES ("
+
+            '"INSERT INTO CF_Vehicles_Log_OpacityTests (IDVehicles, IDModifiedUser, EnterDate, ModifiedDate, AverageOpacity, TestResult, TestedBy, TestDate, RawTestResults, ScannerModel) " &
+            '      "VALUES (@IDVehicles, @IDModifiedUser, GETDATE(), GETDATE(), @AverageOpacity, @TestResult, @TestedBy, DATEADD(dd, DATEDIFF(dd, 0, @TestDate), 0), @RawTestResults, @ScannerModel)", conn)
+            'comm.Parameters.AddWithValue("@IDVehicles", IDVehicles)
+            'comm.Parameters.AddWithValue("@IDModifiedUser", IDModifiedUser)
 
             'theDoc.Read(theSrc)
 
@@ -400,45 +512,45 @@ Public Class dpfcleaning
         ' End of what was Added by Andrew on 9/3/2019.
 
         ' Initialize the DataSet object
-        myDataSet.Tables.Add()
+        'myDataSet.Tables.Add()
 
-        col = myDataSet.Tables(0).Columns.Add("IDImport", GetType(Integer))
-        col.AutoIncrement = True
+        'col = myDataSet.Tables(0).Columns.Add("IDImport", GetType(Integer))
+        'col.AutoIncrement = True
 
-        myDataSet.Tables(0).Columns.Add("IDProfileAccount", GetType(Integer))
-        myDataSet.Tables(0).Columns.Add("IDProfileTerminal", GetType(Integer))
+        'myDataSet.Tables(0).Columns.Add("IDProfileAccount", GetType(Integer))
+        'myDataSet.Tables(0).Columns.Add("IDProfileTerminal", GetType(Integer))
 
-        col = myDataSet.Tables(0).Columns.Add("IDProfileFleet", GetType(Integer))
-        col.DefaultValue = 0
+        'col = myDataSet.Tables(0).Columns.Add("IDProfileFleet", GetType(Integer))
+        'col.DefaultValue = 0
 
-        col = myDataSet.Tables(0).Columns.Add("IDVehicles", GetType(System.Guid))
-        col.DefaultValue = Guid.Empty
+        'col = myDataSet.Tables(0).Columns.Add("IDVehicles", GetType(System.Guid))
+        'col.DefaultValue = Guid.Empty
 
-        myDataSet.Tables(0).Columns.Add("CompanyName", GetType(String))
-        myDataSet.Tables(0).Columns.Add("TestCity", GetType(String))
-        myDataSet.Tables(0).Columns.Add("LicensePlate", GetType(String))
-        myDataSet.Tables(0).Columns.Add("Unit", GetType(String))
-        myDataSet.Tables(0).Columns.Add("TestDate", GetType(DateTime))
-        myDataSet.Tables(0).Columns.Add("TestedBy", GetType(String))
-        myDataSet.Tables(0).Columns.Add("AverageOpacity", GetType(Decimal))
-        myDataSet.Tables(0).Columns.Add("TestResult", GetType(String))
-        myDataSet.Tables(0).Columns.Add("Mileage", GetType(Integer))
-        myDataSet.Tables(0).Columns.Add("ScannerModel", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("CompanyName", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("TestCity", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("LicensePlate", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("Unit", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("TestDate", GetType(DateTime))
+        'myDataSet.Tables(0).Columns.Add("TestedBy", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("AverageOpacity", GetType(Decimal))
+        'myDataSet.Tables(0).Columns.Add("TestResult", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("Mileage", GetType(Integer))
+        'myDataSet.Tables(0).Columns.Add("ScannerModel", GetType(String))
 
         '' Mileage Import
         'col = myDataSet.Tables(0).Columns.Add("Mileage", GetType(String))
         'col.DefaultValue = ""
-        col = myDataSet.Tables(0).Columns.Add("IDSignature", GetType(System.Guid))
-        col.DefaultValue = Guid.Empty
+        'col = myDataSet.Tables(0).Columns.Add("IDSignature", GetType(System.Guid))
+        'col.DefaultValue = Guid.Empty
 
-        col = myDataSet.Tables(0).Columns.Add("TesterDetected", GetType(Boolean))
-        col.DefaultValue = False
+        'col = myDataSet.Tables(0).Columns.Add("TesterDetected", GetType(Boolean))
+        'col.DefaultValue = False
 
-        myDataSet.Tables(0).Columns.Add("RawTestResults", GetType(String))
-        myDataSet.Tables(0).Columns.Add("Errors", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("RawTestResults", GetType(String))
+        'myDataSet.Tables(0).Columns.Add("Errors", GetType(String))
 
-        col = myDataSet.Tables(0).Columns.Add("OpacityTestsImportStatus", GetType(String))
-        col.DefaultValue = "pending"
+        'col = myDataSet.Tables(0).Columns.Add("OpacityTestsImportStatus", GetType(String))
+        'col.DefaultValue = "pending"
 
         ' Determine type of import file and process appropriate tests
 
