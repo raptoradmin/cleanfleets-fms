@@ -17,6 +17,8 @@
     <div id="viewtextvariable_theField" runat="server" visible="false"></div>
     <div id="viewtextvariable_theFieldValues" runat="server" visible="false"></div>
 
+    <div id="DecimalValueTooLarge" runat="server" visible="false"></div>
+
     <%--End of what was Added by Andrew on 9/3/2019--%>
 
 	<div id="dvSectionImport" runat="server">

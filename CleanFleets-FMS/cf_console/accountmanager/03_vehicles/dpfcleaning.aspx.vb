@@ -209,7 +209,7 @@ Public Class dpfcleaning
             FieldNamesArray = thisForm.GetFieldNames()
 
             Dim PDF_Field_Names() As String
-            PDF_Field_Names = {"Required_Multiple_Cleanings", "DOC_Cleaned", "Cleaning_Date", "WO", "Job", "Company", "VIN_UNIT", "Make", "Model", "Plate", "Miles", "HRS", "Make_Model", "S_N", "Substrate", "P_N", "Wire_Test_Results", "Cleaning_Tech", "Notes", "Condition", "Weight_DPF_Initial", "Weight_DPF_Final", "Weight_DPF_Difference", "Doc1_Initial", "Doc1_Final", "Doc1_Difference", "Flow_Restriction_DPF_Initial", "Flow_Restriction_DPF_Final", "Flow_Restriction_DPF_Difference"}
+            PDF_Field_Names = {"MultipleCleanings", "DOCCleaned", "ModifiedDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitialFR", "DPFFinalFR", "DPFFRDiff"}
 
             Dim j As Integer
             j = 0
@@ -274,17 +274,17 @@ Public Class dpfcleaning
             'viewtextvariable_theFieldValues.Visible = True
             'viewtextvariable_theFieldValues.InnerHtml = FieldValueVar
 
-            Dim pair_string As String
-            pair_string = ""
+            'Dim pair_string As String
+            'pair_string = ""
 
-            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+            'For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
 
-                pair_string = pair_string & ", " & pair.Key & ": " & pair.Value
+            '    pair_string = pair_string & ", " & pair.Key & ": " & pair.Value
 
-            Next
+            'Next
 
-            viewtextvariable_theFieldValues.Visible = True
-            viewtextvariable_theFieldValues.InnerHtml = pair_string
+            'viewtextvariable_theFieldValues.Visible = True
+            'viewtextvariable_theFieldValues.InnerHtml = pair_string
 
             'viewtextvariable_theField.Visible = True
             'viewtextvariable_theField.InnerHtml = DPF_Dictionary("")
@@ -301,9 +301,268 @@ Public Class dpfcleaning
 
             End If
 
+            Dim pre_comm_field_name_string As String
+            pre_comm_field_name_string = ""
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                pre_comm_field_name_string = pre_comm_field_name_string & ", " & pair.Key
+
+            Next
+
+            Dim comm_field_name_string() As String
+            comm_field_name_string = Split(pre_comm_field_name_string, ", ", 2)
+
+            Dim final_comm_field_name_string As String
+            final_comm_field_name_string = comm_field_name_string(1)
+
+            Dim combined_comm_string As String
+            combined_comm_string = "DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, " & final_comm_field_name_string & ") VALUES(@UNIQUEID, "
+
+
+            Dim pre_comm_field_value_string As String
+            pre_comm_field_value_string = ""
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                pre_comm_field_value_string = pre_comm_field_value_string & ", @" & pair.Key
+
+            Next
+
+            Dim comm_field_value_string() As String
+            comm_field_value_string = Split(pre_comm_field_value_string, ", ", 2)
+
+            Dim final_comm_field_value_string As String
+            final_comm_field_value_string = comm_field_value_string(1)
+
+
+            Dim complete_comm_string As String
+            complete_comm_string = combined_comm_string & final_comm_field_value_string & ")"
+
+            viewtextvariable_theField.Visible = True
+            viewtextvariable_theField.InnerHtml = complete_comm_string
+
             Dim DPF_comm As SqlCommand
 
-            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, 'a321095', 9845602)", DPF_conn)
+            'DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, @VINNumber, @Plate)", DPF_conn)
+
+            'For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+            '    Dim temp_field_name_string As String
+            '    temp_field_name_string = pair.Key
+
+            '    Dim temp_field_value_string As String
+            '    temp_field_value_string = pair.Value
+
+            '    If (temp_field_name_string = "EnterDate" Or temp_field_name_string = "ModifiedDate") Then
+
+            '        Dim temp_date_split() As String
+            '        temp_date_split = Split(temp_field_value_string, "/")
+
+            '        For i = 1 To UBound(temp_date_split)
+
+            '            If (Len(temp_date_split(i - 1)) < 2) Then
+
+            '                temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+
+            '            End If
+
+            '        Next
+
+            '        temp_field_value_string = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0)
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.DateTime)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+
+            '    ElseIf temp_field_name_string = "InvoiceNumber" Then
+
+            '        Convert.ToInt32(temp_field_value_string)
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Int)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+
+            '    ElseIf temp_field_name_string = "Miles" Or temp_field_name_string = "Hours" Or temp_field_name_string = "SerialNumber" Or temp_field_name_string = "PartNumber" Or temp_field_name_string = "DPFInitWeight" Or temp_field_name_string = "DPFFinalWeight" Or temp_field_name_string = "DPFWeightDiff" Or temp_field_name_string = "DOCInitWeight" Or temp_field_name_string = "DOCFinalWeight" Or temp_field_name_string = "DOCWeightDiff" Then
+
+            '        If InStr(temp_field_value_string, ",") > 0 Then
+
+            '            Dim temp_holder As String
+            '            temp_holder = ""
+
+            '            For i = 1 To Len(temp_field_value_string)
+
+            '                If Mid(temp_field_value_string, i, 1) <> "," Then
+
+            '                    temp_holder = temp_holder & Mid(temp_field_value_string, i, 1)
+
+            '                End If
+
+            '            Next
+
+            '            temp_field_value_string = temp_holder
+            '            Convert.ToInt32(temp_field_value_string)
+            '            DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Int)
+
+            '        End If
+
+            '        Convert.ToInt32(temp_field_value_string)
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Int)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+
+            '    ElseIf temp_field_name_string = "DPFInitFR" Or temp_field_name_string = "DPFFinalFR" Or temp_field_name_string = "DPFFRDiff" Then
+
+            '        Dim temp_holder As String
+            '        temp_holder = ""
+
+            '        Dim temp_count As Integer
+            '        temp_count = 0
+
+            '        Dim decimal_point_position As Integer
+
+            '        For i = 1 To Len(temp_field_value_string)
+
+            '            If IsNumeric((Mid(temp_field_value_string, i, 1))) = True Or Mid(temp_field_value_string, i, 1) = "." Then
+
+            '                temp_holder = temp_holder & Mid(temp_field_value_string, i, 1)
+
+            '                temp_count = temp_count + 1
+
+            '            End If
+
+            '        Next
+
+            '        If (decimal_point_position > 4) Then
+
+            '            DecimalValueTooLarge.Visible = True
+            '            DecimalValueTooLarge.InnerHtml = "The decimal value you entered is larger than the allowed precision."
+
+            '        Else
+
+            '            If (InStr(temp_holder, ".") > 0) Then
+
+            '                decimal_point_position = InStr(temp_holder, ".")
+
+            '                If (temp_count - decimal_point_position > 1) Then
+
+            '                    If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
+
+            '                        Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
+
+            '                    End If
+
+            '                    temp_holder = temp_holder.Remove(temp_count - 1)
+
+            '                    DecimalValueTooLarge.Visible = True
+            '                    DecimalValueTooLarge.InnerHtml = "The number of digits after the decimal point was greater than 1, so the value has been rounded."
+
+            '                End If
+
+            '            End If
+
+            '        End If
+
+            '        temp_field_value_string = temp_holder
+            '        Convert.ToDecimal(temp_field_value_string, New CultureInfo("en-US"))
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Decimal)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+            '    ElseIf (temp_field_name_string = "DocCleaned" Or temp_field_name_string = "MultipleCleanings") Then
+
+            '        If (temp_field_value_string = "Off") Then
+
+            '            temp_field_value_string = "N"
+
+            '        Else
+
+            '            temp_field_value_string = "Y"
+
+            '        End If
+
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Char, 1)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+            '    ElseIf (temp_field_name_string = "Notes" Or temp_field_name_string = "Condition") Then
+
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.VarChar)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+            '        'Else
+
+            '        '    DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.VarChar, 50)
+            '        '    DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+            '        'DPF_comm.Parameters.AddWithValue("@" & temp_field_name_string, temp_field_value_string)
+
+            '    End If
+
+            'Next
+
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, @VINNumber, @Plate)", DPF_conn)
+
+            'Dim Plate As String
+            'Plate = DPF_Dictionary.Item("Plate")
+            'Dim VINNumber As String
+            'VINNumber = DPF_Dictionary.Item("VINNumber")
+
+            For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+                Dim temp_var_key As String
+                Dim temp_var_val As String
+
+                temp_var_key = pair.Key
+                temp_var_val = pair.Value
+
+                If (temp_var_key = "VINNumber" Or temp_var_key = "Plate") Then
+
+                    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                    'DPF_comm.Parameters.Add("@" , SqlDbType.VarChar, 50)
+
+                    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+                    'DPF_comm.Parameters("@Plate").Value = Plate
+
+                ElseIf (temp_var_key = "ModifiedDate" Or temp_var_key = "EnterDate") Then
+
+                    'Convert.ToDateTime(temp_var_val, New CultureInfo("en-US"))
+
+                    Dim temp_date_split() As String
+                    temp_date_split = Split(temp_var_val, "/")
+
+                    For i = 1 To UBound(temp_date_split)
+
+                        If (Len(temp_date_split(i - 1)) < 2) Then
+
+                            temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+
+                        End If
+
+                    Next
+
+                    'temp_var_val = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0) & "T" & temp_format_date_time_array(1)
+
+                    Dim temp_format_datetime As String
+                    temp_format_datetime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:fff")
+
+                    Dim temp_format_date_time_array() As String
+                    temp_format_date_time_array = Split(temp_format_datetime, " ")
+
+                    'viewtextvariable_theFieldValues.Visible = True
+                    'viewtextvariable_theFieldValues.InnerHtml = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0) & "T" & temp_format_date_time_array(1)
+
+                    'temp_var_val = temp_date_split(2) & temp_date_split(1) & temp_date_split(0)
+
+                    temp_var_val = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0) & "T" & temp_format_date_time_array(1)
+
+                    Dim TempDate As DateTime
+
+                    TempDate = Convert.ToDateTime(temp_var_val, New CultureInfo("en-US"))
+                    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.DateTime)
+                    DPF_comm.Parameters("@" & temp_var_key).Value = TempDate
+
+                End If
+
+            Next
+
+            'DPF_comm.Parameters.AddWithValue(@VINNumber, VINNumber)
+            'DPF_comm.Parameters.AddWithValue(@Plate, Plate)
 
             DPF_comm.ExecuteNonQuery()
 
