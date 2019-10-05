@@ -209,7 +209,7 @@ Public Class dpfcleaning
             FieldNamesArray = thisForm.GetFieldNames()
 
             Dim PDF_Field_Names() As String
-            PDF_Field_Names = {"MultipleCleanings", "DOCCleaned", "ModifiedDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitFR", "DPFFinalFR", "DPFFRDiff"}
+            PDF_Field_Names = {"MultipleCleanings", "DocCleaned", "ModifiedDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitFR", "DPFFinalFR", "DPFFRDiff"}
 
             Dim j As Integer
             j = 0
@@ -339,8 +339,8 @@ Public Class dpfcleaning
             Dim complete_comm_string As String
             complete_comm_string = combined_comm_string & final_comm_field_value_string & ")"
 
-            viewtextvariable_theField.Visible = True
-            viewtextvariable_theField.InnerHtml = complete_comm_string
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = complete_comm_string
 
             Dim DPF_comm As SqlCommand
 
@@ -496,14 +496,15 @@ Public Class dpfcleaning
 
             'Next
 
-            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALMODIFIEDDATE DATETIME DECLARE @FINALDPFINITFR DECIMAL(3,1)" & " SET @UNIQUEID = NEWID() SET @FINALMODIFIEDDATE = CONVERT(DATETIME, @ModifiedDate, 101) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, VINNumber, Plate, DPFInitFR) " & "VALUES(@UNIQUEID, GETDATE(), @FINALMODIFIEDDATE, @VINNumber, @Plate, @FINALDPFINITFR)", DPF_conn)
-
-            'DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALDPFINITFR DECIMAL(3,1)" & " SET @UNIQUEID = NEWID() SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate, DPFInitFR) " & "VALUES(@UNIQUEID, @VINNumber, @Plate, @FINALDPFINITFR)", DPF_conn)
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALMODIFIEDDATE DATETIME DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1)" & " SET @UNIQUEID = NEWID() SET @FINALMODIFIEDDATE = CONVERT(DATETIME, @ModifiedDate, 101) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, VINNumber, Plate, DPFInitFR, DPFFinalFR, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, GETDATE(), @FINALMODIFIEDDATE, @VINNumber, @Plate, @FINALDPFINITFR, @FINALDPFFINALFR, @DocCleaned, @MultipleCleanings)", DPF_conn)
 
             'Dim Plate As String
             'Plate = DPF_Dictionary.Item("Plate")
             'Dim VINNumber As String
             'VINNumber = DPF_Dictionary.Item("VINNumber")
+
+            Dim query_execution_flag As Boolean
+            query_execution_flag = True
 
             For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
 
@@ -521,7 +522,7 @@ Public Class dpfcleaning
                     DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
                     'DPF_comm.Parameters("@Plate").Value = Plate
 
-                ElseIf (temp_var_key = "ModifiedDate" Or temp_var_key = "EnterDate") Then
+                ElseIf (temp_var_key = "ModifiedDate") Then
 
                     Dim temp_date_split() As String
                     temp_date_split = Split(temp_var_val, "/")
@@ -531,7 +532,7 @@ Public Class dpfcleaning
 
                     If (UBound(temp_date_split) = 2) Then
 
-                        For i = 1 To UBound(temp_date_split)
+                        For i = 1 To UBound(temp_date_split) + 1
 
                             If (i - 1 < 2) Then
 
@@ -547,8 +548,8 @@ Public Class dpfcleaning
 
                                     Valid_Date = False
 
-                                    DataValidationPrompt.Visible = True
-                                    DataValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+                                    DateValidationPrompt.Visible = True
+                                    DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
                                     Exit For
 
@@ -560,8 +561,8 @@ Public Class dpfcleaning
 
                                     Valid_Date = False
 
-                                    DataValidationPrompt.Visible = True
-                                    DataValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+                                    DateValidationPrompt.Visible = True
+                                    DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
                                     Exit For
 
@@ -575,8 +576,8 @@ Public Class dpfcleaning
 
                         Valid_Date = False
 
-                        DataValidationPrompt.Visible = True
-                        DataValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+                        DateValidationPrompt.Visible = True
+                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
                     End If
 
@@ -587,9 +588,13 @@ Public Class dpfcleaning
                         DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.DateTime)
                         DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
+                    Else
+
+                        query_execution_flag = False
+
                     End If
 
-                ElseIf (temp_var_key = "DPFInitFR") Then 'Or temp_var_key = "DPFFinalFR" Or temp_var_key = "DPFFRDiff") Then
+                ElseIf (temp_var_key = "DPFInitFR" Or temp_var_key = "DPFFinalFR") Then 'Or temp_var_key = "DPFFRDiff") Then
 
                     Dim temp_holder As String
                     temp_holder = ""
@@ -624,18 +629,31 @@ Public Class dpfcleaning
 
                     If (numeric_count > 3) Then
 
-                        DataValidationPrompt.Visible = True
-                        DataValidationPrompt.InnerHtml = "The value you entered is larger than the allowed precision, no more than a total maximum of 3 digits to the left and right of the decimal point."
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "The value you entered is larger than the allowed precision, no more than a total maximum of 3 digits to the left and right of the decimal point."
+
+                        query_execution_flag = False
 
                     ElseIf (decimal_count > 1) Then
 
-                        DataValidationPrompt.Visible = True
-                        DataValidationPrompt.InnerHtml = "There is more than one decimal point in the value provided."
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is more than one decimal point in the value provided."
+
+                        query_execution_flag = False
 
                     ElseIf (numeric_count < 1) Then
 
-                        DataValidationPrompt.Visible = True
-                        DataValidationPrompt.InnerHtml = "There is no value present."
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is no value present."
+
+                        query_execution_flag = False
+
+                    ElseIf (Len(temp_var_val) <> Len(temp_holder)) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is an existing character in the provided value that is not numeric or a decimal point, please enter again."
+
+                        query_execution_flag = False
 
                     Else
 
@@ -653,24 +671,34 @@ Public Class dpfcleaning
 
                                 temp_holder = temp_holder.Remove(decimal_point_position + 1)
 
-                                DataValidationPrompt.Visible = True
-                                DataValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the value has been rounded."
+                                DecimalValidationPrompt.Visible = True
+                                DecimalValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the value has been rounded."
 
                                 temp_var_val = temp_holder
-
-                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
-                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
-
-                            Else
-
-                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
-                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                             End If
 
                         End If
 
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
                     End If
+
+                ElseIf (temp_var_key = "DocCleaned" Or temp_var_key = "MultipleCleanings") Then
+
+                    If (temp_var_val = "Off") Then
+
+                        temp_var_val = "N"
+
+                    Else
+
+                        temp_var_val = "Y"
+
+                    End If
+
+                    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Char, 1)
+                    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                 End If
 
@@ -679,7 +707,11 @@ Public Class dpfcleaning
             'DPF_comm.Parameters.AddWithValue(@VINNumber, VINNumber)
             'DPF_comm.Parameters.AddWithValue(@Plate, Plate)
 
-            DPF_comm.ExecuteNonQuery()
+            If (query_execution_flag = True) Then
+
+                DPF_comm.ExecuteNonQuery()
+
+            End If
 
             DPF_conn.Close()
 

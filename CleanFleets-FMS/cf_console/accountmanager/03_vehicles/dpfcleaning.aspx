@@ -14,10 +14,21 @@
     <div id="viewtextvariable_MAKE" runat="server" visible="false"></div>
     <div id="viewtextvariable_MODEL" runat="server" visible="false"></div>
 
-    <div id="viewtextvariable_theField" runat="server" visible="false"></div>
-    <div id="viewtextvariable_theFieldValues" runat="server" visible="false"></div>
+    <!--<div id="viewtextvariable_theField" runat="server" visible="false"></div>
+    <div id="viewtextvariable_theFieldValues" runat="server" visible="false"></div>-->
 
-    <div id="DataValidationPrompt" runat="server" visible="false"></div>
+    <div id="DecimalValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="DateValidationPrompt" runat="server" visible="false" color="red"></div>
+
+    <style type="text/css">
+
+        .DecimalValidationPrompt{
+
+            color: red;
+
+        }
+
+    </style>
 
     <%--End of what was Added by Andrew on 9/3/2019--%>
 

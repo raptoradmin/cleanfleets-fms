@@ -95,13 +95,22 @@ Partial Public Class dpfcleaning
     Protected WithEvents viewtextvariable_theFieldValues As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''DataValidationPrompt control.
+    '''DecimalValidationPrompt control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DataValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents DecimalValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DateValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''dvSectionImport control.
