@@ -113,6 +113,24 @@ Partial Public Class dpfcleaning
     Protected WithEvents DateValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''WOValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents WOValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''MilesHoursValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents MilesHoursValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''dvSectionImport control.
     '''</summary>
     '''<remarks>

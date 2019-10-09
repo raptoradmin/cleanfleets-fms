@@ -19,6 +19,8 @@
 
     <div id="DecimalValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="DateValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="WOValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="MilesHoursValidationPrompt" runat="server" visible="false" color="red"></div>
 
     <style type="text/css">
 
