@@ -209,7 +209,7 @@ Public Class dpfcleaning
             FieldNamesArray = thisForm.GetFieldNames()
 
             Dim PDF_Field_Names() As String
-            PDF_Field_Names = {"MultipleCleanings", "DocCleaned", "ModifiedDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitFR", "DPFFinalFR", "DPFFRDiff"}
+            PDF_Field_Names = {"MultipleCleanings", "DocCleaned", "EnterDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitFR", "DPFFinalFR", "DPFFRDiff"}
 
             Dim j As Integer
             j = 0
@@ -496,7 +496,7 @@ Public Class dpfcleaning
 
             'Next
 
-            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALMODIFIEDDATE DATETIME DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALMODIFIEDDATE = CONVERT(DATETIME, @ModifiedDate, 101) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) SET @FINALMILES = CONVERT(INTEGER, @Miles) SET @FINALHOURS = CONVERT(INTEGER, @Hours) " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, InvoiceNumber, VINNumber, Plate, Miles, Hours, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, GETDATE(), @FINALMODIFIEDDATE, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) SET @FINALMILES = CONVERT(INTEGER, @Miles) SET @FINALHOURS = CONVERT(INTEGER, @Hours) " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Plate, Miles, Hours, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
 
             'Dim Plate As String
             'Plate = DPF_Dictionary.Item("Plate")
@@ -516,10 +516,13 @@ Public Class dpfcleaning
 
                 If (temp_var_key = "VINNumber" Or temp_var_key = "Plate") Then
 
-                    Dim format_string As String = "^[A-Z0-9]+$"
-                    Dim compare As New Regex(format_string)
+                    Dim format_plate_string As String = "^[A-Z0-9]+$"
+                    Dim compare_plate As New Regex(format_plate_string)
 
-                    If (compare.IsMatch(temp_var_val) = True And temp_var_key = "Plate") Then
+                    Dim format_VIN_string As String = "^[A-Z0-9]+/\d{3}$"
+                    Dim compare_VIN As New Regex(format_VIN_string)
+
+                    If (compare_plate.IsMatch(temp_var_val) = True And temp_var_key = "Plate") Then
 
                         DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
                         DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
@@ -528,132 +531,96 @@ Public Class dpfcleaning
 
                         If (InStr(temp_var_val, "/") > 0) Then
 
-                            If (compare.IsMatch(Left(temp_var_val, 17)) = True And InStr(temp_var_val, "/") = 18) Then
+                            If (compare_VIN.IsMatch(temp_var_val) = True) Then
 
-                                temp_var_val = Left(temp_var_val, 17)
+                                temp_var_val = Left(temp_var_val, InStr(temp_var_val, "/") - 1)
 
                                 DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
-                                'DPF_comm.Parameters.Add("@" , SqlDbType.VarChar, 50)
-
                                 DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
-                                'DPF_comm.Parameters("@Plate").Value = Plate
+
+                                ' What do you want to do with the Unit#?
 
                             Else
 
-                                ' Error prompt
+                                VINNumberValidationPrompt.Visible = True
+                                VINNumberValidationPrompt.InnerHtml = "The provided VIN# is not valid."
+
+                                query_execution_flag = False
+
+                                ' What about Unit#?
 
                             End If
 
                         Else
 
-                            'Error prompt
+                            If (compare_plate.IsMatch(temp_var_val) = True) Then
+
+                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                            Else
+
+                                VINNumberValidationPrompt.Visible = True
+                                VINNumberValidationPrompt.InnerHtml = "The provided VIN/Unit# is not valid."
+
+                                query_execution_flag = False
+
+                            End If
 
                         End If
 
                     Else
 
-                        ' Error prompt.
+                        PlateValidationPrompt.Visible = True
+                        PlateValidationPrompt.InnerHtml = "The license plate number provided is not valid."
+
+                        query_execution_flag = False
 
                     End If
 
-                ElseIf (temp_var_key = "ModifiedDate") Then
+                ElseIf (temp_var_key = "EnterDate") Then
 
-                        Dim temp_date_split() As String
-                        temp_date_split = Split(temp_var_val, "/")
+                    Dim temp_date_split() As String
+                    temp_date_split = Split(temp_var_val, "/")
 
-                        Dim Valid_Date As Boolean
-                        Valid_Date = True
+                    Dim Valid_Date As Boolean
+                    Valid_Date = True
 
-                        If (UBound(temp_date_split) = 2) Then
+                    If (UBound(temp_date_split) = 2) Then
 
-                            For i = 1 To UBound(temp_date_split) + 1
+                        For i = 1 To UBound(temp_date_split) + 1
 
-                                If (i - 1 < 2) Then
+                            If (i - 1 < 2) Then
 
-                                    If (Len(temp_date_split(i - 1)) > 0) And Len(temp_date_split(i - 1)) <= 2 Then
+                                If (Len(temp_date_split(i - 1)) > 0) And Len(temp_date_split(i - 1)) <= 2 Then
 
-                                        If (Len(temp_date_split(i - 1)) < 2) Then
+                                    If (Len(temp_date_split(i - 1)) < 2) Then
 
-                                            temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
-
-                                        End If
-
-                                    Else
-
-                                        Valid_Date = False
-
-                                        DateValidationPrompt.Visible = True
-                                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
-
-                                        Exit For
+                                        temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
 
                                     End If
 
                                 Else
 
-                                    If Not (Len(temp_date_split(i - 1)) = 4) Then
+                                    Valid_Date = False
 
-                                        Valid_Date = False
+                                    DateValidationPrompt.Visible = True
+                                    DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
-                                        DateValidationPrompt.Visible = True
-                                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
-
-                                        Exit For
-
-                                    End If
+                                    Exit For
 
                                 End If
 
-                            Next
+                            Else
 
-                        Else
+                                If Not (Len(temp_date_split(i - 1)) = 4) Then
 
-                            Valid_Date = False
+                                    Valid_Date = False
 
-                            DateValidationPrompt.Visible = True
-                            DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+                                    DateValidationPrompt.Visible = True
+                                    DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
-                        End If
-
-                        If (Valid_Date = True) Then
-
-                            temp_var_val = temp_date_split(0) & "/" & temp_date_split(1) & "/" & temp_date_split(2)
-
-                            DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.DateTime)
-                            DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
-
-                        Else
-
-                            query_execution_flag = False
-
-                        End If
-
-                    ElseIf (temp_var_key = "DPFInitFR" Or temp_var_key = "DPFFinalFR" Or temp_var_key = "DPFFRDiff") Then
-
-                        Dim temp_holder As String
-                        temp_holder = ""
-
-                        Dim numeric_count As Integer
-                        numeric_count = 0
-
-                        Dim decimal_count As Integer
-                        decimal_count = 0
-
-                        Dim decimal_point_position As Integer
-
-                        For i = 1 To Len(temp_var_val)
-
-                            If IsNumeric((Mid(temp_var_val, i, 1))) = True Or Mid(temp_var_val, i, 1) = "." Then
-
-                                temp_holder = temp_holder & Mid(temp_var_val, i, 1)
-
-                                If (IsNumeric((Mid(temp_var_val, i, 1))) = True) Then
-
-                                    numeric_count = numeric_count + 1
-
-                                ElseIf (Mid(temp_var_val, i, 1) = ".") Then
-
-                                    decimal_count = decimal_count + 1
+                                    Exit For
 
                                 End If
 
@@ -661,131 +628,184 @@ Public Class dpfcleaning
 
                         Next
 
-                        If (numeric_count > 3) Then
+                    Else
 
-                            DecimalValidationPrompt.Visible = True
-                            DecimalValidationPrompt.InnerHtml = "The " & temp_var_key & " value you entered is larger than the allowed precision, no more than a total maximum of 3 digits to the left and right of the decimal point."
+                        Valid_Date = False
 
-                            query_execution_flag = False
+                        DateValidationPrompt.Visible = True
+                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
-                        ElseIf (decimal_count > 1) Then
+                    End If
 
-                            DecimalValidationPrompt.Visible = True
-                            DecimalValidationPrompt.InnerHtml = "There is more than one decimal point in the " & temp_var_key & " value provided."
+                    If (Valid_Date = True) Then
 
-                            query_execution_flag = False
+                        temp_var_val = temp_date_split(0) & "/" & temp_date_split(1) & "/" & temp_date_split(2)
 
-                            'ElseIf (numeric_count < 1) Then
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.DateTime)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
-                            '    DecimalValidationPrompt.Visible = True
-                            '    DecimalValidationPrompt.InnerHtml = "There is no " & temp_var_key & " value present in the field of the PDF."
+                    Else
 
-                            '    query_execution_flag = False
+                        query_execution_flag = False
 
-                        ElseIf (Len(temp_var_val) <> Len(temp_holder)) Then
+                    End If
 
-                            DecimalValidationPrompt.Visible = True
-                            DecimalValidationPrompt.InnerHtml = "There is an existing character in the provided " & temp_var_key & " value that is not numeric or a decimal point, please enter again."
+                ElseIf (temp_var_key = "DPFInitFR" Or temp_var_key = "DPFFinalFR" Or temp_var_key = "DPFFRDiff") Then
 
-                            query_execution_flag = False
+                    Dim temp_holder As String
+                    temp_holder = ""
 
-                        Else
+                    Dim numeric_count As Integer
+                    numeric_count = 0
 
-                            If (InStr(temp_holder, ".") > 0) Then
+                    Dim decimal_count As Integer
+                    decimal_count = 0
 
-                                decimal_point_position = InStr(temp_holder, ".")
+                    Dim decimal_point_position As Integer
 
-                                If (Len(temp_holder) - decimal_point_position > 1) Then
+                    For i = 1 To Len(temp_var_val)
 
-                                    If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
+                        If IsNumeric((Mid(temp_var_val, i, 1))) = True Or Mid(temp_var_val, i, 1) = "." Then
 
-                                        Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
+                            temp_holder = temp_holder & Mid(temp_var_val, i, 1)
 
-                                    End If
+                            If (IsNumeric((Mid(temp_var_val, i, 1))) = True) Then
 
-                                    temp_holder = temp_holder.Remove(decimal_point_position + 1)
+                                numeric_count = numeric_count + 1
 
-                                    DecimalValidationPrompt.Visible = True
-                                    DecimalValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the " & temp_var_key & " value has been rounded."
+                            ElseIf (Mid(temp_var_val, i, 1) = ".") Then
 
-                                    temp_var_val = temp_holder
-
-                                End If
+                                decimal_count = decimal_count + 1
 
                             End If
 
-                            DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
-                            DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+                        End If
+
+                    Next
+
+                    If (numeric_count > 3) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "The " & temp_var_key & " value you entered is larger than the allowed precision, no more than a total maximum of 3 digits."
+
+                        query_execution_flag = False
+
+                    ElseIf (decimal_count > 1) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is more than one decimal point in the " & temp_var_key & " value provided."
+
+                        query_execution_flag = False
+
+                        'ElseIf (numeric_count < 1) Then
+
+                        '    DecimalValidationPrompt.Visible = True
+                        '    DecimalValidationPrompt.InnerHtml = "There is no " & temp_var_key & " value present in the field of the PDF."
+
+                        '    query_execution_flag = False
+
+                    ElseIf (Len(temp_var_val) <> Len(temp_holder)) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is an existing character in the provided " & temp_var_key & " value that is not numeric or a decimal point, please enter again."
+
+                        query_execution_flag = False
+
+                    Else
+
+                        If (InStr(temp_holder, ".") > 0) Then
+
+                            decimal_point_position = InStr(temp_holder, ".")
+
+                            If (Len(temp_holder) - decimal_point_position > 1) Then
+
+                                If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
+
+                                    Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
+
+                                End If
+
+                                temp_holder = temp_holder.Remove(decimal_point_position + 1)
+
+                                DecimalValidationPrompt.Visible = True
+                                DecimalValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the " & temp_var_key & " value has been rounded."
+
+                                temp_var_val = temp_holder
+
+                            End If
 
                         End If
 
-                    ElseIf (temp_var_key = "DocCleaned" Or temp_var_key = "MultipleCleanings") Then
-
-                        If (temp_var_val = "Off") Then
-
-                            temp_var_val = "N"
-
-                        Else
-
-                            temp_var_val = "Y"
-
-                        End If
-
-                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Char, 1)
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
                         DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
-                    ElseIf (temp_var_key = "InvoiceNumber") Then
+                    End If
 
-                        Dim format_string As String = "^[0-9]*$"
-                        Dim compare As New Regex(format_string)
+                ElseIf (temp_var_key = "DocCleaned" Or temp_var_key = "MultipleCleanings") Then
 
-                        If (compare.IsMatch(temp_var_val) = True) Then
+                    If (temp_var_val = "Off") Then
+
+                        temp_var_val = "N"
+
+                    Else
+
+                        temp_var_val = "Y"
+
+                    End If
+
+                    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Char, 1)
+                    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                ElseIf (temp_var_key = "InvoiceNumber") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val) = True) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        WOValidationPrompt.Visible = True
+                        WOValidationPrompt.InnerHtml = "The WO# provided in the DPF Cleaning record PDF is not valid."
+
+                        query_execution_flag = False
+
+                    End If
+
+                ElseIf (temp_var_key = "Miles" Or temp_var_key = "Hours") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val) = True) Then
+
+                        If (Mid(temp_var_val, 1, 1) = "0") Then
+
+                            MilesHoursValidationPrompt.Visible = True
+                            MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " value provided in the DPF Cleaning record PDF contains one or more leading zeros, please remove the leading zero(s) and try again."
+
+                            query_execution_flag = False
+
+                        Else
 
                             DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
                             DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
-                        Else
-
-                            WOValidationPrompt.Visible = True
-                            WOValidationPrompt.InnerHtml = "The WO# provided in the DPF Cleaning record PDF is not valid."
-
-                            query_execution_flag = False
-
                         End If
 
-                    ElseIf (temp_var_key = "Miles" Or temp_var_key = "Hours") Then
+                    Else
 
-                        Dim format_string As String = "^[0-9]*$"
-                        Dim compare As New Regex(format_string)
+                        MilesHoursValidationPrompt.Visible = True
+                        MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " provided in the DPF Cleaning record PDF is not valid."
 
-                        If (compare.IsMatch(temp_var_val) = True) Then
-
-                            If (Mid(temp_var_val, 1, 1) = "0") Then
-
-                                MilesHoursValidationPrompt.Visible = True
-                                MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " value provided in the DPF Cleaning record PDF contains one or more leading zeros, please remove the leading zero(s) and try again."
-
-                                query_execution_flag = False
-
-                            Else
-
-                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
-                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
-
-                            End If
-
-                        Else
-
-                            MilesHoursValidationPrompt.Visible = True
-                            MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " provided in the DPF Cleaning record PDF is not valid."
-
-                            query_execution_flag = False
-
-                        End If
-
-                    ElseIf () Then
+                        query_execution_flag = False
 
                     End If
+
+                End If
 
             Next
 

@@ -95,6 +95,24 @@ Partial Public Class dpfcleaning
     Protected WithEvents viewtextvariable_theFieldValues As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''PlateValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PlateValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''VINNumberValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents VINNumberValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''DecimalValidationPrompt control.
     '''</summary>
     '''<remarks>
