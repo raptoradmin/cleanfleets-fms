@@ -149,6 +149,24 @@ Partial Public Class dpfcleaning
     Protected WithEvents MilesHoursValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''SerialNumberHoursValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SerialNumberHoursValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''PartNumberValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PartNumberValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''dvSectionImport control.
     '''</summary>
     '''<remarks>

@@ -496,7 +496,7 @@ Public Class dpfcleaning
 
             'Next
 
-            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) SET @FINALMILES = CONVERT(INTEGER, @Miles) SET @FINALHOURS = CONVERT(INTEGER, @Hours) " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Plate, Miles, Hours, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER DECLARE @FINALSERIALNUMBER INTEGER DECLARE @FINALPARTNUMBER INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) SET @FINALMILES = CONVERT(INTEGER, @Miles) SET @FINALHOURS = CONVERT(INTEGER, @Hours) SET @FINALSERIALNUMBER = CONVERT(INTEGER, @SerialNumber) SET @FINALPARTNUMBER = CONVERT(INTEGER, @PartNumber) " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Plate, Miles, Hours, SerialNumber, PartNumber, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @FINALSERIALNUMBER, @FINALPARTNUMBER, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
 
             'Dim Plate As String
             'Plate = DPF_Dictionary.Item("Plate")
@@ -519,7 +519,7 @@ Public Class dpfcleaning
                     Dim format_plate_string As String = "^[A-Z0-9]+$"
                     Dim compare_plate As New Regex(format_plate_string)
 
-                    Dim format_VIN_string As String = "^[A-Z0-9]+/\d{3}$"
+                    Dim format_VIN_string As String = "^[A-Z0-9]+\/?[0-9]+$"
                     Dim compare_VIN As New Regex(format_VIN_string)
 
                     If (compare_plate.IsMatch(temp_var_val) = True And temp_var_key = "Plate") Then
@@ -543,7 +543,7 @@ Public Class dpfcleaning
                             Else
 
                                 VINNumberValidationPrompt.Visible = True
-                                VINNumberValidationPrompt.InnerHtml = "The provided VIN# is not valid."
+                                VINNumberValidationPrompt.InnerHtml = "The provided VIN/Unit# is not valid."
 
                                 query_execution_flag = False
 
@@ -758,7 +758,7 @@ Public Class dpfcleaning
 
                 ElseIf (temp_var_key = "InvoiceNumber") Then
 
-                    Dim format_string As String = "^[0-9]*$"
+                    Dim format_string As String = "^[0-9]+$"
                     Dim compare As New Regex(format_string)
 
                     If (compare.IsMatch(temp_var_val) = True) Then
@@ -785,13 +785,13 @@ Public Class dpfcleaning
                         If (Mid(temp_var_val, 1, 1) = "0") Then
 
                             MilesHoursValidationPrompt.Visible = True
-                            MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " value provided in the DPF Cleaning record PDF contains one or more leading zeros, please remove the leading zero(s) and try again."
+                            MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " value provided in the DPF Cleaning record PDF contains one or more leading zeros or the value is zero, please remove the leading zero(s) and try again."
 
                             query_execution_flag = False
 
                         Else
 
-                            DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                            DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
                             DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                         End If
@@ -804,6 +804,96 @@ Public Class dpfcleaning
                         query_execution_flag = False
 
                     End If
+
+                ElseIf (temp_var_key = "SerialNumber" Or temp_var_key = "PartNumber") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val)) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        If (temp_var_key = "SerialNumber") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The serial number is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        Else
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The part number is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        End If
+
+                    End If
+
+                ElseIf (temp_var_key = "DPFInitWeight" Or temp_var_key = "DPFFinalWeight" Or temp_var_key = "DPFWeightDiff" Or temp_var_key = "DOCInitWeight" Or temp_var_key = "DOCFinalWeight" Or temp_var_key = "DOCWeightDiff") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val)) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Int)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        If (temp_var_key = "DPFInitWeight") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The DPF Initial Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DPFFinalWeight") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The DPF Final Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DPFWeightDiff") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The DPF Weight Difference value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DOCInitWeight") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The DOC1 Initial Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DOCFinalWeight") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The DOC1 Final Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DOCWeightDiff") Then
+
+                            SerialNumberHoursValidationPrompt.Visible = True
+                            SerialNumberHoursValidationPrompt.InnerHtml = "The DOC1 Weight Difference value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        End If
+
+                    End If
+
+                ElseIf (temp_var_key = "") Then
 
                 End If
 

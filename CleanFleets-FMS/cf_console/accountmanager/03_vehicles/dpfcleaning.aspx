@@ -23,6 +23,8 @@
     <div id="DateValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="WOValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="MilesHoursValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="SerialNumberHoursValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="PartNumberValidationPrompt" runat="server" visible="false" color="red"></div>
 
     <style type="text/css">
 
