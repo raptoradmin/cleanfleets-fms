@@ -6,12 +6,12 @@
             <script type="text/javascript">
 
             	function RowClick(sender, eventArgs) {
-            		<%--var MasterTableView = eventArgs.get_tableView();--%>
-            		<%--var dataKeyValue = eventArgs.getDataKeyValue("IDImages");
-            		var oWnd = radopen("../../../includes/imagemanager/imagedisplay.aspx?IDImages=" + dataKeyValue);--%>
+            		var MasterTableView = eventArgs.get_tableView();
+            		var dataKeyValue = eventArgs.getDataKeyValue("IDImages");
+            		var oWnd = radopen("../../../includes/imagemanager/imagedisplay.aspx?IDImages=" + dataKeyValue);
             	}
 
-            	<%--function MyClickVehicles(sender, eventArgs) {
+            	function MyClickVehicles(sender, eventArgs) {
             		var inputs = document.getElementById("<%= rg_VehicleImages.MasterTableView.ClientID %>").getElementsByTagName("input");
             		for (var i = 0, l = inputs.length; i < l; i++) {
             			var input = inputs[i];
@@ -20,7 +20,7 @@
             			input.checked = false;
             		}
 
-                testing source control
+                
 
             	}
 
@@ -42,11 +42,11 @@
             				continue;
             			input.checked = false;
             		}
-            	}--%> 
+            	}
             </script>            
 
          </telerik:radcodeblock>
-	<%--<style type="text/css">
+	<style type="text/css">
 		.RadPicker_Default
 		{
 			vertical-align: middle;
@@ -63,7 +63,7 @@
 		{
 			vertical-align: middle;
 		}
-	</style>--%>
+	</style>
 
 	
 
