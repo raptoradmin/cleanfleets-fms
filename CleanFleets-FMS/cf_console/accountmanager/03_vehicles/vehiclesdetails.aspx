@@ -91,7 +91,7 @@
 				ID="hl_FleetList" runat="server" NavigateUrl='<%# Eval("IDProfileAccount", "../02_fleets/fleet.aspx?IDProfileAccount={0}") & "&IDProfileTerminal=" & Eval("IDProfileTerminal") %>'
 				Text='<%# Eval("FleetName") %>'></asp:HyperLink>
 			&nbsp;<span style="font-size: medium; font-weight: bold; color: #2C7500">Vehicles:</span>&nbsp;<asp:HyperLink
-				ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("IDProfileFleet", "vehicles.aspx?IDProfileFleet={0}")  & "&IDProfileTerminal=" & Eval("IDProfileTerminal")  & "&IDProfileAccount=" & Eval("IDProfileAccount") %>'
+				ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("IDProfileFleet", "vehicles.aspx?IDProfileFleet={0}") & "&IDProfileTerminal=" & Eval("IDProfileTerminal") & "&IDProfileAccount=" & Eval("IDProfileAccount") %>'
 				Text='<%# Eval("FleetName") %>'></asp:HyperLink>
 			
 		</ItemTemplate>
@@ -726,7 +726,7 @@
                                     </td>
                                     <td>
                                         <div class="divlblScrollText">
-                                            <asp:Label ID="DescriptionLabel0" runat="server" Text='<%# Eval("Description").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                            <asp:Label ID="DescriptionLabel0" runat="server" Text='<%# Eval("Description").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                         </div>
                                     </td>
                                 </tr>
@@ -744,7 +744,7 @@
                                     <td>
                                         <div class="divlblScrollText">
                                             <asp:Label ID="NotesLabel0" runat="server" 
-                                                Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                                Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                         </div>
                                     </td>
                                 </tr>
@@ -761,7 +761,7 @@
                                     </td>
                                     <td>
                                         <div class="divlblScrollText">
-                                            <asp:Label ID="NotesCFLabel0" runat="server" Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                            <asp:Label ID="NotesCFLabel0" runat="server" Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                         </div>
                                     </td>
                                 </tr>
@@ -782,7 +782,7 @@
                              
                     <asp:FormView ID="fv_VehicleImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesVehicle_fvw">
                         <ItemTemplate>
-                            <asp:Image ID="image" runat="server" ImageUrl='<%# Eval("Image")+ "?Width=200" %>' Width="200" />
+                            <asp:Image ID="image" runat="server" ImageUrl='<%# Eval("Image") + "?Width=200" %>' Width="200" />
                         </ItemTemplate>
                     </asp:FormView>
                              
@@ -990,7 +990,7 @@
                                 <table cellpadding="0" cellspacing="0" style="width: 100%">
                                     <tr>
                                         <td style="width: 66px">
-                                            <asp:Button ID="btnUpdate" Text='<%# IIf((TypeOf(Container) is GridEditFormInsertItem), "Insert", "Update") %>' runat="server" CommandName='<%# IIf((TypeOf(Container) is GridEditFormInsertItem), "PerformInsert", "Update")%>'></asp:Button>
+                                            <asp:Button ID="btnUpdate" Text='<%# IIf((TypeOf (Container) Is GridEditFormInsertItem), "Insert", "Update") %>' runat="server" CommandName='<%# IIf((TypeOf (Container) Is GridEditFormInsertItem), "PerformInsert", "Update")%>'></asp:Button>
                                         </td>
                                         <td>
                                             <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel"></asp:Button>
@@ -1089,7 +1089,7 @@
                                 <table cellpadding="0" cellspacing="0" style="width: 100%">
                                     <tr>
                                         <td style="width: 66px">
-                                            <asp:Button ID="btnUpdate" Text='<%# IIf((TypeOf(Container) is GridEditFormInsertItem), "Insert", "Update") %>' runat="server" CommandName='<%# IIf((TypeOf(Container) is GridEditFormInsertItem), "PerformInsert", "Update")%>'></asp:Button>
+                                            <asp:Button ID="btnUpdate" Text='<%# IIf((TypeOf (Container) Is GridEditFormInsertItem), "Insert", "Update") %>' runat="server" CommandName='<%# IIf((TypeOf (Container) Is GridEditFormInsertItem), "PerformInsert", "Update")%>'></asp:Button>
                                         </td>
                                         <td>
                                             <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel"></asp:Button>
@@ -1418,7 +1418,7 @@
                                                     <td>
                                                         <div class="divlblScrollText">
                                                             <asp:Label ID="DescriptionLabel" runat="server" 
-                                                                Text='<%# Eval("Description").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                                                Text='<%# Eval("Description").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -1435,7 +1435,7 @@
                                                     <td>
                                                         <div class="divlblScrollText">
                                                             <asp:Label ID="NotesLabel" runat="server" 
-                                                                Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                                                Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -1451,7 +1451,7 @@
                                                     <td>
                                                         <div class="divlblScrollText">
                                                             <asp:Label ID="NotesCFLabel" runat="server" 
-                                                                Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                                                Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -1506,7 +1506,7 @@
                                     style="padding: 5px; border-left-style: solid; border-left-width: 1px; border-left-color: #9B9B9B">
                                     <asp:FormView ID="fv_EngineImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesEngines_fvw">
                                         <ItemTemplate>
-                                            <asp:Image ID="image0" runat="server" ImageUrl='<%#Eval("Image")+ "?Width=200" %>' Width="200" />
+                                            <asp:Image ID="image0" runat="server" ImageUrl='<%#Eval("Image") + "?Width=200" %>' Width="200" />
                                         </ItemTemplate>
                                     </asp:FormView>
                                 </td>
@@ -1677,7 +1677,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="divlblScrollText">
-                                                                <asp:Label ID="NotesLabel" runat="server" Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                                                <asp:Label ID="NotesLabel" runat="server" Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                                             </div>
                                                             <br />
                                                         </td>
@@ -1692,7 +1692,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="divlblScrollText">
-                                                                <asp:Label ID="NotesCFLabel" runat="server" Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine,"<br />") %>' />
+                                                                <asp:Label ID="NotesCFLabel" runat="server" Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine, "<br />") %>' />
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -2397,7 +2397,25 @@
                         </EditItemTemplate>
                         <InsertItemTemplate>
                         </InsertItemTemplate>
-                        <ItemTemplate>                      
+                        <ItemTemplate>
+
+                            <%-- Added by Andrew on 10/17/2019 --%>
+
+                            <%--<table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+			                        <td class="tdtable" style="width: 70px">
+				                        Select DPF Record:
+			                        </td>
+			                        <td>
+				                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="VINNumber"
+					                        DataValueField="IDDPF" AutoPostBack="True">
+				                        </asp:DropDownList>
+			                        </td>
+		                        </tr>
+                            </table>--%>
+
+                            <%-- End Of What was added by Andrew on 10/17/2019 --%>
+
                           <table style="width: 100%">
                                 <tr>
                                     <td style="width: 90px; " class="tdtable">
@@ -2611,8 +2629,26 @@
                                    <%--<asp:Button ID="btnUpdate" Text='<%# "Update" %>' runat="server" CommandName='<%# "Update"%>'></asp:Button>--%>
                                    <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel"></asp:Button>
                            </ItemTemplate>
+                        <%-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| --%>
                         <EmptyDataTemplate>
                           <%--  No Cleaning Record Data.--%>
+
+                            <%-- Added by Andrew on 10/17/2019 --%>
+
+                            <%--<table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+			                        <td class="tdtable" style="width: 70px">
+				                        Select DPF Record:
+			                        </td>
+			                        <td>
+				                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="VINNumber"
+					                        DataValueField="IDDPF" AutoPostBack="True">
+				                        </asp:DropDownList>
+			                        </td>
+		                        </tr>
+                            </table>--%>
+
+                            <%-- End Of What was added by Andrew on 10/17/2019 --%>
                              <table style="width: 100%">
                                 <tr>
                                     <td style="width: 90px; " class="tdtable">
@@ -3293,8 +3329,18 @@
 	<asp:SqlDataSource ID="sds_ddl_CF_Milestones" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT MilestoneDate FROM [CF_Compliance_Milestones] ORDER BY [MilestoneDate]">
 	</asp:SqlDataSource>
+
+    <%-- Added by Andrew on 10/17/2019 --%>
 	
-	
+	<%--<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDDPF], [VINNumber] FROM [CF_DPF] WHERE [VINNUMBER] = '12345678' ORDER BY [VINNumber]">
+		<SelectParameters>
+		<asp:QueryStringParameter Name="IDDPF" QueryStringField="IDDPF"
+				Type="Int32" /> 
+		</SelectParameters>
+	</asp:SqlDataSource>--%>
+
+    <%-- End of what was added by Andrew on 10/17/2019 --%>
 
 </asp:Content>
 

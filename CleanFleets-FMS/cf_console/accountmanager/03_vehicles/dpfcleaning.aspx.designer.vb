@@ -149,13 +149,13 @@ Partial Public Class dpfcleaning
     Protected WithEvents MilesHoursValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
-    '''SerialNumberHoursValidationPrompt control.
+    '''SerialNumberValidationPrompt control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SerialNumberHoursValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents SerialNumberValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''PartNumberValidationPrompt control.
@@ -165,6 +165,60 @@ Partial Public Class dpfcleaning
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents PartNumberValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DPFInitWeightValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DPFInitWeightValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DPFFinalWeightValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DPFFinalWeightValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DPFWeightDiffValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DPFWeightDiffValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DOCInitWeightValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DOCInitWeightValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DOCFinalWeightValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DOCFinalWeightValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''DOCWeightDiffValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DOCWeightDiffValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
     '''dvSectionImport control.
