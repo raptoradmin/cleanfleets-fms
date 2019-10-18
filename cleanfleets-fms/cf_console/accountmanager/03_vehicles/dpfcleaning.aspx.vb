@@ -209,7 +209,7 @@ Public Class dpfcleaning
             FieldNamesArray = thisForm.GetFieldNames()
 
             Dim PDF_Field_Names() As String
-            PDF_Field_Names = {"MultipleCleanings", "DOCCleaned", "ModifiedDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitialFR", "DPFFinalFR", "DPFFRDiff"}
+            PDF_Field_Names = {"MultipleCleanings", "DocCleaned", "EnterDate", "InvoiceNumber", "PONumber", "Company", "VINNumber", "Make", "Model", "Plate", "Miles", "Hours", "FilterMake", "SerialNumber", "Substrate", "PartNumber", "WTResults", "CleaningTech", "Notes", "Condition", "DPFInitWeight", "DPFFinalWeight", "DPFWeightDiff", "DOCInitWeight", "DOCFinalWeight", "DOCWeightDiff", "DPFInitFR", "DPFFinalFR", "DPFFRDiff"}
 
             Dim j As Integer
             j = 0
@@ -317,7 +317,7 @@ Public Class dpfcleaning
             final_comm_field_name_string = comm_field_name_string(1)
 
             Dim combined_comm_string As String
-            combined_comm_string = "DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, " & final_comm_field_name_string & ") VALUES("
+            combined_comm_string = "DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, " & final_comm_field_name_string & ") VALUES(@UNIQUEID, "
 
 
             Dim pre_comm_field_value_string As String
@@ -339,76 +339,569 @@ Public Class dpfcleaning
             Dim complete_comm_string As String
             complete_comm_string = combined_comm_string & final_comm_field_value_string & ")"
 
+            'viewtextvariable_theField.Visible = True
+            'viewtextvariable_theField.InnerHtml = complete_comm_string
+
             Dim DPF_comm As SqlCommand
 
-            DPF_comm = New SqlCommand(complete_comm_string, DPF_conn)
+            'DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, @VINNumber, @Plate)", DPF_conn)
+
+            'For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
+
+            '    Dim temp_field_name_string As String
+            '    temp_field_name_string = pair.Key
+
+            '    Dim temp_field_value_string As String
+            '    temp_field_value_string = pair.Value
+
+            '    If (temp_field_name_string = "EnterDate" Or temp_field_name_string = "ModifiedDate") Then
+
+            '        Dim temp_date_split() As String
+            '        temp_date_split = Split(temp_field_value_string, "/")
+
+            '        For i = 1 To UBound(temp_date_split)
+
+            '            If (Len(temp_date_split(i - 1)) < 2) Then
+
+            '                temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+
+            '            End If
+
+            '        Next
+
+            '        temp_field_value_string = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0)
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.DateTime)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+
+            '    ElseIf temp_field_name_string = "InvoiceNumber" Then
+
+            '        Convert.ToInt32(temp_field_value_string)
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Int)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+
+            '    ElseIf temp_field_name_string = "Miles" Or temp_field_name_string = "Hours" Or temp_field_name_string = "SerialNumber" Or temp_field_name_string = "PartNumber" Or temp_field_name_string = "DPFInitWeight" Or temp_field_name_string = "DPFFinalWeight" Or temp_field_name_string = "DPFWeightDiff" Or temp_field_name_string = "DOCInitWeight" Or temp_field_name_string = "DOCFinalWeight" Or temp_field_name_string = "DOCWeightDiff" Then
+
+            '        If InStr(temp_field_value_string, ",") > 0 Then
+
+            '            Dim temp_holder As String
+            '            temp_holder = ""
+
+            '            For i = 1 To Len(temp_field_value_string)
+
+            '                If Mid(temp_field_value_string, i, 1) <> "," Then
+
+            '                    temp_holder = temp_holder & Mid(temp_field_value_string, i, 1)
+
+            '                End If
+
+            '            Next
+
+            '            temp_field_value_string = temp_holder
+            '            Convert.ToInt32(temp_field_value_string)
+            '            DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Int)
+
+            '        End If
+
+            '        Convert.ToInt32(temp_field_value_string)
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Int)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+
+            '    ElseIf temp_field_name_string = "DPFInitFR" Or temp_field_name_string = "DPFFinalFR" Or temp_field_name_string = "DPFFRDiff" Then
+
+            '        Dim temp_holder As String
+            '        temp_holder = ""
+
+            '        Dim temp_count As Integer
+            '        temp_count = 0
+
+            '        Dim decimal_point_position As Integer
+
+            '        For i = 1 To Len(temp_field_value_string)
+
+            '            If IsNumeric((Mid(temp_field_value_string, i, 1))) = True Or Mid(temp_field_value_string, i, 1) = "." Then
+
+            '                temp_holder = temp_holder & Mid(temp_field_value_string, i, 1)
+
+            '                temp_count = temp_count + 1
+
+            '            End If
+
+            '        Next
+
+            '        If (decimal_point_position > 4) Then
+
+            '            DecimalValueTooLarge.Visible = True
+            '            DecimalValueTooLarge.InnerHtml = "The decimal value you entered is larger than the allowed precision."
+
+            '        Else
+
+            '            If (InStr(temp_holder, ".") > 0) Then
+
+            '                decimal_point_position = InStr(temp_holder, ".")
+
+            '                If (temp_count - decimal_point_position > 1) Then
+
+            '                    If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
+
+            '                        Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
+
+            '                    End If
+
+            '                    temp_holder = temp_holder.Remove(temp_count - 1)
+
+            '                    DecimalValueTooLarge.Visible = True
+            '                    DecimalValueTooLarge.InnerHtml = "The number of digits after the decimal point was greater than 1, so the value has been rounded."
+
+            '                End If
+
+            '            End If
+
+            '        End If
+
+            '        temp_field_value_string = temp_holder
+            '        Convert.ToDecimal(temp_field_value_string, New CultureInfo("en-US"))
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Decimal)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+            '    ElseIf (temp_field_name_string = "DocCleaned" Or temp_field_name_string = "MultipleCleanings") Then
+
+            '        If (temp_field_value_string = "Off") Then
+
+            '            temp_field_value_string = "N"
+
+            '        Else
+
+            '            temp_field_value_string = "Y"
+
+            '        End If
+
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.Char, 1)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+            '    ElseIf (temp_field_name_string = "Notes" Or temp_field_name_string = "Condition") Then
+
+            '        DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.VarChar)
+            '        DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+
+            '        'Else
+
+            '        '    DPF_comm.Parameters.Add("@" & temp_field_name_string, SqlDbType.VarChar, 50)
+            '        '    DPF_comm.Parameters("@" & temp_field_name_string).Value = temp_field_value_string
+            '        'DPF_comm.Parameters.AddWithValue("@" & temp_field_name_string, temp_field_value_string)
+
+            '    End If
+
+            'Next
+
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER DECLARE @FINALPARTNUMBER INTEGER DECLARE @FINALDPFINITWEIGHT INTEGER DECLARE @FINALDPFFINALWEIGHT INTEGER DECLARE @FINALDPFWEIGHTDIFF INTEGER DECLARE @FINALDOCINITWEIGHT INTEGER DECLARE @FINALDOCFINALWEIGHT INTEGER DECLARE @FINALDOCWEIGHTDIFF INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) IF @Miles <> '' BEGIN SET @FINALMILES = CONVERT(INTEGER, @Miles) END IF @Hours <> '' BEGIN SET @FINALHOURS = CONVERT(INTEGER, @Hours) END IF @PartNumber <> '' BEGIN SET @FINALPARTNUMBER = CONVERT(INTEGER, @PartNumber) END IF @DPFInitWeight <> '' BEGIN SET @FINALDPFINITWEIGHT = CONVERT(INTEGER, @DPFInitWeight) END IF @DPFFinalWeight <> '' BEGIN SET @FINALDPFFINALWEIGHT = CONVERT(INTEGER, @DPFFinalWeight) END IF @DPFWeightDiff <> '' BEGIN SET @FINALDPFWEIGHTDIFF = CONVERT(INTEGER, @DPFWeightDiff) END IF @DOCInitWeight <> '' BEGIN SET @FINALDOCINITWEIGHT = CONVERT(INTEGER, @DOCInitWeight) END IF @DOCFinalWeight <> '' BEGIN SET @FINALDOCFINALWEIGHT = CONVERT(INTEGER, @DOCFinalWeight) END IF @DOCWeightDiff <> '' BEGIN SET @FINALDOCWEIGHTDIFF = CONVERT(INTEGER, @DOCWeightDiff) END " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Plate, Miles, Hours, SerialNumber, PartNumber, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @SerialNumber, @FINALPARTNUMBER, @FINALDPFINITWEIGHT, @FINALDPFFINALWEIGHT, @FINALDPFWEIGHTDIFF, @FINALDOCINITWEIGHT, @FINALDOCFINALWEIGHT, @FINALDOCWEIGHTDIFF, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
+
+            'Dim Plate As String
+            'Plate = DPF_Dictionary.Item("Plate")
+            'Dim VINNumber As String
+            'VINNumber = DPF_Dictionary.Item("VINNumber")
+
+            Dim query_execution_flag As Boolean
+            query_execution_flag = True
 
             For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
 
-                Dim temp_field_name_string As String
-                temp_field_name_string = pair.Key
+                Dim temp_var_key As String
+                Dim temp_var_val As String
 
-                Dim temp_field_value_string As String
-                temp_field_value_string = pair.Value
+                temp_var_key = pair.Key
+                temp_var_val = pair.Value
 
-                If (temp_field_name_string = "ModifiedDate") Then
+                If (temp_var_key = "VINNumber" Or temp_var_key = "Plate") Then
 
-                    Dim temp_date_split() As String
-                    temp_date_split = Split(temp_field_value_string, "/")
+                    Dim format_temp_string As String = "^[0-9]+$"
+                    Dim compare_temp As New Regex(format_temp_string)
 
-                    For i = 1 To UBound(temp_date_split)
+                    Dim format_plate_string As String = "^[A-Z0-9]+$"
+                    Dim compare_plate As New Regex(format_plate_string)
 
-                        If (Len(temp_date_split(i - 1)) < 2) Then
+                    Dim format_VIN_string As String = "^[A-Z0-9]+\/?[0-9]+$"
+                    Dim compare_VIN As New Regex(format_VIN_string)
 
-                            temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+                    If (compare_plate.IsMatch(temp_var_val) = True And temp_var_key = "Plate") Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    ElseIf (temp_var_key = "VINNumber") Then
+
+                        If (InStr(temp_var_val, "/") > 0) Then
+
+                            If (compare_VIN.IsMatch(temp_var_val) = True) Then
+
+                                temp_var_val = Left(temp_var_val, InStr(temp_var_val, "/") - 1)
+
+                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                                ' What do you want to do with the Unit#?
+
+                            Else
+
+                                VINNumberValidationPrompt.Visible = True
+                                VINNumberValidationPrompt.InnerHtml = "The provided VIN/Unit# is not valid."
+
+                                query_execution_flag = False
+
+                                ' What about Unit#?
+
+                            End If
+
+                        Else
+
+                            If (compare_plate.IsMatch(temp_var_val) = True) Then
+
+                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                            Else
+
+                                VINNumberValidationPrompt.Visible = True
+                                VINNumberValidationPrompt.InnerHtml = "The provided VIN/Unit# is not valid."
+
+                                query_execution_flag = False
+
+                            End If
 
                         End If
 
-                    Next
+                    Else
 
-                    temp_field_value_string = temp_date_split(2) & "-" & temp_date_split(1) & "-" & temp_date_split(0)
+                        PlateValidationPrompt.Visible = True
+                        PlateValidationPrompt.InnerHtml = "The license plate number provided is not valid."
 
-                End If
+                        query_execution_flag = False
 
-                If temp_field_name_string = "InvoiceNumber" Then
+                    End If
 
-                    Convert.ToInt32(temp_field_value_string)
+                ElseIf (temp_var_key = "EnterDate") Then
 
-                End If
+                    Dim temp_date_split() As String
+                    temp_date_split = Split(temp_var_val, "/")
 
-                If temp_field_name_string = "Miles" Or temp_field_name_string = "Hours" Then
+                    Dim Valid_Date As Boolean
+                    Valid_Date = True
 
-                    If InStr(temp_field_value_string, ",") > 0 Then
+                    If (UBound(temp_date_split) = 2) Then
 
-                        Dim temp_holder As String
-                        temp_holder = ""
+                        For i = 1 To UBound(temp_date_split) + 1
 
-                        For i = 1 To Len(temp_field_value_string)
+                            If (i - 1 < 2) Then
 
-                            If Mid(temp_field_value_string, i, 1) <> "," Then
+                                If (Len(temp_date_split(i - 1)) > 0) And Len(temp_date_split(i - 1)) <= 2 Then
 
-                                temp_holder = temp_holder & Mid(temp_field_value_string, i, 1)
+                                    If (Len(temp_date_split(i - 1)) < 2) Then
+
+                                        temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+
+                                    End If
+
+                                Else
+
+                                    Valid_Date = False
+
+                                    DateValidationPrompt.Visible = True
+                                    DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
+                                    Exit For
+
+                                End If
+
+                            Else
+
+                                If Not (Len(temp_date_split(i - 1)) = 4) Then
+
+                                    Valid_Date = False
+
+                                    DateValidationPrompt.Visible = True
+                                    DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
+                                    Exit For
+
+                                End If
 
                             End If
 
                         Next
 
-                        temp_field_value_string = temp_holder
-                        Convert.ToInt32(temp_field_value_string)
+                    Else
+
+                        Valid_Date = False
+
+                        DateValidationPrompt.Visible = True
+                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
 
                     End If
 
-                    Convert.ToInt32(temp_field_value_string)
+                    If (Valid_Date = True) Then
+
+                        temp_var_val = temp_date_split(0) & "/" & temp_date_split(1) & "/" & temp_date_split(2)
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.DateTime)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        query_execution_flag = False
+
+                    End If
+
+                ElseIf (temp_var_key = "DPFInitFR" Or temp_var_key = "DPFFinalFR" Or temp_var_key = "DPFFRDiff") Then
+
+                    Dim temp_holder As String
+                    temp_holder = ""
+
+                    Dim numeric_count As Integer
+                    numeric_count = 0
+
+                    Dim decimal_count As Integer
+                    decimal_count = 0
+
+                    Dim decimal_point_position As Integer
+
+                    For i = 1 To Len(temp_var_val)
+
+                        If IsNumeric((Mid(temp_var_val, i, 1))) = True Or Mid(temp_var_val, i, 1) = "." Then
+
+                            temp_holder = temp_holder & Mid(temp_var_val, i, 1)
+
+                            If (IsNumeric((Mid(temp_var_val, i, 1))) = True) Then
+
+                                numeric_count = numeric_count + 1
+
+                            ElseIf (Mid(temp_var_val, i, 1) = ".") Then
+
+                                decimal_count = decimal_count + 1
+
+                            End If
+
+                        End If
+
+                    Next
+
+                    If (numeric_count > 3) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "The " & temp_var_key & " value you entered is larger than the allowed precision, no more than a total maximum of 3 digits."
+
+                        query_execution_flag = False
+
+                    ElseIf (decimal_count > 1) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is more than one decimal point in the " & temp_var_key & " value provided."
+
+                        query_execution_flag = False
+
+                        'ElseIf (numeric_count < 1) Then
+
+                        '    DecimalValidationPrompt.Visible = True
+                        '    DecimalValidationPrompt.InnerHtml = "There is no " & temp_var_key & " value present in the field of the PDF."
+
+                        '    query_execution_flag = False
+
+                    ElseIf (Len(temp_var_val) <> Len(temp_holder)) Then
+
+                        DecimalValidationPrompt.Visible = True
+                        DecimalValidationPrompt.InnerHtml = "There is an existing character in the provided " & temp_var_key & " value that is not numeric or a decimal point, please enter again."
+
+                        query_execution_flag = False
+
+                    Else
+
+                        If (InStr(temp_holder, ".") > 0) Then
+
+                            decimal_point_position = InStr(temp_holder, ".")
+
+                            If (Len(temp_holder) - decimal_point_position > 1) Then
+
+                                If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
+
+                                    Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
+
+                                End If
+
+                                temp_holder = temp_holder.Remove(decimal_point_position + 1)
+
+                                DecimalValidationPrompt.Visible = True
+                                DecimalValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the " & temp_var_key & " value has been rounded."
+
+                                temp_var_val = temp_holder
+
+                            End If
+
+                        End If
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    End If
+
+                ElseIf (temp_var_key = "DocCleaned" Or temp_var_key = "MultipleCleanings") Then
+
+                    If (temp_var_val = "Off") Then
+
+                        temp_var_val = "N"
+
+                    Else
+
+                        temp_var_val = "Y"
+
+                    End If
+
+                    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Char, 1)
+                    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                ElseIf (temp_var_key = "InvoiceNumber") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val) = True) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        WOValidationPrompt.Visible = True
+                        WOValidationPrompt.InnerHtml = "The WO# provided in the DPF Cleaning record PDF is not valid."
+
+                        query_execution_flag = False
+
+                    End If
+
+                ElseIf (temp_var_key = "Miles" Or temp_var_key = "Hours") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val) = True) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        MilesHoursValidationPrompt.Visible = True
+                        MilesHoursValidationPrompt.InnerHtml = "The " & temp_var_key & " provided in the DPF Cleaning record PDF is not valid."
+
+                        query_execution_flag = False
+
+                    End If
+
+                ElseIf (temp_var_key = "SerialNumber" Or temp_var_key = "PartNumber") Then
+
+                    Dim format_string_Part As String = "^[0-9]*$"
+                    Dim compare_Part As New Regex(format_string_Part)
+
+                    Dim format_string_Serial As String = "^[A-Z0-9]*$"
+                    Dim compare_Serial As New Regex(format_string_Serial)
+
+                    If (compare_Part.IsMatch(temp_var_val) Or compare_Serial.IsMatch(temp_var_val)) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        If (temp_var_key = "SerialNumber") Then
+
+                            SerialNumberValidationPrompt.Visible = True
+                            SerialNumberValidationPrompt.InnerHtml = "The serial number is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        Else
+
+                            PartNumberValidationPrompt.Visible = True
+                            PartNumberValidationPrompt.InnerHtml = "The part number is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        End If
+
+                    End If
+
+                ElseIf (temp_var_key = "DPFInitWeight" Or temp_var_key = "DPFFinalWeight" Or temp_var_key = "DPFWeightDiff" Or temp_var_key = "DOCInitWeight" Or temp_var_key = "DOCFinalWeight" Or temp_var_key = "DOCWeightDiff") Then
+
+                    Dim format_string As String = "^[0-9]*$"
+                    Dim compare As New Regex(format_string)
+
+                    If (compare.IsMatch(temp_var_val)) Then
+
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 10)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        If (temp_var_key = "DPFInitWeight") Then
+
+                            DPFInitWeightValidationPrompt.Visible = True
+                            DPFFinalWeightValidationPrompt.InnerHtml = "The DPF Initial Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DPFFinalWeight") Then
+
+                            DPFFinalWeightValidationPrompt.Visible = True
+                            DPFFinalWeightValidationPrompt.InnerHtml = "The DPF Final Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DPFWeightDiff") Then
+
+                            DPFWeightDiffValidationPrompt.Visible = True
+                            DPFWeightDiffValidationPrompt.InnerHtml = "The DPF Weight Difference value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DOCInitWeight") Then
+
+                            DOCInitWeightValidationPrompt.Visible = True
+                            DOCInitWeightValidationPrompt.InnerHtml = "The DOC1 Initial Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DOCFinalWeight") Then
+
+                            DOCFinalWeightValidationPrompt.Visible = True
+                            DOCFinalWeightValidationPrompt.InnerHtml = "The DOC1 Final Weight value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        ElseIf (temp_var_key = "DOCWeightDiff") Then
+
+                            DOCWeightDiffValidationPrompt.Visible = True
+                            DOCWeightDiffValidationPrompt.InnerHtml = "The DOC1 Weight Difference value is not valid, it should be a positive integer or blank."
+
+                            query_execution_flag = False
+
+                        End If
+
+                    End If
+
+                ElseIf (temp_var_key = "") Then
 
                 End If
 
-                DPF_comm.Parameters.AddWithValue("@" & temp_field_name_string, temp_field_value_string)
-
             Next
 
-            'DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, VINNumber, Plate) " & "VALUES(@UNIQUEID, 'a321095', 9845602)", DPF_conn)
+            'DPF_comm.Parameters.AddWithValue(@VINNumber, VINNumber)
+            'DPF_comm.Parameters.AddWithValue(@Plate, Plate)
 
-            DPF_comm.ExecuteNonQuery()
+            If (query_execution_flag = True) Then
+
+                DPF_comm.ExecuteNonQuery()
+
+            End If
 
             DPF_conn.Close()
 

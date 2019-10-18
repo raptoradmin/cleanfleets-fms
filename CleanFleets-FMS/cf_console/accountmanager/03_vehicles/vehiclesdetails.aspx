@@ -2635,7 +2635,7 @@
 
                             <%-- Added by Andrew on 10/17/2019 --%>
 
-                            <%--<table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%">
+                            <table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%">
                                 <tr>
 			                        <td class="tdtable" style="width: 70px">
 				                        Select DPF Record:
@@ -2646,7 +2646,7 @@
 				                        </asp:DropDownList>
 			                        </td>
 		                        </tr>
-                            </table>--%>
+                            </table>
 
                             <%-- End Of What was added by Andrew on 10/17/2019 --%>
                              <table style="width: 100%">
@@ -2953,7 +2953,19 @@
 		<InsertParameters>
 		</InsertParameters>
 	</asp:SqlDataSource>
-   <asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
+
+    <%-- Added by Andrew on 10/18/2019 --%>
+
+    <asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
+        SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CF_DPF]"> 
+        
+    </asp:SqlDataSource> 
+
+    <%-- End of what was added by Andrew on 10/18/2019 --%>
+
+    <%-- Commented out by Andrew on 10/18/2019 to test duplicated code chunk above. --%>
+
+   <%--<asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
         SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [IDVehicles], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CFV_DPF] WHERE ([IDDPF] = @IDDPF)" 
         UpdateCommand="UPDATE [CF_DPF] SET [IDModifiedUser] = @IDModifiedUser, [ModifiedDate] = @ModifiedDate, [InvoiceNumber] = @InvoiceNumber, [PONumber] = @PONumber, [Company] = @Company, [VINNumber] = @VINNumber, [Make] = @Make, [Model] = @Model, [Plate] = @Plate, [Miles] = @Miles, [Hours] = @Hours, [FilterMake] = @FilterMake, [SerialNumber] = @SerialNumber, [PartNumber] = @PartNumber, [Substrate] = @Substrate, [DocCleaned] = @DocCleaned, [Condition] = @Condition, [DPFInitWeight] = @DPFInitWeight, [DPFFinalWeight] = @DPFFinalWeight, [DPFWeightDiff] = @DPFWeightDiff, [DOCInitWeight] = @DOCInitWeight, [DOCFinalWeight] = @DOCFinalWeight, [DOCWeightDiff] = @DOCWeightDiff, [DPFInitFR] = @DPFInitFR, [DPFFinalFR] = @DPFFinalFR, [DPFFRDiff] = @DPFFRDiff, [WTResults] = @WTResults, [CleaningTech] = @CleaningTech, [MultipleCleanings] = @MultipleCleanings, [Notes] = @Notes  WHERE [IDDPF] = @IDDPF"> 
     <DeleteParameters> 
@@ -2997,7 +3009,10 @@
         </UpdateParameters> 
     <InsertParameters> 
     </InsertParameters> 
-    </asp:SqlDataSource> 
+    </asp:SqlDataSource>--%>
+    
+    <%-- End of what was commented out by Andrew on 10/18/2019 to test duplicated code chunk above. --%>
+
 	<asp:SqlDataSource ID="sds_ddl_Op_ChassisMake" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) ORDER BY [DisplayValue]">
 		<SelectParameters>
@@ -3332,13 +3347,13 @@
 
     <%-- Added by Andrew on 10/17/2019 --%>
 	
-	<%--<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+	<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDDPF], [VINNumber] FROM [CF_DPF] WHERE [VINNUMBER] = '12345678' ORDER BY [VINNumber]">
 		<SelectParameters>
 		<asp:QueryStringParameter Name="IDDPF" QueryStringField="IDDPF"
 				Type="Int32" /> 
 		</SelectParameters>
-	</asp:SqlDataSource>--%>
+	</asp:SqlDataSource>
 
     <%-- End of what was added by Andrew on 10/17/2019 --%>
 

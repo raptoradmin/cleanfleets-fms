@@ -777,4 +777,13 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_CF_Milestones As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''sds_DPF control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_DPF As Global.System.Web.UI.WebControls.SqlDataSource
 End Class
