@@ -64,6 +64,43 @@ Public Class vehiclesdetails1
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim queryString As String = "SELECT IDVehicles, UnitNo, ChassisVIN FROM CF_Vehicles WHERE IDVehicles = @IDVehicles"
 
+        ' Code added by Andrew on 10/22/2019
+
+        'Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
+        'TestLabel_lbl_InvoiceNo.Visible = False
+
+        'Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
+        'TestLabel_lbl_Date.Visible = False
+
+        'Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
+        'TestLabel_lbl_PONo.Visible = False
+
+        'Dim TestLabel_lbl_Company As Label = CType(fv_CFV_DPF.FindControl("lbl_Company"), Label)
+        'TestLabel_lbl_Company.Visible = False
+
+        'Dim TestLabel_lbl_VINNo As Label = CType(fv_CFV_DPF.FindControl("lbl_VINNo"), Label)
+        'TestLabel_lbl_VINNo.Visible = False
+
+        'Dim TestLabel_lbl_Make As Label = CType(fv_CFV_DPF.FindControl("lbl_Make"), Label)
+        'TestLabel_lbl_Make.Visible = False
+
+        'Dim TestLabel_lbl_Model As Label = CType(fv_CFV_DPF.FindControl("lbl_Model"), Label)
+        'TestLabel_lbl_Model.Visible = False
+
+        'Dim TestLabel_lbl_PlateNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PlateNo"), Label)
+        'TestLabel_lbl_PlateNo.Visible = False
+
+        'Dim TestLabel_lbl_Miles As Label = CType(fv_CFV_DPF.FindControl("lbl_Miles"), Label)
+        'TestLabel_lbl_Miles.Visible = False
+
+        'Dim TestLabel_lbl_Hours As Label = CType(fv_CFV_DPF.FindControl("lbl_Hours"), Label)
+        'TestLabel_lbl_Hours.Visible = False
+
+        'Dim TestLabel_lbl_MakeModel As Label = CType(fv_CFV_DPF.FindControl("lbl_MakeModel"), Label)
+        'TestLabel_lbl_MakeModel.Visible = False
+
+        ' End of code added by Andrew on 10/22/2019 
+
         Using myConnection As New SqlConnection(connectionString)
             Dim myCommand As New SqlCommand(queryString, myConnection)
             myConnection.Open()
@@ -122,6 +159,11 @@ Public Class vehiclesdetails1
                 End If
             End If
         End If
+
+        'Dim EditButtonVar As Button = CType(Me.fv_CFV_DPF.FindControl("EditButton"), Button)
+        'EditButtonVar.Visible = False
+        'EditButtonVar.Visible = True
+
     End Sub
 
     '*********************************************************************************************************************
@@ -1529,6 +1571,13 @@ Public Class vehiclesdetails1
 
         Return idWeightDefinition
     End Function
+
+    'Protected Sub ddl_DPF_Records_SelectedIndexChanged() Handles 
+
+    '    Dim EditButtonVar As Button = CType(Me.fv_CFV_DPF.FindControl("EditButton"), Button)
+    '    EditButtonVar.Visible = True
+
+    'End Sub
 
 End Class
 

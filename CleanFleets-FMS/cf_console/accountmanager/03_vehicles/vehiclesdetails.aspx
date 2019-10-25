@@ -2414,6 +2414,28 @@
 		                        </tr>
                             </table>--%>
 
+                             <asp:Label ID="TestPrompt" runat="server" Visible="false" Text='<%# Bind("ModifiedDate") %>' /> 
+  
+                            <table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%"> 
+                                <%--<tr> 
+                                    <td style="width: 100px;"> 
+                                        <asp:Label ID="TestPrompt" runat="server" Text='<%# Bind("ModifiedDate") %>' /> 
+                                    </td> 
+                                </tr>--%> 
+                                <tr> 
+                                    <td class="tdtable" style="width: 70px"> 
+                                        Select DPF Record: 
+                                    </td> 
+                                    <td> 
+                                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="EnterDate" 
+                                            DataValueField="IDDPF" AppendDataBoundItems="true" AutoPostBack="True"> 
+  
+                                            <asp:ListItem Text="Select" Value="" /> 
+                                        </asp:DropDownList> 
+                                    </td> 
+                                </tr> 
+                            </table> 
+
                             <%-- End Of What was added by Andrew on 10/17/2019 --%>
 
                           <table style="width: 100%">
@@ -2625,9 +2647,9 @@
                                     </td>
                                 </tr>
                             </table>
-                                   <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                                   <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" Visible="true" />
                                    <%--<asp:Button ID="btnUpdate" Text='<%# "Update" %>' runat="server" CommandName='<%# "Update"%>'></asp:Button>--%>
-                                   <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel"></asp:Button>
+                                   <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Visible="true" /><%--</asp:Button>--%>
                            </ItemTemplate>
                         <%-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| --%>
                         <EmptyDataTemplate>
@@ -2860,7 +2882,7 @@
                             </table>
                                    <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
                                    <%--<asp:Button ID="btnUpdate" Text='<%# "Update" %>' runat="server" CommandName='<%# "Update"%>'></asp:Button>--%>
-                                   <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel"></asp:Button>
+                                   <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" /><%--</asp:Button>--%>
                         </EmptyDataTemplate>
                     </asp:FormView>
                     </table>
@@ -3348,10 +3370,11 @@
     <%-- Added by Andrew on 10/17/2019 --%>
 	
 	<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [IDDPF], [VINNumber] FROM [CF_DPF] WHERE [VINNUMBER] = '12345678' ORDER BY [VINNumber]">
+		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINTextBoxParam ORDER BY [EnterDate]">
 		<SelectParameters>
-		<asp:QueryStringParameter Name="IDDPF" QueryStringField="IDDPF"
-				Type="Int32" /> 
+		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
+				Type="Int32" />--%>
+            <asp:ControlParameter Name="ChassisVINTextBoxParam" ControlID="fv_CFV_Vehicles$lbl_ChVIN0" Type="String" />
 		</SelectParameters>
 	</asp:SqlDataSource>
 
