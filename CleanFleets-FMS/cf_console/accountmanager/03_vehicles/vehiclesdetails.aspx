@@ -69,6 +69,13 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="RightColumnContentPlaceHolder">
+
+    <%--Added by Andrew on 10/25/2019--%>
+
+    <asp:textbox id="ChassisVINHolder" runat="server" />
+
+    <%--End of what was added by Andrew on 10/25/2019--%>
+
 	<asp:FormView ID="FormView1" runat="server" DataKeyNames="IDProfileAccount,IDProfileTerminal,IDProfileFleet"
 		DataSourceID="sds_CFV_Fleet_Lineage" Width="800px">
 		<EditItemTemplate>
@@ -2170,6 +2177,27 @@
                         DataKeyNames="IDDPF" DataSourceID="sds_CFV_DPF_fv" 
                         Width="700px">
                         <EditItemTemplate>
+
+                            <%--<table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%">--%> 
+                                <%--<tr> 
+                                    <td style="width: 100px;"> 
+                                        <asp:Label ID="TestPrompt" runat="server" Text='<%# Bind("ModifiedDate") %>' /> 
+                                    </td> 
+                                </tr>--%> 
+                                <%--<tr> 
+                                    <td class="tdtable" style="width: 70px"> 
+                                        Select DPF Record: 
+                                    </td> 
+                                    <td> 
+                                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="EnterDate" 
+                                            DataValueField="IDDPF" AppendDataBoundItems="true" AutoPostBack="true"> 
+  
+                                            <asp:ListItem Text="Select" Value="" /> 
+                                        </asp:DropDownList> 
+                                    </td> 
+                                </tr> 
+                            </table>--%>
+
                             <table style="width: 100%">
                                 <tr>
                                     <td style="width: 90px; " class="tdtable">
@@ -2414,7 +2442,7 @@
 		                        </tr>
                             </table>--%>
 
-                             <asp:Label ID="TestPrompt" runat="server" Visible="false" Text='<%# Bind("ModifiedDate") %>' /> 
+                             <%--<asp:Label ID="TestPrompt" runat="server" Visible="false" Text='<%# Bind("ModifiedDate") %>' />--%> 
   
                             <table id="DPF_Record_Table" cellpadding="0" cellspacing="0" style="width: 100%"> 
                                 <%--<tr> 
@@ -2428,7 +2456,7 @@
                                     </td> 
                                     <td> 
                                         <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="EnterDate" 
-                                            DataValueField="IDDPF" AppendDataBoundItems="true" AutoPostBack="True"> 
+                                            DataValueField="IDDPF" AppendDataBoundItems="true" OnSelectedIndexChanged="ddl_DPF_Records_SelectedIndexChanged" AutoPostBack="true"> 
   
                                             <asp:ListItem Text="Select" Value="" /> 
                                         </asp:DropDownList> 
@@ -2443,17 +2471,17 @@
                                     <td style="width: 90px; " class="tdtable">
                                         Date: </td>
                                     <td style="width: 100px;">
-                                        <asp:Label ID="lbl_Date" runat="server" Text='<%# Bind("ModifiedDate") %>' />
+                                        <asp:Label ID="lbl_Date" runat="server" Visible="false" Text='<%# Bind("ModifiedDate") %>' />
                                     </td>
                                     <td style="width: 83px; " class="tdtable">
                                         Invoice Number: </td>
                                     <td style="width: 190px" colspan="3">
-                                        <asp:Label ID="lbl_InvoiceNo" runat="server" Text='<%# Bind("InvoiceNumber") %>' />
+                                        <asp:Label ID="lbl_InvoiceNo" runat="server" Visible="false" Text='<%# Bind("InvoiceNumber") %>' />
                                     </td>
                                    <td style="width: 83px; " class="tdtable">
                                         PO Number: </td>
                                     <td style="width: 190px" colspan="3">
-                                        <asp:Label ID="lbl_PONo" runat="server" Text='<%# Bind("PONumber") %>' />
+                                        <asp:Label ID="lbl_PONo" runat="server" Visible="false" Text='<%# Bind("PONumber") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -2479,12 +2507,12 @@
                                     <td style="width: 83px; " class="tdtable">
                                         VIN #: </td>
                                     <td style="width: 190px" colspan="3">
-                                        <asp:Label ID="lbl_VINNo" runat="server" Text='<%# Bind("VINNumber") %>' />
+                                        <asp:Label ID="lbl_VINNo" runat="server" Visible="false" Text='<%# Bind("VINNumber") %>' />
                                     </td>
                                    <td style="width: 83px; " class="tdtable">
                                         Make: </td>
                                     <td style="width: 190px" colspan="3">
-                                        <asp:Label ID="lbl_Make" runat="server" Text='<%# Bind("Make") %>' />
+                                        <asp:Label ID="lbl_Make" runat="server" Visible="false" Text='<%# Bind("Make") %>' />
                                     </td>
                                 </tr>
                                  <tr>
@@ -2492,17 +2520,17 @@
                                         Model:
                                     </td>
                                     <td style="width: 102px;">
-                                        <asp:Label ID="lbl_Model" runat="server" Text='<%# Bind("Model") %>' />
+                                        <asp:Label ID="lbl_Model" runat="server" Visible="false" Text='<%# Bind("Model") %>' />
                                     </td>
                                     <td style="width: 83px; " class="tdtable">
                                         Plate No: </td>
                                     <td style="width: 190px" colspan="3">
-                                        <asp:Label ID="lbl_PlateNo" runat="server" Text='<%# Bind("Plate") %>' />
+                                        <asp:Label ID="lbl_PlateNo" runat="server" Visible="false" Text='<%# Bind("Plate") %>' />
                                     </td>
                                    <td style="width: 83px; " class="tdtable">
                                         Miles: </td>
                                     <td style="width: 190px" colspan="3">
-                                        <asp:Label ID="lbl_Miles" runat="server" Text='<%# Bind("Miles") %>' />
+                                        <asp:Label ID="lbl_Miles" runat="server" Visible="false" Text='<%# Bind("Miles") %>' />
                                     </td>
                                      </tr>
                                     <tr>
@@ -2510,7 +2538,7 @@
                                         Hours: 
                                     </td>
                                     <td style="width: 102px">
-                                        <asp:Label ID="lbl_Hours" runat="server" Text='<%# Bind("Hours") %>' />
+                                        <asp:Label ID="lbl_Hours" runat="server" Visible="false" Text='<%# Bind("Hours") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -2533,18 +2561,18 @@
                                         Make/Model:
                                     </td>
                                     <td style="width: 67px">
-                                        <asp:Label ID="lbl_MakeModel" runat="server" Text='<%# Bind("FilterMake") %>' />
+                                        <asp:Label ID="lbl_MakeModel" runat="server" Visible="false" Text='<%# Bind("FilterMake") %>' />
                                     </td>
                                     <td style="width: 117px; " class="tdtable">
                                         Serial Number:
                                     </td>
                                     <td>
-                                       <asp:Label ID="lbl_SerialNo" runat="server" Text='<%# Bind("SerialNumber") %>' />
+                                       <asp:Label ID="lbl_SerialNo" runat="server" Visible="false" Text='<%# Bind("SerialNumber") %>' />
                                     </td>
                                     <td style="width: 155px; " class="tdtable">
                                        Part Number:</td>
                                     <td>
-                                        <asp:Label ID="lbl_PartNo" runat="server" Text='<%# Bind("PartNumber") %>' />
+                                        <asp:Label ID="lbl_PartNo" runat="server" Visible="false" Text='<%# Bind("PartNumber") %>' />
                                     </td>
                                 </tr>
                                 <tr>
@@ -2552,13 +2580,13 @@
                                         Substrate:
                                     </td>
                                     <td style="width: 67px">
-                                        <asp:Label ID="lbl_Substrate" runat="server" Text='<%# Bind("Substrate") %>' />
+                                        <asp:Label ID="lbl_Substrate" runat="server" Visible="false" Text='<%# Bind("Substrate") %>' />
                                     </td>
                                    	<td style="width: 117px; " class="tdtable">
                                         Doc Cleaned:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_DocCleaned" runat="server" Text='<%# Bind("DocCleaned") %>' />
+                                        <asp:Label ID="lbl_DocCleaned" runat="server" Visible="false" Text='<%# Bind("DocCleaned") %>' />
                                     </td>
                                    </tr>
                                 </table>
@@ -2581,7 +2609,7 @@
                                         Condition:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_Condition" runat="server" Text='<%# Bind("Condition") %>' />
+                                        <asp:Label ID="lbl_Condition" runat="server" Visible="false" Text='<%# Bind("Condition") %>' />
                                     </td
                                 </tr>
                             </table>
@@ -2597,18 +2625,18 @@
                                   </tr>
                                 <tr>
                                     <td style="width: 15%; " class="tdtable">Weight (Grams)</br>&nbsp;&nbsp;</td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_W_DPFInitial" runat="server" Text='<%# Bind("DPFInitWeight") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_W_DPFFinal" runat="server" Text='<%# Bind("DPFFinalWeight") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_W_DPFDiff" runat="server" Text='<%# Bind("DPFWeightDiff") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_DOC1Initial" runat="server" Text='<%# Bind("DOCInitWeight") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_DOC1Final" runat="server" Text='<%# Bind("DOCFinalWeight") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_DOC1Diff" runat="server" Text='<%# Bind("DOCWeightDiff") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_W_DPFInitial" runat="server" Visible="false" Text='<%# Bind("DPFInitWeight") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_W_DPFFinal" runat="server" Visible="false" Text='<%# Bind("DPFFinalWeight") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_W_DPFDiff" runat="server" Visible="false" Text='<%# Bind("DPFWeightDiff") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_DOC1Initial" runat="server" Visible="false" Text='<%# Bind("DOCInitWeight") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_DOC1Final" runat="server" Visible="false" Text='<%# Bind("DOCFinalWeight") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="lbl_DOC1Diff" runat="server" Visible="false" Text='<%# Bind("DOCWeightDiff") %>' /></td>
                                 </tr>
                                 <tr>
                                     <td style="width: 15%; " class="tdtable">Flow Restricition</br>(Inch of Water)</td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="F_DPFInitial" runat="server" Text='<%# Bind("DPFInitFR") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="F_DPFFinal" runat="server" Text='<%# Bind("DPFFinalFR") %>' /></td>
-                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="F_DPFDiff" runat="server" Text='<%# Bind("DPFFRDiff") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="F_DPFInitial" runat="server" Visible="false" Text='<%# Bind("DPFInitFR") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="F_DPFFinal" runat="server" Visible="false" Text='<%# Bind("DPFFinalFR") %>' /></td>
+                                    <td style="width: 14%; " class="tdtable"><asp:Label ID="F_DPFDiff" runat="server" Visible="false" Text='<%# Bind("DPFFRDiff") %>' /></td>
                                     <td style="width: 14%; " class="tdtable">--------</td>
                                     <td style="width: 14%; " class="tdtable">--------</td>
                                     <td style="width: 14%; " class="tdtable">--------</td>
@@ -2619,14 +2647,14 @@
 									<td style="width: 175px; " class="tdtable">
                                         Wire Test Results:</td>
                                     <td style="width: 130px">
-                                        <asp:Label ID="lbl_WireTestResults" runat="server" Text='<%# Bind("WTResults") %>' Width="60px" />
+                                        <asp:Label ID="lbl_WireTestResults" runat="server" Visible="false" Text='<%# Bind("WTResults") %>' Width="60px" />
                                     </td>
                                 </tr>
                                 <tr>
 									<td style="width: 175px; " class="tdtable">
                                         Cleaning Tech:</td>
                                     <td style="width: 130px">
-                                        <asp:Label ID="lbl_CleaningTech" runat="server" Text='<%# Bind("CleaningTech") %>' Width="60px" />
+                                        <asp:Label ID="lbl_CleaningTech" runat="server" Visible="false" Text='<%# Bind("CleaningTech") %>' Width="60px" />
                                     </td>
                                 </tr>   
                                 <tr>
@@ -2634,7 +2662,7 @@
                                         Required Multiple Cleanings:
                                     </td>
                                     <td>
-                                       <asp:Label ID="lbl_MultipleCleanings" runat="server" Text='<%# Bind("MultipleCleanings") %>' />
+                                       <asp:Label ID="lbl_MultipleCleanings" runat="server" Visible="false" Text='<%# Bind("MultipleCleanings") %>' />
                                     </td>
                                 </tr>
                                  <tr>
@@ -2642,14 +2670,14 @@
                                         Notes:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_Notes" runat="server" Height="65px" 
+                                        <asp:Label ID="lbl_Notes" runat="server" Visible="false" Height="65px" 
                                             Text='<%# Bind("Notes") %>' TextMode="MultiLine" Width="650px" />
                                     </td>
                                 </tr>
                             </table>
-                                   <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" Visible="true" />
+                                   <asp:Button ID="EditButton" runat="server" Visible="false" CausesValidation="False" CommandName="Edit" Text="Edit" />
                                    <%--<asp:Button ID="btnUpdate" Text='<%# "Update" %>' runat="server" CommandName='<%# "Update"%>'></asp:Button>--%>
-                                   <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" Visible="true" /><%--</asp:Button>--%>
+                                   <asp:Button ID="btnCancel" Text="Cancel" runat="server" Visible="false" CausesValidation="False" CommandName="Cancel" /><%--</asp:Button>--%>
                            </ItemTemplate>
                         <%-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| --%>
                         <EmptyDataTemplate>
@@ -2664,7 +2692,7 @@
 			                        </td>
 			                        <td>
 				                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="VINNumber"
-					                        DataValueField="IDDPF" AutoPostBack="True">
+					                        DataValueField="IDDPF" AutoPostBack="true">
 				                        </asp:DropDownList>
 			                        </td>
 		                        </tr>
@@ -3370,13 +3398,22 @@
     <%-- Added by Andrew on 10/17/2019 --%>
 	
 	<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINTextBoxParam ORDER BY [EnterDate]">
+		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [EnterDate]">
 		<SelectParameters>
 		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
 				Type="Int32" />--%>
-            <asp:ControlParameter Name="ChassisVINTextBoxParam" ControlID="fv_CFV_Vehicles$lbl_ChVIN0" Type="String" />
+            <asp:ControlParameter Name="ChassisVINHolderParam" ControlID="ChassisVINHolder" Type="String" />
 		</SelectParameters>
 	</asp:SqlDataSource>
+
+    <%--<asp:SqlDataSource ID="sds_DPF_2" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINTextBoxParam ORDER BY [EnterDate]">
+		<SelectParameters>--%>
+		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
+				Type="Int32" />--%>
+            <%--<asp:ControlParameter Name="ChassisVINTextBoxParam" ControlID="fv_CFV_Vehicles$ChassisVINTextBox" Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>--%>
 
     <%-- End of what was added by Andrew on 10/17/2019 --%>
 

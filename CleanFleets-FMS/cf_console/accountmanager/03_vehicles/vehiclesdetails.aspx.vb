@@ -164,6 +164,51 @@ Public Class vehiclesdetails1
         'EditButtonVar.Visible = False
         'EditButtonVar.Visible = True
 
+        'If (Page.IsPostBack = False) Then
+
+        If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
+
+                Dim TempDataView As DataView
+                TempDataView = sds_CFV_Vehicles_fv.Select(DataSourceSelectArguments.Empty)
+
+                Dim TempDataRowView As DataRowView
+                TempDataRowView = TempDataView(0)
+
+                ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
+
+                '    ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
+
+                '        Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+
+                '        If (TestLabel_lbl_PONo Is Nothing) Then
+
+                '            ChassisVINHolder.Text = "First Nothing!"
+
+                '        Else
+
+                '            TestLabel_lbl_PONo.Visible = False
+
+                '        End If
+
+                '    End If
+
+                'ElseIf (Page.IsPostBack = True) Then
+
+                '    Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+
+                '    If (TestLabel_lbl_PONo Is Nothing) Then
+
+                '        ChassisVINHolder.Text = "Second Nothing!"
+
+
+                '    Else
+
+                '        TestLabel_lbl_PONo.Visible = False
+
+            End If
+
+        'End If
+
     End Sub
 
     '*********************************************************************************************************************
@@ -1572,12 +1617,280 @@ Public Class vehiclesdetails1
         Return idWeightDefinition
     End Function
 
-    'Protected Sub ddl_DPF_Records_SelectedIndexChanged() Handles 
+    Protected Sub ddl_DPF_Records_SelectedIndexChanged() Handles ddl_DPF_Records.SelectedIndexChanged
 
-    '    Dim EditButtonVar As Button = CType(Me.fv_CFV_DPF.FindControl("EditButton"), Button)
-    '    EditButtonVar.Visible = True
+        If (Page.IsPostBack = True) Then
 
-    'End Sub
+            If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
+
+                Dim Testddl_ddl_DPF_Records As DropDownList = CType(fv_CFV_DPF.FindControl("ddl_DPF_Records"), DropDownList)
+                Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
+                Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
+                Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
+                Dim TestLabel_lbl_Company As Label = CType(fv_CFV_DPF.FindControl("lbl_Company"), Label)
+                Dim TestLabel_lbl_VINNo As Label = CType(fv_CFV_DPF.FindControl("lbl_VINNo"), Label)
+                Dim TestLabel_lbl_Make As Label = CType(fv_CFV_DPF.FindControl("lbl_Make"), Label)
+                Dim TestLabel_lbl_Model As Label = CType(fv_CFV_DPF.FindControl("lbl_Model"), Label)
+                Dim TestLabel_lbl_PlateNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PlateNo"), Label)
+                Dim TestLabel_lbl_Miles As Label = CType(fv_CFV_DPF.FindControl("lbl_Miles"), Label)
+                Dim TestLabel_lbl_Hours As Label = CType(fv_CFV_DPF.FindControl("lbl_Hours"), Label)
+                Dim TestLabel_lbl_MakeModel As Label = CType(fv_CFV_DPF.FindControl("lbl_MakeModel"), Label)
+
+                Dim TestLabel_lbl_SerialNo As Label = CType(fv_CFV_DPF.FindControl("lbl_SerialNo"), Label)
+                Dim TestLabel_lbl_PartNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PartNo"), Label)
+                Dim TestLabel_lbl_Substrate As Label = CType(fv_CFV_DPF.FindControl("lbl_Substrate"), Label)
+                Dim TestLabel_lbl_DocCleaned As Label = CType(fv_CFV_DPF.FindControl("lbl_DocCleaned"), Label)
+                Dim TestLabel_lbl_Condition As Label = CType(fv_CFV_DPF.FindControl("lbl_Condition"), Label)
+                Dim TestLabel_lbl_W_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFInitial"), Label)
+                Dim TestLabel_lbl_W_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFFinal"), Label)
+                Dim TestLabel_lbl_W_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFDiff"), Label)
+                Dim TestLabel_lbl_DOC1Initial As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Initial"), Label)
+                Dim TestLabel_lbl_DOC1Final As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Final"), Label)
+                Dim TestLabel_lbl_DOC1Diff As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Diff"), Label)
+                Dim TestLabel_F_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("F_DPFInitial"), Label)
+                Dim TestLabel_F_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("F_DPFFinal"), Label)
+                Dim TestLabel_F_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("F_DPFDiff"), Label)
+                Dim TestLabel_lbl_WireTestResults As Label = CType(fv_CFV_DPF.FindControl("lbl_WireTestResults"), Label)
+                Dim TestLabel_lbl_CleaningTech As Label = CType(fv_CFV_DPF.FindControl("lbl_CleaningTech"), Label)
+                Dim TestLabel_lbl_MultipleCleanings As Label = CType(fv_CFV_DPF.FindControl("lbl_MultipleCleanings"), Label)
+                Dim TestLabel_lbl_Notes As Label = CType(fv_CFV_DPF.FindControl("lbl_Notes"), Label)
+
+                'Dim TestLabel_EditButton As Label = CType(fv_CFV_DPF.FindControl("EditButton"), Label)
+                'Dim TestLabel_btnCancel As Label = CType(fv_CFV_DPF.FindControl("btnCancel"), Label)
+
+                If (TestLabel_lbl_PONo Is Nothing) Then
+
+                    ChassisVINHolder.Text = "NULL ddl"
+
+                Else
+
+                    If (Testddl_ddl_DPF_Records.SelectedItem.Text <> "Select") Then
+
+                        ChassisVINHolder.Text = "ddl Not NULL and Not Select"
+
+                        TestLabel_lbl_PONo.Visible = True
+                        TestLabel_lbl_InvoiceNo.Visible = True
+                        TestLabel_lbl_Date.Visible = True
+                        TestLabel_lbl_PONo.Visible = True
+                        TestLabel_lbl_Company.Visible = True
+                        TestLabel_lbl_VINNo.Visible = True
+                        TestLabel_lbl_Make.Visible = True
+                        TestLabel_lbl_Model.Visible = True
+                        TestLabel_lbl_PlateNo.Visible = True
+                        TestLabel_lbl_Miles.Visible = True
+                        TestLabel_lbl_Hours.Visible = True
+                        TestLabel_lbl_MakeModel.Visible = True
+
+                        TestLabel_lbl_SerialNo.Visible = True
+                        TestLabel_lbl_PartNo.Visible = True
+                        TestLabel_lbl_Substrate.Visible = True
+                        TestLabel_lbl_DocCleaned.Visible = True
+                        TestLabel_lbl_Condition.Visible = True
+                        TestLabel_lbl_W_DPFInitial.Visible = True
+                        TestLabel_lbl_W_DPFFinal.Visible = True
+                        TestLabel_lbl_W_DPFDiff.Visible = True
+                        TestLabel_lbl_DOC1Initial.Visible = True
+                        TestLabel_lbl_DOC1Final.Visible = True
+                        TestLabel_lbl_DOC1Diff.Visible = True
+                        TestLabel_F_DPFInitial.Visible = True
+                        TestLabel_F_DPFFinal.Visible = True
+                        TestLabel_F_DPFDiff.Visible = True
+                        TestLabel_lbl_WireTestResults.Visible = True
+                        TestLabel_lbl_CleaningTech.Visible = True
+                        TestLabel_lbl_MultipleCleanings.Visible = True
+                        TestLabel_lbl_Notes.Visible = True
+
+                        'TestLabel_EditButton.Visible = True
+                        'TestLabel_btnCancel.Visible = True
+
+                    Else
+
+                        ChassisVINHolder.Text = "ddl Not NULL but Select"
+
+                        TestLabel_lbl_PONo.Visible = False
+                        TestLabel_lbl_InvoiceNo.Visible = False
+                        TestLabel_lbl_Date.Visible = False
+                        TestLabel_lbl_PONo.Visible = False
+                        TestLabel_lbl_Company.Visible = False
+                        TestLabel_lbl_VINNo.Visible = False
+                        TestLabel_lbl_Make.Visible = False
+                        TestLabel_lbl_Model.Visible = False
+                        TestLabel_lbl_PlateNo.Visible = False
+                        TestLabel_lbl_Miles.Visible = False
+                        TestLabel_lbl_Hours.Visible = False
+                        TestLabel_lbl_MakeModel.Visible = False
+
+                        TestLabel_lbl_SerialNo.Visible = False
+                        TestLabel_lbl_PartNo.Visible = False
+                        TestLabel_lbl_Substrate.Visible = False
+                        TestLabel_lbl_DocCleaned.Visible = False
+                        TestLabel_lbl_Condition.Visible = False
+                        TestLabel_lbl_W_DPFInitial.Visible = False
+                        TestLabel_lbl_W_DPFFinal.Visible = False
+                        TestLabel_lbl_W_DPFDiff.Visible = False
+                        TestLabel_lbl_DOC1Initial.Visible = False
+                        TestLabel_lbl_DOC1Final.Visible = False
+                        TestLabel_lbl_DOC1Diff.Visible = False
+                        TestLabel_F_DPFInitial.Visible = False
+                        TestLabel_F_DPFFinal.Visible = False
+                        TestLabel_F_DPFDiff.Visible = False
+                        TestLabel_lbl_WireTestResults.Visible = False
+                        TestLabel_lbl_CleaningTech.Visible = False
+                        TestLabel_lbl_MultipleCleanings.Visible = False
+                        TestLabel_lbl_Notes.Visible = False
+
+                        'TestLabel_EditButton.Visible = False
+                        'TestLabel_btnCancel.Visible = False
+
+                    End If
+
+                End If
+
+            End If
+
+        Else
+
+            ChassisVINHolder.Text = "Getting Here?"
+
+        End If
+
+    End Sub
+
+    Protected Sub fv_CFV_DPF_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles fv_CFV_DPF.DataBound
+
+        If (Page.IsPostBack = True) Then
+
+            If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
+
+
+                Dim Testddl_ddl_DPF_Records As DropDownList = CType(fv_CFV_DPF.FindControl("ddl_DPF_Records"), DropDownList)
+                Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
+                Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
+                Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
+                Dim TestLabel_lbl_Company As Label = CType(fv_CFV_DPF.FindControl("lbl_Company"), Label)
+                Dim TestLabel_lbl_VINNo As Label = CType(fv_CFV_DPF.FindControl("lbl_VINNo"), Label)
+                Dim TestLabel_lbl_Make As Label = CType(fv_CFV_DPF.FindControl("lbl_Make"), Label)
+                Dim TestLabel_lbl_Model As Label = CType(fv_CFV_DPF.FindControl("lbl_Model"), Label)
+                Dim TestLabel_lbl_PlateNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PlateNo"), Label)
+                Dim TestLabel_lbl_Miles As Label = CType(fv_CFV_DPF.FindControl("lbl_Miles"), Label)
+                Dim TestLabel_lbl_Hours As Label = CType(fv_CFV_DPF.FindControl("lbl_Hours"), Label)
+                Dim TestLabel_lbl_MakeModel As Label = CType(fv_CFV_DPF.FindControl("lbl_MakeModel"), Label)
+
+                Dim TestLabel_lbl_SerialNo As Label = CType(fv_CFV_DPF.FindControl("lbl_SerialNo"), Label)
+                Dim TestLabel_lbl_PartNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PartNo"), Label)
+                Dim TestLabel_lbl_Substrate As Label = CType(fv_CFV_DPF.FindControl("lbl_Substrate"), Label)
+                Dim TestLabel_lbl_DocCleaned As Label = CType(fv_CFV_DPF.FindControl("lbl_DocCleaned"), Label)
+                Dim TestLabel_lbl_Condition As Label = CType(fv_CFV_DPF.FindControl("lbl_Condition"), Label)
+                Dim TestLabel_lbl_W_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFInitial"), Label)
+                Dim TestLabel_lbl_W_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFFinal"), Label)
+                Dim TestLabel_lbl_W_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFDiff"), Label)
+                Dim TestLabel_lbl_DOC1Initial As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Initial"), Label)
+                Dim TestLabel_lbl_DOC1Final As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Final"), Label)
+                Dim TestLabel_lbl_DOC1Diff As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Diff"), Label)
+                Dim TestLabel_F_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("F_DPFInitial"), Label)
+                Dim TestLabel_F_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("F_DPFFinal"), Label)
+                Dim TestLabel_F_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("F_DPFDiff"), Label)
+                Dim TestLabel_lbl_WireTestResults As Label = CType(fv_CFV_DPF.FindControl("lbl_WireTestResults"), Label)
+                Dim TestLabel_lbl_CleaningTech As Label = CType(fv_CFV_DPF.FindControl("lbl_CleaningTech"), Label)
+                Dim TestLabel_lbl_MultipleCleanings As Label = CType(fv_CFV_DPF.FindControl("lbl_MultipleCleanings"), Label)
+                Dim TestLabel_lbl_Notes As Label = CType(fv_CFV_DPF.FindControl("lbl_Notes"), Label)
+
+                'Dim TestLabel_EditButton As Label = CType(fv_CFV_DPF.FindControl("EditButton"), Label)
+                'Dim TestLabel_btnCancel As Label = CType(fv_CFV_DPF.FindControl("btnCancel"), Label)
+
+                If (TestLabel_lbl_PONo Is Nothing) Then
+
+                    ChassisVINHolder.Text = "NULL DataBound"
+
+                Else
+
+                    If (Testddl_ddl_DPF_Records.SelectedItem.Text <> "Select") Then
+
+                        ChassisVINHolder.Text = "Databound Not NULL and Not Select"
+
+                        TestLabel_lbl_PONo.Visible = True
+                        TestLabel_lbl_InvoiceNo.Visible = True
+                        TestLabel_lbl_Date.Visible = True
+                        TestLabel_lbl_PONo.Visible = True
+                        TestLabel_lbl_Company.Visible = True
+                        TestLabel_lbl_VINNo.Visible = True
+                        TestLabel_lbl_Make.Visible = True
+                        TestLabel_lbl_Model.Visible = True
+                        TestLabel_lbl_PlateNo.Visible = True
+                        TestLabel_lbl_Miles.Visible = True
+                        TestLabel_lbl_Hours.Visible = True
+                        TestLabel_lbl_MakeModel.Visible = True
+
+                        TestLabel_lbl_SerialNo.Visible = True
+                        TestLabel_lbl_PartNo.Visible = True
+                        TestLabel_lbl_Substrate.Visible = True
+                        TestLabel_lbl_DocCleaned.Visible = True
+                        TestLabel_lbl_Condition.Visible = True
+                        TestLabel_lbl_W_DPFInitial.Visible = True
+                        TestLabel_lbl_W_DPFFinal.Visible = True
+                        TestLabel_lbl_W_DPFDiff.Visible = True
+                        TestLabel_lbl_DOC1Initial.Visible = True
+                        TestLabel_lbl_DOC1Final.Visible = True
+                        TestLabel_lbl_DOC1Diff.Visible = True
+                        TestLabel_F_DPFInitial.Visible = True
+                        TestLabel_F_DPFFinal.Visible = True
+                        TestLabel_F_DPFDiff.Visible = True
+                        TestLabel_lbl_WireTestResults.Visible = True
+                        TestLabel_lbl_CleaningTech.Visible = True
+                        TestLabel_lbl_MultipleCleanings.Visible = True
+                        TestLabel_lbl_Notes.Visible = True
+
+                        'TestLabel_EditButton.Visible = True
+                        'TestLabel_btnCancel.Visible = True
+
+                    Else
+
+                        ChassisVINHolder.Text = "Databound Not NULL but Select"
+
+                        TestLabel_lbl_PONo.Visible = False
+                        TestLabel_lbl_InvoiceNo.Visible = False
+                        TestLabel_lbl_Date.Visible = False
+                        TestLabel_lbl_PONo.Visible = False
+                        TestLabel_lbl_Company.Visible = False
+                        TestLabel_lbl_VINNo.Visible = False
+                        TestLabel_lbl_Make.Visible = False
+                        TestLabel_lbl_Model.Visible = False
+                        TestLabel_lbl_PlateNo.Visible = False
+                        TestLabel_lbl_Miles.Visible = False
+                        TestLabel_lbl_Hours.Visible = False
+                        TestLabel_lbl_MakeModel.Visible = False
+
+                        TestLabel_lbl_SerialNo.Visible = False
+                        TestLabel_lbl_PartNo.Visible = False
+                        TestLabel_lbl_Substrate.Visible = False
+                        TestLabel_lbl_DocCleaned.Visible = False
+                        TestLabel_lbl_Condition.Visible = False
+                        TestLabel_lbl_W_DPFInitial.Visible = False
+                        TestLabel_lbl_W_DPFFinal.Visible = False
+                        TestLabel_lbl_W_DPFDiff.Visible = False
+                        TestLabel_lbl_DOC1Initial.Visible = False
+                        TestLabel_lbl_DOC1Final.Visible = False
+                        TestLabel_lbl_DOC1Diff.Visible = False
+                        TestLabel_F_DPFInitial.Visible = False
+                        TestLabel_F_DPFFinal.Visible = False
+                        TestLabel_F_DPFDiff.Visible = False
+                        TestLabel_lbl_WireTestResults.Visible = False
+                        TestLabel_lbl_CleaningTech.Visible = False
+                        TestLabel_lbl_MultipleCleanings.Visible = False
+                        TestLabel_lbl_Notes.Visible = False
+
+                        'TestLabel_EditButton.Visible = False
+                        'TestLabel_btnCancel.Visible = False
+
+                    End If
+
+                End If
+
+            End If
+
+        End If
+
+    End Sub
 
 End Class
 
