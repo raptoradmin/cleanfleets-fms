@@ -32,6 +32,15 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents ChassisVINHolder As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Flag control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Flag As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''FormView1 control.
     '''</summary>
     '''<remarks>

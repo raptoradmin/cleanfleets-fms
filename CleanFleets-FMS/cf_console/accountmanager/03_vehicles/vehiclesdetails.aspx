@@ -76,6 +76,13 @@
 
     <%--End of what was added by Andrew on 10/25/2019--%>
 
+    <%--Added by Andrew on 10/31/2019--%>
+
+    <asp:textbox id="Flag" runat="server" Text="1" />
+    <%--<asp:textbox id="RecordIDDPF" runat="server" Text="" />--%>
+
+    <%--End of what was added by Andrew on 10/31/2019--%>
+
 	<asp:FormView ID="FormView1" runat="server" DataKeyNames="IDProfileAccount,IDProfileTerminal,IDProfileFleet"
 		DataSourceID="sds_CFV_Fleet_Lineage" Width="800px">
 		<EditItemTemplate>
@@ -2455,7 +2462,7 @@
                                         Select DPF Record: 
                                     </td> 
                                     <td> 
-                                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="EnterDate" 
+                                        <asp:DropDownList ID="ddl_DPF_Records" runat="server" DataSourceID="sds_DPF" DataTextField="CombinedDates" 
                                             DataValueField="IDDPF" AppendDataBoundItems="true" OnSelectedIndexChanged="ddl_DPF_Records_SelectedIndexChanged" AutoPostBack="true"> 
   
                                             <asp:ListItem Text="Select" Value="" /> 
@@ -3008,7 +3015,10 @@
 
     <asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
         SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CF_DPF]"> 
-        
+        <%--<SelectParameters>
+            <asp:ControlParameter Name="ChassisVINHolderParam" ControlID="ChassisVINHolder" Type="String" />
+            <asp:ControlParameter Name="ThisFlag" ControlID="Flag" Type="String" />
+		</SelectParameters>--%>
     </asp:SqlDataSource> 
 
     <%-- End of what was added by Andrew on 10/18/2019 --%>
@@ -3398,7 +3408,7 @@
     <%-- Added by Andrew on 10/17/2019 --%>
 	
 	<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [EnterDate]">
+		SelectCommand="SELECT [EnterDate], [ModifiedDate], [IDDPF], CONCAT('EnterDate: ', [EnterDate], ' | ', 'Last Modified Date: ', [ModifiedDate]) [CombinedDates] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [CombinedDates]">
 		<SelectParameters>
 		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
 				Type="Int32" />--%>

@@ -1624,6 +1624,7 @@ Public Class vehiclesdetails1
             If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
 
                 Dim Testddl_ddl_DPF_Records As DropDownList = CType(fv_CFV_DPF.FindControl("ddl_DPF_Records"), DropDownList)
+
                 Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
                 Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
                 Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
@@ -1655,8 +1656,8 @@ Public Class vehiclesdetails1
                 Dim TestLabel_lbl_MultipleCleanings As Label = CType(fv_CFV_DPF.FindControl("lbl_MultipleCleanings"), Label)
                 Dim TestLabel_lbl_Notes As Label = CType(fv_CFV_DPF.FindControl("lbl_Notes"), Label)
 
-                'Dim TestLabel_EditButton As Label = CType(fv_CFV_DPF.FindControl("EditButton"), Label)
-                'Dim TestLabel_btnCancel As Label = CType(fv_CFV_DPF.FindControl("btnCancel"), Label)
+                Dim TestLabel_EditButton As Button = CType(fv_CFV_DPF.FindControl("EditButton"), Button)
+                Dim TestLabel_btnCancel As Button = CType(fv_CFV_DPF.FindControl("btnCancel"), Button)
 
                 If (TestLabel_lbl_PONo Is Nothing) Then
 
@@ -1700,8 +1701,37 @@ Public Class vehiclesdetails1
                         TestLabel_lbl_MultipleCleanings.Visible = True
                         TestLabel_lbl_Notes.Visible = True
 
-                        'TestLabel_EditButton.Visible = True
-                        'TestLabel_btnCancel.Visible = True
+                        TestLabel_EditButton.Visible = True
+                        TestLabel_btnCancel.Visible = True
+
+                        Dim connection_string As String
+
+                        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+                        Dim DPF_conn As New SqlConnection(connection_string)
+
+                        If DPF_conn.State = ConnectionState.Closed Then
+
+                            DPF_conn.Open()
+
+                        End If
+
+                        Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+
+                        DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
+                        DPF_comm.Parameters("@IDDPF").Value = Testddl_ddl_DPF_Records.SelectedItem.Value
+
+                        Dim DPF_reader As SqlDataReader = DPF_comm.ExecuteReader
+
+                        While (DPF_reader.Read())
+
+                            TestLabel_lbl_PlateNo.Text = If(IsDBNull(DPF_reader("Plate")), "", Convert.ToString(DPF_reader("Plate")))
+
+                        End While
+
+                        DPF_reader.Close()
+
+                        DPF_conn.Close()
 
                     Else
 
@@ -1739,12 +1769,22 @@ Public Class vehiclesdetails1
                         TestLabel_lbl_MultipleCleanings.Visible = False
                         TestLabel_lbl_Notes.Visible = False
 
-                        'TestLabel_EditButton.Visible = False
-                        'TestLabel_btnCancel.Visible = False
+                        TestLabel_EditButton.Visible = False
+                        TestLabel_btnCancel.Visible = False
 
                     End If
 
                 End If
+
+                'ddl_DPF_Records.SelectedItem.Text
+
+                'Dim TempDataView As DataView
+                'TempDataView = sds_CFV_Vehicles_fv.Select(DataSourceSelectArguments.Empty)
+
+                'Dim TempDataRowView As DataRowView
+                'TempDataRowView = TempDataView(0)
+
+                'ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
 
             End If
 
