@@ -72,13 +72,13 @@
 
     <%--Added by Andrew on 10/25/2019--%>
 
-    <asp:textbox id="ChassisVINHolder" runat="server" />
+    <asp:textbox id="ChassisVINHolder" runat="server" Visible="false" />
 
     <%--End of what was added by Andrew on 10/25/2019--%>
 
     <%--Added by Andrew on 10/31/2019--%>
 
-    <asp:textbox id="Flag" runat="server" Text="1" />
+    <asp:textbox id="Flag" runat="server" Text="1" Visible="false" />
     <%--<asp:textbox id="RecordIDDPF" runat="server" Text="" />--%>
 
     <%--End of what was added by Andrew on 10/31/2019--%>
@@ -2682,7 +2682,7 @@
                                     </td>
                                 </tr>
                             </table>
-                                   <asp:Button ID="EditButton" runat="server" Visible="false" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                                   <asp:Button ID="EditButton" runat="server" Visible="false" CausesValidation="False" CommandName="Edit" Text="Edit" OnClick="EditButton_Click" />
                                    <%--<asp:Button ID="btnUpdate" Text='<%# "Update" %>' runat="server" CommandName='<%# "Update"%>'></asp:Button>--%>
                                    <asp:Button ID="btnCancel" Text="Cancel" runat="server" Visible="false" CausesValidation="False" CommandName="Cancel" /><%--</asp:Button>--%>
                            </ItemTemplate>

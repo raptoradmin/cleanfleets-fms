@@ -454,14 +454,23 @@ Partial Public Class vehiclesdetails1
     '''</remarks>
     Protected WithEvents RadWindowManager1 As Global.Telerik.Web.UI.RadWindowManager
 
-    '''<summary> 
-    '''DropDownList control. 
-    '''</summary> 
-    '''<remarks> 
-    '''Auto-generated field. 
-    '''To modify move field declaration from designer file to code-behind file. 
-    '''</remarks> 
+    '''<summary>  
+    '''DropDownList control.  
+    '''</summary>  
+    '''<remarks>  
+    '''Auto-generated field.  
+    '''To modify move field declaration from designer file to code-behind file.  
+    '''</remarks>  
     Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>  
+    '''Button control.  
+    '''</summary>  
+    '''<remarks>  
+    '''Auto-generated field.  
+    '''To modify move field declaration from designer file to code-behind file.  
+    '''</remarks>  
+    Protected WithEvents EditButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''sds_CFV_Fleet_Lineage control.
