@@ -17,6 +17,8 @@
     <!--<div id="viewtextvariable_theField" runat="server" visible="false"></div>
     <div id="viewtextvariable_theFieldValues" runat="server" visible="false"></div>-->
 
+    <div id="SuccessfulImportPrompt" runat="server" visible="false" color="red"></div>
+
     <div id="PlateValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="VINNumberValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="DecimalValidationPrompt" runat="server" visible="false" color="red"></div>

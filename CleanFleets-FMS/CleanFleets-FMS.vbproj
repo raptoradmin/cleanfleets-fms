@@ -1300,8 +1300,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CodeCarvings.Piczard">
+      <Version>1.2.3.3</Version>
+    </PackageReference>
+    <PackageReference Include="CodeCarvings.Piczard.ImageUpload">
+      <Version>3.0.5</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <Version>1.0.8</Version>
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="MSBUILD.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBUILD.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />

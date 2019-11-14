@@ -14,12 +14,37 @@ Public Class report_opacity_testing_results
     Protected Sub ddl_Account_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         Dim IDProfileAccount As Integer = Convert.ToInt32(ddl_Account.SelectedValue.ToString())
         fillTerminals(IDProfileAccount)
-        fillFleets(0)
+
+        ' Added by Andrew on 11/12/2019 for the purpose of letting the user select all PSIP records.
+
+        ' fillFleets(IDProfileAccount)
+
+        ' End of what was added by Andrew
     End Sub
 
     Protected Sub ddl_Terminal_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
+        ' Added by Andrew on 11/12/2019 for the purpose of letting the user select all PSIP records.
+
+        ' Dim Temp_ddl_Account As DropDownList = CType(FindControl("ddl_Account"), DropDownList)
+
+        'If Temp_ddl_Account.SelectedValue = -1 Then
+
+        '    Dim IDProfileTerminal As Integer = -1
+        '    fillFleets(IDProfileTerminal)
+
+        'Else
+
+        ' End of what was added by Andrew on 11/12/2019.
+
         Dim IDProfileTerminal As Integer = Convert.ToInt32(ddl_Terminal.SelectedValue.ToString())
         fillFleets(IDProfileTerminal)
+
+        ' Added by Andrew on 11/12/2019 for the purpose of letting the user select all PSIP records.
+
+        ' End If
+
+        ' End of what was added by Andrew on 11/12/2019.
     End Sub
 
 
@@ -38,6 +63,26 @@ Public Class report_opacity_testing_results
             ddl_Terminal.DataSource = dt
             ddl_Terminal.DataBind()
             ddl_Terminal.Items.Insert(0, New ListItem("- Select Terminal -", "0"))
+
+            ' Added by Andrew on 11/12/2019 to try and export all PSIP records.
+
+            'ElseIf (IDProfileAccount = -1) Then
+
+            '    Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+
+            '    Dim adapter As New SqlDataAdapter("SELECT IDProfileTerminal, TerminalName FROM [CF_Profile_Terminal] ORDER BY [TerminalName]", connection)
+
+            '    Dim dt As New DataTable()
+            '    adapter.Fill(dt)
+
+            '    ddl_Terminal.DataTextField = "TerminalName"
+            '    ddl_Terminal.DataValueField = "IDProfileTerminal"
+            '    ddl_Terminal.DataSource = dt
+            '    ddl_Terminal.DataBind()
+            '    ddl_Terminal.Items.Insert(0, New ListItem("- Select Terminal -", "0"))
+
+            ' End of what was added by Andrew.
+
         Else
             ddl_Terminal.Items.Clear()
         End If
@@ -59,6 +104,26 @@ Public Class report_opacity_testing_results
             ddl_Fleet.DataSource = dt
             ddl_Fleet.DataBind()
             ddl_Fleet.Items.Insert(0, New ListItem("- Select Fleet -", "0"))
+
+            ' Added by Andrew on 11/12/2019 to try and export all PSIP records.
+
+            'ElseIf (IDProfileTerminal = -1) Then
+
+            '    Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+
+            '    Dim adapter As New SqlDataAdapter("SELECT IDProfileFleet, FleetName FROM [CF_Profile_Fleet]", connection)
+
+            '    Dim dt As New DataTable()
+            '    adapter.Fill(dt)
+
+            '    ddl_Fleet.DataTextField = "FleetName"
+            '    ddl_Fleet.DataValueField = "IDProfileFleet"
+            '    ddl_Fleet.DataSource = dt
+            '    ddl_Fleet.DataBind()
+            '    ddl_Fleet.Items.Insert(0, New ListItem("- Select Fleet -", "0"))
+
+            ' End of what was added by Andrew.
+
         Else
             ddl_Fleet.Items.Clear()
         End If
@@ -238,7 +303,7 @@ Public Class report_opacity_testing_results
     Sub cf_ddl_Validate(sender As Object, args As ServerValidateEventArgs)
         Dim value As Integer
         args.IsValid = True
-        If args.IsValid Then args.IsValid = (Integer.TryParse(args.Value, value) AndAlso value > 0)
+        If args.IsValid Then args.IsValid = (Integer.TryParse(args.Value, value) AndAlso value > 0) ' Or value = -1 --> Added by Andrew on 11/12/2019 to try to export all PSIP records.
     End Sub
 
 End Class

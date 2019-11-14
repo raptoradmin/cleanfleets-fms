@@ -24,6 +24,13 @@
 			AutoPostBack="true" OnSelectedIndexChanged="ddl_Account_SelectedIndexChanged">
 			<Items>
 				<asp:ListItem Text="- Select an Account-" Value="0" />
+
+                <%--Added by Andrew on 11/12/2019 for the purpose of letting the user select all PSIP records.--%>
+
+                <%--<asp:ListItem Text="- Select all Records-" Value="-1" />--%>
+
+                <%--End of what was added by Andrew on 11/12/2019--%>
+
 			</Items>
 		</asp:DropDownList>
 		<asp:CustomValidator runat="server" ID="cv_ddl_Account" ControlToValidate="ddl_Account"

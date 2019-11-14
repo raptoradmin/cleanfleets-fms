@@ -64,6 +64,43 @@ Public Class vehiclesdetails1
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim queryString As String = "SELECT IDVehicles, UnitNo, ChassisVIN FROM CF_Vehicles WHERE IDVehicles = @IDVehicles"
 
+        ' Code added by Andrew on 10/22/2019
+
+        'Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
+        'TestLabel_lbl_InvoiceNo.Visible = False
+
+        'Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
+        'TestLabel_lbl_Date.Visible = False
+
+        'Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
+        'TestLabel_lbl_PONo.Visible = False
+
+        'Dim TestLabel_lbl_Company As Label = CType(fv_CFV_DPF.FindControl("lbl_Company"), Label)
+        'TestLabel_lbl_Company.Visible = False
+
+        'Dim TestLabel_lbl_VINNo As Label = CType(fv_CFV_DPF.FindControl("lbl_VINNo"), Label)
+        'TestLabel_lbl_VINNo.Visible = False
+
+        'Dim TestLabel_lbl_Make As Label = CType(fv_CFV_DPF.FindControl("lbl_Make"), Label)
+        'TestLabel_lbl_Make.Visible = False
+
+        'Dim TestLabel_lbl_Model As Label = CType(fv_CFV_DPF.FindControl("lbl_Model"), Label)
+        'TestLabel_lbl_Model.Visible = False
+
+        'Dim TestLabel_lbl_PlateNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PlateNo"), Label)
+        'TestLabel_lbl_PlateNo.Visible = False
+
+        'Dim TestLabel_lbl_Miles As Label = CType(fv_CFV_DPF.FindControl("lbl_Miles"), Label)
+        'TestLabel_lbl_Miles.Visible = False
+
+        'Dim TestLabel_lbl_Hours As Label = CType(fv_CFV_DPF.FindControl("lbl_Hours"), Label)
+        'TestLabel_lbl_Hours.Visible = False
+
+        'Dim TestLabel_lbl_MakeModel As Label = CType(fv_CFV_DPF.FindControl("lbl_MakeModel"), Label)
+        'TestLabel_lbl_MakeModel.Visible = False
+
+        ' End of code added by Andrew on 10/22/2019 
+
         Using myConnection As New SqlConnection(connectionString)
             Dim myCommand As New SqlCommand(queryString, myConnection)
             myConnection.Open()
@@ -122,6 +159,56 @@ Public Class vehiclesdetails1
                 End If
             End If
         End If
+
+        'Dim EditButtonVar As Button = CType(Me.fv_CFV_DPF.FindControl("EditButton"), Button)
+        'EditButtonVar.Visible = False
+        'EditButtonVar.Visible = True
+
+        'If (Page.IsPostBack = False) Then
+
+        If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
+
+                Dim TempDataView As DataView
+                TempDataView = sds_CFV_Vehicles_fv.Select(DataSourceSelectArguments.Empty)
+
+                Dim TempDataRowView As DataRowView
+                TempDataRowView = TempDataView(0)
+
+                ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
+
+                '    ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
+
+                '        Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+
+                '        If (TestLabel_lbl_PONo Is Nothing) Then
+
+                '            ChassisVINHolder.Text = "First Nothing!"
+
+                '        Else
+
+                '            TestLabel_lbl_PONo.Visible = False
+
+                '        End If
+
+                '    End If
+
+                'ElseIf (Page.IsPostBack = True) Then
+
+                '    Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+
+                '    If (TestLabel_lbl_PONo Is Nothing) Then
+
+                '        ChassisVINHolder.Text = "Second Nothing!"
+
+
+                '    Else
+
+                '        TestLabel_lbl_PONo.Visible = False
+
+            End If
+
+        'End If
+
     End Sub
 
     '*********************************************************************************************************************
@@ -1529,6 +1616,524 @@ Public Class vehiclesdetails1
 
         Return idWeightDefinition
     End Function
+
+    Protected Sub ddl_DPF_Records_SelectedIndexChanged() Handles ddl_DPF_Records.SelectedIndexChanged
+
+        If (Page.IsPostBack = True) Then
+
+            If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
+
+                Dim Testddl_ddl_DPF_Records As DropDownList = CType(fv_CFV_DPF.FindControl("ddl_DPF_Records"), DropDownList)
+                Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
+                Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
+                Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
+                Dim TestLabel_lbl_Company As Label = CType(fv_CFV_DPF.FindControl("lbl_Company"), Label)
+                Dim TestLabel_lbl_VINNo As Label = CType(fv_CFV_DPF.FindControl("lbl_VINNo"), Label)
+                Dim TestLabel_lbl_Make As Label = CType(fv_CFV_DPF.FindControl("lbl_Make"), Label)
+                Dim TestLabel_lbl_Model As Label = CType(fv_CFV_DPF.FindControl("lbl_Model"), Label)
+                Dim TestLabel_lbl_PlateNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PlateNo"), Label)
+                Dim TestLabel_lbl_Miles As Label = CType(fv_CFV_DPF.FindControl("lbl_Miles"), Label)
+                Dim TestLabel_lbl_Hours As Label = CType(fv_CFV_DPF.FindControl("lbl_Hours"), Label)
+                Dim TestLabel_lbl_MakeModel As Label = CType(fv_CFV_DPF.FindControl("lbl_MakeModel"), Label)
+
+                Dim TestLabel_lbl_SerialNo As Label = CType(fv_CFV_DPF.FindControl("lbl_SerialNo"), Label)
+                Dim TestLabel_lbl_PartNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PartNo"), Label)
+                Dim TestLabel_lbl_Substrate As Label = CType(fv_CFV_DPF.FindControl("lbl_Substrate"), Label)
+                Dim TestLabel_lbl_DocCleaned As Label = CType(fv_CFV_DPF.FindControl("lbl_DocCleaned"), Label)
+                Dim TestLabel_lbl_Condition As Label = CType(fv_CFV_DPF.FindControl("lbl_Condition"), Label)
+                Dim TestLabel_lbl_W_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFInitial"), Label)
+                Dim TestLabel_lbl_W_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFFinal"), Label)
+                Dim TestLabel_lbl_W_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFDiff"), Label)
+                Dim TestLabel_lbl_DOC1Initial As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Initial"), Label)
+                Dim TestLabel_lbl_DOC1Final As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Final"), Label)
+                Dim TestLabel_lbl_DOC1Diff As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Diff"), Label)
+                Dim TestLabel_F_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("F_DPFInitial"), Label)
+                Dim TestLabel_F_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("F_DPFFinal"), Label)
+                Dim TestLabel_F_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("F_DPFDiff"), Label)
+                Dim TestLabel_lbl_WireTestResults As Label = CType(fv_CFV_DPF.FindControl("lbl_WireTestResults"), Label)
+                Dim TestLabel_lbl_CleaningTech As Label = CType(fv_CFV_DPF.FindControl("lbl_CleaningTech"), Label)
+                Dim TestLabel_lbl_MultipleCleanings As Label = CType(fv_CFV_DPF.FindControl("lbl_MultipleCleanings"), Label)
+                Dim TestLabel_lbl_Notes As Label = CType(fv_CFV_DPF.FindControl("lbl_Notes"), Label)
+
+                Dim TestLabel_EditButton As Button = CType(fv_CFV_DPF.FindControl("EditButton"), Button)
+                Dim TestLabel_btnCancel As Button = CType(fv_CFV_DPF.FindControl("btnCancel"), Button)
+
+                If (Testddl_ddl_DPF_Records.SelectedItem.Text <> "Select") Then
+
+                    ChassisVINHolder.Text = "ddl Not NULL and Not Select"
+                    Flag.Text = Testddl_ddl_DPF_Records.SelectedValue
+
+                    TestLabel_lbl_InvoiceNo.Visible = True
+                    TestLabel_lbl_Date.Visible = True
+                    TestLabel_lbl_PONo.Visible = True
+                    TestLabel_lbl_Company.Visible = True
+                    TestLabel_lbl_VINNo.Visible = True
+                    TestLabel_lbl_Make.Visible = True
+                    TestLabel_lbl_Model.Visible = True
+                    TestLabel_lbl_PlateNo.Visible = True
+                    TestLabel_lbl_Miles.Visible = True
+                    TestLabel_lbl_Hours.Visible = True
+                    TestLabel_lbl_MakeModel.Visible = True
+
+                    TestLabel_lbl_SerialNo.Visible = True
+                    TestLabel_lbl_PartNo.Visible = True
+                    TestLabel_lbl_Substrate.Visible = True
+                    TestLabel_lbl_DocCleaned.Visible = True
+                    TestLabel_lbl_Condition.Visible = True
+                    TestLabel_lbl_W_DPFInitial.Visible = True
+                    TestLabel_lbl_W_DPFFinal.Visible = True
+                    TestLabel_lbl_W_DPFDiff.Visible = True
+                    TestLabel_lbl_DOC1Initial.Visible = True
+                    TestLabel_lbl_DOC1Final.Visible = True
+                    TestLabel_lbl_DOC1Diff.Visible = True
+                    TestLabel_F_DPFInitial.Visible = True
+                    TestLabel_F_DPFFinal.Visible = True
+                    TestLabel_F_DPFDiff.Visible = True
+                    TestLabel_lbl_WireTestResults.Visible = True
+                    TestLabel_lbl_CleaningTech.Visible = True
+                    TestLabel_lbl_MultipleCleanings.Visible = True
+                    TestLabel_lbl_Notes.Visible = True
+
+                    TestLabel_EditButton.Visible = True
+                    TestLabel_btnCancel.Visible = True
+
+                    Dim connection_string As String
+
+                    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+                    Dim DPF_conn As New SqlConnection(connection_string)
+
+                    If DPF_conn.State = ConnectionState.Closed Then
+
+                        DPF_conn.Open()
+
+                    End If
+
+                    Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+
+                    DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
+                    DPF_comm.Parameters("@IDDPF").Value = Testddl_ddl_DPF_Records.SelectedValue
+
+                    Dim DPF_reader As SqlDataReader = DPF_comm.ExecuteReader
+
+                    While (DPF_reader.Read())
+
+                        TestLabel_lbl_InvoiceNo.Text = If(IsDBNull(DPF_reader("InvoiceNumber")), "", Convert.ToString(DPF_reader("InvoiceNumber")))
+                        TestLabel_lbl_Date.Text = If(IsDBNull(DPF_reader("ModifiedDate")), "", Convert.ToString(DPF_reader("ModifiedDate")))
+                        TestLabel_lbl_PONo.Text = If(IsDBNull(DPF_reader("PONumber")), "", Convert.ToString(DPF_reader("PONUmber")))
+                        TestLabel_lbl_Company.Text = If(IsDBNull(DPF_reader("Company")), "", Convert.ToString(DPF_reader("Company")))
+                        TestLabel_lbl_VINNo.Text = If(IsDBNull(DPF_reader("VINNumber")), "", Convert.ToString(DPF_reader("VINNumber")))
+                        TestLabel_lbl_Make.Text = If(IsDBNull(DPF_reader("Make")), "", Convert.ToString(DPF_reader("Make")))
+                        TestLabel_lbl_Model.Text = If(IsDBNull(DPF_reader("Model")), "", Convert.ToString(DPF_reader("Model")))
+                        TestLabel_lbl_PlateNo.Text = If(IsDBNull(DPF_reader("Plate")), "", Convert.ToString(DPF_reader("Plate")))
+                        TestLabel_lbl_Miles.Text = If(IsDBNull(DPF_reader("Miles")), "", Convert.ToString(DPF_reader("Miles")))
+                        TestLabel_lbl_Hours.Text = If(IsDBNull(DPF_reader("Hours")), "", Convert.ToString(DPF_reader("Hours")))
+                        TestLabel_lbl_MakeModel.Text = If(IsDBNull(DPF_reader("FilterMake")), "", Convert.ToString(DPF_reader("FilterMake")))
+
+                        TestLabel_lbl_SerialNo.Text = If(IsDBNull(DPF_reader("SerialNumber")), "", Convert.ToString(DPF_reader("SerialNumber")))
+                        TestLabel_lbl_PartNo.Text = If(IsDBNull(DPF_reader("PartNumber")), "", Convert.ToString(DPF_reader("PartNumber")))
+                        TestLabel_lbl_Substrate.Text = If(IsDBNull(DPF_reader("Substrate")), "", Convert.ToString(DPF_reader("Substrate")))
+                        TestLabel_lbl_DocCleaned.Text = If(IsDBNull(DPF_reader("DocCleaned")), "", Convert.ToString(DPF_reader("DocCleaned")))
+                        TestLabel_lbl_Condition.Text = If(IsDBNull(DPF_reader("Condition")), "", Convert.ToString(DPF_reader("Condition")))
+                        TestLabel_lbl_W_DPFInitial.Text = If(IsDBNull(DPF_reader("DPFInitWeight")), "", Convert.ToString(DPF_reader("DPFInitWeight")))
+                        TestLabel_lbl_W_DPFFinal.Text = If(IsDBNull(DPF_reader("DPFFinalWeight")), "", Convert.ToString(DPF_reader("DPFFinalWeight")))
+                        TestLabel_lbl_W_DPFDiff.Text = If(IsDBNull(DPF_reader("DPFWeightDiff")), "", Convert.ToString(DPF_reader("DPFWeightDiff")))
+                        TestLabel_lbl_DOC1Initial.Text = If(IsDBNull(DPF_reader("DOCInitWeight")), "", Convert.ToString(DPF_reader("DOCInitWeight")))
+                        TestLabel_lbl_DOC1Final.Text = If(IsDBNull(DPF_reader("DOCFinalWeight")), "", Convert.ToString(DPF_reader("DOCFinalWeight")))
+                        TestLabel_lbl_DOC1Diff.Text = If(IsDBNull(DPF_reader("DOCWeightDiff")), "", Convert.ToString(DPF_reader("DOCWeightDiff")))
+                        TestLabel_F_DPFInitial.Text = If(IsDBNull(DPF_reader("DPFInitFR")), "", Convert.ToString(DPF_reader("DPFInitFR")))
+                        TestLabel_F_DPFFinal.Text = If(IsDBNull(DPF_reader("DPFFinalFR")), "", Convert.ToString(DPF_reader("DPFFinalFR")))
+                        TestLabel_F_DPFDiff.Text = If(IsDBNull(DPF_reader("DPFFRDiff")), "", Convert.ToString(DPF_reader("DPFFRDiff")))
+                        TestLabel_lbl_WireTestResults.Text = If(IsDBNull(DPF_reader("WTResults")), "", Convert.ToString(DPF_reader("WTResults")))
+                        TestLabel_lbl_CleaningTech.Text = If(IsDBNull(DPF_reader("CleaningTech")), "", Convert.ToString(DPF_reader("CleaningTech")))
+                        TestLabel_lbl_MultipleCleanings.Text = If(IsDBNull(DPF_reader("MultipleCleanings")), "", Convert.ToString(DPF_reader("MultipleCleanings")))
+                        TestLabel_lbl_Notes.Text = If(IsDBNull(DPF_reader("Notes")), "", Convert.ToString(DPF_reader("Notes")))
+
+                    End While
+
+                    DPF_reader.Close()
+
+                    DPF_conn.Close()
+
+                Else
+
+                    ChassisVINHolder.Text = "ddl Not NULL but Select"
+
+                    TestLabel_lbl_InvoiceNo.Visible = False
+                    TestLabel_lbl_Date.Visible = False
+                    TestLabel_lbl_PONo.Visible = False
+                    TestLabel_lbl_Company.Visible = False
+                    TestLabel_lbl_VINNo.Visible = False
+                    TestLabel_lbl_Make.Visible = False
+                    TestLabel_lbl_Model.Visible = False
+                    TestLabel_lbl_PlateNo.Visible = False
+                    TestLabel_lbl_Miles.Visible = False
+                    TestLabel_lbl_Hours.Visible = False
+                    TestLabel_lbl_MakeModel.Visible = False
+
+                    TestLabel_lbl_SerialNo.Visible = False
+                    TestLabel_lbl_PartNo.Visible = False
+                    TestLabel_lbl_Substrate.Visible = False
+                    TestLabel_lbl_DocCleaned.Visible = False
+                    TestLabel_lbl_Condition.Visible = False
+                    TestLabel_lbl_W_DPFInitial.Visible = False
+                    TestLabel_lbl_W_DPFFinal.Visible = False
+                    TestLabel_lbl_W_DPFDiff.Visible = False
+                    TestLabel_lbl_DOC1Initial.Visible = False
+                    TestLabel_lbl_DOC1Final.Visible = False
+                    TestLabel_lbl_DOC1Diff.Visible = False
+                    TestLabel_F_DPFInitial.Visible = False
+                    TestLabel_F_DPFFinal.Visible = False
+                    TestLabel_F_DPFDiff.Visible = False
+                    TestLabel_lbl_WireTestResults.Visible = False
+                    TestLabel_lbl_CleaningTech.Visible = False
+                    TestLabel_lbl_MultipleCleanings.Visible = False
+                    TestLabel_lbl_Notes.Visible = False
+
+                    TestLabel_EditButton.Visible = False
+                    TestLabel_btnCancel.Visible = False
+
+                End If
+
+            End If
+
+        Else
+
+            ChassisVINHolder.Text = "Getting Here?"
+
+        End If
+
+    End Sub
+
+    Protected Sub EditButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles EditButton.Click
+
+        If (fv_CFV_DPF.CurrentMode <> FormViewMode.Edit) Then
+
+            fv_CFV_DPF.ChangeMode(FormViewMode.Edit)
+            Me.fv_CFV_DPF.DataBind()
+
+            '' ByVal sender As Object, ByVal e As System.EventArgs
+
+            'Dim Testddl_ddl_DPF_Records As DropDownList = CType(fv_CFV_DPF.FindControl("ddl_DPF_Records"), DropDownList)
+
+            Dim TestTextBox_InvoiceNoTextBox As TextBox = CType(fv_CFV_DPF.FindControl("InvoiceNoTextBox"), TextBox)
+            Dim TestTextBox_DateTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DateTextBox"), TextBox)
+            Dim TestTextBox_PONumberTextBox As TextBox = CType(fv_CFV_DPF.FindControl("PONumberTextBox"), TextBox)
+            Dim TestTextBox_CompanyTextBox As TextBox = CType(fv_CFV_DPF.FindControl("CompanyTextBox"), TextBox)
+            Dim TestTextBox_VINNoTestBox As TextBox = CType(fv_CFV_DPF.FindControl("VINNoTestBox"), TextBox)
+            Dim TestTextBox_MakeTextBox As TextBox = CType(fv_CFV_DPF.FindControl("MakeTextBox"), TextBox)
+            Dim TestTextBox_ModelTextBox As TextBox = CType(fv_CFV_DPF.FindControl("ModelTextBox"), TextBox)
+            Dim TestTextBox_PlateTextBox As TextBox = CType(fv_CFV_DPF.FindControl("PlateTextBox"), TextBox)
+            Dim TestTextBox_MilesTextBox As TextBox = CType(fv_CFV_DPF.FindControl("MilesTextBox"), TextBox)
+            Dim TestTextBox_HoursTextBox As TextBox = CType(fv_CFV_DPF.FindControl("HoursTextBox"), TextBox)
+            Dim TestTextBox_FilterMakeModelTextBox As TextBox = CType(fv_CFV_DPF.FindControl("FilterMakeModelTextBox"), TextBox)
+
+            Dim TestTextBox_SerialNoTextBox As TextBox = CType(fv_CFV_DPF.FindControl("SerialNoTextBox"), TextBox)
+            Dim TestTextBox_PartNumberTextBox As TextBox = CType(fv_CFV_DPF.FindControl("PartNumberTextBox"), TextBox)
+            Dim TestTextBox_SubstrateTextBox As TextBox = CType(fv_CFV_DPF.FindControl("SubstrateTextBox"), TextBox)
+            'Dim TestDropDownList_DocCleanedDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("DocCleanedDropDown"), DropDownList)
+            Dim TestTextBox_ConditionTextBox As TextBox = CType(fv_CFV_DPF.FindControl("ConditionTextBox"), TextBox)
+            Dim TestTextBox_W_DPFInitialTextBox As TextBox = CType(fv_CFV_DPF.FindControl("W_DPFInitialTextBox"), TextBox)
+            Dim TestTextBox_W_DPFFinalTextBox As TextBox = CType(fv_CFV_DPF.FindControl("W_DPFFinalTextBox"), TextBox)
+            Dim TestTextBox_W_DPFDiffTextBox As TextBox = CType(fv_CFV_DPF.FindControl("W_DPFDiffTextBox"), TextBox)
+            Dim TestTextBox_DOC1InitialTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DOC1InitialTextBox"), TextBox)
+            Dim TestTextBox_DOC1FinalTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DOC1FinalTextBox"), TextBox)
+            Dim TestTextBox_DOC1DiffTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DOC1DiffTextBox"), TextBox)
+            Dim TestTextBox_F_DPFInitialTextBox As TextBox = CType(fv_CFV_DPF.FindControl("F_DPFInitialTextBox"), TextBox)
+            Dim TestTextBox_F_DPFFinalTextBox As TextBox = CType(fv_CFV_DPF.FindControl("F_DPFFinalTextBox"), TextBox)
+            Dim TestTextBox_F_DPFDiffTextBox As TextBox = CType(fv_CFV_DPF.FindControl("F_DPFDiffTextBox"), TextBox)
+            Dim TestTextBox_WireTestTextBox As TextBox = CType(fv_CFV_DPF.FindControl("WireTestTextBox"), TextBox)
+            Dim TestTextBox_CleaningTechTextBox As TextBox = CType(fv_CFV_DPF.FindControl("CleaningTechTextBox"), TextBox)
+            'Dim TestDropDownList_MultipleCleaningsDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("MultipleCleaningsDropDown"), DropDownList)
+            Dim TestTextBox_Notes As TextBox = CType(fv_CFV_DPF.FindControl("Notes"), TextBox)
+
+            Dim connection_string As String
+
+            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+            Dim DPF_conn As New SqlConnection(connection_string)
+
+            If DPF_conn.State = ConnectionState.Closed Then
+
+                DPF_conn.Open()
+
+            End If
+
+            Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+
+            DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
+            DPF_comm.Parameters("@IDDPF").Value = Flag.Text
+
+            Dim DPF_reader As SqlDataReader = DPF_comm.ExecuteReader
+
+            While (DPF_reader.Read())
+
+                TestTextBox_InvoiceNoTextBox.Text = If(IsDBNull(DPF_reader("InvoiceNumber")), "", Convert.ToString(DPF_reader("InvoiceNumber")))
+                TestTextBox_DateTextBox.Text = If(IsDBNull(DPF_reader("ModifiedDate")), "", Convert.ToString(DPF_reader("ModifiedDate")))
+                TestTextBox_PONumberTextBox.Text = If(IsDBNull(DPF_reader("PONumber")), "", Convert.ToString(DPF_reader("PONumber")))
+                TestTextBox_CompanyTextBox.Text = If(IsDBNull(DPF_reader("Company")), "", Convert.ToString(DPF_reader("Company")))
+                TestTextBox_VINNoTestBox.Text = If(IsDBNull(DPF_reader("VINNumber")), "", Convert.ToString(DPF_reader("VINNumber")))
+                TestTextBox_MakeTextBox.Text = If(IsDBNull(DPF_reader("Make")), "", Convert.ToString(DPF_reader("Make")))
+                TestTextBox_ModelTextBox.Text = If(IsDBNull(DPF_reader("Model")), "", Convert.ToString(DPF_reader("Model")))
+                TestTextBox_PlateTextBox.Text = If(IsDBNull(DPF_reader("Plate")), "", Convert.ToString(DPF_reader("Plate")))
+                TestTextBox_MilesTextBox.Text = If(IsDBNull(DPF_reader("Miles")), "", Convert.ToString(DPF_reader("Miles")))
+                TestTextBox_HoursTextBox.Text = If(IsDBNull(DPF_reader("Hours")), "", Convert.ToString(DPF_reader("Hours")))
+                TestTextBox_FilterMakeModelTextBox.Text = If(IsDBNull(DPF_reader("FilterMake")), "", Convert.ToString(DPF_reader("FilterMake")))
+
+                TestTextBox_SerialNoTextBox.Text = If(IsDBNull(DPF_reader("SerialNumber")), "", Convert.ToString(DPF_reader("SerialNumber")))
+                TestTextBox_PartNumberTextBox.Text = If(IsDBNull(DPF_reader("PartNumber")), "", Convert.ToString(DPF_reader("PartNumber")))
+                TestTextBox_SubstrateTextBox.Text = If(IsDBNull(DPF_reader("Substrate")), "", Convert.ToString(DPF_reader("Substrate")))
+                'Dim TestDropDownList_DocCleanedDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("DocCleanedDropDown"), DropDownList)
+                TestTextBox_ConditionTextBox.Text = If(IsDBNull(DPF_reader("Condition")), "", Convert.ToString(DPF_reader("Condition")))
+                TestTextBox_W_DPFInitialTextBox.Text = If(IsDBNull(DPF_reader("DPFInitWeight")), "", Convert.ToString(DPF_reader("DPFInitWeight")))
+                TestTextBox_W_DPFFinalTextBox.Text = If(IsDBNull(DPF_reader("DPFFinalWeight")), "", Convert.ToString(DPF_reader("DPFFinalWeight")))
+                TestTextBox_W_DPFDiffTextBox.Text = If(IsDBNull(DPF_reader("DPFWeightDiff")), "", Convert.ToString(DPF_reader("DPFWeightDiff")))
+                TestTextBox_DOC1InitialTextBox.Text = If(IsDBNull(DPF_reader("DOCInitWeight")), "", Convert.ToString(DPF_reader("DOCInitWeight")))
+                TestTextBox_DOC1FinalTextBox.Text = If(IsDBNull(DPF_reader("DOCFinalWeight")), "", Convert.ToString(DPF_reader("DOCFinalWeight")))
+                TestTextBox_DOC1DiffTextBox.Text = If(IsDBNull(DPF_reader("DOCWeightDiff")), "", Convert.ToString(DPF_reader("DOCWeightDiff")))
+                TestTextBox_F_DPFInitialTextBox.Text = If(IsDBNull(DPF_reader("DPFInitFR")), "", Convert.ToString(DPF_reader("DPFInitFR")))
+                TestTextBox_F_DPFFinalTextBox.Text = If(IsDBNull(DPF_reader("DPFFinalFR")), "", Convert.ToString(DPF_reader("DPFFinalFR")))
+                TestTextBox_F_DPFDiffTextBox.Text = If(IsDBNull(DPF_reader("DPFFRDiff")), "", Convert.ToString(DPF_reader("DPFFRDiff")))
+                TestTextBox_WireTestTextBox.Text = If(IsDBNull(DPF_reader("WTResults")), "", Convert.ToString(DPF_reader("WTResults")))
+                TestTextBox_CleaningTechTextBox.Text = If(IsDBNull(DPF_reader("CleaningTech")), "", Convert.ToString(DPF_reader("CleaningTech")))
+                'Dim TestDropDownList_MultipleCleaningsDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("MultipleCleaningsDropDown"), DropDownList)
+                TestTextBox_Notes.Text = If(IsDBNull(DPF_reader("Notes")), "", Convert.ToString(DPF_reader("Notes")))
+
+            End While
+
+            DPF_reader.Close()
+
+            DPF_conn.Close()
+
+        End If
+
+    End Sub
+
+    Protected Sub fv_CFV_DPF_DataBound(ByVal sender As Object, ByVal e As System.EventArgs) Handles fv_CFV_DPF.DataBound
+
+        If (Page.IsPostBack = True) Then
+
+            If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
+
+                Dim Testddl_ddl_DPF_Records As DropDownList = CType(fv_CFV_DPF.FindControl("ddl_DPF_Records"), DropDownList)
+                Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
+                Dim TestLabel_lbl_Date As Label = CType(fv_CFV_DPF.FindControl("lbl_Date"), Label)
+                Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("lbl_PONo"), Label)
+                Dim TestLabel_lbl_Company As Label = CType(fv_CFV_DPF.FindControl("lbl_Company"), Label)
+                Dim TestLabel_lbl_VINNo As Label = CType(fv_CFV_DPF.FindControl("lbl_VINNo"), Label)
+                Dim TestLabel_lbl_Make As Label = CType(fv_CFV_DPF.FindControl("lbl_Make"), Label)
+                Dim TestLabel_lbl_Model As Label = CType(fv_CFV_DPF.FindControl("lbl_Model"), Label)
+                Dim TestLabel_lbl_PlateNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PlateNo"), Label)
+                Dim TestLabel_lbl_Miles As Label = CType(fv_CFV_DPF.FindControl("lbl_Miles"), Label)
+                Dim TestLabel_lbl_Hours As Label = CType(fv_CFV_DPF.FindControl("lbl_Hours"), Label)
+                Dim TestLabel_lbl_MakeModel As Label = CType(fv_CFV_DPF.FindControl("lbl_MakeModel"), Label)
+
+                Dim TestLabel_lbl_SerialNo As Label = CType(fv_CFV_DPF.FindControl("lbl_SerialNo"), Label)
+                Dim TestLabel_lbl_PartNo As Label = CType(fv_CFV_DPF.FindControl("lbl_PartNo"), Label)
+                Dim TestLabel_lbl_Substrate As Label = CType(fv_CFV_DPF.FindControl("lbl_Substrate"), Label)
+                Dim TestLabel_lbl_DocCleaned As Label = CType(fv_CFV_DPF.FindControl("lbl_DocCleaned"), Label)
+                Dim TestLabel_lbl_Condition As Label = CType(fv_CFV_DPF.FindControl("lbl_Condition"), Label)
+                Dim TestLabel_lbl_W_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFInitial"), Label)
+                Dim TestLabel_lbl_W_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFFinal"), Label)
+                Dim TestLabel_lbl_W_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("lbl_W_DPFDiff"), Label)
+                Dim TestLabel_lbl_DOC1Initial As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Initial"), Label)
+                Dim TestLabel_lbl_DOC1Final As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Final"), Label)
+                Dim TestLabel_lbl_DOC1Diff As Label = CType(fv_CFV_DPF.FindControl("lbl_DOC1Diff"), Label)
+                Dim TestLabel_F_DPFInitial As Label = CType(fv_CFV_DPF.FindControl("F_DPFInitial"), Label)
+                Dim TestLabel_F_DPFFinal As Label = CType(fv_CFV_DPF.FindControl("F_DPFFinal"), Label)
+                Dim TestLabel_F_DPFDiff As Label = CType(fv_CFV_DPF.FindControl("F_DPFDiff"), Label)
+                Dim TestLabel_lbl_WireTestResults As Label = CType(fv_CFV_DPF.FindControl("lbl_WireTestResults"), Label)
+                Dim TestLabel_lbl_CleaningTech As Label = CType(fv_CFV_DPF.FindControl("lbl_CleaningTech"), Label)
+                Dim TestLabel_lbl_MultipleCleanings As Label = CType(fv_CFV_DPF.FindControl("lbl_MultipleCleanings"), Label)
+                Dim TestLabel_lbl_Notes As Label = CType(fv_CFV_DPF.FindControl("lbl_Notes"), Label)
+
+                'Dim TestLabel_EditButton As Label = CType(fv_CFV_DPF.FindControl("EditButton"), Label)
+                'Dim TestLabel_btnCancel As Label = CType(fv_CFV_DPF.FindControl("btnCancel"), Label)
+
+                If (TestLabel_lbl_PONo Is Nothing) Then
+
+                    ChassisVINHolder.Text = "NULL DataBound"
+
+                Else
+
+                    If (Testddl_ddl_DPF_Records.SelectedItem.Text <> "Select") Then
+
+                        ChassisVINHolder.Text = "Databound Not NULL and Not Select"
+
+                        TestLabel_lbl_PONo.Visible = True
+                        TestLabel_lbl_InvoiceNo.Visible = True
+                        TestLabel_lbl_Date.Visible = True
+                        TestLabel_lbl_PONo.Visible = True
+                        TestLabel_lbl_Company.Visible = True
+                        TestLabel_lbl_VINNo.Visible = True
+                        TestLabel_lbl_Make.Visible = True
+                        TestLabel_lbl_Model.Visible = True
+                        TestLabel_lbl_PlateNo.Visible = True
+                        TestLabel_lbl_Miles.Visible = True
+                        TestLabel_lbl_Hours.Visible = True
+                        TestLabel_lbl_MakeModel.Visible = True
+
+                        TestLabel_lbl_SerialNo.Visible = True
+                        TestLabel_lbl_PartNo.Visible = True
+                        TestLabel_lbl_Substrate.Visible = True
+                        TestLabel_lbl_DocCleaned.Visible = True
+                        TestLabel_lbl_Condition.Visible = True
+                        TestLabel_lbl_W_DPFInitial.Visible = True
+                        TestLabel_lbl_W_DPFFinal.Visible = True
+                        TestLabel_lbl_W_DPFDiff.Visible = True
+                        TestLabel_lbl_DOC1Initial.Visible = True
+                        TestLabel_lbl_DOC1Final.Visible = True
+                        TestLabel_lbl_DOC1Diff.Visible = True
+                        TestLabel_F_DPFInitial.Visible = True
+                        TestLabel_F_DPFFinal.Visible = True
+                        TestLabel_F_DPFDiff.Visible = True
+                        TestLabel_lbl_WireTestResults.Visible = True
+                        TestLabel_lbl_CleaningTech.Visible = True
+                        TestLabel_lbl_MultipleCleanings.Visible = True
+                        TestLabel_lbl_Notes.Visible = True
+
+                        'TestLabel_EditButton.Visible = True
+                        'TestLabel_btnCancel.Visible = True
+
+                    Else
+
+                        ChassisVINHolder.Text = "Databound Not NULL but Select"
+
+                        TestLabel_lbl_PONo.Visible = False
+                        TestLabel_lbl_InvoiceNo.Visible = False
+                        TestLabel_lbl_Date.Visible = False
+                        TestLabel_lbl_PONo.Visible = False
+                        TestLabel_lbl_Company.Visible = False
+                        TestLabel_lbl_VINNo.Visible = False
+                        TestLabel_lbl_Make.Visible = False
+                        TestLabel_lbl_Model.Visible = False
+                        TestLabel_lbl_PlateNo.Visible = False
+                        TestLabel_lbl_Miles.Visible = False
+                        TestLabel_lbl_Hours.Visible = False
+                        TestLabel_lbl_MakeModel.Visible = False
+
+                        TestLabel_lbl_SerialNo.Visible = False
+                        TestLabel_lbl_PartNo.Visible = False
+                        TestLabel_lbl_Substrate.Visible = False
+                        TestLabel_lbl_DocCleaned.Visible = False
+                        TestLabel_lbl_Condition.Visible = False
+                        TestLabel_lbl_W_DPFInitial.Visible = False
+                        TestLabel_lbl_W_DPFFinal.Visible = False
+                        TestLabel_lbl_W_DPFDiff.Visible = False
+                        TestLabel_lbl_DOC1Initial.Visible = False
+                        TestLabel_lbl_DOC1Final.Visible = False
+                        TestLabel_lbl_DOC1Diff.Visible = False
+                        TestLabel_F_DPFInitial.Visible = False
+                        TestLabel_F_DPFFinal.Visible = False
+                        TestLabel_F_DPFDiff.Visible = False
+                        TestLabel_lbl_WireTestResults.Visible = False
+                        TestLabel_lbl_CleaningTech.Visible = False
+                        TestLabel_lbl_MultipleCleanings.Visible = False
+                        TestLabel_lbl_Notes.Visible = False
+
+                        'TestLabel_EditButton.Visible = False
+                        'TestLabel_btnCancel.Visible = False
+
+                    End If
+
+                End If
+
+                'ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
+
+                '    Dim TestTextBox_InvoiceNoTextBox As TextBox = CType(fv_CFV_DPF.FindControl("InvoiceNoTextBox"), TextBox)
+                '    Dim TestTextBox_DateTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DateTextBox"), TextBox)
+                '    Dim TestTextBox_PONumberTextBox As TextBox = CType(fv_CFV_DPF.FindControl("PONumberTextBox"), TextBox)
+                '    Dim TestTextBox_CompanyTextBox As TextBox = CType(fv_CFV_DPF.FindControl("CompanyTextBox"), TextBox)
+                '    Dim TestTextBox_VINNoTestBox As TextBox = CType(fv_CFV_DPF.FindControl("VINNoTestBox"), TextBox)
+                '    Dim TestTextBox_MakeTextBox As TextBox = CType(fv_CFV_DPF.FindControl("MakeTextBox"), TextBox)
+                '    Dim TestTextBox_ModelTextBox As TextBox = CType(fv_CFV_DPF.FindControl("ModelTextBox"), TextBox)
+                '    Dim TestTextBox_PlateTextBox As TextBox = CType(fv_CFV_DPF.FindControl("PlateTextBox"), TextBox)
+                '    Dim TestTextBox_MilesTextBox As TextBox = CType(fv_CFV_DPF.FindControl("MilesTextBox"), TextBox)
+                '    Dim TestTextBox_HoursTextBox As TextBox = CType(fv_CFV_DPF.FindControl("HoursTextBox"), TextBox)
+                '    Dim TestTextBox_FilterMakeModelTextBox As TextBox = CType(fv_CFV_DPF.FindControl("FilterMakeModelTextBox"), TextBox)
+
+                '    Dim TestTextBox_SerialNoTextBox As TextBox = CType(fv_CFV_DPF.FindControl("SerialNoTextBox"), TextBox)
+                '    Dim TestTextBox_PartNumberTextBox As TextBox = CType(fv_CFV_DPF.FindControl("PartNumberTextBox"), TextBox)
+                '    Dim TestTextBox_SubstrateTextBox As TextBox = CType(fv_CFV_DPF.FindControl("SubstrateTextBox"), TextBox)
+                '    'Dim TestDropDownList_DocCleanedDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("DocCleanedDropDown"), DropDownList)
+                '    Dim TestTextBox_ConditionTextBox As TextBox = CType(fv_CFV_DPF.FindControl("ConditionTextBox"), TextBox)
+                '    Dim TestTextBox_W_DPFInitialTextBox As TextBox = CType(fv_CFV_DPF.FindControl("W_DPFInitialTextBox"), TextBox)
+                '    Dim TestTextBox_W_DPFFinalTextBox As TextBox = CType(fv_CFV_DPF.FindControl("W_DPFFinalTextBox"), TextBox)
+                '    Dim TestTextBox_W_DPFDiffTextBox As TextBox = CType(fv_CFV_DPF.FindControl("W_DPFDiffTextBox"), TextBox)
+                '    Dim TestTextBox_DOC1InitialTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DOC1InitialTextBox"), TextBox)
+                '    Dim TestTextBox_DOC1FinalTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DOC1FinalTextBox"), TextBox)
+                '    Dim TestTextBox_DOC1DiffTextBox As TextBox = CType(fv_CFV_DPF.FindControl("DOC1DiffTextBox"), TextBox)
+                '    Dim TestTextBox_F_DPFInitialTextBox As TextBox = CType(fv_CFV_DPF.FindControl("F_DPFInitialTextBox"), TextBox)
+                '    Dim TestTextBox_F_DPFFinalTextBox As TextBox = CType(fv_CFV_DPF.FindControl("F_DPFFinalTextBox"), TextBox)
+                '    Dim TestTextBox_F_DPFDiffTextBox As TextBox = CType(fv_CFV_DPF.FindControl("F_DPFDiffTextBox"), TextBox)
+                '    Dim TestTextBox_WireTestTextBox As TextBox = CType(fv_CFV_DPF.FindControl("WireTestTextBox"), TextBox)
+                '    Dim TestTextBox_CleaningTechTextBox As TextBox = CType(fv_CFV_DPF.FindControl("CleaningTechTextBox"), TextBox)
+                '    'Dim TestDropDownList_MultipleCleaningsDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("MultipleCleaningsDropDown"), DropDownList)
+                '    Dim TestTextBox_Notes As TextBox = CType(fv_CFV_DPF.FindControl("Notes"), TextBox)
+
+                '    Dim connection_string As String
+
+                '    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+                '    Dim DPF_conn As New SqlConnection(connection_string)
+
+                '    If DPF_conn.State = ConnectionState.Closed Then
+
+                '        DPF_conn.Open()
+
+                '    End If
+
+                '    Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+
+                '    DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
+                '    DPF_comm.Parameters("@IDDPF").Value = Flag.Text
+
+                '    Dim DPF_reader As SqlDataReader = DPF_comm.ExecuteReader
+
+                '    While (DPF_reader.Read())
+
+                '        TestTextBox_InvoiceNoTextBox.Text = If(IsDBNull(DPF_reader("InvoiceNumber")), "", Convert.ToString(DPF_reader("InvoiceNumber")))
+                '        TestTextBox_DateTextBox.Text = If(IsDBNull(DPF_reader("ModifiedDate")), "", Convert.ToString(DPF_reader("ModifiedDate")))
+                '        TestTextBox_PONumberTextBox.Text = If(IsDBNull(DPF_reader("PONumber")), "", Convert.ToString(DPF_reader("PONumber")))
+                '        TestTextBox_CompanyTextBox.Text = If(IsDBNull(DPF_reader("Company")), "", Convert.ToString(DPF_reader("Company")))
+                '        TestTextBox_VINNoTestBox.Text = If(IsDBNull(DPF_reader("VINNumber")), "", Convert.ToString(DPF_reader("VINNumber")))
+                '        TestTextBox_MakeTextBox.Text = If(IsDBNull(DPF_reader("Make")), "", Convert.ToString(DPF_reader("Make")))
+                '        TestTextBox_ModelTextBox.Text = If(IsDBNull(DPF_reader("Model")), "", Convert.ToString(DPF_reader("Model")))
+                '        TestTextBox_PlateTextBox.Text = If(IsDBNull(DPF_reader("Plate")), "", Convert.ToString(DPF_reader("Plate")))
+                '        TestTextBox_MilesTextBox.Text = If(IsDBNull(DPF_reader("Miles")), "", Convert.ToString(DPF_reader("Miles")))
+                '        TestTextBox_HoursTextBox.Text = If(IsDBNull(DPF_reader("Hours")), "", Convert.ToString(DPF_reader("Hours")))
+                '        TestTextBox_FilterMakeModelTextBox.Text = If(IsDBNull(DPF_reader("FilterMake")), "", Convert.ToString(DPF_reader("FilterMake")))
+
+                '        TestTextBox_SerialNoTextBox.Text = If(IsDBNull(DPF_reader("SerialNumber")), "", Convert.ToString(DPF_reader("SerialNumber")))
+                '        TestTextBox_PartNumberTextBox.Text = If(IsDBNull(DPF_reader("PartNumber")), "", Convert.ToString(DPF_reader("PartNumber")))
+                '        TestTextBox_SubstrateTextBox.Text = If(IsDBNull(DPF_reader("Substrate")), "", Convert.ToString(DPF_reader("Substrate")))
+                '        'Dim TestDropDownList_DocCleanedDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("DocCleanedDropDown"), DropDownList)
+                '        TestTextBox_ConditionTextBox.Text = If(IsDBNull(DPF_reader("Condition")), "", Convert.ToString(DPF_reader("Condition")))
+                '        TestTextBox_W_DPFInitialTextBox.Text = If(IsDBNull(DPF_reader("DPFInitWeight")), "", Convert.ToString(DPF_reader("DPFInitWeight")))
+                '        TestTextBox_W_DPFFinalTextBox.Text = If(IsDBNull(DPF_reader("DPFFinalWeight")), "", Convert.ToString(DPF_reader("DPFFinalWeight")))
+                '        TestTextBox_W_DPFDiffTextBox.Text = If(IsDBNull(DPF_reader("DPFWeightDiff")), "", Convert.ToString(DPF_reader("DPFWeightDiff")))
+                '        TestTextBox_DOC1InitialTextBox.Text = If(IsDBNull(DPF_reader("DOCInitWeight")), "", Convert.ToString(DPF_reader("DOCInitWeight")))
+                '        TestTextBox_DOC1FinalTextBox.Text = If(IsDBNull(DPF_reader("DOCFinalWeight")), "", Convert.ToString(DPF_reader("DOCFinalWeight")))
+                '        TestTextBox_DOC1DiffTextBox.Text = If(IsDBNull(DPF_reader("DOCWeightDiff")), "", Convert.ToString(DPF_reader("DOCWeightDiff")))
+                '        TestTextBox_F_DPFInitialTextBox.Text = If(IsDBNull(DPF_reader("DPFInitFR")), "", Convert.ToString(DPF_reader("DPFInitFR")))
+                '        TestTextBox_F_DPFFinalTextBox.Text = If(IsDBNull(DPF_reader("DPFFinalFR")), "", Convert.ToString(DPF_reader("DPFFinalFR")))
+                '        TestTextBox_F_DPFDiffTextBox.Text = If(IsDBNull(DPF_reader("DPFFRDiff")), "", Convert.ToString(DPF_reader("DPFFRDiff")))
+                '        TestTextBox_WireTestTextBox.Text = If(IsDBNull(DPF_reader("WTResults")), "", Convert.ToString(DPF_reader("WTResults")))
+                '        TestTextBox_CleaningTechTextBox.Text = If(IsDBNull(DPF_reader("CleaningTech")), "", Convert.ToString(DPF_reader("CleaningTech")))
+                '        'Dim TestDropDownList_MultipleCleaningsDropDown As DropDownList = CType(fv_CFV_DPF.FindControl("MultipleCleaningsDropDown"), DropDownList)
+                '        TestTextBox_Notes.Text = If(IsDBNull(DPF_reader("Notes")), "", Convert.ToString(DPF_reader("Notes")))
+
+                '    End While
+
+                '    DPF_reader.Close()
+
+                '    DPF_conn.Close()
+
+            End If
+
+        End If
+
+    End Sub
 
 End Class
 

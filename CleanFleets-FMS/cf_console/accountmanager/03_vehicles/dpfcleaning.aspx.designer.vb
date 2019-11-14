@@ -95,6 +95,15 @@ Partial Public Class dpfcleaning
     Protected WithEvents viewtextvariable_theFieldValues As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''SuccessfulImportPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SuccessfulImportPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''PlateValidationPrompt control.
     '''</summary>
     '''<remarks>

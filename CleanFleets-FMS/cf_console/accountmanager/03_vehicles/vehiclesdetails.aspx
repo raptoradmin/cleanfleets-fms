@@ -124,6 +124,14 @@
                                     </telerik:RadTab>
                                     <telerik:RadTab runat="server" Text="DPF Cleaning Record" PageViewID="rpv_DPFCleaning">
                                     </telerik:RadTab>
+
+                                    <%--Added by Andrew on 11/12/2019 for CARB Communication enhancement--%>
+
+                                    <telerik:RadTab runat="server" Text="CARB Communication" PageViewID="rpv_CARB_Communication">
+                                    </telerik:RadTab>
+
+                                    <%--End of what was added by Andrew on 11/12/2019.--%>
+
                                 </tabs>
                             </telerik:radtabstrip>
 	<telerik:radmultipage id="rmp_Vehicle" runat="server" selectedindex="0">
@@ -665,6 +673,7 @@
                                     </td>
                                 </tr>
                             </table>
+
                             <table cellpadding="0" cellspacing="0" style="width: 100%">
                                 <tr>
                                     <td>
@@ -2922,6 +2931,163 @@
                     </asp:FormView>
                     </table>
                    </telerik:RadPageView>
+
+                   <%--Added by Andrew on 11/12/2019 for the CARB_Communication--%>
+
+                    <telerik:RadPageView ID="rpv_CARB_Communication" runat="server">
+      <table cellpadding="0" style="width: 920px; border-collapse: collapse; border: 1px solid #9B9B9B">
+            <tr>
+                <td>
+                    <asp:FormView ID="fv_CF_CARB_Communication" runat="server" CellPadding="5" 
+                        DataKeyNames="CARB_Comm_ID" DataSourceID="sds_CF_CARB_Communication" 
+                        Width="700px">
+                        <EditItemTemplate>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Happened:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Date:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Issue:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Resolution:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Happened:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Date:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Issue:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Resolution:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                        </ItemTemplate>
+                        <EmptyDataTemplate>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Happened:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Date:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Issue:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Resolution:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                        </EmptyDataTemplate>
+                    </asp:FormView>
+                </td>
+            </tr>
+          </table>
+        </telerik:RadPageView>
+                   <%--End of what was added by Andrew on 11/12/2019 for the CARB_Communication--%>
+
 </telerik:radmultipage>
 
 <%--<script type="text/javascript">
@@ -2946,7 +3112,18 @@
 
 <telerik:RadWindowManager ID="RadWindowManager1" runat="server" Height="600" Modal="true" Width="800"></telerik:RadWindowManager>
 
-	<asp:SqlDataSource ID="sds_CFV_Fleet_Lineage" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+	<%--Added by Andrew on 11/12/2019 for the CARB Communication enhancement.--%>
+
+        <asp:SqlDataSource ID="sds_CF_CARB_Communication" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [CARB_Comm_ID], [CARB_Happened], [CARB_Date], [CARB_Issue], [CARB_Resolution] FROM [CF_CARB_Comm] WHERE [ChassisVIN] = @ChassisVINHolderParam">
+		<SelectParameters>
+            <asp:ControlParameter Name="ChassisVINHolderParam" ControlID="ChassisVINHolder" Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+
+    <%--End of what was added by Andrew on 11/12/2019 for the CARB Communication enhancement.--%>
+    
+    <asp:SqlDataSource ID="sds_CFV_Fleet_Lineage" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDProfileAccount], [AccountName], [IDProfileTerminal], [TerminalName], [IDProfileFleet], [FleetName], IDVehicles FROM [CFV_Fleet_Lineage] WHERE ([IDProfileFleet] = @IDProfileFleet)">
 		<SelectParameters>
 			<asp:QueryStringParameter Name="IDProfileFleet" QueryStringField="IDProfileFleet"

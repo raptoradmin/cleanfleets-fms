@@ -446,6 +446,24 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents fv_CFV_DPF As Global.System.Web.UI.WebControls.FormView
 
     '''<summary>
+    '''rpv_CARB_Communication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rpv_CARB_Communication As Global.Telerik.Web.UI.RadPageView
+
+    '''<summary>
+    '''fv_CF_CARB_Communication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents fv_CF_CARB_Communication As Global.System.Web.UI.WebControls.FormView
+
+    '''<summary>
     '''RadWindowManager1 control.
     '''</summary>
     '''<remarks>
@@ -454,23 +472,14 @@ Partial Public Class vehiclesdetails1
     '''</remarks>
     Protected WithEvents RadWindowManager1 As Global.Telerik.Web.UI.RadWindowManager
 
-    '''<summary>  
-    '''DropDownList control.  
-    '''</summary>  
-    '''<remarks>  
-    '''Auto-generated field.  
-    '''To modify move field declaration from designer file to code-behind file.  
-    '''</remarks>  
-    Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>  
-    '''Button control.  
-    '''</summary>  
-    '''<remarks>  
-    '''Auto-generated field.  
-    '''To modify move field declaration from designer file to code-behind file.  
-    '''</remarks>  
-    Protected WithEvents EditButton As Global.System.Web.UI.WebControls.Button
+    '''<summary>
+    '''sds_CF_CARB_Communication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_CF_CARB_Communication As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
     '''sds_CFV_Fleet_Lineage control.
