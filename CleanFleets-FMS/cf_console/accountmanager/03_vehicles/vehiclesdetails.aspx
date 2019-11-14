@@ -114,27 +114,33 @@
 	<telerik:radtabstrip id="rtp_Vehicles" runat="server" multipageid="rmp_Vehicle" selectedindex="0">
                                 <tabs>
                                     <telerik:RadTab runat="server" Text="Vehicle Details" 
-                                        PageViewID="rpv_VehicleDetails" Selected="True">
+                                        PageViewID="rpv_VehicleDetails" Selected="true">
                                     </telerik:RadTab>
                                     <telerik:RadTab runat="server" Text="Engine Details" PageViewID="rpv_Engines">
                                     </telerik:RadTab>
                                     <telerik:RadTab runat="server" PageViewID="rpv_VehicleFiles" Text="Vehicle Files">
                                     </telerik:RadTab>
-                                    <telerik:RadTab runat="server" PageViewID="rpv_Reports" Text="Reports">
-                                    </telerik:RadTab>
+
+                                    <%--Moved by Andrew on 11/14/2019 after speaking with Ashton--%>
+
                                     <telerik:RadTab runat="server" Text="DPF Cleaning Record" PageViewID="rpv_DPFCleaning">
                                     </telerik:RadTab>
 
+                                    <%--End of move.--%>
+
                                     <%--Added by Andrew on 11/12/2019 for CARB Communication enhancement--%>
 
-                                    <telerik:RadTab runat="server" Text="CARB Communication" PageViewID="rpv_CARB_Communication">
+                                    <telerik:RadTab runat="server" Text="CARB Communication" PageViewID="rpv_CARB_Communication" >
                                     </telerik:RadTab>
 
                                     <%--End of what was added by Andrew on 11/12/2019.--%>
 
+                                    <telerik:RadTab runat="server" PageViewID="rpv_Reports" Text="Reports">
+                                    </telerik:RadTab>
                                 </tabs>
                             </telerik:radtabstrip>
 	<telerik:radmultipage id="rmp_Vehicle" runat="server" selectedindex="0">
+
     <telerik:RadPageView ID="rpv_VehicleDetails" runat="server">
 
 <table cellpadding="0" style="width: 920px; border-collapse: collapse; border: 1px solid #9B9B9B">
@@ -3047,39 +3053,95 @@
                             <table cellpadding="0" cellspacing="0" style="width: 100%">
                                 <tr>
                                     <td style="width: 200px; " class="tdtable">
-                                        CARB Happened:
+                                        Did CARB Communication Happen?:
                                     </td>
                                     <td>
                                         <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
                                     </td>
                                     <td style="width: 200px; " class="tdtable">
-                                        CARB Date:
+                                        Initial CARB Communication Date:
                                     </td>
                                     <td>
                                         <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
                                     </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Issue:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Resolution:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
-                                    </td>
                                 </tr>
                             </table>
-
                             <table cellpadding="0" cellspacing="0" style="width: 100%">
                                 <tr>
                                     <td>
                                         &#160;</td>
                                 </tr>
                             </table>
-
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Communication Issue:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Communication Resolution:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" />
                         </EmptyDataTemplate>
                     </asp:FormView>
                 </td>

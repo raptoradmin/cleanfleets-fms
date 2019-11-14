@@ -496,7 +496,11 @@ Public Class dpfcleaning
 
             'Next
 
-            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER DECLARE @FINALPARTNUMBER INTEGER DECLARE @FINALDPFINITWEIGHT INTEGER DECLARE @FINALDPFFINALWEIGHT INTEGER DECLARE @FINALDPFWEIGHTDIFF INTEGER DECLARE @FINALDOCINITWEIGHT INTEGER DECLARE @FINALDOCFINALWEIGHT INTEGER DECLARE @FINALDOCWEIGHTDIFF INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) IF @Miles <> '' BEGIN SET @FINALMILES = CONVERT(INTEGER, @Miles) END IF @Hours <> '' BEGIN SET @FINALHOURS = CONVERT(INTEGER, @Hours) END IF @PartNumber <> '' BEGIN SET @FINALPARTNUMBER = CONVERT(INTEGER, @PartNumber) END IF @DPFInitWeight <> '' BEGIN SET @FINALDPFINITWEIGHT = CONVERT(INTEGER, @DPFInitWeight) END IF @DPFFinalWeight <> '' BEGIN SET @FINALDPFFINALWEIGHT = CONVERT(INTEGER, @DPFFinalWeight) END IF @DPFWeightDiff <> '' BEGIN SET @FINALDPFWEIGHTDIFF = CONVERT(INTEGER, @DPFWeightDiff) END IF @DOCInitWeight <> '' BEGIN SET @FINALDOCINITWEIGHT = CONVERT(INTEGER, @DOCInitWeight) END IF @DOCFinalWeight <> '' BEGIN SET @FINALDOCFINALWEIGHT = CONVERT(INTEGER, @DOCFinalWeight) END IF @DOCWeightDiff <> '' BEGIN SET @FINALDOCWEIGHTDIFF = CONVERT(INTEGER, @DOCWeightDiff) END " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Plate, Miles, Hours, SerialNumber, PartNumber, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @SerialNumber, @FINALPARTNUMBER, @FINALDPFINITWEIGHT, @FINALDPFFINALWEIGHT, @FINALDPFWEIGHTDIFF, @FINALDOCINITWEIGHT, @FINALDOCFINALWEIGHT, @FINALDOCWEIGHTDIFF, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
+            '********** FYI ---> passing a varchar(50) in the Add.Parameters part of the Decimal conditions failed,
+            ' but adjusting the size to 10 worked; I think because 50 is too large.
+            ' I have to think more on why this is a problem.
+
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER DECLARE @FINALPARTNUMBER INTEGER DECLARE @FINALDPFINITWEIGHT INTEGER DECLARE @FINALDPFFINALWEIGHT INTEGER DECLARE @FINALDPFWEIGHTDIFF INTEGER DECLARE @FINALDOCINITWEIGHT INTEGER DECLARE @FINALDOCFINALWEIGHT INTEGER DECLARE @FINALDOCWEIGHTDIFF INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) IF @DPFInitFR <> '' BEGIN SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) END IF @DPFFinalFR <> '' BEGIN SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) END IF @DPFFRDiff <> '' BEGIN SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) END IF @Miles <> '' BEGIN SET @FINALMILES = CONVERT(INTEGER, @Miles) END IF @Hours <> '' BEGIN SET @FINALHOURS = CONVERT(INTEGER, @Hours) END IF @PartNumber <> '' BEGIN SET @FINALPARTNUMBER = CONVERT(INTEGER, @PartNumber) END IF @DPFInitWeight <> '' BEGIN SET @FINALDPFINITWEIGHT = CONVERT(INTEGER, @DPFInitWeight) END IF @DPFFinalWeight <> '' BEGIN SET @FINALDPFFINALWEIGHT = CONVERT(INTEGER, @DPFFinalWeight) END IF @DPFWeightDiff <> '' BEGIN SET @FINALDPFWEIGHTDIFF = CONVERT(INTEGER, @DPFWeightDiff) END IF @DOCInitWeight <> '' BEGIN SET @FINALDOCINITWEIGHT = CONVERT(INTEGER, @DOCInitWeight) END IF @DOCFinalWeight <> '' BEGIN SET @FINALDOCFINALWEIGHT = CONVERT(INTEGER, @DOCFinalWeight) END IF @DOCWeightDiff <> '' BEGIN SET @FINALDOCWEIGHTDIFF = CONVERT(INTEGER, @DOCWeightDiff) END " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Plate, Miles, Hours, SerialNumber, PartNumber, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @InvoiceNumber, @VINNumber, @Plate, @FINALMILES, @FINALHOURS, @SerialNumber, @FINALPARTNUMBER, @FINALDPFINITWEIGHT, @FINALDPFFINALWEIGHT, @FINALDPFWEIGHTDIFF, @FINALDOCINITWEIGHT, @FINALDOCFINALWEIGHT, @FINALDOCWEIGHTDIFF, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
 
             'Dim Plate As String
             'Plate = DPF_Dictionary.Item("Plate")
@@ -505,6 +509,23 @@ Public Class dpfcleaning
 
             Dim query_execution_flag As Boolean
             query_execution_flag = True
+
+            SuccessfulImportPrompt.Visible = False
+
+            PlateValidationPrompt.Visible = False
+            VINNumberValidationPrompt.Visible = False
+            DecimalValidationPrompt.Visible = False
+            DateValidationPrompt.Visible = False
+            WOValidationPrompt.Visible = False
+            MilesHoursValidationPrompt.Visible = False
+            SerialNumberValidationPrompt.Visible = False
+            PartNumberValidationPrompt.Visible = False
+            DPFInitWeightValidationPrompt.Visible = False
+            DPFFinalWeightValidationPrompt.Visible = False
+            DPFWeightDiffValidationPrompt.Visible = False
+            DOCInitWeightValidationPrompt.Visible = False
+            DOCFinalWeightValidationPrompt.Visible = False
+            DOCWeightDiffValidationPrompt.Visible = False
 
             For Each pair As KeyValuePair(Of String, String) In DPF_Dictionary
 
@@ -689,7 +710,7 @@ Public Class dpfcleaning
                     If (numeric_count > 3) Then
 
                         DecimalValidationPrompt.Visible = True
-                        DecimalValidationPrompt.InnerHtml = "The " & temp_var_key & " value you entered is larger than the allowed precision, no more than a total maximum of 3 digits."
+                        DecimalValidationPrompt.InnerHtml = "The " & temp_var_key & " value you entered is larger than the allowed precision, no more than a total maximum of 4 characters (digits and decimal point)."
 
                         query_execution_flag = False
 
@@ -700,10 +721,10 @@ Public Class dpfcleaning
 
                         query_execution_flag = False
 
-                        'ElseIf (numeric_count < 1) Then
+                        'ElseIf (decimal_count = Len(temp_holder) And temp_holder > 0) Then
 
                         '    DecimalValidationPrompt.Visible = True
-                        '    DecimalValidationPrompt.InnerHtml = "There is no " & temp_var_key & " value present in the field of the PDF."
+                        '    DecimalValidationPrompt.InnerHtml = "The value provided only contains (a) decimal point(s)."
 
                         '    query_execution_flag = False
 
@@ -722,25 +743,55 @@ Public Class dpfcleaning
 
                             If (Len(temp_holder) - decimal_point_position > 1) Then
 
-                                If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
+                                'If (Int(Mid(temp_holder, decimal_point_position + 2, 1)) >= 5) Then
 
-                                    Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
+                                '    Mid(temp_holder, decimal_point_position + 1, 1) = Str(Int(Mid(temp_holder, decimal_point_position + 1, 1)) + 1)
 
-                                End If
+                                'End If
 
-                                temp_holder = temp_holder.Remove(decimal_point_position + 1)
+                                'temp_holder = temp_holder.Remove(decimal_point_position + 1)
+
+                                'DecimalValidationPrompt.Visible = True
+                                'DecimalValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the " & temp_var_key & " value has been rounded."
+
+                                'temp_var_val = temp_holder
 
                                 DecimalValidationPrompt.Visible = True
-                                DecimalValidationPrompt.InnerHtml = "The number of digits after the decimal point was greater than 1, so the " & temp_var_key & " value has been rounded."
+                                DecimalValidationPrompt.InnerHtml = "The provided value contains several digits to the right of the decimal point, accepted values can only have one digit to the right of the decimal point."
 
-                                temp_var_val = temp_holder
+                                query_execution_flag = False
+
+                            ElseIf ((Len(temp_holder) - decimal_point_position) = 0 And numeric_count = 3) Then
+
+                                DecimalValidationPrompt.Visible = True
+                                DecimalValidationPrompt.InnerHtml = "The value contains a decimal point following three digits and therefore is not acceptable."
+
+                                query_execution_flag = False
+
+                            Else
+
+                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 10)
+                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                            End If
+
+                        Else
+
+                            If (numeric_count = 3) Then
+
+                                DecimalValidationPrompt.Visible = True
+                                DecimalValidationPrompt.InnerHtml = "The provided value is not allowed, it must contain no more than 3 digits and an appropriately placed decimal point."
+
+                                query_execution_flag = False
+
+                            Else
+
+                                DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 10)
+                                DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                             End If
 
                         End If
-
-                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.Decimal)
-                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                     End If
 
@@ -797,36 +848,41 @@ Public Class dpfcleaning
 
                     End If
 
-                ElseIf (temp_var_key = "SerialNumber" Or temp_var_key = "PartNumber") Then
+                ElseIf (temp_var_key = "PartNumber") Then
 
                     Dim format_string_Part As String = "^[0-9]*$"
                     Dim compare_Part As New Regex(format_string_Part)
 
-                    Dim format_string_Serial As String = "^[A-Z0-9]*$"
-                    Dim compare_Serial As New Regex(format_string_Serial)
-
-                    If (compare_Part.IsMatch(temp_var_val) Or compare_Serial.IsMatch(temp_var_val)) Then
+                    If (compare_Part.IsMatch(temp_var_val)) Then
 
                         DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
                         DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                     Else
 
-                        If (temp_var_key = "SerialNumber") Then
+                        PartNumberValidationPrompt.Visible = True
+                        PartNumberValidationPrompt.InnerHtml = "The part number is not valid, it should be a positive integer or blank."
 
-                            SerialNumberValidationPrompt.Visible = True
-                            SerialNumberValidationPrompt.InnerHtml = "The serial number is not valid, it should be a positive integer or blank."
+                        query_execution_flag = False
 
-                            query_execution_flag = False
+                    End If
 
-                        Else
+                ElseIf (temp_var_key = "SerialNumber") Then
 
-                            PartNumberValidationPrompt.Visible = True
-                            PartNumberValidationPrompt.InnerHtml = "The part number is not valid, it should be a positive integer or blank."
+                    Dim format_string_Serial As String = "^[A-Z0-9]*$"
+                    Dim compare_Serial As New Regex(format_string_Serial)
 
-                            query_execution_flag = False
+                    If (compare_Serial.IsMatch(temp_var_val)) Then
 
-                        End If
+                        DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                        DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
+                    Else
+
+                        SerialNumberValidationPrompt.Visible = True
+                        SerialNumberValidationPrompt.InnerHtml = "The serial number is not valid, it should be a positive integer or blank."
+
+                        query_execution_flag = False
 
                     End If
 
@@ -845,7 +901,7 @@ Public Class dpfcleaning
                         If (temp_var_key = "DPFInitWeight") Then
 
                             DPFInitWeightValidationPrompt.Visible = True
-                            DPFFinalWeightValidationPrompt.InnerHtml = "The DPF Initial Weight value is not valid, it should be a positive integer or blank."
+                            DPFInitWeightValidationPrompt.InnerHtml = "The DPF Initial Weight value is not valid, it should be a positive integer or blank."
 
                             query_execution_flag = False
 
@@ -888,7 +944,10 @@ Public Class dpfcleaning
 
                     End If
 
-                ElseIf (temp_var_key = "") Then
+                    'Else
+
+                    '    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                    '    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                 End If
 
@@ -900,6 +959,9 @@ Public Class dpfcleaning
             If (query_execution_flag = True) Then
 
                 DPF_comm.ExecuteNonQuery()
+
+                SuccessfulImportPrompt.Visible = True
+                SuccessfulImportPrompt.InnerHtml = "The import attempt was successful."
 
             End If
 
