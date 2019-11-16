@@ -1742,7 +1742,7 @@
                                                             </td>
                                                         <td>
                                                             <asp:Button ID="btn_DetachDECs" runat="server" OnClick="btn_DetachDECs_Click" 
-																CommandArgument='<%# BIND("IDDECS") %>'
+																CommandArgument='<%# Bind("IDDECS") %>'
                                                                 Text="Detach" />
                                                         </td>
                                                         <td>
@@ -3140,6 +3140,13 @@
                                         &#160;</td>
                                 </tr>
                             </table>
+
+                            <%--Added by Andrew on 11/14/2019.--%>
+
+                            <asp:Button ID="AddButton" runat="server" OnClick="AddButton_Click" Text="Add" />
+
+                            <%--End of what was added by Andrew on 11/14/2019.--%>
+
                             <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
                             <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" />
                         </EmptyDataTemplate>
@@ -3177,7 +3184,7 @@
 	<%--Added by Andrew on 11/12/2019 for the CARB Communication enhancement.--%>
 
         <asp:SqlDataSource ID="sds_CF_CARB_Communication" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [CARB_Comm_ID], [CARB_Happened], [CARB_Date], [CARB_Issue], [CARB_Resolution] FROM [CF_CARB_Comm] WHERE [ChassisVIN] = @ChassisVINHolderParam">
+		SelectCommand="SELECT [CARBCommID], [CARBHappened], [CARBDate], [CARBIssue], [CARBResolution] FROM [CF_CARB_Communication] WHERE [ChassisVIN] = @ChassisVINHolderParam">
 		<SelectParameters>
             <asp:ControlParameter Name="ChassisVINHolderParam" ControlID="ChassisVINHolder" Type="String" />
 		</SelectParameters>

@@ -25,6 +25,12 @@ Public Class vehiclesdetails1
     Dim qs As String = String.Empty
     Public GVWMessage As String
 
+    ' Added by Andrew on 11/14/2019.
+
+    Dim GlobalVINVar As String
+
+    ' End of what was added by Andrew on 11/14/2019.
+
     Protected Sub Page_PreRender(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreRender
 
         Dim rg_Vehicles As RadGrid = CType(FindControlIterative(Page, "rg_Engines"), RadGrid)
@@ -174,38 +180,40 @@ Public Class vehiclesdetails1
                 Dim TempDataRowView As DataRowView
                 TempDataRowView = TempDataView(0)
 
-                ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
+            ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
 
-                '    ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
+            GlobalVINVar = ChassisVINHolder.Text
 
-                '        Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+            '    ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
 
-                '        If (TestLabel_lbl_PONo Is Nothing) Then
+            '        Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
 
-                '            ChassisVINHolder.Text = "First Nothing!"
+            '        If (TestLabel_lbl_PONo Is Nothing) Then
 
-                '        Else
+            '            ChassisVINHolder.Text = "First Nothing!"
 
-                '            TestLabel_lbl_PONo.Visible = False
+            '        Else
 
-                '        End If
+            '            TestLabel_lbl_PONo.Visible = False
 
-                '    End If
+            '        End If
 
-                'ElseIf (Page.IsPostBack = True) Then
+            '    End If
 
-                '    Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+            'ElseIf (Page.IsPostBack = True) Then
 
-                '    If (TestLabel_lbl_PONo Is Nothing) Then
+            '    Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
 
-                '        ChassisVINHolder.Text = "Second Nothing!"
+            '    If (TestLabel_lbl_PONo Is Nothing) Then
+
+            '        ChassisVINHolder.Text = "Second Nothing!"
 
 
-                '    Else
+            '    Else
 
-                '        TestLabel_lbl_PONo.Visible = False
+            '        TestLabel_lbl_PONo.Visible = False
 
-            End If
+        End If
 
         'End If
 
@@ -2132,6 +2140,12 @@ Public Class vehiclesdetails1
             End If
 
         End If
+
+    End Sub
+
+    Protected Sub AddButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles AddButton.Click
+
+        Response.Redirect("addCARBrecord.aspx?VIN=" & GlobalVINVar)
 
     End Sub
 

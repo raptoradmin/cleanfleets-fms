@@ -216,6 +216,7 @@
     <Content Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehiclesearch.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehiclestransfer.aspx" />
+    <Content Include="cf_console\accountmanager\03_vehicles\addCARBrecord.aspx" />
     <Content Include="cf_console\accountmanager\04_engines\engines_detached.aspx" />
     <Content Include="cf_console\accountmanager\04_engines\engine_attach.aspx" />
     <Content Include="cf_console\accountmanager\04_engines\engine_DECsadd.aspx" />
@@ -394,6 +395,13 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx.vb">
       <DependentUpon>Testing_File.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\addCARBrecord.aspx.designer.vb">
+      <DependentUpon>addCARBrecord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\addCARBrecord.aspx.vb">
+      <DependentUpon>addCARBrecord.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="controls\GroupedDropDownList.vb" />
