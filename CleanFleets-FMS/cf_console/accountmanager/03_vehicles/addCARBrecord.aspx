@@ -127,4 +127,5 @@
         </tr>
     </table>
     <asp:Button ID="AddCARBButton" runat="server" Text="Add CARB Record" OnClick="AddCARBButton_Click" />
+    <asp:Button ID="DoneButton" runat="server" Text="Done" OnClick="DoneButton_Click" />
 </asp:Content>

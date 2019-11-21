@@ -43,6 +43,9 @@ Public Class addCARBrecord
 
             If (IsNumeric(temp_date_split(i - 1)) = False) Then
 
+                DateValidationPrompt.Visible = True
+                DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
                 query_execution_flag = False
 
             End If
@@ -121,6 +124,14 @@ Public Class addCARBrecord
             HappenedValidationPrompt.Visible = True
             HappenedValidationPrompt.InnerHtml = "Please enter a valid response ('Yes' or 'No')."
 
+            'Dim URLString As String
+            'Dim VINfromURLString As String
+
+            'URLString = Request.Url.ToString()
+            'VINfromURLString = Mid(URLString, InStr(URLString, "=") + 1, Len(URLString))
+
+            'HappenedValidationPrompt.InnerHtml = VINfromURLString
+
             query_execution_flag = False
 
         End If
@@ -148,17 +159,39 @@ Public Class addCARBrecord
             CARB_Comm.Parameters.Add("@temp_var_Resolution", SqlDbType.VarChar, -1)
             CARB_Comm.Parameters("@temp_var_Resolution").Value = temp_var_Resolution
 
+            Dim URLString As String
+            Dim VINfromURLString As String
+
+            URLString = Request.Url.ToString()
+            VINfromURLString = Mid(URLString, InStr(URLString, "=") + 1, InStr(URLString, "&") - (InStr(URLString, "=") + 1))
+
             CARB_Comm.Parameters.Add("@ChassisVIN", SqlDbType.VarChar, 50)
-            'CARB_Comm.Parameters("@ChassisVIN").Value = 
+            CARB_Comm.Parameters("@ChassisVIN").Value = VINfromURLString
 
             CARB_Comm.ExecuteNonQuery()
 
             SuccessfulPrompt.Visible = True
             SuccessfulPrompt.InnerHtml = "New record successfully added."
 
+            AddCARBButton.Visible = False
+
         End If
 
         CARB_conn.Close()
+
+    End Sub
+
+    Protected Sub DoneButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles DoneButton.Click
+
+        Dim URLString As String
+        Dim start_position As String
+        Dim fromURLString As String
+
+        URLString = Request.Url.ToString()
+        start_position = InStr(URLString, "IDVehicles=")
+        fromURLString = Mid(URLString, InStr(start_position, URLString, "=", vbTextCompare) + 1, Len(URLString) - InStr(start_position, URLString, "=", vbTextCompare) + 1)
+
+        Response.Redirect("vehiclesdetails.aspx?IDVehicles=" & fromURLString)
 
     End Sub
 

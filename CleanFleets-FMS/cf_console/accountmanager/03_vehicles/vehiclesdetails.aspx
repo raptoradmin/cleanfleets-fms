@@ -42,7 +42,19 @@
             				continue;
             			input.checked = false;
             		}
-            	}
+                }
+
+                // Added by Andrew on 11/19/2019 to confirm whether the user wants to delete the CARB record.
+
+                function ConfirmDelete() {
+                    if (confirm("Are you sure?") == true)
+                        return true;
+                    else
+                        return false;
+                }
+
+                // End of what was added by Andrew on 11/19/2019.
+
             </script>            
 
          </telerik:radcodeblock>
@@ -82,6 +94,15 @@
     <%--<asp:textbox id="RecordIDDPF" runat="server" Text="" />--%>
 
     <%--End of what was added by Andrew on 10/31/2019--%>
+
+    <%--Added by Andrew on 11/19/2019 for the purpose of alerting the user to input errors when in EditItemTemplate--%>
+
+    <div id="DateValidationPrompt" runat="server" Visible="false"></div>
+    <div id="HappenedValidationPrompt" runat="server" Visible="false"></div>
+    <div id="SuccessfulPrompt" runat="server" Visible="false"></div>
+    <div id="DeletionPrompt" runat="server" Visible="false"></div>
+
+    <%--End of what was added by Andrew on 11/19/2019--%>
 
 	<asp:FormView ID="FormView1" runat="server" DataKeyNames="IDProfileAccount,IDProfileTerminal,IDProfileFleet"
 		DataSourceID="sds_CFV_Fleet_Lineage" Width="800px">
@@ -2945,103 +2966,9 @@
             <tr>
                 <td>
                     <asp:FormView ID="fv_CF_CARB_Communication" runat="server" CellPadding="5" 
-                        DataKeyNames="CARB_Comm_ID" DataSourceID="sds_CF_CARB_Communication" 
+                        DataKeyNames="CARBCommID" DataSourceID="sds_CF_CARB_Communication" 
                         Width="700px">
                         <EditItemTemplate>
-
-                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                <tr>
-                                    <td>
-                                        &#160;</td>
-                                </tr>
-                            </table>
-
-                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                <tr>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Happened:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Date:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Issue:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Resolution:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                <tr>
-                                    <td>
-                                        &#160;</td>
-                                </tr>
-                            </table>
-
-                        </EditItemTemplate>
-                        <InsertItemTemplate>
-                        </InsertItemTemplate>
-                        <ItemTemplate>
-
-                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                <tr>
-                                    <td>
-                                        &#160;</td>
-                                </tr>
-                            </table>
-
-                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                <tr>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Happened:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Date:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Issue:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
-                                    </td>
-                                    <td style="width: 200px; " class="tdtable">
-                                        CARB Resolution:
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                <tr>
-                                    <td>
-                                        &#160;</td>
-                                </tr>
-                            </table>
-
-                        </ItemTemplate>
-                        <EmptyDataTemplate>
 
                             <table cellpadding="0" cellspacing="0" style="width: 100%">
                                 <tr>
@@ -3056,13 +2983,13 @@
                                         Did CARB Communication Happen?:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARB_Happened") %>' />
+                                        <asp:TextBox ID="TextBox_CARB_Happened" runat="server" Text='<%# Bind("CARBHappened") %>' />
                                     </td>
                                     <td style="width: 200px; " class="tdtable">
                                         Initial CARB Communication Date:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARB_Date") %>' />
+                                        <asp:TextBox ID="TextBox_CARB_Date" runat="server" Width="150px" Text='<%# Bind("CARBDate") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -3090,7 +3017,7 @@
                                         CARB Communication Issue:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARB_Issue") %>' />
+                                        <asp:TextBox ID="TextBox_CARB_Issue" runat="server" Height="75px" TextMode="MultiLine" Width="600px" Text='<%# Bind("CARBIssue") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -3118,7 +3045,217 @@
                                         CARB Communication Resolution:
                                     </td>
                                     <td>
-                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARB_Resolution") %>' />
+                                        <asp:TextBox ID="TextBox_CARB_Resolution" runat="server" Height="75px" TextMode="MultiLine" Width="600px" Text='<%# Bind("CARBResolution") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <asp:Button ID="UpdateButton" runat="server" CausesValidation="True" Text="Update" OnClick="UpdateButton_Click" />
+                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" />
+
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        Did CARB Communication Happen?:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARBHappened") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        Initial CARB Communication Date:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARBDate") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Communication Issue:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARBIssue") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Communication Resolution:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARBResolution") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                            <asp:Button ID="DeleteButton" runat="server" Text="Delete" OnClientClick="return ConfirmDelete();" OnClick="DeleteButton_Click"/>
+
+                        </ItemTemplate>
+                        <EmptyDataTemplate>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        Did CARB Communication Happen?:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Happened" runat="server" Text='<%# Bind("CARBHappened") %>' />
+                                    </td>
+                                    <td style="width: 200px; " class="tdtable">
+                                        Initial CARB Communication Date:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Date" runat="server" Text='<%# Bind("CARBDate") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Communication Issue:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Issue" runat="server" Text='<%# Bind("CARBIssue") %>' />
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td>
+                                        &#160;</td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                <tr>
+                                    <td style="width: 200px; " class="tdtable">
+                                        CARB Communication Resolution:
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lbl_CARB_Resolution" runat="server" Text='<%# Bind("CARBResolution") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -3147,8 +3284,8 @@
 
                             <%--End of what was added by Andrew on 11/14/2019.--%>
 
-                            <asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
-                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" />
+                            <%--<asp:Button ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" CausesValidation="False" CommandName="Cancel" />--%>
                         </EmptyDataTemplate>
                     </asp:FormView>
                 </td>

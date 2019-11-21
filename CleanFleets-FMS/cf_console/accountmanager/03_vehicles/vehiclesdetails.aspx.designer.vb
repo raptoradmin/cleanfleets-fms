@@ -41,6 +41,42 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents Flag As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''DateValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''HappenedValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HappenedValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''SuccessfulPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SuccessfulPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''DeletionPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DeletionPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''FormView1 control.
     '''</summary>
     '''<remarks>
@@ -498,6 +534,24 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.   
     '''</remarks>   
     Protected WithEvents AddButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>   
+    '''Button control.   
+    '''</summary>   
+    '''<remarks>   
+    '''Auto-generated field.   
+    '''To modify move field declaration from designer file to code-behind file.   
+    '''</remarks>   
+    Protected WithEvents UpdateButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>   
+    '''Button control.   
+    '''</summary>   
+    '''<remarks>   
+    '''Auto-generated field.   
+    '''To modify move field declaration from designer file to code-behind file.   
+    '''</remarks>   
+    Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''sds_CF_CARB_Communication control.
