@@ -257,6 +257,7 @@ Public Class vehiclesdetails1
 
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim conn As New SqlConnection(connectionString)
+
         Dim comm As New SqlCommand("SELECT * FROM CF_DECS WHERE IDEngines = @IDEngines", conn)
         comm.Connection.Open()
 
@@ -1228,16 +1229,23 @@ Public Class vehiclesdetails1
         Dim IDEngine As String = hf_rg_EnginesFilesIDEngines.Value
         Dim IDEngines As New Guid(IDEngine)
 
+        ' Commenting out this section to make it identical to the Engine File and Image Add buttons that function on 11/22/2019.
+
         sds_ImagesDECs.DataBind()
         fvw_IDDECS.DataBind()
 
+        ' End of section I commented out on 11/22/2019.
+
         Dim item As GridDataItem = DirectCast(TryCast(sender, RadioButton).NamingContainer, GridDataItem)
         Dim rdBtn As RadioButton = TryCast(sender, RadioButton)
+
+        ' Commenting out this section to make it identical to the Engine File and Image Add buttons that function on 11/22/2019. 
 
         Dim hf_IDDEC As HiddenField = CType(fvw_IDDECS.FindControl("hf_IDDECSImage"), HiddenField)
         Dim IDDEC As String = hf_IDDEC.Value
         Dim IDDECS As New Guid(IDDEC)
 
+        ' End of section I commented out on 11/22/2019.
 
         Dim IDImages As Guid = item.OwnerTableView.DataKeyValues(item.ItemIndex)("IDImages")
 
@@ -1246,9 +1254,14 @@ Public Class vehiclesdetails1
 
             Dim sql As String
             Dim strConnString As [String] = System.Configuration.ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString()
+
+            ' Changing the sql command from IDDECS to IDImages on 11/22/2019.
+
             sql = "UPDATE CF_Images SET DefaultImage = @Value WHERE IDDECS = @IDDECS AND IDEngines = @IDEngines"
             Dim connection As New SqlConnection(strConnString)
             Dim command As New SqlCommand(sql, connection)
+
+            ' Changing Parameters.Add from IDDECS to IDImages on 11/22/2019.
 
             command.Parameters.Add("@Value", SqlDbType.Int).Value = "0"
             command.Parameters.Add("@IDDECS", SqlDbType.UniqueIdentifier).Value = IDDECS

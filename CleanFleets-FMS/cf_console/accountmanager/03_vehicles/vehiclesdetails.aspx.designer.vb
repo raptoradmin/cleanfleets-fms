@@ -374,6 +374,15 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents rg_EngineFiles As Global.Telerik.Web.UI.RadGrid
 
     '''<summary>
+    '''Label1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''btn_AddDECSImage control.
     '''</summary>
     '''<remarks>
@@ -508,49 +517,49 @@ Partial Public Class vehiclesdetails1
     '''</remarks>
     Protected WithEvents RadWindowManager1 As Global.Telerik.Web.UI.RadWindowManager
 
-    '''<summary>   
-    '''DropDownList control.   
-    '''</summary>   
-    '''<remarks>   
-    '''Auto-generated field.   
-    '''To modify move field declaration from designer file to code-behind file.   
-    '''</remarks>   
-    Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
+    '''<summary>   
+    '''DropDownList control.   
+    '''</summary>   
+    '''<remarks>   
+    '''Auto-generated field.   
+    '''To modify move field declaration from designer file to code-behind file.   
+    '''</remarks>   
+    Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
 
-    '''<summary>   
-    '''Button control.   
-    '''</summary>   
-    '''<remarks>   
-    '''Auto-generated field.   
-    '''To modify move field declaration from designer file to code-behind file.   
-    '''</remarks>   
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
     Protected WithEvents EditButton As Global.System.Web.UI.WebControls.Button
 
-    '''<summary>   
-    '''Button control.   
-    '''</summary>   
-    '''<remarks>   
-    '''Auto-generated field.   
-    '''To modify move field declaration from designer file to code-behind file.   
-    '''</remarks>   
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
     Protected WithEvents AddButton As Global.System.Web.UI.WebControls.Button
 
-    '''<summary>   
-    '''Button control.   
-    '''</summary>   
-    '''<remarks>   
-    '''Auto-generated field.   
-    '''To modify move field declaration from designer file to code-behind file.   
-    '''</remarks>   
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
     Protected WithEvents UpdateButton As Global.System.Web.UI.WebControls.Button
 
-    '''<summary>   
-    '''Button control.   
-    '''</summary>   
-    '''<remarks>   
-    '''Auto-generated field.   
-    '''To modify move field declaration from designer file to code-behind file.   
-    '''</remarks>   
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
     Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>

@@ -3,10 +3,66 @@ Imports System.Data.SqlClient
 Imports Radactive.WebControls.ILoad
 Imports Radactive.WebControls.ILoad.Configuration
 
+' I am going to see if Importing the "Director.vb" class file will work, I am adding the code below on 12/3/2019.
+
+
+
+' End of what was added on 12/3/2019.
+
 Partial Public Class ImageUpload_Detail
+
     Inherits System.Web.UI.Page
 
+    Public Class Director
 
+        ' Create a new open connection to the database
+        Public Shared Function GetNewOpenDbConnection() As SqlConnection
+            Dim connection As SqlConnection = New SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+            connection.Open()
+            Return connection
+        End Function
+
+#Region "I-Load Internal codes"
+
+        Public Const Ex_E_101_ILoad1_InternalCode As String = "Ex_E_101_ILoad1"
+
+        Public Const Ex_E_102_ILoad1_InternalCode As String = "Ex_E_102_ILoad1"
+
+        Public Const Ex_E_103_ILoad1_InternalCode As String = "Ex_E_103_ILoad1"
+
+        Public Const Ex_E_201_ILoad1_InternalCode As String = "Ex_E_201_ILoad1"
+
+        Public Const Ex_E_202_ILoad1_InternalCode As String = "Ex_E_202_ILoad1"
+
+        Public Const Ex_E_203_ILoad1_InternalCode As String = "Ex_E_203_ILoad1"
+
+        Public Const Ex_E_204_ILoad1_InternalCode As String = "Ex_E_204_ILoad1"
+
+#End Region
+
+#Region "I-Load Reposity Folders"
+
+        Public Shared ReadOnly Property ImageRepositoryFolder() As String
+            Get
+                Return System.Configuration.ConfigurationManager.AppSettings("ImageRepositoryFolder")
+            End Get
+        End Property
+
+        Public Shared ReadOnly Property Ex_E_102_ILoad1_RepositoryFolder() As String
+            Get
+                Return System.Configuration.ConfigurationManager.AppSettings("Ex_E_102_ILoad1_RepositoryFolder")
+            End Get
+        End Property
+
+        Public Shared ReadOnly Property Ex_E_103_ILoad1_RepositoryFolder() As String
+            Get
+                Return System.Configuration.ConfigurationManager.AppSettings("Ex_E_103_ILoad1_RepositoryFolder")
+            End Get
+        End Property
+
+#End Region
+
+    End Class
 
     Protected Sub Page_PreLoad(sender As Object, e As System.EventArgs) Handles Me.PreLoad
 
@@ -74,46 +130,7 @@ Partial Public Class ImageUpload_Detail
                             End If
                         End Using
                     End Using
-					
-					Using command As SqlCommand = connection.CreateCommand()
-                        command.CommandType = CommandType.Text
-                        command.CommandText = "SELECT IDImages FROM [CF_Images] WHERE [IDEngines] = @IDEngines AND IDDECS = @IDDECS AND ISNULL(DefaultImage,0) = 1 "
-                        command.Parameters.AddWithValue("@IDEngines", Me.Request.QueryString("IDEngines"))
-						command.Parameters.AddWithValue("@IDDECS", Me.Request.QueryString("IDDECS"))
 
-                        Using reader As SqlDataReader = command.ExecuteReader()
-
-                            If (reader.Read()) Then
-
-                                ' Record found
-                                Me.cb_DefaultImage.checked = (reader("IDImages") = me.RecordID)
-
-                            Else
-								Me.cb_DefaultImage.checked = true
-                            End If
-                        End Using
-                    End Using
-					
-                End Using
-
-                ' Get the imageId
-                Dim imageId As String = Me.RecordId.ToString()
-
-                ' Check if Picture1 exists
-                If (WebImage.ExistsInFileSystem(Director.ImageRepositoryFolder, imageId)) Then
-
-                    ' Image found...
-
-                    ' Load Image
-                    Me.CF_ImageUpload.Value = WebImage.LoadFromFileSystem(Director.ImageRepositoryFolder, imageId)
-
-                End If
-            Else
-
-                ' INSERT...
-                Me.RecordId = Guid.NewGuid()
-				
-				Using connection As SqlConnection = Director.GetNewOpenDbConnection()
                     Using command As SqlCommand = connection.CreateCommand()
                         command.CommandType = CommandType.Text
                         command.CommandText = "SELECT IDImages FROM [CF_Images] WHERE [IDEngines] = @IDEngines AND IDDECS = @IDDECS AND ISNULL(DefaultImage,0) = 1 "
@@ -132,9 +149,48 @@ Partial Public Class ImageUpload_Detail
                             End If
                         End Using
                     End Using
-					
+
                 End Using
-				
+
+                ' Get the imageId
+                Dim imageId As String = Me.RecordId.ToString()
+
+                ' Check if Picture1 exists
+                If (WebImage.ExistsInFileSystem(Director.ImageRepositoryFolder, imageId)) Then
+
+                    ' Image found...
+
+                    ' Load Image
+                    Me.CF_ImageUpload.Value = WebImage.LoadFromFileSystem(Director.ImageRepositoryFolder, imageId)
+
+                End If
+            Else
+
+                ' INSERT...
+                Me.RecordId = Guid.NewGuid()
+
+                Using connection As SqlConnection = Director.GetNewOpenDbConnection()
+                    Using command As SqlCommand = connection.CreateCommand()
+                        command.CommandType = CommandType.Text
+                        command.CommandText = "SELECT IDImages FROM [CF_Images] WHERE [IDEngines] = @IDEngines AND IDDECS = @IDDECS AND ISNULL(DefaultImage,0) = 1 "
+                        command.Parameters.AddWithValue("@IDEngines", Me.Request.QueryString("IDEngines"))
+                        command.Parameters.AddWithValue("@IDDECS", Me.Request.QueryString("IDDECS"))
+
+                        Using reader As SqlDataReader = command.ExecuteReader()
+
+                            If (reader.Read()) Then
+
+                                ' Record found
+                                Me.cb_DefaultImage.checked = (reader("IDImages") = Me.RecordId)
+
+                            Else
+                                Me.cb_DefaultImage.checked = True
+                            End If
+                        End Using
+                    End Using
+
+                End Using
+
 
             End If
         End If
@@ -248,30 +304,30 @@ Partial Public Class ImageUpload_Detail
             ' Update the record
             Using command As SqlCommand = connection.CreateCommand()
                 command.CommandType = CommandType.Text
-                command.CommandText = "UPDATE [CF_Images] SET [FileName]=@image_FileName, [UserID]=@UserID, [IDModifiedUser]=@IDModifiedUser, [IDEngines]=@IDEngines, " & _ 
-				  "[IDDECS]=@IDDECS, DefaultImage=@DefaultImage " & _
-				  "WHERE [IDImages]=@IDImages"
+                command.CommandText = "UPDATE [CF_Images] SET [FileName]=@image_FileName, [UserID]=@UserID, [IDModifiedUser]=@IDModifiedUser, [IDEngines]=@IDEngines, " &
+                  "[IDDECS]=@IDDECS, DefaultImage=@DefaultImage " &
+                  "WHERE [IDImages]=@IDImages"
                 command.Parameters.AddWithValue("@image_FileName", image_FileName)
                 command.Parameters.AddWithValue("@IDImages", Me.RecordId)
                 command.Parameters.AddWithValue("@UserID", UserID)
                 command.Parameters.AddWithValue("@IDModifiedUser", UserID)
                 command.Parameters.AddWithValue("@IDEngines", IDEngines)
                 command.Parameters.AddWithValue("@IDDECS", IDDECS)
-				command.Parameters.AddWithValue("@DefaultImage", Me.cb_DefaultImage.checked)
+                command.Parameters.AddWithValue("@DefaultImage", Me.cb_DefaultImage.checked)
                 command.ExecuteNonQuery()
             End Using
-			
-			if Me.cb_DefaultImage.checked then
-				Using command As SqlCommand = connection.CreateCommand()
-					command.CommandType = CommandType.Text
-					command.CommandText = "UPDATE [CF_Images] SET DefaultImage=0 WHERE IDEngines = @IDEngines AND IDDECS = @IDDECS AND IDImages<>@IDImages "
-					command.Parameters.AddWithValue("@IDImages", Me.RecordId)
-					command.Parameters.AddWithValue("@IDEngines", IDEngines)
-					command.Parameters.AddWithValue("@IDDECS", IDDECS)
-					command.ExecuteNonQuery()
-				End Using
-			end if
-			
+
+            If Me.cb_DefaultImage.checked Then
+                Using command As SqlCommand = connection.CreateCommand()
+                    command.CommandType = CommandType.Text
+                    command.CommandText = "UPDATE [CF_Images] SET DefaultImage=0 WHERE IDEngines = @IDEngines AND IDDECS = @IDDECS AND IDImages<>@IDImages "
+                    command.Parameters.AddWithValue("@IDImages", Me.RecordId)
+                    command.Parameters.AddWithValue("@IDEngines", IDEngines)
+                    command.Parameters.AddWithValue("@IDDECS", IDDECS)
+                    command.ExecuteNonQuery()
+                End Using
+            End If
+
         End Using
         '----------------------------------------------------------------------
 

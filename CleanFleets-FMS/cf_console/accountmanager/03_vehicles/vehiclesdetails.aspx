@@ -1896,7 +1896,7 @@
                                             </telerik:RadGrid>
                                             <p>&nbsp;
                                                 </p>
-                                            <h1>
+                                            <%--<h1>
 											
                                                 Engine Files</h1>
                                             <telerik:RadGrid ID="rg_EnginesFiles" runat="server" DataKeyNames="IDEngines" DataSourceID="sds_CFV_Engines_Grid" GridLines="None" PageSize="5" ShowFooter="True" Skin="Telerik" Width="680px">
@@ -1930,11 +1930,182 @@
                                                     <td>&nbsp;
                                                         </td>
                                                 </tr>
-                                            </table>
+                                            </table>--%>
 
 <%-- Engine Images Grid --%>
                                           
-                                            <telerik:RadGrid ID="rg_EngineImages" runat="server" 
+                                            <%--Added by Andrew on 11/21/2019, grabbed from Detached Engines, specifically from Engine Files tab.--%>
+
+                                            <table cellpadding="0" cellspacing="0" style="padding: 5px; border: 1px solid #9B9B9B; width: 100%">
+                                                <tr>
+                                                    <td>
+
+                                                        <%--Moved commented out chunk above to this place on 11/21/2019 for VDECS project.--%>
+
+                                                        <h1>
+                                                            Engine Files</h1>
+                                                        <telerik:RadGrid ID="rg_EnginesFiles" runat="server" DataKeyNames="IDEngines" DataSourceID="sds_CFV_Engines_Grid" GridLines="None" PageSize="5" ShowFooter="True" Skin="Telerik" Width="680px">
+                                                            <mastertableview autogeneratecolumns="False" datakeynames="IDEngines" datasourceid="sds_CFV_Engines_Grid">
+                                                                <Columns>
+                                                                    <telerik:GridBoundColumn DataField="SerialNum" DefaultInsertValue="" HeaderText="Serial No." SortExpression="SerialNum" UniqueName="SerialNum">
+                                                                    </telerik:GridBoundColumn>
+                                                                    <telerik:GridBoundColumn DataField="IDEngines" DefaultInsertValue="" HeaderText="ID Engines" SortExpression="IDEngines" UniqueName="IDEngines">
+                                                                    </telerik:GridBoundColumn>
+                                                                    <telerik:GridBoundColumn DataField="FamilyName" DefaultInsertValue="" HeaderText="Family Name" SortExpression="FamilyName" UniqueName="FamilyName">
+                                                                    </telerik:GridBoundColumn>
+                                                                    <telerik:GridBoundColumn DataField="EngineModel" DefaultInsertValue="" HeaderText="Model" SortExpression="EngineModel" UniqueName="EngineModel">
+                                                                    </telerik:GridBoundColumn>
+                                                                </Columns>
+                                                            </mastertableview>
+                                                            <clientsettings enablepostbackonrowclick="True">
+                                                                <selecting allowrowselect="True" />
+                                                            </clientsettings>
+                                                        </telerik:RadGrid>
+                                                        <asp:HiddenField ID="hf_rg_EnginesFilesIDEngines" runat="server" />
+                                                        <br />
+                                                        <br />
+                                                        <br />
+                                                        <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                                            <tr>
+                                                                <td>
+                                                                    <asp:Button ID="btn_AddEngineImage" runat="server" Text="Add Image" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>&nbsp;
+                                                                    </td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <%--End of moved commented out chunk above on 11/21/2019 for VDECS project.--%>
+
+                                                        <telerik:RadGrid ID="rg_EngineImages" runat="server" AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True" CssClass="radgrid" DataSourceID="sds_ImagesEngines" GridLines="None" Width="600px">
+                                                            <mastertableview autogeneratecolumns="False" clientdatakeynames="IDImages" datakeynames="IDImages" datasourceid="sds_ImagesEngines">
+                                                                <Columns>
+                                                                    <telerik:GridTemplateColumn DefaultInsertValue="" HeaderText="Default" UniqueName="rbt_VehicleImage">
+                                                                        <ItemTemplate>
+                                                                            <asp:RadioButton ID="rbt_EngineImage" runat="server" AutoPostBack="True" checked='<%# If(Eval("DefaultImage") Is DBNull.Value, False, Eval("DefaultImage")) %>' GroupName="MyGroupEngines" oncheckedchanged="rbt_EngineImage_CheckedChanged" onclick="MyClickEngines(this,event)" />
+                                                                        </ItemTemplate>
+                                                                    </telerik:GridTemplateColumn>
+                                                                    <telerik:GridImageColumn AlternateText="Thumbnail" DataImageUrlFields="FilePath, Image" DataImageUrlFormatString="{0}/{1}" DataType="System.String" FooterText="ImageColumn footer" HeaderText="" ImageAlign="Middle" UniqueName="vehicleimage">
+                                                                        <HeaderStyle Width="75px" />
+                                                                    </telerik:GridImageColumn>
+                                                                    <telerik:GridBoundColumn DataField="IDImages" DataType="System.Int32" DefaultInsertValue="" HeaderText="IDImages" ReadOnly="True" SortExpression="IDImages" UniqueName="IDImages" Visible="False">
+                                                                    </telerik:GridBoundColumn>
+                                                                </Columns>
+                                                            </mastertableview>
+                                                            <clientsettings>
+                                                                <clientevents onrowdblclick="RowClick" />
+                                                            </clientsettings>
+                                                        </telerik:RadGrid>
+                                                        <p>
+                                                        </p>
+                                                        <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                                            <tr>
+                                                                <td>
+                                                                    <asp:Button ID="btn_AddEngineFile" runat="server" Text="Add File" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>&nbsp;
+                                                                    </td>
+                                                            </tr>
+                                                        </table>
+                                                        <p>
+                                                            &nbsp;</p><telerik:RadGrid ID="rg_EngineFiles" runat="server" AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True" CssClass="radgrid" DataSourceID="sds_FilesEngine" GridLines="None" Width="600px">
+                                                                <mastertableview autogeneratecolumns="False" datakeynames="IDFile" datasourceid="sds_FilesEngine">
+                                                                    <Columns>
+                                                                        <telerik:GridBoundColumn DataField="Title" DefaultInsertValue="" HeaderText="Title" SortExpression="Title" UniqueName="Title">
+                                                                        </telerik:GridBoundColumn>
+
+                                                                        <%--Added the GridBoundColumn with DisplayValue based off working Vehicle File section on 11/22/2019.--%>
+
+                                                                        <telerik:GridBoundColumn DataField="DisplayValue" DefaultInsertValue="" HeaderText="Document Type" SortExpression="DocumentType" UniqueName="DocumentType">
+															
+														                </telerik:GridBoundColumn>
+                                                                        <telerik:GridHyperLinkColumn DataNavigateUrlFields="FilePath,FileName" DataNavigateUrlFormatString="{0}{1}" DataTextField="IDVehicles" DataTextFormatString="View" Target="_Blank" Text="View" UniqueName="View">
+                                                                            <ItemStyle CssClass="radgrid" />
+                                                                        </telerik:GridHyperLinkColumn>
+                                                                    </Columns>
+
+                                                                    <%--Added the no records template based off working Vehicle File section on 11/22/2019.--%>
+
+                                                                    <NoRecordsTemplate>
+                                                                        <div>No Files to Display.</div>
+                                                                    </NoRecordsTemplate>
+                                                                </mastertableview>
+                                                            </telerik:RadGrid>
+                                                            <p>
+                                                            </p>
+                                                            <p>
+                                                                <asp:Label ID="Label1" runat="server" ForeColor="#2C7500" style="font-size: large; font-weight: 700" Text="DECS Files"></asp:Label>
+                                                            </p>
+                                                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <asp:Button ID="btn_AddDECSImage" runat="server" Text="Add Image" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>&nbsp;
+                                                                        </td>
+                                                                </tr>
+                                                            </table>
+                                                            <telerik:RadGrid ID="rg_DECSImages" runat="server" AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True" CssClass="radgrid" DataSourceID="sds_ImagesDECs" GridLines="None" Width="600px">
+                                                                <mastertableview autogeneratecolumns="False" clientdatakeynames="IDImages" datakeynames="IDImages" datasourceid="sds_ImagesDECs">
+                                                                    <Columns>
+                                                                        <%--Commenting out GridTemplateColumn tags to see if that changes behavior.--%>
+                                                                        <telerik:GridTemplateColumn DefaultInsertValue="" HeaderText="Default" UniqueName="rbt_VehicleImage">
+                                                                            <ItemTemplate>
+                                                                                <asp:RadioButton ID="rbt_DECSImage" runat="server" AutoPostBack="True" checked='<%# IF(Eval("DefaultImage") is DBNull.Value, False, Eval("DefaultImage")) %>' GroupName="MyGroupDECS" oncheckedchanged="rbt_DECSImage_CheckedChanged" onclick="MyClickDECS(this,event)" />
+                                                                            </ItemTemplate>
+                                                                        </telerik:GridTemplateColumn>
+                                                                        <%--Changed from DataImageURLFields to FilePath, FileName from FilePath, Image; I also added the ImageURL property (ImageUrl="C:\Websites\cleanfleets-fms\htdocs\includes\imagemanager\imagefiles\0075e20f-fe9f-43d2-a3bf-9afa312d6dda_diode.PNG") and I took out UniqueName property--%>
+                                                                        <telerik:GridImageColumn DataType="System.String" DataImageUrlFields="FilePath, FileName" DataImageUrlFormatString="{0}/{1}?Width=100" AlternateText="Thumbnail" FooterText="ImageColumn footer" HeaderText="" ImageAlign="Middle" ImageWidth="100px" UniqueName="vehicleimage">
+                                                                            <HeaderStyle Width="75px" />
+                                                                        </telerik:GridImageColumn>
+                                                                        <%--Try changing the botton GribBoundCloumn tag with DataType = System.String from System.Int32 and ImageWidth ------I changed the Visible property to True --%>
+                                                                        <telerik:GridBoundColumn DataField="IDImages" DataType="System.Guid" DefaultInsertValue="" HeaderText="IDImages" ReadOnly="True" SortExpression="IDImages" UniqueName="IDImages" Visible="False">
+                                                                        </telerik:GridBoundColumn>
+                                                                    </Columns>
+                                                                </mastertableview>
+                                                                <clientsettings>
+                                                                    <clientevents onrowdblclick="RowClick" />
+                                                                </clientsettings>
+                                                            </telerik:RadGrid>
+                                                            <p>&nbsp;
+                                                                </p>
+                                                            <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <asp:Button ID="btn_AddDECSFile" runat="server" Text="Add File" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>&nbsp;
+                                                                        </td>
+                                                                </tr>
+                                                            </table>
+                                                            <telerik:RadGrid ID="rg_DECsFiles" runat="server" AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True" CssClass="radgrid" DataSourceID="sds_FilesDECS" GridLines="None" Width="600px">
+                                                                <mastertableview autogeneratecolumns="False" datakeynames="IDFile" datasourceid="sds_FilesDECS">
+                                                                    <Columns>
+                                                                        <telerik:GridBoundColumn DataField="Title" DefaultInsertValue="" HeaderText="Title" SortExpression="Title" UniqueName="Title">
+                                                                        </telerik:GridBoundColumn>
+                                                                        <telerik:GridHyperLinkColumn DataNavigateUrlFields="FilePath,FileName" DataNavigateUrlFormatString="{0}{1}" DataTextField="IDVehicles" DataTextFormatString="View" Target="_Blank" Text="View" UniqueName="View">
+                                                                            <ItemStyle CssClass="radgrid" />
+                                                                        </telerik:GridHyperLinkColumn>
+                                                                    </Columns>
+                                                                </mastertableview>
+                                                            </telerik:RadGrid>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <%--Commented out by Andrew on 11/21/2019 for work on VDECS.--%>
+
+
+                                            <%--<telerik:RadGrid ID="rg_EngineImages" runat="server" 
                                                 AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True"
                                             CssClass="radgrid" DataSourceID="sds_ImagesEngines" GridLines="None" 
                                                 Width="300px">
@@ -1986,7 +2157,7 @@
                                                 </tr>
                                             </table>
 
-<%-- Engine Files Grid --%>
+<%-- Engine Files Grid 
                                             
                                             <telerik:RadGrid ID="rg_EngineFiles" runat="server" AllowAutomaticDeletes="True"
                                             AutoGenerateDeleteColumn="True" CssClass="radgrid" 
@@ -2011,11 +2182,13 @@
                                                 </mastertableview>
                                             </telerik:RadGrid>
                                             <p>
-                                            </p>
+                                            </p>--%>
+
+                                            <%--End of what was commented out by Andrew on 11/21/2019 for work on VDECS.--%>
                                             
 <%-- DECS --%>                                            
                                             
-                                            <h1>
+                                            <%--<h1>
                                                 DECS Files</h1>
                                             <table cellpadding="0" cellspacing="0" style="width: 100%">
                                                 <tr>
@@ -2027,9 +2200,9 @@
                                                     <td>&nbsp;
                                                         </td>
                                                 </tr>
-                                            </table>
+                                            </table>--%>
                                             <%-- DECS Images Grid --%>
-                                            <telerik:RadGrid ID="rg_DECSImages" runat="server" AllowAutomaticDeletes="True" 
+                                            <%--<telerik:RadGrid ID="rg_DECSImages" runat="server" AllowAutomaticDeletes="True" 
                                                 AutoGenerateDeleteColumn="True" CssClass="radgrid" 
                                                 DataSourceID="sds_ImagesDECS" GridLines="None" Width="300px">
                                                 <mastertableview autogeneratecolumns="False" clientdatakeynames="IDImages" 
@@ -2070,8 +2243,8 @@
                                                 <clientsettings>
                                                     <clientevents onrowdblclick="RowClick" />
                                                 </clientsettings>
-                                            </telerik:RadGrid>
-                                            <p>&nbsp;
+                                            </telerik:RadGrid>--%>
+                                            <%--<p>&nbsp;
                                                 </p>
                                             <table cellpadding="0" cellspacing="0" style="width: 100%">
                                                 <tr>
@@ -2083,11 +2256,11 @@
                                                     <td>&nbsp;
                                                         </td>
                                                 </tr>
-                                            </table>
+                                            </table>--%>
                                             
 <%-- DECS Images Grid --%>
                                             
-                                            <telerik:RadGrid ID="rg_DECsFiles" runat="server" AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True"
+                                            <%--<telerik:RadGrid ID="rg_DECsFiles" runat="server" AllowAutomaticDeletes="True" AutoGenerateDeleteColumn="True"
                                             CssClass="radgrid" DataSourceID="sds_FilesDECS" GridLines="None" 
                                                 Width="300px">
                                                 <mastertableview autogeneratecolumns="False" datakeynames="IDFile" 
@@ -2110,7 +2283,7 @@
 														<div>No Files to Display.</div>
 													</NoRecordsTemplate>
                                                 </mastertableview>
-                                            </telerik:RadGrid>
+                                            </telerik:RadGrid>--%>
                                             <br />
                                             <p>
                                             </p>
@@ -2131,7 +2304,8 @@
                                                     <td>
                                                          <asp:FormView ID="fvw_IDDECS" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesDECS">
                                                             <ItemTemplate>
-                                                                <asp:HiddenField ID="hf_IDDECSImage" runat="server" EnableViewState="False" Value='<%# Eval("IDDECS") %>' />
+                                                                <%--Changed the EnableViewState property to True. Going to comment this out and try TextBox control.--%>
+                                                                <asp:HiddenField ID="hf_IDDECSImage" runat="server" EnableViewState="false" Value='<%# Eval("IDDECS") %>' />
                                                             </ItemTemplate>
                                                         </asp:FormView>
                                                         <br />
@@ -3711,6 +3885,9 @@
 		SelectCommand="SELECT [IDImages], [DefaultImage], [IDModifiedUser], [ModifiedDate], [IDVehicles], [IDEngines], [IDDECS], [Title], [FilePath], [FileName], [UserID], [EnterDate] FROM [CFV_Images_DECS] WHERE ([IDEngines] = @IDEngines)"
 		DeleteCommand="DELETE FROM [CF_Images] WHERE [IDImages] = @IDImages">
 		<SelectParameters>
+
+            <%--I am going to change the control parameter from "rg_EnginesFiles" to "hf_IDDECSImage" to see if an image gets displayed. I will also remove the "PropertyName" and changed IDEngines to IDDECS for the "Name" property; also changed from ControlParameter to Parameter.--%>
+
 			<asp:ControlParameter ControlID="rg_EnginesFiles" Name="IDEngines" PropertyName="SelectedValue" />
 		</SelectParameters>
 		<DeleteParameters>

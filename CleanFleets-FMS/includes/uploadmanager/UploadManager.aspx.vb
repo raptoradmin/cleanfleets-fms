@@ -387,12 +387,22 @@ Public Class UploadManager
             ' Update the record
             Using command As SqlCommand = connection.CreateCommand()
                 command.CommandType = CommandType.Text
-                command.CommandText = "INSERT INTO [CF_Images] ([IDImages], [IDModifiedUser], [DefaultImage], [IDDECS], [Title], [FilePath], [FileName], [UserID]) " &
-                                      "VALUES (@IDImages, @IDModifiedUser, @DefaultImage, @IDDECS, @Title, @image_FilePath, @image_FileName, @UserID)"
+
+                'Added the IDEngines field into the INSERT statement because it is required to create the "CFV_Images_DECS" view. Added on 11/29/2019.
+
+                command.CommandText = "INSERT INTO [CF_Images] ([IDImages], [IDModifiedUser], [DefaultImage], [IDEngines], [IDDECS], [Title], [FilePath], [FileName], [UserID]) " &
+                                      "VALUES (@IDImages, @IDModifiedUser, @DefaultImage, @IDEngines, @IDDECS, @Title, @image_FilePath, @image_FileName, @UserID)"
+
+                'Added the IDEngines parameter because it is required to create the "CFV_Images_DECS" view. Added on 11/29/2019.
 
                 command.Parameters.AddWithValue("@IDImages", RecordId)
                 command.Parameters.AddWithValue("@IDModifiedUser", UserId)
                 command.Parameters.AddWithValue("@DefaultImage", DefaultImage)
+
+
+                command.Parameters.AddWithValue("@IDEngines", EngineId)
+
+
                 command.Parameters.AddWithValue("@IDDECS", DECSId)
                 command.Parameters.AddWithValue("@Title", Title)
                 command.Parameters.AddWithValue("@image_FilePath", rootImageUrl)
