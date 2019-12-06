@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="ResMimeType">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="Version">
+        <value>1.0.0.0</value>
+    </resheader>
+    <resheader name="Reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="Writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="ILoad_Alert_ConfirmRemoveImage">
+        <value>Are you sure you want to remove this image ?</value>
+    </data>
+    <data name="ILoad_Button_AddImage">
+        <value>Upload...</value>
+    </data>
+    <data name="ILoad_Button_EditImage">
+        <value>Edit...</value>
+    </data>
+    <data name="ILoad_Button_RemoveImage">
+        <value>Remove...</value>
+    </data>
+    <data name="ILoad_Error_InvalidOperation">
+        <value>Ivalid operation.</value>
+    </data>
+    <data name="ILoad_Error_NoImageToEdit">
+        <value>Error: No image to edit.</value>
+    </data>
+    <data name="ILoad_Error_SessionExpired">
+        <value>Warning: Session has expired, please reload the web page.</value>
+    </data>
+    <data name="ILoad_Error_SourceImageNotFound">
+        <value>
+            I-Load configuration error:
+            Source image not found. Please enable [KeepSourceImage].
+        </value>
+    </data>
+    <data name="ILoad_Error_UnableToLoadResources">
+        <value>
+            I-Load exception: Unable to load resources.
+            Please ensure WebCoreModule HttpModule and HttpHandler are installed in the web.config file.
+            If you are using asp.net authentication please allow * access to "WebCoreModule.ashx" HttpHandler.
+        </value>
+    </data>
+    <data name="ILoad_Text_Definition">
+        <value>Definition: </value>
+    </data>
+    <data name="ILoad_Text_Empty">
+        <value>Please select an image.</value>
+    </data>
+    <data name="ILoad_Text_IconImage">
+        <value>Icon image</value>
+    </data>
+    <data name="ILoad_Text_SelectedImage">
+        <value>Selected image</value>
+    </data>
+    <data name="ILoad_Text_ShowImagePreview">
+        <value>Show image preview</value>
+    </data>
+    <data name="ILoad_Text_Size">
+        <value>Size (px): </value>
+    </data>
+    <data name="ILoad_Text_SourceImage">
+        <value>Source image</value>
+    </data>
+    <data name="IUW_Common_Alert_Exit">
+        <value>Are you sure you want to exit?\r\n(Uploaded data will be lost).</value>
+    </data>
+    <data name="IUW_Common_Button_Back">
+        <value>Prev Step</value>
+    </data>
+    <data name="IUW_Common_Button_Cancel">
+        <value>Cancel</value>
+    </data>
+    <data name="IUW_Common_Button_Finish">
+        <value>Finish</value>
+    </data>
+    <data name="IUW_Common_Button_Next">
+        <value>Next Step</value>
+    </data>
+    <data name="IUW_Common_Error">
+        <value>Error</value>
+    </data>
+    <data name="IUW_Common_Error_Alert">
+        <value>Warning:\r\nError {#errorNumber#}: {#message#}\r\nPlease contact the web master.</value>
+    </data>
+    <data name="IUW_Common_Error_CantWriteToFolder">
+        <value>
+            System IO error:
+            Can't write to folder '{#folderPath#}'.
+            Please ensure this folder exists and write permission is set.
+        </value>
+    </data>
+    <data name="IUW_Common_Error_ImageFileIOError">
+        <value>Image file read/write error.</value>
+    </data>
+    <data name="IUW_Common_Error_ImageFileIOError_Destination">
+        <value>Destination</value>
+    </data>
+    <data name="IUW_Common_Error_ImageFileIOError_Source">
+        <value>Source</value>
+    </data>
+    <data name="IUW_Common_Error_IndexFileIOError">
+        <value>Index file read/write error.</value>
+    </data>
+    <data name="IUW_Common_Error_MaxSourceImageHeight">
+        <value>Maximum image height is {#maxHeight#} px.</value>
+    </data>
+    <data name="IUW_Common_Error_MaxSourceImageSize">
+        <value>Maximum image size is {#maxWidth#} x {#maxHeight#} px.</value>
+    </data>
+    <data name="IUW_Common_Error_MaxSourceImageWidth">
+        <value>Maximum image width is {#maxWidth#} px.</value>
+    </data>
+    <data name="IUW_Common_Error_MaxUploadFileSize">
+        <value>Maximum uploadable file size is {#kbs#}.</value>
+    </data>
+    <data name="IUW_Common_Error_MinSourceImageHeight">
+        <value>Minimum image height is {#minHeight#} px.</value>
+    </data>
+    <data name="IUW_Common_Error_MinSourceImageSize">
+        <value>Minimum image size is {#minWidth#} x {#minHeight#} px.</value>
+    </data>
+    <data name="IUW_Common_Error_MinSourceImageWidth">
+        <value>Minimum image width is {#minWidth#} px.</value>
+    </data>
+    <data name="IUW_Common_Error_MinUploadFileSize">
+        <value>Minimum uploadable file size is {#kbs#}.</value>
+    </data>
+    <data name="IUW_Common_Error_NoFileUploaded">
+        <value>No file uploaded.</value>
+    </data>
+    <data name="IUW_Common_Error_NoImageDefinition">
+        <value>
+            Configuration error:
+            At least one image definition must be declared.
+        </value>
+    </data>
+    <data name="IUW_Common_Error_UnknownImageFormat">
+        <value>Unknown image format.</value>
+    </data>
+    <data name="IUW_Common_Exception">
+        <value>Exception</value>
+    </data>
+    <data name="IUW_Common_Text_Step">
+        
+    </data>
+    <data name="IUW_Common_Text_WaitInitializing">
+        <value>Initializing, please wait...</value>
+    </data>
+    <data name="IUW_Common_Text_WaitProcessing">
+        <value>Processing data, please wait...</value>
+    </data>
+    <data name="IUW_P1_Text_Body">
+        <value>
+            &lt;b&gt;This is a custom text loaded from the
+            "~/bin/Radactive.WebControls.ILoad.en-US.resx.xml" resource file.
+            &lt;/b&gt;&lt;br /&gt;
+            &lt;br /&gt;
+        </value>
+    </data>
+    <data name="IUW_P1_Text_Continue">
+        <value>Click "Next Step &gt;" to start...</value>
+    </data>
+    <data name="IUW_P1_Text_SubTitle">
+        <value>Image Upload Procedure</value>
+    </data>
+    <data name="IUW_P1_Text_WarningFlashMustBeUpdated">
+        <value>
+            &lt;b&gt;Warning&lt;/b&gt;:&lt;br /&gt;
+            The installed version of Adobe Flash plug-in is not compatible with this software and may not operate properly.&lt;br /&gt;
+            Before continuing, please update Adobe Flash plug-in.&lt;br /&gt;&lt;br /&gt;
+        </value>
+    </data>
+    <data name="IUW_P1_Text_WarningNoFlash">
+        <value>
+            &lt;b&gt;Warning&lt;/b&gt;:&lt;br /&gt;
+            This software requires Adobe Flash plug-in 6 or above
+            to be installed on your machine to operate.&lt;br /&gt;
+            Before continuing, please install the required software.&lt;br /&gt;&lt;br /&gt;
+        </value>
+    </data>
+    <data name="IUW_P1_Tooltip_GetFlashPlayer">
+        <value>Get Flash Player</value>
+    </data>
+    <data name="IUW_P2_Alert_Exit">
+        <value>Warning: Upload in progress...\r\nAre you sure you want to cancel?\r\n(Upload can't be resumed).</value>
+    </data>
+    <data name="IUW_P2_Button_Browse">
+        <value>Browse...</value>
+    </data>
+    <data name="IUW_P2_Error_InvalidFileName">
+        <value>Invalid file name.</value>
+    </data>
+    <data name="IUW_P2_Error_InvalidFileType">
+        <value>Invalid file type, please select another file.</value>
+    </data>
+    <data name="IUW_P2_Text_AllowedOperations_Cut">
+        <value>(Optionally) Cut a portion of the image to publish on the web</value>
+    </data>
+    <data name="IUW_P2_Text_AllowedOperations_SelectImageDefinition">
+        <value>Select image definition</value>
+    </data>
+    <data name="IUW_P2_Text_AllowedOperations_Upload">
+        <value>Upload an image from your computer to the server</value>
+    </data>
+    <data name="IUW_P2_Text_Body">
+        <value>
+            Please select image by clicking the "Browse..." button.&lt;br /&gt;
+            Then click the "{#nextButtonLabel#}" button to upload the image to the server.&lt;br /&gt;
+        </value>
+    </data>
+    <data name="IUW_P2_Text_ImageToUpload">
+        <value>Image to upload</value>
+    </data>
+    <data name="IUW_P2_Text_SubTitle">
+        <value>Select and Upload Image</value>
+    </data>
+    <data name="IUW_P3_Error_IncompatibleImage">
+        <value>
+            &lt;b&gt;Warning:&lt;/b&gt; your image is incompatible with all image definitions.&lt;br /&gt;
+            Please press "&amp;lt; Back" to select another image...
+        </value>
+    </data>
+    <data name="IUW_P3_Text_Constraints">
+        <value>Constraints</value>
+    </data>
+    <data name="IUW_P3_Text_Continue">
+        <value>
+            Click "Next &amp;gt;" to continue...&lt;br /&gt;
+            Click "&amp;lt; Back" to select a different image...&lt;br /&gt;
+        </value>
+    </data>
+    <data name="IUW_P3_Text_ImageFormat">
+        <value>Image format</value>
+    </data>
+    <data name="IUW_P3_Text_ImageSize">
+        <value>Image size (pixel)</value>
+    </data>
+    <data name="IUW_P3_Text_Incompatible">
+        <value>incompatible</value>
+    </data>
+    <data name="IUW_P3_Text_PercentDoneValue">
+        <value>{#percentDone#}% ({#currentBytes#} of {#totalBytes#} completed)</value>
+    </data>
+    <data name="IUW_P3_Text_SelectImageDefinition">
+        <value>Please select appropriate image definition</value>
+    </data>
+    <data name="IUW_P3_Text_SubTitle">
+        <value>Select Image Definition</value>
+    </data>
+    <data name="IUW_P3_Text_TimeLeft">
+        <value>Time left:</value>
+    </data>
+    <data name="IUW_P3_Text_TimeLeftValueFormat">
+        <value>hour|hours|minute|minutes|second|seconds|and</value>
+    </data>
+    <data name="IUW_P3_Text_TransferState">
+        <value>Transfer state:</value>
+    </data>
+    <data name="IUW_P3_Text_Uploading">
+        <value>Uploading file to server...</value>
+    </data>
+    <data name="IUW_P3_Text_UploadSpeed">
+        <value>Upload speed:</value>
+    </data>
+    <data name="IUW_P3_Text_UploadSpeedValue">
+        <value>{#bps#} per second</value>
+    </data>
+    <data name="IUW_P3_Text_UseSourceImageFormat">
+        <value>Use source image format</value>
+    </data>
+    <data name="IUW_P5_Button_Close">
+        <value>Close</value>
+    </data>
+    <data name="IUW_P5_Button_Save">
+        <value>Save</value>
+    </data>
+    <data name="IUW_P5_FL_Button_ResetResize">
+        <value>Reset</value>
+    </data>
+    <data name="IUW_P5_FL_Button_ResetZoom">
+        <value>Reset</value>
+    </data>
+    <data name="IUW_P5_FL_Button_ResizeRotateFlipImage">
+        <value>Resize - Rotate / flip</value>
+    </data>
+    <data name="IUW_P5_FL_Text_Cursor">
+        <value>Cursor:</value>
+    </data>
+    <data name="IUW_P5_FL_Text_Details">
+        <value>Details</value>
+    </data>
+    <data name="IUW_P5_FL_Text_HeightPrefix">
+        <value>H</value>
+    </data>
+    <data name="IUW_P5_FL_Text_Loading">
+        <value>Loading image...</value>
+    </data>
+    <data name="IUW_P5_FL_Text_Original">
+        <value>Original:</value>
+    </data>
+    <data name="IUW_P5_FL_Text_Resized">
+        <value>Resized:</value>
+    </data>
+    <data name="IUW_P5_FL_Text_ResizeImage">
+        <value>Resize image</value>
+    </data>
+    <data name="IUW_P5_FL_Text_RotateFlipImage">
+        <value>Rotate / flip image</value>
+    </data>
+    <data name="IUW_P5_FL_Text_WidthPrefix">
+        <value>W</value>
+    </data>
+    <data name="IUW_P5_FL_Text_ZoomView">
+        <value>Zoom view</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_ButtonResetResize">
+        <value>Reset the current image resize factor.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_ButtonResetZoom">
+        <value>Reset the current image zoom factor.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_CurrentResizeFactor">
+        <value>Current image resize factor.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_CurrentZoomFactor">
+        <value>Current image zoom factor.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Cursor">
+        <value>
+            Actual cursor location
+            (from Top-Left corner) in pixel.
+        </value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Default">
+        <value>Drag &amp; drop the cropping area to select the portion of the image to publish.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_FlipHorizontal">
+        <value>Flip image horizontally.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_FlipVertical">
+        <value>Flip image vertically</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Original">
+        <value>
+            Original image size
+            (Width and Height) in pixel.
+        </value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Resize">
+        <value>Dragging the cursor, the image will be resized, while the dimensions will stay intact.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Resized">
+        <value>
+            Current image size
+            (Width and Height) in pixel,
+            using "Resize" factor: {#resizeFactor#}%.
+        </value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Rotate">
+        <value>Rotate image: 0°, 90°, 180°, 270°.</value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_SelectionLocation">
+        <value>
+            Actual selection location
+            (from Top-Left corner) in pixel.
+        </value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_SelectionSize">
+        <value>
+            Actual selection size
+            (Width and Height) in pixel.
+        </value>
+    </data>
+    <data name="IUW_P5_FL_Tooltip_Zoom">
+        <value>
+            Dragging the cursor,
+            the view will change
+            (without changing any of the original parameters).
+        </value>
+    </data>
+    <data name="IUW_P5_Text_SubTitle1">
+        <value>Cut image</value>
+    </data>
+    <data name="IUW_P5_Text_SubTitle2">
+        <value>Edit image</value>
+    </data>
+    <data name="IUW_P6_Text_SubTitle1">
+        <value>End of Image Upload Procedure</value>
+    </data>
+    <data name="IUW_P6_Text_SubTitle2">
+        <value>End of Image Edit Procedure</value>
+    </data>
+    <data name="IUW_P6_Text_Summary">
+        <value>
+            Process successfully completed.
+
+
+            --- Source image --------------------------------------------------
+
+            Format: {#sourceImageFormat#}
+            Size (px): {#sourceImageSize#}
+            File size: {#sourceImageFileSize#}
+
+
+            --- Selected image ------------------------------------------------
+
+            Format: {#selectedImageFormat#}
+            Size (px): {#selectedImageSize#}
+            File size: {#selectedImageFileSize#}
+            Resizes: {#totResizesGenerated#} {#generatedResizesText#}.
+
+
+            Click "Finish" to exit.
+        </value>
+    </data>
+    <data name="IUW_P6_Text_Summary_GeneratedResizesText">
+        <value>resize generated|resizes generated</value>
+    </data>
+    <data name="PW_Button_Cancel">
+        <value>Cancel</value>
+    </data>
+    <data name="PW_Button_Close">
+        <value>Close</value>
+    </data>
+    <data name="PW_Button_Print">
+        <value>Print...</value>
+    </data>
+    <data name="PW_Button_Save">
+        <value>Save...</value>
+    </data>
+    <data name="PW_Text_Definition">
+        <value>Definition:</value>
+    </data>
+    <data name="PW_Text_FileSize">
+        <value>File size:</value>
+    </data>
+    <data name="PW_Text_Image">
+        <value>Image:</value>
+    </data>
+    <data name="PW_Text_ImageFormat">
+        <value>Image format:</value>
+    </data>
+    <data name="PW_Text_ImageSize">
+        <value>Image size (px):</value>
+    </data>
+    <data name="PW_Text_InternalCode">
+        <value>Int. cod.</value>
+    </data>
+    <data name="PW_Text_Resize">
+        <value>Resize:</value>
+    </data>
+</root>
