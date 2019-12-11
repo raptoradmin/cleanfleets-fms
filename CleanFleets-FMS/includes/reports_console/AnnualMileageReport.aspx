@@ -84,8 +84,19 @@
         });
     </script>
     <asp:Button ID="btn_Report" runat="server" Text="Create Report" />
-    <asp:SqlDataSource ID="sds_ddl_Account" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+
+    <%--I am going to make a change to the SqlDataSource ConnectionString property because I dont think the CF_SQL_Connection--%>
+    <%--is working. Change made by Andrew on 12/10/2019.--%>
+    <%--Changing database back to CleanFleets in preparation for a migration from DEV to Production; Andrew - 12/10/2019.--%>
+
+    <%--<asp:SqlDataSource ID="sds_ddl_Account" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+        SelectCommand="SELECT * FROM [CF_Profile_Account] ORDER BY [AccountName]"></asp:SqlDataSource>--%>
+
+    <asp:SqlDataSource ID="sds_ddl_Account" runat="server" ConnectionString="Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
         SelectCommand="SELECT * FROM [CF_Profile_Account] ORDER BY [AccountName]"></asp:SqlDataSource>
+
+    <%--End of change made by Andrew on 12/10/2019.--%>
+
 </asp:Content>
 
 

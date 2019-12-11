@@ -23,15 +23,6 @@ Partial Public Class engines_detached1
     Protected WithEvents RadCodeBlock1 As Global.Telerik.Web.UI.RadCodeBlock
     
     '''<summary>
-    '''rg_Engines control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents rg_Engines As Global.Telerik.Web.UI.RadGrid
-    
-    '''<summary>
     '''RadTabStrip1 control.
     '''</summary>
     '''<remarks>
@@ -183,6 +174,15 @@ Partial Public Class engines_detached1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_DECsFiles As Global.Telerik.Web.UI.RadGrid
+    
+    '''<summary>
+    '''rg_Engines control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rg_Engines As Global.Telerik.Web.UI.RadGrid
     
     '''<summary>
     '''sds_CFV_Engines_fv control.

@@ -290,6 +290,12 @@ Public Class vehiclesdetails1
         sb.Append("</script>")
         ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "@@@@MyPopUpScript", sb.ToString(), False)
 
+        ' I am filling a TextBox with the qs contents to see if it looks correct; done by Andrew on 12/6/2019.
+
+        qsinspection.Text = qs
+
+        ' End of what Andrew added on 12/6/2019.
+
         qs = String.Empty
 
     End Sub
@@ -1694,15 +1700,20 @@ Public Class vehiclesdetails1
                     TestLabel_lbl_InvoiceNo.Visible = True
                     TestLabel_lbl_Date.Visible = True
                     TestLabel_lbl_PONo.Visible = True
-                    TestLabel_lbl_Company.Visible = True
-                    TestLabel_lbl_VINNo.Visible = True
-                    TestLabel_lbl_Make.Visible = True
-                    TestLabel_lbl_Model.Visible = True
-                    TestLabel_lbl_PlateNo.Visible = True
+
+                    ' Commenting out the Visibility property change for all items in the Vehicle section in order to remove extraneous info; done by Andrew on 12/5/2019.
+
+                    'TestLabel_lbl_Company.Visible = True
+                    'TestLabel_lbl_VINNo.Visible = True
+                    'TestLabel_lbl_Make.Visible = True
+                    'TestLabel_lbl_Model.Visible = True
+                    'TestLabel_lbl_PlateNo.Visible = True
                     TestLabel_lbl_Miles.Visible = True
                     TestLabel_lbl_Hours.Visible = True
-                    TestLabel_lbl_MakeModel.Visible = True
 
+                    ' End of what was commented out by Andrew on 12/5/2019.
+
+                    TestLabel_lbl_MakeModel.Visible = True
                     TestLabel_lbl_SerialNo.Visible = True
                     TestLabel_lbl_PartNo.Visible = True
                     TestLabel_lbl_Substrate.Visible = True
@@ -1727,7 +1738,9 @@ Public Class vehiclesdetails1
 
                     Dim connection_string As String
 
-                    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+                    'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+
+                    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
                     Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -1737,7 +1750,10 @@ Public Class vehiclesdetails1
 
                     End If
 
-                    Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+                    'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+                    'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+
+                    Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF_Final WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
 
                     DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
                     DPF_comm.Parameters("@IDDPF").Value = Testddl_ddl_DPF_Records.SelectedValue
@@ -1877,7 +1893,9 @@ Public Class vehiclesdetails1
 
             Dim connection_string As String
 
-            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+            'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+
+            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
             Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -1887,7 +1905,10 @@ Public Class vehiclesdetails1
 
             End If
 
-            Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+            'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+            'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+
+            Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF_Final WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
 
             DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
             DPF_comm.Parameters("@IDDPF").Value = Flag.Text
@@ -1992,11 +2013,11 @@ Public Class vehiclesdetails1
                         TestLabel_lbl_InvoiceNo.Visible = True
                         TestLabel_lbl_Date.Visible = True
                         TestLabel_lbl_PONo.Visible = True
-                        TestLabel_lbl_Company.Visible = True
-                        TestLabel_lbl_VINNo.Visible = True
-                        TestLabel_lbl_Make.Visible = True
-                        TestLabel_lbl_Model.Visible = True
-                        TestLabel_lbl_PlateNo.Visible = True
+                        'TestLabel_lbl_Company.Visible = True
+                        'TestLabel_lbl_VINNo.Visible = True
+                        'TestLabel_lbl_Make.Visible = True
+                        'TestLabel_lbl_Model.Visible = True
+                        'TestLabel_lbl_PlateNo.Visible = True
                         TestLabel_lbl_Miles.Visible = True
                         TestLabel_lbl_Hours.Visible = True
                         TestLabel_lbl_MakeModel.Visible = True
@@ -2101,7 +2122,7 @@ Public Class vehiclesdetails1
 
                 '    Dim connection_string As String
 
-                '    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+                '    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
                 '    Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -2189,7 +2210,9 @@ Public Class vehiclesdetails1
 
         Dim connection_string As String
 
-        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+        'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
         Dim CARB_conn As New SqlConnection(connection_string)
 
@@ -2353,7 +2376,9 @@ Public Class vehiclesdetails1
 
         Dim connection_string As String
 
-        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+        'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
         Dim CARB_conn As New SqlConnection(connection_string)
 

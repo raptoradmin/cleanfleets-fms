@@ -13,7 +13,19 @@ Imports FMS.Entity.Criteria
 Public Class AnnualMileageReport
     Inherits BaseWebForm
     Dim facade As AnnualMileageReportService()
-    Dim cnxn As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
+
+    ' When clicking the Annual Mileage Report link on the CleanFleets site I get thrown an exception stating
+    ' the enhancement is trying to access content from the wrong database (CleanFleets instead of CleanFleets-DEV)
+    ' Based off that I am going to comment out the line below and replace it with explicitly listing the connection string
+    ' and see if it works. This change is made by Andrew on 12/10/2019.
+
+    ' Changing database back to CleanFleets in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
+
+    'Dim cnxn As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
+    Dim cnxn As String = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
+
+    ' End of change made by Andrew on 12/10/2019.
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             FillAccounts()

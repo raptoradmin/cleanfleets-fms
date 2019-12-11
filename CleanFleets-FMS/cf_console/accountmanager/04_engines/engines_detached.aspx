@@ -67,7 +67,8 @@
 			</td>
 		</tr>
 	</table>
-	<telerik:radgrid id="rg_Engines" runat="server" datakeynames="IDEngines" datasourceid="sds_CFV_Engines_Grid"
+    <%--I am moving this RadGrid under the RadTabStrip and RadMultiPage control because whenever the user chooses a different list item from the RadGrid control the page refreshes and starts the user at the top; this section was commented out on 12/5/2019 by Andrew.--%>
+	<%--<telerik:radgrid id="rg_Engines" runat="server" datakeynames="IDEngines" datasourceid="sds_CFV_Engines_Grid"
 		gridlines="None" pagesize="5" showfooter="True" skin="Telerik" width="500px"
 		allowsorting="True">
                                                 <mastertableview autogeneratecolumns="False" datakeynames="IDEngines" datasourceid="sds_CFV_Engines_Grid">
@@ -88,7 +89,8 @@
                                             </telerik:radgrid>
 	<p>
 		&nbsp;
-	</p>
+	</p>--%>
+    <%--End of what I am commenting out on 12/5/2019.--%>
 	<telerik:radtabstrip id="RadTabStrip1" runat="server" multipageid="rmp_Engines" selectedindex="0">
                                     <tabs>
                                         <telerik:RadTab runat="server" PageViewID="rpv_EngineDetails" 
@@ -651,6 +653,34 @@
 	<p>
 		&nbsp;
 	</p>
+
+    <%--This is where I am placing the the commented out radgrid control at the top of the page; done by Andrew on 12/5/2019.--%>
+    
+    <telerik:radgrid id="rg_Engines" runat="server" datakeynames="IDEngines" datasourceid="sds_CFV_Engines_Grid"
+		gridlines="None" pagesize="5" showfooter="True" skin="Telerik" width="500px"
+		allowsorting="True">
+                                                <mastertableview autogeneratecolumns="False" datakeynames="IDEngines" datasourceid="sds_CFV_Engines_Grid">
+                                                    <Columns>
+                                                        <telerik:GridBoundColumn DataField="IDEngines" DataType="System.Int32" DefaultInsertValue="" HeaderText="IDEngines" ReadOnly="True" SortExpression="IDEngines" UniqueName="IDEngines">
+                                                        </telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn DataField="SerialNum" DefaultInsertValue="" HeaderText="SerialNum" SortExpression="SerialNum" UniqueName="SerialNum">
+                                                        </telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn DataField="FamilyName" DefaultInsertValue="" HeaderText="FamilyName" SortExpression="FamilyName" UniqueName="FamilyName">
+                                                        </telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn DataField="SeriesModelNo" DefaultInsertValue="" HeaderText="SeriesModelNo" SortExpression="SeriesModelNo" UniqueName="SeriesModelNo">
+                                                        </telerik:GridBoundColumn>
+                                                    </Columns>
+                                                </mastertableview>
+                                                <clientsettings enablepostbackonrowclick="True">
+                                                    <selecting allowrowselect="True" />
+                                                </clientsettings>
+                                            </telerik:radgrid>
+	<p>
+		&nbsp;
+	</p>
+
+    <%--End of where commented out RadGrid control section was placed on 12/5/2019.--%>
+
 	<asp:SqlDataSource ID="sds_CFV_Engines_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDEngines], [IDModifiedUser], [ModifiedDate], [IDVehicles], [IDEngineManufacturer], [EngineManufacturer], [EngineModel], [IDModelYear], [IDEngineStatus], [EngineStatus], [IDEngineFuelType], [EngineFuelType], [SerialNum], [Description], [ModelYear], [FamilyName], [SeriesModelNo], [Horsepower], [Notes], [NotesCF] FROM [CFV_Engines] WHERE ([IDEngines] = @IDEngines)"
 		UpdateCommand="UPDATE [CF_Engines] SET [IDModifiedUser] = @IDModifiedUser, [ModifiedDate] = @ModifiedDate, [IDEngineManufacturer] = @IDEngineManufacturer, [EngineModel] = @EngineModel, [IDEngineStatus] = @IDEngineStatus, [IDEngineFuelType] = @IDEngineFuelType, [IDModelYear] = @IDModelYear, [SerialNum] = @SerialNum, [FamilyName] = @FamilyName, [SeriesModelNo] = @SeriesModelNo, [Horsepower] = @Horsepower, [Description] = @Description, [Notes] = @Notes, [NotesCF] = @NotesCF WHERE [IDEngines] = @IDEngines">

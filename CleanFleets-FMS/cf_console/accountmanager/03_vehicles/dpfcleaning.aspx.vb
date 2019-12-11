@@ -291,7 +291,9 @@ Public Class dpfcleaning
 
             Dim connection_string As String
 
-            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+            ' Making changes to CleanFleets for database from CleanFleets-DEV in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
+
+            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
             Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -317,7 +319,11 @@ Public Class dpfcleaning
             final_comm_field_name_string = comm_field_name_string(1)
 
             Dim combined_comm_string As String
-            combined_comm_string = "DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF (IDDPF, " & final_comm_field_name_string & ") VALUES(@UNIQUEID, "
+
+            'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+            'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+
+            combined_comm_string = "DECLARE @UNIQUEID UNIQUEIDENTIFIER" & " SET @UNIQUEID = NEWID() " & "INSERT INTO CF_DPF_Final (IDDPF, " & final_comm_field_name_string & ") VALUES(@UNIQUEID, "
 
 
             Dim pre_comm_field_value_string As String
@@ -500,7 +506,16 @@ Public Class dpfcleaning
             ' but adjusting the size to 10 worked; I think because 50 is too large.
             ' I have to think more on why this is a problem.
 
-            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALINVOICENUMBER VARCHAR(50) DECLARE @FINALCOMPANY VARCHAR(MAX) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER DECLARE @FINALPARTNUMBER INTEGER DECLARE @FINALDPFINITWEIGHT INTEGER DECLARE @FINALDPFFINALWEIGHT INTEGER DECLARE @FINALDPFWEIGHTDIFF INTEGER DECLARE @FINALDOCINITWEIGHT INTEGER DECLARE @FINALDOCFINALWEIGHT INTEGER DECLARE @FINALDOCWEIGHTDIFF INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) IF @DPFInitFR <> '' BEGIN SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) END IF @DPFFinalFR <> '' BEGIN SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) END IF @DPFFRDiff <> '' BEGIN SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) END IF @InvoiceNumber <> '' BEGIN SET @FINALINVOICENUMBER = @InvoiceNumber END IF @Company <> '' BEGIN SET @FINALCOMPANY = @Company END IF @Miles <> '' BEGIN SET @FINALMILES = CONVERT(INTEGER, @Miles) END IF @Hours <> '' BEGIN SET @FINALHOURS = CONVERT(INTEGER, @Hours) END IF @PartNumber <> '' BEGIN SET @FINALPARTNUMBER = CONVERT(INTEGER, @PartNumber) END IF @DPFInitWeight <> '' BEGIN SET @FINALDPFINITWEIGHT = CONVERT(INTEGER, @DPFInitWeight) END IF @DPFFinalWeight <> '' BEGIN SET @FINALDPFFINALWEIGHT = CONVERT(INTEGER, @DPFFinalWeight) END IF @DPFWeightDiff <> '' BEGIN SET @FINALDPFWEIGHTDIFF = CONVERT(INTEGER, @DPFWeightDiff) END IF @DOCInitWeight <> '' BEGIN SET @FINALDOCINITWEIGHT = CONVERT(INTEGER, @DOCInitWeight) END IF @DOCFinalWeight <> '' BEGIN SET @FINALDOCFINALWEIGHT = CONVERT(INTEGER, @DOCFinalWeight) END IF @DOCWeightDiff <> '' BEGIN SET @FINALDOCWEIGHTDIFF = CONVERT(INTEGER, @DOCWeightDiff) END " & "INSERT INTO CF_DPF (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Company, Plate, Miles, Hours, SerialNumber, PartNumber, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @FINALINVOICENUMBER, @VINNumber, @FINALCOMPANY, @Plate, @FINALMILES, @FINALHOURS, @SerialNumber, @FINALPARTNUMBER, @FINALDPFINITWEIGHT, @FINALDPFFINALWEIGHT, @FINALDPFWEIGHTDIFF, @FINALDOCINITWEIGHT, @FINALDOCFINALWEIGHT, @FINALDOCWEIGHTDIFF, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
+            'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+            'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+
+            DPF_comm = New SqlCommand("DECLARE @UNIQUEID UNIQUEIDENTIFIER DECLARE @FINALENTERDATE DATETIME DECLARE @FINALIDVEHICLES UNIQUEIDENTIFIER DECLARE @FINALIDVEHICLESSTRING VARCHAR(50) DECLARE @FINALIDPROFILEACCOUNT VARCHAR(50) DECLARE @FINALDPFINITFR DECIMAL(3,1) DECLARE @FINALDPFFINALFR DECIMAL(3,1) DECLARE @FINALDPFFRDiff DECIMAL(3,1) DECLARE @FINALINVOICENUMBER VARCHAR(50) DECLARE @FINALCOMPANY VARCHAR(MAX) DECLARE @FINALPONUMBER VARCHAR(50) DECLARE @FINALMAKE VARCHAR(50) DECLARE @FINALMODEL VARCHAR(50) DECLARE @FINALFILTERMAKE VARCHAR(50) DECLARE @FINALSUBSTRATE VARCHAR(50) DECLARE @FINALCONDITION VARCHAR(50) DECLARE @FINALWTRESULTS VARCHAR(50) DECLARE @FINALCLEANINGTECH VARCHAR(50) DECLARE @FINALNOTES VARCHAR(MAX) DECLARE @FINALMILES INTEGER DECLARE @FINALHOURS INTEGER DECLARE @FINALPARTNUMBER INTEGER DECLARE @FINALDPFINITWEIGHT INTEGER DECLARE @FINALDPFFINALWEIGHT INTEGER DECLARE @FINALDPFWEIGHTDIFF INTEGER DECLARE @FINALDOCINITWEIGHT INTEGER DECLARE @FINALDOCFINALWEIGHT INTEGER DECLARE @FINALDOCWEIGHTDIFF INTEGER" & " SET @UNIQUEID = NEWID() SET @FINALENTERDATE = CONVERT(DATETIME, @EnterDate, 101) SET @FINALIDVEHICLES = (SELECT TOP 1 CF_Vehicles.IDVehicles FROM CF_Vehicles WHERE CF_Vehicles.ChassisVIN = @VINNumber) SET @FINALIDVEHICLESSTRING = CONVERT(VARCHAR(50), @FINALIDVEHICLES) SET @FINALIDProfileAccount = (SELECT TOP 1 CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES) IF @DPFInitFR <> '' BEGIN SET @FINALDPFINITFR = CONVERT(DECIMAL(3,1), @DPFInitFR) END IF @DPFFinalFR <> '' BEGIN SET @FINALDPFFINALFR = CONVERT(DECIMAL(3,1), @DPFFinalFR) END IF @DPFFRDiff <> '' BEGIN SET @FINALDPFFRDiff = CONVERT(DECIMAL(3,1), @DPFFRDiff) END IF @InvoiceNumber <> '' BEGIN SET @FINALINVOICENUMBER = @InvoiceNumber END IF @Company <> '' BEGIN SET @FINALCOMPANY = @Company END IF @Miles <> '' BEGIN SET @FINALMILES = CONVERT(INTEGER, @Miles) END IF @Hours <> '' BEGIN SET @FINALHOURS = CONVERT(INTEGER, @Hours) END IF @PartNumber <> '' BEGIN SET @FINALPARTNUMBER = CONVERT(INTEGER, @PartNumber) END IF @DPFInitWeight <> '' BEGIN SET @FINALDPFINITWEIGHT = CONVERT(INTEGER, @DPFInitWeight) END IF @DPFFinalWeight <> '' BEGIN SET @FINALDPFFINALWEIGHT = CONVERT(INTEGER, @DPFFinalWeight) END IF @DPFWeightDiff <> '' BEGIN SET @FINALDPFWEIGHTDIFF = CONVERT(INTEGER, @DPFWeightDiff) END IF @DOCInitWeight <> '' BEGIN SET @FINALDOCINITWEIGHT = CONVERT(INTEGER, @DOCInitWeight) END IF @DOCFinalWeight <> '' BEGIN SET @FINALDOCFINALWEIGHT = CONVERT(INTEGER, @DOCFinalWeight) END IF @DOCWeightDiff <> '' BEGIN SET @FINALDOCWEIGHTDIFF = CONVERT(INTEGER, @DOCWeightDiff) END " & "INSERT INTO CF_DPF_Final (IDDPF, EnterDate, ModifiedDate, IDVehicles, IDProfileAccount, InvoiceNumber, VINNumber, Company, Plate, Miles, Hours, SerialNumber, PartNumber, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, DocCleaned, MultipleCleanings) " & "VALUES(@UNIQUEID, @FINALENTERDATE, GETDATE(), @FINALIDVEHICLESSTRING, @FINALIDPROFILEACCOUNT, @FINALINVOICENUMBER, @VINNumber, @FINALCOMPANY, @Plate, @FINALMILES, @FINALHOURS, @SerialNumber, @FINALPARTNUMBER, @FINALDPFINITWEIGHT, @FINALDPFFINALWEIGHT, @FINALDPFWEIGHTDIFF, @FINALDOCINITWEIGHT, @FINALDOCFINALWEIGHT, @FINALDOCWEIGHTDIFF, @FINALDPFINITFR, @FINALDPFFINALFR, @FinalDPFFRDiff, @DocCleaned, @MultipleCleanings)", DPF_conn)
+
+            ' IF @PONumber <> '' BEGIN SET @FINALPONUMBER = @PONumber END IF @Make <> '' BEGIN SET @FINALMAKE = @Make END IF @Model <> '' BEGIN SET @FINALMODEL = @Model END IF @FilterMake <> '' BEGIN SET @FINALFILTERMAKE = @FilterMake END IF @SubStrate <> '' BEGIN SET @FINALSUBSTRATE = @SubStrate END IF @Condition <> '' BEGIN SET @FINALCONDITION = @Condition END IF @WTResults <> '' BEGIN SET @FINALWTRESULTS = @WTResults END IF @CleaningTech <> '' BEGIN SET @FINALCLEANINGTECH = @CleaningTech IF @Notes <> '' BEGIN SET @FINALNOTES = @Notes END
+
+            ' PONumber, Make, Model, FilterMake, SubStrate, Condition, WTResults, CleaningTech, Notes,
+
+            ' @FINALPONUMBER, @FINALMAKE, @FINALMODEL, @FINALFILTERMAKE, @FINALSUBSTRATE, @FINALCONDITION, @FINALWTRESULTS, @FINALCLEANINGTECH, @FINALNOTES,
 
             'Dim Plate As String
             'Plate = DPF_Dictionary.Item("Plate")
@@ -944,9 +959,14 @@ Public Class dpfcleaning
 
                     End If
 
+                ElseIf (temp_var_key = "Notes" Or temp_var_key = "Company") Then
+
+                    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
+
                     'Else
 
-                    '    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, -1)
+                    '    DPF_comm.Parameters.Add("@" & temp_var_key, SqlDbType.VarChar, 50)
                     '    DPF_comm.Parameters("@" & temp_var_key).Value = temp_var_val
 
                 End If

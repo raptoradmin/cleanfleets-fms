@@ -11,7 +11,9 @@ Public Class addCARBrecord
 
         Dim connection_string As String
 
-        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+        'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
         Dim CARB_conn As New SqlConnection(connection_string)
 

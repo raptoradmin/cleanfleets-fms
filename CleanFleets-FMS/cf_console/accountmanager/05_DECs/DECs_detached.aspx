@@ -23,7 +23,10 @@
 			</td>
 		</tr>
 	</table>
-	<telerik:radgrid id="rg_DECs" runat="server" datakeynames="IDDECS" datasourceid="sds_CFV_DECs_Grid"
+
+    <%--Commenting out the RadGrid control in the section below because I am going to move it under the RadTabStrip and RadMutliPage controls; done by Andrew on 12/5/2019.--%>
+
+	<%--<telerik:radgrid id="rg_DECs" runat="server" datakeynames="IDDECS" datasourceid="sds_CFV_DECs_Grid"
 		gridlines="None" pagesize="5" showfooter="True" skin="Telerik" width="500px"
 		allowsorting="True">
                                                 <mastertableview autogeneratecolumns="False" datakeynames="IDDECS" datasourceid="sds_CFV_DECs_Grid">
@@ -40,7 +43,10 @@
                                                     <selecting allowrowselect="True" />
                                                 </clientsettings>
                                             </telerik:radgrid>
-	<br />
+	<br />--%>
+
+    <%--End of what was commented out on 12/5/2019.--%>
+
 	<table cellpadding="0" style="width: 920px; border-collapse: collapse; border: 1px solid #9B9B9B">
 		<tr>
 			<td valign="top" width="700px" style="padding: 4px">
@@ -207,7 +213,7 @@
 								</td>
 								<td>
 									<div class="divlblScrollText">
-										<asp:Label ID="NotesLabel" runat="server" Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine,"<br />") %>' />
+										<asp:Label ID="NotesLabel" runat="server" Text='<%# Eval("Notes").ToString().Replace(Environment.NewLine, "<br />") %>' />
 									</div>
 									<br />
 								</td>
@@ -222,7 +228,7 @@
 								</td>
 								<td>
 									<div class="divlblScrollText">
-										<asp:Label ID="NotesCFLabel" runat="server" Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine,"<br />") %>' />
+										<asp:Label ID="NotesCFLabel" runat="server" Text='<%# Eval("NotesCF").ToString().Replace(Environment.NewLine, "<br />") %>' />
 									</div>
 								</td>
 							</tr>
@@ -235,7 +241,10 @@
 				</asp:FormView>
 				<br />
 			</td>
-			<td style="padding: 5px; border-left-style: solid; border-left-width: 1px; border-left-color: #9B9B9B"
+
+            <%--I am commenting out the Add Image Button control and RadGrid control for displaying results because these options are present in the Detached Engines link; done by Andrew on 12/5/2019.--%>
+
+			<%--<td style="padding: 5px; border-left-style: solid; border-left-width: 1px; border-left-color: #9B9B9B"
 				valign="top">
 				<asp:Button ID="btn_AddDECSImage" runat="server" Text="Add Image" />
 				<telerik:radgrid cssclass="radgrid" id="rg_DECSImages" runat="server" allowautomaticdeletes="True"
@@ -284,11 +293,38 @@
                                                     </mastertableview>
                                                 </telerik:radgrid>
 				<br />
-			</td>
+			</td>--%>
+
+            <%--End of section that was commented out on 12/5/2019.--%>
+
 		</tr>
 	</table>
 	<br />
 	<br />
+
+    <%--Moved commented out RadGrid control chunk by Andrew on 12/5/2019 to this spot.--%>
+
+    <telerik:radgrid id="rg_DECs" runat="server" datakeynames="IDDECS" datasourceid="sds_CFV_DECs_Grid"
+		gridlines="None" pagesize="5" showfooter="True" skin="Telerik" width="500px"
+		allowsorting="True">
+                                                <mastertableview autogeneratecolumns="False" datakeynames="IDDECS" datasourceid="sds_CFV_DECs_Grid">
+                                                    <Columns>
+                                                        <telerik:GridBoundColumn DataField="DECSName" DefaultInsertValue="" HeaderText="DECS Name" SortExpression="DECSName" UniqueName="DECSName">
+                                                        </telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn DataField="SerialNo" DefaultInsertValue="" HeaderText="Serial Num" SortExpression="SerialNo" UniqueName="SerialNo">
+                                                        </telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn DataField="DECSModelNo" DefaultInsertValue="" HeaderText="Model Num" SortExpression="DECSModelNo" UniqueName="DECSModelNo">
+                                                        </telerik:GridBoundColumn>
+                                                    </Columns>
+                                                </mastertableview>
+                                                <clientsettings enablepostbackonrowclick="True">
+                                                    <selecting allowrowselect="True" />
+                                                </clientsettings>
+                                            </telerik:radgrid>
+	<br />
+
+    <%--End of commented out RadGrid control chunk by Andrew on 12/5/2019.--%>
+
 	<asp:SqlDataSource ID="sds_CFV_DECs_Grid" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDDECS], [DECSName], [SerialNo], [DECSModelNo] FROM [CFV_DECs_Detached] ORDER BY [DECSName]">
 	</asp:SqlDataSource>

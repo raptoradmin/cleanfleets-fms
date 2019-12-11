@@ -11,77 +11,104 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class DECs_detached1
+Partial Public Class AnnualMileageReport
     
     '''<summary>
-    '''fv_DECSDetails control.
+    '''UpdatePanel1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents fv_DECSDetails As Global.System.Web.UI.WebControls.FormView
+    Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
-    '''rg_DECs control.
+    '''Label1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents rg_DECs As Global.Telerik.Web.UI.RadGrid
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''sds_CFV_DECs_Grid control.
+    '''ddl_Account control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sds_CFV_DECs_Grid As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents ddl_Account As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''sds_CFV_DECs_fv control.
+    '''cv_ddl_Account control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sds_CFV_DECs_fv As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents cv_ddl_Account As Global.System.Web.UI.WebControls.CustomValidator
     
     '''<summary>
-    '''sds_ddl_DECs_Op_Level control.
+    '''Label2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sds_ddl_DECs_Op_Level As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''sds_ddl_DECs_Op_Manufacturer control.
+    '''ddl_Terminal control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sds_ddl_DECs_Op_Manufacturer As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents ddl_Terminal As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''sds_ImagesDECs control.
+    '''Label3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sds_ImagesDECs As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''sds_FilesDECS control.
+    '''ddl_Fleet control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sds_FilesDECS As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents ddl_Fleet As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Messages control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Messages As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''btn_Report control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btn_Report As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''sds_ddl_Account control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_Account As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

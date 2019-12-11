@@ -12,7 +12,7 @@ Option Explicit On
 
 
 Partial Public Class vehiclesdetails1
-    
+
     '''<summary>
     '''RadCodeBlock1 control.
     '''</summary>
@@ -21,7 +21,70 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents RadCodeBlock1 As Global.Telerik.Web.UI.RadCodeBlock
-    
+
+    '''<summary>
+    '''ChassisVINHolder control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ChassisVINHolder As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Flag control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Flag As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''qsinspection control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents qsinspection As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''DateValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''HappenedValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents HappenedValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''SuccessfulPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SuccessfulPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''DeletionPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DeletionPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
     '''<summary>
     '''FormView1 control.
     '''</summary>
@@ -30,7 +93,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents FormView1 As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''rtp_Vehicles control.
     '''</summary>
@@ -39,7 +102,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rtp_Vehicles As Global.Telerik.Web.UI.RadTabStrip
-    
+
     '''<summary>
     '''rmp_Vehicle control.
     '''</summary>
@@ -48,7 +111,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_Vehicle As Global.Telerik.Web.UI.RadMultiPage
-    
+
     '''<summary>
     '''rpv_VehicleDetails control.
     '''</summary>
@@ -57,7 +120,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rpv_VehicleDetails As Global.Telerik.Web.UI.RadPageView
-    
+
     '''<summary>
     '''fv_CFV_Vehicles control.
     '''</summary>
@@ -66,7 +129,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fv_CFV_Vehicles As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''fv_VehicleImage control.
     '''</summary>
@@ -75,7 +138,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fv_VehicleImage As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''rgd_LogOpacityTests control.
     '''</summary>
@@ -84,7 +147,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rgd_LogOpacityTests As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''rgd_LogMileage control.
     '''</summary>
@@ -93,7 +156,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rgd_LogMileage As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''rgd_LogHours control.
     '''</summary>
@@ -102,7 +165,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rgd_LogHours As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''rpv_Engines control.
     '''</summary>
@@ -111,7 +174,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rpv_Engines As Global.Telerik.Web.UI.RadPageView
-    
+
     '''<summary>
     '''rmp_lbl_VUN control.
     '''</summary>
@@ -120,7 +183,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_lbl_VUN As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''rmp_lbl_VIN control.
     '''</summary>
@@ -129,7 +192,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_lbl_VIN As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''rg_Engines control.
     '''</summary>
@@ -138,7 +201,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_Engines As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''btn_AddEngine control.
     '''</summary>
@@ -147,7 +210,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddEngine As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''btn_AttachEngine control.
     '''</summary>
@@ -156,7 +219,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AttachEngine As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''hf_rg_EnginesIDSelectedEngine control.
     '''</summary>
@@ -165,7 +228,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents hf_rg_EnginesIDSelectedEngine As Global.System.Web.UI.WebControls.HiddenField
-    
+
     '''<summary>
     '''fv_EngineDetails control.
     '''</summary>
@@ -174,7 +237,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fv_EngineDetails As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''fv_EngineImage control.
     '''</summary>
@@ -183,7 +246,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fv_EngineImage As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''lv_DECSDetails control.
     '''</summary>
@@ -192,7 +255,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lv_DECSDetails As Global.System.Web.UI.WebControls.ListView
-    
+
     '''<summary>
     '''fv_DECSImage control.
     '''</summary>
@@ -201,7 +264,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fv_DECSImage As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''rpv_VehicleFiles control.
     '''</summary>
@@ -210,7 +273,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rpv_VehicleFiles As Global.Telerik.Web.UI.RadPageView
-    
+
     '''<summary>
     '''rmp_lbl_VUN0 control.
     '''</summary>
@@ -219,7 +282,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_lbl_VUN0 As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''rmp_lbl_VIN0 control.
     '''</summary>
@@ -228,7 +291,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_lbl_VIN0 As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''btn_AddVehicleImage control.
     '''</summary>
@@ -237,7 +300,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddVehicleImage As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rg_VehicleImages control.
     '''</summary>
@@ -246,7 +309,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_VehicleImages As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''btn_AddVehicleFile control.
     '''</summary>
@@ -255,7 +318,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddVehicleFile As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rg_VehicleFiles control.
     '''</summary>
@@ -264,7 +327,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_VehicleFiles As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''rg_EnginesFiles control.
     '''</summary>
@@ -273,7 +336,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_EnginesFiles As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''hf_rg_EnginesFilesIDEngines control.
     '''</summary>
@@ -282,7 +345,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents hf_rg_EnginesFilesIDEngines As Global.System.Web.UI.WebControls.HiddenField
-    
+
     '''<summary>
     '''btn_AddEngineImage control.
     '''</summary>
@@ -291,7 +354,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddEngineImage As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rg_EngineImages control.
     '''</summary>
@@ -300,7 +363,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_EngineImages As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''btn_AddEngineFile control.
     '''</summary>
@@ -309,7 +372,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddEngineFile As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rg_EngineFiles control.
     '''</summary>
@@ -318,7 +381,16 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_EngineFiles As Global.Telerik.Web.UI.RadGrid
-    
+
+    '''<summary>
+    '''Label1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
     '''<summary>
     '''btn_AddDECSImage control.
     '''</summary>
@@ -327,7 +399,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddDECSImage As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rg_DECSImages control.
     '''</summary>
@@ -336,7 +408,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_DECSImages As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''btn_AddDECSFile control.
     '''</summary>
@@ -345,7 +417,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_AddDECSFile As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rg_DECsFiles control.
     '''</summary>
@@ -354,7 +426,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_DECsFiles As Global.Telerik.Web.UI.RadGrid
-    
+
     '''<summary>
     '''fvw_IDDECS control.
     '''</summary>
@@ -363,7 +435,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fvw_IDDECS As Global.System.Web.UI.WebControls.FormView
-    
+
     '''<summary>
     '''rpv_Reports control.
     '''</summary>
@@ -372,7 +444,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rpv_Reports As Global.Telerik.Web.UI.RadPageView
-    
+
     '''<summary>
     '''rmp_lbl_VUN1 control.
     '''</summary>
@@ -381,7 +453,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_lbl_VUN1 As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''rmp_lbl_VIN1 control.
     '''</summary>
@@ -390,7 +462,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_lbl_VIN1 As Global.System.Web.UI.WebControls.Label
-    
+
     '''<summary>
     '''btn_BasicReport control.
     '''</summary>
@@ -399,7 +471,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_BasicReport As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''btn_DoorStickerReport control.
     '''</summary>
@@ -408,7 +480,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btn_DoorStickerReport As Global.System.Web.UI.WebControls.Button
-    
+
     '''<summary>
     '''rpv_DPFCleaning control.
     '''</summary>
@@ -417,7 +489,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rpv_DPFCleaning As Global.Telerik.Web.UI.RadPageView
-    
+
     '''<summary>
     '''fv_CFV_DPF control.
     '''</summary>
@@ -426,7 +498,25 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fv_CFV_DPF As Global.System.Web.UI.WebControls.FormView
-    
+
+    '''<summary>
+    '''rpv_CARB_Communication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rpv_CARB_Communication As Global.Telerik.Web.UI.RadPageView
+
+    '''<summary>
+    '''fv_CF_CARB_Communication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents fv_CF_CARB_Communication As Global.System.Web.UI.WebControls.FormView
+
     '''<summary>
     '''RadWindowManager1 control.
     '''</summary>
@@ -435,7 +525,61 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents RadWindowManager1 As Global.Telerik.Web.UI.RadWindowManager
-    
+
+    '''<summary>   
+    '''DropDownList control.   
+    '''</summary>   
+    '''<remarks>   
+    '''Auto-generated field.   
+    '''To modify move field declaration from designer file to code-behind file.   
+    '''</remarks>   
+    Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
+    Protected WithEvents EditButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
+    Protected WithEvents AddButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
+    Protected WithEvents UpdateButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>   
+        '''Button control.   
+        '''</summary>   
+        '''<remarks>   
+        '''Auto-generated field.   
+        '''To modify move field declaration from designer file to code-behind file.   
+        '''</remarks>   
+    Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''sds_CF_CARB_Communication control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_CF_CARB_Communication As Global.System.Web.UI.WebControls.SqlDataSource
+
     '''<summary>
     '''sds_CFV_Fleet_Lineage control.
     '''</summary>
@@ -444,7 +588,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_Fleet_Lineage As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_CFV_Vehicles control.
     '''</summary>
@@ -453,7 +597,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_Vehicles As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_CFV_Vehicles_fv control.
     '''</summary>
@@ -462,7 +606,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_Vehicles_fv As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_CFV_DPF_fv control.
     '''</summary>
@@ -471,7 +615,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_DPF_fv As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_ChassisMake control.
     '''</summary>
@@ -480,7 +624,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_ChassisMake As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_State control.
     '''</summary>
@@ -489,7 +633,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_State As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_OpacityTestsLog control.
     '''</summary>
@@ -498,7 +642,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_OpacityTestsLog As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_MileageLog control.
     '''</summary>
@@ -507,7 +651,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_MileageLog As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_HoursLog control.
     '''</summary>
@@ -516,7 +660,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_HoursLog As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_CFV_Engines_fv control.
     '''</summary>
@@ -525,7 +669,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_Engines_fv As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_CFV_Engines_Grid control.
     '''</summary>
@@ -534,7 +678,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_Engines_Grid As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_EquipType control.
     '''</summary>
@@ -543,7 +687,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_EquipType As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_SpecialProvision control.
     '''</summary>
@@ -552,7 +696,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_SpecialProvision As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_EquipCat control.
     '''</summary>
@@ -561,7 +705,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_EquipCat As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_VehStatus control.
     '''</summary>
@@ -570,7 +714,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_VehStatus As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_CARBGroup control.
     '''</summary>
@@ -579,7 +723,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_CARBGroup As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_EngineManufacturer control.
     '''</summary>
@@ -588,7 +732,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_EngineManufacturer As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_EngineModel control.
     '''</summary>
@@ -597,7 +741,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_EngineModel As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_EngineStatus control.
     '''</summary>
@@ -606,7 +750,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_EngineStatus As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_EngineFuelType control.
     '''</summary>
@@ -615,7 +759,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_EngineFuelType As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_VehicleKey control.
     '''</summary>
@@ -624,7 +768,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_VehicleKey As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_CFV_DECs_lv control.
     '''</summary>
@@ -633,7 +777,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_CFV_DECs_lv As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_DECs_Op_Level control.
     '''</summary>
@@ -642,7 +786,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_DECs_Op_Level As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_DECs_Op_Manufacturer control.
     '''</summary>
@@ -651,7 +795,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_DECs_Op_Manufacturer As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_Year control.
     '''</summary>
@@ -660,7 +804,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_Year As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ImagesVehicle control.
     '''</summary>
@@ -669,7 +813,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ImagesVehicle As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ImagesEngines control.
     '''</summary>
@@ -678,7 +822,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ImagesEngines As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ImagesDECs control.
     '''</summary>
@@ -687,7 +831,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ImagesDECs As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''SqlDataSource1 control.
     '''</summary>
@@ -696,7 +840,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents SqlDataSource1 As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_Fleets control.
     '''</summary>
@@ -705,7 +849,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_Fleets As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ImagesVehicle_fvw control.
     '''</summary>
@@ -714,7 +858,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ImagesVehicle_fvw As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_FilesVehicle control.
     '''</summary>
@@ -723,7 +867,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_FilesVehicle As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ImagesEngines_fvw control.
     '''</summary>
@@ -732,7 +876,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ImagesEngines_fvw As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_FilesEngine control.
     '''</summary>
@@ -741,7 +885,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_FilesEngine As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ImagesDECs_fvw control.
     '''</summary>
@@ -750,7 +894,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ImagesDECs_fvw As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_FilesDECS control.
     '''</summary>
@@ -759,7 +903,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_FilesDECS As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_rg_DECSImages control.
     '''</summary>
@@ -768,7 +912,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_rg_DECSImages As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_CF_Milestones control.
     '''</summary>
@@ -777,7 +921,7 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_CF_Milestones As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_DPF control.
     '''</summary>

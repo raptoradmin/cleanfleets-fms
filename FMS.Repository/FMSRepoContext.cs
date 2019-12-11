@@ -65,7 +65,17 @@ namespace FMS.Repository
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=CleanFleets;User ID=sa;Password=Cl3anFl33ts1");
+
+                // I am proceeding to change the connection string from "CleanFleets" to "CleanFleets-DEV". Done by Andrew on 12/10/2019.
+                // The full connection string is "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1".
+                // optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1");
+
+                // Changing database back to CleanFleets in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
+
+                optionsBuilder.UseSqlServer(@"Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1");
+
+                // End of change made by Andrew on 12/10/2019.
+
             }
         }
 
