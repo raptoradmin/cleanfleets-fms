@@ -230,6 +230,42 @@ Partial Public Class dpfcleaning
     Protected WithEvents DOCWeightDiffValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
     
     '''<summary>
+    '''PONumberValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PONumberValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''ConditionValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ConditionValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''WTResultsValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents WTResultsValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''CleaningTechValidationPrompt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CleaningTechValidationPrompt As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
     '''dvSectionImport control.
     '''</summary>
     '''<remarks>

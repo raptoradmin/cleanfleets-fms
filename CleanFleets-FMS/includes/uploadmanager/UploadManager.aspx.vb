@@ -249,15 +249,33 @@ Public Class UploadManager
                 command.Parameters.AddWithValue("@IDFile", RecordId)
                 command.Parameters.AddWithValue("@IDModifiedUser", UserId)
                 command.Parameters.AddWithValue("@ModifiedDate", DateTime.Now.ToString())
-                command.Parameters.AddWithValue("@IdDocumentType", DocTypeId)
-                command.Parameters.AddWithValue("@Title", Caption)
+
+                ' Making changes to Parameters section due to DECs File results in Vehcile Details tab
+                ' not showing anything upon successfully uploading into popup window; Andrew - 12/12/2019.
+
+                'command.Parameters.AddWithValue("@IdDocumentType", DocTypeId)
+                'command.Parameters.AddWithValue("@Title", Caption)
+
+                command.Parameters.AddWithValue("@IdDocumentType", If(String.IsNullOrWhiteSpace(DocTypeId) OrElse DocTypeId = "0", "877", DocTypeId)) 'defaults to doc type "Other"
+                command.Parameters.AddWithValue("@Title", If(String.IsNullOrWhiteSpace(Caption), "Untitled", Caption))
+
+                ' End of changes made by Andrew on 12/12/2019.
+
                 command.Parameters.AddWithValue("@FileName", FileName)
                 command.Parameters.AddWithValue("@FilePath", rootFileUrl)
                 command.Parameters.AddWithValue("@ProfileAccountId", ProfileAccountId)
                 command.Parameters.AddWithValue("@TerminalId", TerminalId)
                 command.Parameters.AddWithValue("@FleetId", FleetId)
                 command.Parameters.AddWithValue("@EngineId", EngineId)
-                command.Parameters.AddWithValue("@Notes", Notes)
+
+                ' Making changes to Parameters section due to DECs File results in Vehcile Details tab
+                ' not showing anything upon successfully uploading into popup window; Andrew - 12/12/2019.
+
+                'command.Parameters.AddWithValue("@Notes", Notes)
+
+                command.Parameters.AddWithValue("@Notes", If(String.IsNullOrWhiteSpace(Notes), String.Empty, Notes))
+
+                ' End of changes made by Andrew on 12/12/2019.
 
                 command.ExecuteNonQuery()
             End Using
@@ -269,17 +287,46 @@ Public Class UploadManager
         'IDProfilefleet=" & IDProfilefleet & "&IDProfileTerminal=" & IDProfileTerminal & "&IDProfileAccount=" 
         '& IDProfileAccount & "&IDEngines=" & IDEngines & "&IDDECS=" & IDDECS & "&t=df")
 
+        ' I am going to comment out the "Director" class function call "GetNewOpenDbConnection" and use a new SqlConnection
+        ' that explicitly lists the database "CleanFleets-DEV"; Andrew - 12/10/2019.
+
         Using connection As SqlConnection = Director.GetNewOpenDbConnection()
+
+            'Dim Temp_Connection_String As String
+
+            'Temp_Connection_String = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+            'Dim Temp_Sql_Conn As New SqlConnection(Temp_Connection_String)
+
+            'If Temp_Sql_Conn.State = ConnectionState.Closed Then
+
+            '    Temp_Sql_Conn.Open()
+
+            'End If
+
+            ' I am also changing "connection" to "Temp_Sql_Conn"; Andrew - 12/10/2019.
+
             Using command As SqlCommand = connection.CreateCommand()
+
                 command.CommandType = CommandType.Text
                 command.CommandText = "INSERT INTO [CF_Files] ([IDFile], [IDModifiedUser], [ModifiedDate], [IdDocumentType], [Title], [FileName], [FilePath], [IDProfileAccount], [IDProfileTerminal], [IDProfileFleet], [IDEngines], [IDDECS], [Notes]) " &
-                                  "VALUES (@IDFile, @IDModifiedUser, @ModifiedDate, @IdDocumentType, @Title, @FileName, @FilePath, @ProfileAccountId, @TerminalId, @FleetId, @EngineId, @DECSId, @Notes)"
+                              "VALUES (@IDFile, @IDModifiedUser, @ModifiedDate, @IdDocumentType, @Title, @FileName, @FilePath, @ProfileAccountId, @TerminalId, @FleetId, @EngineId, @DECSId, @Notes)"
 
                 command.Parameters.AddWithValue("@IDFile", RecordId)
                 command.Parameters.AddWithValue("@IDModifiedUser", UserId)
                 command.Parameters.AddWithValue("@ModifiedDate", DateTime.Now.ToString())
-                command.Parameters.AddWithValue("@IdDocumentType", DocTypeId)
-                command.Parameters.AddWithValue("@Title", Caption)
+
+                ' Making changes to Parameters section due to DECs File results in Vehcile Details tab
+                ' not showing anything upon successfully uploading into popup window; Andrew - 12/12/2019.
+
+                'command.Parameters.AddWithValue("@IdDocumentType", DocTypeId)
+                'command.Parameters.AddWithValue("@Title", Caption)
+
+                command.Parameters.AddWithValue("@IdDocumentType", If(String.IsNullOrWhiteSpace(DocTypeId) OrElse DocTypeId = "0", "877", DocTypeId)) 'defaults to doc type "Other"
+                command.Parameters.AddWithValue("@Title", If(String.IsNullOrWhiteSpace(Caption), "Untitled", Caption))
+
+                ' End of changes made by Andrew on 12/12/2019.
+
                 command.Parameters.AddWithValue("@FileName", FileName)
                 command.Parameters.AddWithValue("@FilePath", rootFileUrl)
                 command.Parameters.AddWithValue("@ProfileAccountId", ProfileAccountId)
@@ -287,12 +334,22 @@ Public Class UploadManager
                 command.Parameters.AddWithValue("@FleetId", FleetId)
                 command.Parameters.AddWithValue("@EngineId", EngineId)
                 command.Parameters.AddWithValue("@DECSId", DECSId)
-                command.Parameters.AddWithValue("@Notes", Notes)
+
+                ' Making changes to Parameters section due to DECs File results in Vehcile Details tab
+                ' not showing anything upon successfully uploading into popup window; Andrew - 12/12/2019.
+
+                ' command.Parameters.AddWithValue("@Notes", Notes)
+
+                command.Parameters.AddWithValue("@Notes", If(String.IsNullOrWhiteSpace(Notes), String.Empty, Notes))
+
+                ' End of changes made by Andrew on 12/12/2019.
 
                 command.ExecuteNonQuery()
+
             End Using
 
         End Using
+
     End Sub
 
     Private Sub SaveFileToDisk(ByVal file As HttpPostedFile)

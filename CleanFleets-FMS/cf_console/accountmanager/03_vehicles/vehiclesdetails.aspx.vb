@@ -1739,8 +1739,9 @@ Public Class vehiclesdetails1
                     Dim connection_string As String
 
                     'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+                    'Push made and reverting back; Andrew - 12/10/2019.
 
-                    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
+                    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
                     Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -1752,8 +1753,9 @@ Public Class vehiclesdetails1
 
                     'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
                     'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+                    'Push made and reverting back; Andrew - 12/10/2019.
 
-                    Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF_Final WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+                    Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
 
                     DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
                     DPF_comm.Parameters("@IDDPF").Value = Testddl_ddl_DPF_Records.SelectedValue
@@ -1894,8 +1896,9 @@ Public Class vehiclesdetails1
             Dim connection_string As String
 
             'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+            'Push made and reverting back; Andrew - 12/10/2019.
 
-            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
+            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
             Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -1907,8 +1910,9 @@ Public Class vehiclesdetails1
 
             'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
             'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+            'Push made and reverting back; Andrew - 12/10/2019.
 
-            Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF_Final WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
+            Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
 
             DPF_comm.Parameters.Add("@IDDPF", SqlDbType.VarChar, -1)
             DPF_comm.Parameters("@IDDPF").Value = Flag.Text
@@ -2211,8 +2215,9 @@ Public Class vehiclesdetails1
         Dim connection_string As String
 
         'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+        'Push made and reverting back; Andrew - 12/10/2019.
 
-        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
         Dim CARB_conn As New SqlConnection(connection_string)
 
@@ -2377,8 +2382,9 @@ Public Class vehiclesdetails1
         Dim connection_string As String
 
         'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+        'Push made and reverting back; Andrew - 12/10/2019.
 
-        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
         Dim CARB_conn As New SqlConnection(connection_string)
 

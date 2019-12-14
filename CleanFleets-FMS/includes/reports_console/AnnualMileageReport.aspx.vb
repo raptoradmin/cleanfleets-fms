@@ -20,9 +20,10 @@ Public Class AnnualMileageReport
     ' and see if it works. This change is made by Andrew on 12/10/2019.
 
     ' Changing database back to CleanFleets in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
+    ' Push made and reverting back; Andrew - 12/10/2019.
 
     'Dim cnxn As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
-    Dim cnxn As String = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
+    Dim cnxn As String = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
     ' End of change made by Andrew on 12/10/2019.
 

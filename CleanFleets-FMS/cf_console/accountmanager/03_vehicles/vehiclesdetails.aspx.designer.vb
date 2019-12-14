@@ -41,6 +41,15 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents Flag As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''qsinspection control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents qsinspection As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''DateValidationPrompt control.
     '''</summary>
     '''<remarks>

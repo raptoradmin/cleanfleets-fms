@@ -1987,7 +1987,7 @@
                                                                             <asp:RadioButton ID="rbt_EngineImage" runat="server" AutoPostBack="True" checked='<%# If(Eval("DefaultImage") Is DBNull.Value, False, Eval("DefaultImage")) %>' GroupName="MyGroupEngines" oncheckedchanged="rbt_EngineImage_CheckedChanged" onclick="MyClickEngines(this,event)" />
                                                                         </ItemTemplate>
                                                                     </telerik:GridTemplateColumn>
-                                                                    <telerik:GridImageColumn AlternateText="Thumbnail" DataImageUrlFields="FilePath, Image" DataImageUrlFormatString="{0}/{1}" DataType="System.String" FooterText="ImageColumn footer" HeaderText="" ImageAlign="Middle" UniqueName="vehicleimage">
+                                                                    <telerik:GridImageColumn AlternateText="Thumbnail" DataImageUrlFields="FilePath, FileName" DataImageUrlFormatString="{0}/{1}?Width=100" DataType="System.String" FooterText="ImageColumn footer" HeaderText="" ImageAlign="Middle" UniqueName="vehicleimage">
                                                                         <HeaderStyle Width="75px" />
                                                                     </telerik:GridImageColumn>
                                                                     <telerik:GridBoundColumn DataField="IDImages" DataType="System.Int32" DefaultInsertValue="" HeaderText="IDImages" ReadOnly="True" SortExpression="IDImages" UniqueName="IDImages" Visible="False">
@@ -2309,8 +2309,14 @@
                                                     <td>
                                                          <asp:FormView ID="fvw_IDDECS" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesDECS">
                                                             <ItemTemplate>
-                                                                <%--Changed the EnableViewState property to True. Going to comment this out and try TextBox control.--%>
+                                                                <%--Changed the EnableViewState property to True. Going to comment this out and try a Label control.--%>
                                                                 <asp:HiddenField ID="hf_IDDECSImage" runat="server" EnableViewState="false" Value='<%# Eval("IDDECS") %>' />
+                                                                
+                                                                <%--I am adding a Label control to see if I can pass it successfully to the SqlDataSource control ("sds_Files_DECS")
+                                                                Done by Andrew on 12/12/2019.--%>
+
+                                                                <asp:Label ID="DECSLabel" runat="server" Text='<%# Eval("IDDECS") %>' />
+
                                                             </ItemTemplate>
                                                         </asp:FormView>
                                                         <br />
@@ -3613,10 +3619,11 @@
     <%-- Added by Andrew on 10/18/2019 --%>
 
     <%--Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
-    was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.--%>
+    was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+    Push made and reverting back; Andrew - 12/10/2019. --%>
 
     <asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
-        SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CF_DPF_Final]"> 
+        SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CF_DPF]"> 
         <%--<SelectParameters>
             <asp:ControlParameter Name="ChassisVINHolderParam" ControlID="ChassisVINHolder" Type="String" />
             <asp:ControlParameter Name="ThisFlag" ControlID="Flag" Type="String" />
@@ -3990,6 +3997,10 @@
 			<asp:ControlParameter ControlID="rg_Engines" Name="IDEngines" PropertyName="SelectedValue" />
 		</SelectParameters>
 	</asp:SqlDataSource>
+
+    <%--Adding "@IDDECS" to the "WHERE" clause of the SelectCommand in "sds_FilesDECS" to only display DECS Files in Radgrid.--%> 
+    <%--Also adding another control parameter and referencing "fvw_IDDECS$hf_IDDECSImage".--%>
+
 	<asp:SqlDataSource ID="sds_FilesDECS" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDFile], [Title], [FileName], [FilePath], [IDEngines], [IDDECS], [IDDocumentType], [DisplayValue] FROM [CF_Files] LEFT OUTER JOIN CF_OPTION_LIST ON [IDOptionList] = [IDDocumentType] WHERE ([IDEngines] = @IDEngines)"
 		DeleteCommand="DELETE FROM [CF_Files] WHERE [IDFile] = @IDFile">
@@ -4000,6 +4011,21 @@
 			<asp:Parameter Name="IDFile" />
 		</DeleteParameters>
 	</asp:SqlDataSource>
+
+    <%--<asp:SqlDataSource ID="sds_FilesDECS" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDFile], [Title], [FileName], [FilePath], [IDEngines], [IDDECS], [IDDocumentType], [DisplayValue] FROM [CF_Files] LEFT OUTER JOIN CF_OPTION_LIST ON [IDOptionList] = [IDDocumentType] WHERE ([IDEngines] = @IDEngines AND [IDDECS] = @IDDECS)"
+		DeleteCommand="DELETE FROM [CF_Files] WHERE [IDFile] = @IDFile">
+		<SelectParameters>
+			<asp:ControlParameter ControlID="rg_EnginesFiles" Name="IDEngines" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="fvw_IDDECS$DECSLabel" Name="IDDECS" Type="UInt32" />
+		</SelectParameters>
+		<DeleteParameters>
+			<asp:Parameter Name="IDFile" />
+		</DeleteParameters>
+	</asp:SqlDataSource>--%>
+
+    <%--End of what was added by Andrew on 12/12/2019.--%>
+
 	<asp:SqlDataSource ID="sds_rg_DECSImages" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 		SelectCommand="SELECT [IDImages], [IDVehicles], [IDEngines], [IDDECS], [Title], [Image] FROM [CFV_Images_Default] WHERE ([IDEngines] = @IDEngines) AND IDDECS IS NOT NULL">
 		<SelectParameters>
@@ -4013,10 +4039,11 @@
     <%-- Added by Andrew on 10/17/2019 --%>
 
     <%--Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
-    was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.--%>
+    was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+    Push made and reverting back; Andrew - 12/10/2019.--%>
 	
 	<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [EnterDate], [ModifiedDate], [IDDPF], CONCAT('EnterDate: ', [EnterDate], ' | ', 'Last Modified Date: ', [ModifiedDate]) [CombinedDates] FROM [CF_DPF_Final] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [CombinedDates]">
+		SelectCommand="SELECT [EnterDate], [ModifiedDate], [IDDPF], CONCAT('EnterDate: ', [EnterDate], ' | ', 'Last Modified Date: ', [ModifiedDate]) [CombinedDates] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [CombinedDates]">
 		<SelectParameters>
 		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
 				Type="Int32" />--%>

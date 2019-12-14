@@ -90,7 +90,7 @@ Partial Public Class ImageUpload_Detail
             ' Setup the lightbox window mode
             Me.CF_ImageUpload.WindowMode = ILoadWindowMode.Lightbox
 
-            ' Create a new image definition and add it to the I-Load configuration
+            ' Create a new image definition and add it to the I-Load configurationx
             Dim definition1 As WebImageDefinition = New WebImageDefinition("Default", "Default")
             Me.CF_ImageUpload.Configuration.WebImageDefinitions.Clear()
             Me.CF_ImageUpload.Configuration.WebImageDefinitions.Add(definition1)

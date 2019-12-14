@@ -33,6 +33,10 @@
     <div id="DOCInitWeightValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="DOCFinalWeightValidationPrompt" runat="server" visible="false" color="red"></div>
     <div id="DOCWeightDiffValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="PONumberValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="ConditionValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="WTResultsValidationPrompt" runat="server" visible="false" color="red"></div>
+    <div id="CleaningTechValidationPrompt" runat="server" visible="false" color="red"></div>
 
     <style type="text/css">
 
