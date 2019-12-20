@@ -2,6 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="RightColumnContentPlaceHolder" Runat="Server">
+
+    <%--Adding this TextBox control to see if the content I added to SelectedIndexChanged is grabbing all the records; Andrew - 12/17/2019.--%>
+
+    <asp:TextBox ID="RecordsButton" runat="server" Text="Temp_Text" />
+
+    <%--End of what was added by Andrew.--%>
+
 	<h1>PSIP Report to Client</h1>
 	<p>&nbsp;
 		
@@ -27,7 +34,7 @@
 
                 <%--Added by Andrew on 11/12/2019 for the purpose of letting the user select all PSIP records.--%>
 
-                <%--<asp:ListItem Text="- Select all Records-" Value="-1" />--%>
+                <asp:ListItem Text="Select All Vehicles" Value="1000000000" />
 
                 <%--End of what was added by Andrew on 11/12/2019--%>
 

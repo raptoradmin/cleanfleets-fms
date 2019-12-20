@@ -25,6 +25,12 @@ Public Class vehiclesdetails1
     Dim qs As String = String.Empty
     Public GVWMessage As String
 
+    ' Added by Andrew on 11/14/2019.
+
+    Dim GlobalVINVar As String
+
+    ' End of what was added by Andrew on 11/14/2019.
+
     Protected Sub Page_PreRender(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreRender
 
         Dim rg_Vehicles As RadGrid = CType(FindControlIterative(Page, "rg_Engines"), RadGrid)
@@ -166,6 +172,13 @@ Public Class vehiclesdetails1
 
         'If (Page.IsPostBack = False) Then
 
+        ' Added by Andrew on 11/19/2019 for the purpose if confirming user Delete button click for CARB record.
+
+        'Dim DeleteMessage As String = "Are you sure you want to delete the record?"
+        'ClientScript.RegisterOnSubmitStatement(Me.GetType(), "confirm", "return confirm('" & DeleteMessage & "');")
+
+        ' End of what Andrew added on 11/19/2019.
+
         If (fv_CFV_DPF.CurrentMode = FormViewMode.ReadOnly) Then
 
                 Dim TempDataView As DataView
@@ -174,38 +187,40 @@ Public Class vehiclesdetails1
                 Dim TempDataRowView As DataRowView
                 TempDataRowView = TempDataView(0)
 
-                ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
+            ChassisVINHolder.Text = TempDataRowView("ChassisVIN").ToString()
 
-                '    ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
+            GlobalVINVar = ChassisVINHolder.Text
 
-                '        Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+            '    ElseIf (fv_CFV_DPF.CurrentMode = FormViewMode.Edit) Then
 
-                '        If (TestLabel_lbl_PONo Is Nothing) Then
+            '        Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
 
-                '            ChassisVINHolder.Text = "First Nothing!"
+            '        If (TestLabel_lbl_PONo Is Nothing) Then
 
-                '        Else
+            '            ChassisVINHolder.Text = "First Nothing!"
 
-                '            TestLabel_lbl_PONo.Visible = False
+            '        Else
 
-                '        End If
+            '            TestLabel_lbl_PONo.Visible = False
 
-                '    End If
+            '        End If
 
-                'ElseIf (Page.IsPostBack = True) Then
+            '    End If
 
-                '    Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
+            'ElseIf (Page.IsPostBack = True) Then
 
-                '    If (TestLabel_lbl_PONo Is Nothing) Then
+            '    Dim TestLabel_lbl_PONo As Label = CType(fv_CFV_DPF.FindControl("InvoiceNumber"), Label)
 
-                '        ChassisVINHolder.Text = "Second Nothing!"
+            '    If (TestLabel_lbl_PONo Is Nothing) Then
+
+            '        ChassisVINHolder.Text = "Second Nothing!"
 
 
-                '    Else
+            '    Else
 
-                '        TestLabel_lbl_PONo.Visible = False
+            '        TestLabel_lbl_PONo.Visible = False
 
-            End If
+        End If
 
         'End If
 
@@ -242,6 +257,7 @@ Public Class vehiclesdetails1
 
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim conn As New SqlConnection(connectionString)
+
         Dim comm As New SqlCommand("SELECT * FROM CF_DECS WHERE IDEngines = @IDEngines", conn)
         comm.Connection.Open()
 
@@ -273,6 +289,12 @@ Public Class vehiclesdetails1
         sb.Append("', 'CustomPopUp', 'width=800, height=850, menubar=yes, resizable=yes'); }());")
         sb.Append("</script>")
         ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "@@@@MyPopUpScript", sb.ToString(), False)
+
+        ' I am filling a TextBox with the qs contents to see if it looks correct; done by Andrew on 12/6/2019.
+
+        qsinspection.Text = qs
+
+        ' End of what Andrew added on 12/6/2019.
 
         qs = String.Empty
 
@@ -1213,16 +1235,23 @@ Public Class vehiclesdetails1
         Dim IDEngine As String = hf_rg_EnginesFilesIDEngines.Value
         Dim IDEngines As New Guid(IDEngine)
 
+        ' Commenting out this section to make it identical to the Engine File and Image Add buttons that function on 11/22/2019.
+
         sds_ImagesDECs.DataBind()
         fvw_IDDECS.DataBind()
 
+        ' End of section I commented out on 11/22/2019.
+
         Dim item As GridDataItem = DirectCast(TryCast(sender, RadioButton).NamingContainer, GridDataItem)
         Dim rdBtn As RadioButton = TryCast(sender, RadioButton)
+
+        ' Commenting out this section to make it identical to the Engine File and Image Add buttons that function on 11/22/2019. 
 
         Dim hf_IDDEC As HiddenField = CType(fvw_IDDECS.FindControl("hf_IDDECSImage"), HiddenField)
         Dim IDDEC As String = hf_IDDEC.Value
         Dim IDDECS As New Guid(IDDEC)
 
+        ' End of section I commented out on 11/22/2019.
 
         Dim IDImages As Guid = item.OwnerTableView.DataKeyValues(item.ItemIndex)("IDImages")
 
@@ -1231,9 +1260,14 @@ Public Class vehiclesdetails1
 
             Dim sql As String
             Dim strConnString As [String] = System.Configuration.ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString()
+
+            ' Changing the sql command from IDDECS to IDImages on 11/22/2019.
+
             sql = "UPDATE CF_Images SET DefaultImage = @Value WHERE IDDECS = @IDDECS AND IDEngines = @IDEngines"
             Dim connection As New SqlConnection(strConnString)
             Dim command As New SqlCommand(sql, connection)
+
+            ' Changing Parameters.Add from IDDECS to IDImages on 11/22/2019.
 
             command.Parameters.Add("@Value", SqlDbType.Int).Value = "0"
             command.Parameters.Add("@IDDECS", SqlDbType.UniqueIdentifier).Value = IDDECS
@@ -1666,15 +1700,20 @@ Public Class vehiclesdetails1
                     TestLabel_lbl_InvoiceNo.Visible = True
                     TestLabel_lbl_Date.Visible = True
                     TestLabel_lbl_PONo.Visible = True
-                    TestLabel_lbl_Company.Visible = True
-                    TestLabel_lbl_VINNo.Visible = True
-                    TestLabel_lbl_Make.Visible = True
-                    TestLabel_lbl_Model.Visible = True
-                    TestLabel_lbl_PlateNo.Visible = True
+
+                    ' Commenting out the Visibility property change for all items in the Vehicle section in order to remove extraneous info; done by Andrew on 12/5/2019.
+
+                    'TestLabel_lbl_Company.Visible = True
+                    'TestLabel_lbl_VINNo.Visible = True
+                    'TestLabel_lbl_Make.Visible = True
+                    'TestLabel_lbl_Model.Visible = True
+                    'TestLabel_lbl_PlateNo.Visible = True
                     TestLabel_lbl_Miles.Visible = True
                     TestLabel_lbl_Hours.Visible = True
-                    TestLabel_lbl_MakeModel.Visible = True
 
+                    ' End of what was commented out by Andrew on 12/5/2019.
+
+                    TestLabel_lbl_MakeModel.Visible = True
                     TestLabel_lbl_SerialNo.Visible = True
                     TestLabel_lbl_PartNo.Visible = True
                     TestLabel_lbl_Substrate.Visible = True
@@ -1699,6 +1738,9 @@ Public Class vehiclesdetails1
 
                     Dim connection_string As String
 
+                    'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+                    'Push made and reverting back; Andrew - 12/10/2019.
+
                     connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
                     Dim DPF_conn As New SqlConnection(connection_string)
@@ -1708,6 +1750,10 @@ Public Class vehiclesdetails1
                         DPF_conn.Open()
 
                     End If
+
+                    'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+                    'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+                    'Push made and reverting back; Andrew - 12/10/2019.
 
                     Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
 
@@ -1849,6 +1895,9 @@ Public Class vehiclesdetails1
 
             Dim connection_string As String
 
+            'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+            'Push made and reverting back; Andrew - 12/10/2019.
+
             connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
 
             Dim DPF_conn As New SqlConnection(connection_string)
@@ -1858,6 +1907,10 @@ Public Class vehiclesdetails1
                 DPF_conn.Open()
 
             End If
+
+            'Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+            'was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
+            'Push made and reverting back; Andrew - 12/10/2019.
 
             Dim DPF_comm = New SqlCommand("DECLARE @TEMPVARIDDPF UNIQUEIDENTIFIER SET @TEMPVARIDDPF = CONVERT(UNIQUEIDENTIFIER, @IDDPF) SELECT IDDPF, IDModifiedUser, ModifiedDate, InvoiceNumber, PONumber, Company, VINNumber, Make, Model, Plate, Miles, Hours, FilterMake, SerialNumber, PartNumber, Substrate, DocCleaned, Condition, DPFInitWeight, DPFFinalWeight, DPFWeightDiff, DOCInitWeight, DOCFinalWeight, DOCWeightDiff, DPFInitFR, DPFFinalFR, DPFFRDiff, WTResults, CleaningTech, MultipleCleanings, Notes FROM CF_DPF WHERE IDDPF = @TEMPVARIDDPF", DPF_conn)
 
@@ -1964,11 +2017,11 @@ Public Class vehiclesdetails1
                         TestLabel_lbl_InvoiceNo.Visible = True
                         TestLabel_lbl_Date.Visible = True
                         TestLabel_lbl_PONo.Visible = True
-                        TestLabel_lbl_Company.Visible = True
-                        TestLabel_lbl_VINNo.Visible = True
-                        TestLabel_lbl_Make.Visible = True
-                        TestLabel_lbl_Model.Visible = True
-                        TestLabel_lbl_PlateNo.Visible = True
+                        'TestLabel_lbl_Company.Visible = True
+                        'TestLabel_lbl_VINNo.Visible = True
+                        'TestLabel_lbl_Make.Visible = True
+                        'TestLabel_lbl_Model.Visible = True
+                        'TestLabel_lbl_PlateNo.Visible = True
                         TestLabel_lbl_Miles.Visible = True
                         TestLabel_lbl_Hours.Visible = True
                         TestLabel_lbl_MakeModel.Visible = True
@@ -2073,7 +2126,7 @@ Public Class vehiclesdetails1
 
                 '    Dim connection_string As String
 
-                '    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+                '    connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1"
 
                 '    Dim DPF_conn As New SqlConnection(connection_string)
 
@@ -2132,6 +2185,229 @@ Public Class vehiclesdetails1
             End If
 
         End If
+
+    End Sub
+
+    Protected Sub AddButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles AddButton.Click
+
+        Dim URLString As String
+        Dim fromURLString As String
+
+        URLString = Request.Url.ToString()
+        fromURLString = Mid(URLString, InStr(URLString, "=") + 1, Len(URLString))
+
+        Response.Redirect("addCARBrecord.aspx?VIN=" & GlobalVINVar & "&" & "IDVehicles=" & fromURLString)
+
+    End Sub
+
+    Protected Sub UpdateButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles UpdateButton.Click
+
+        Dim TempTextBox_CARBHappened As TextBox
+        Dim TempTextBox_CARBDate As TextBox
+        Dim TempTextBox_CARBIssue As TextBox
+        Dim TempTextBox_CARBResolution As TextBox
+
+        TempTextBox_CARBHappened = CType(fv_CF_CARB_Communication.FindControl("TextBox_CARB_Happened"), TextBox)
+        TempTextBox_CARBDate = CType(fv_CF_CARB_Communication.FindControl("TextBox_CARB_Date"), TextBox)
+        TempTextBox_CARBIssue = CType(fv_CF_CARB_Communication.FindControl("TextBox_CARB_Issue"), TextBox)
+        TempTextBox_CARBResolution = CType(fv_CF_CARB_Communication.FindControl("TextBox_CARB_Resolution"), TextBox)
+
+        Dim connection_string As String
+
+        'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+        'Push made and reverting back; Andrew - 12/10/2019.
+
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+        Dim CARB_conn As New SqlConnection(connection_string)
+
+        If CARB_conn.State = ConnectionState.Closed Then
+
+            CARB_conn.Open()
+
+        End If
+
+        DateValidationPrompt.Visible = False
+        HappenedValidationPrompt.Visible = False
+        SuccessfulPrompt.Visible = False
+
+        Dim query_execution_flag As Boolean
+        query_execution_flag = True
+
+        Dim temp_var_date As String
+
+        temp_var_date = TempTextBox_CARBDate.Text
+
+        Dim temp_date_split() As String
+        temp_date_split = Split(temp_var_date, "/")
+
+        Dim Valid_Date As Boolean
+        Valid_Date = True
+
+        For i = 1 To UBound(temp_date_split) + 1
+
+            If (IsNumeric(temp_date_split(i - 1)) = False) Then
+
+                DateValidationPrompt.Visible = True
+                DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
+                query_execution_flag = False
+
+            End If
+
+        Next
+
+        If (UBound(temp_date_split) = 2) Then
+
+            For i = 1 To UBound(temp_date_split) + 1
+
+                If (i - 1 < 2) Then
+
+                    If (Len(temp_date_split(i - 1)) > 0) And Len(temp_date_split(i - 1)) <= 2 Then
+
+                        If (Len(temp_date_split(i - 1)) < 2) Then
+
+                            temp_date_split(i - 1) = "0" & temp_date_split(i - 1)
+
+                        End If
+
+                    Else
+
+                        Valid_Date = False
+
+                        DateValidationPrompt.Visible = True
+                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
+                        Exit For
+
+                    End If
+
+                Else
+
+                    If Not (Len(temp_date_split(i - 1)) = 4) Then
+
+                        Valid_Date = False
+
+                        DateValidationPrompt.Visible = True
+                        DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
+                        Exit For
+
+                    End If
+
+                End If
+
+            Next
+
+        Else
+
+            Valid_Date = False
+
+            DateValidationPrompt.Visible = True
+            DateValidationPrompt.InnerHtml = "The date provided is not in the correct format (MM/DD/YYYY)."
+
+        End If
+
+        If (Valid_Date = True) Then
+
+            temp_var_date = temp_date_split(0) & "/" & temp_date_split(1) & "/" & temp_date_split(2)
+
+        Else
+
+            query_execution_flag = False
+
+        End If
+
+        Dim temp_var_Happened As String
+        temp_var_Happened = TempTextBox_CARBHappened.Text
+
+        If Not (temp_var_Happened = "Yes" Or temp_var_Happened = "No") Then
+
+            HappenedValidationPrompt.Visible = True
+            HappenedValidationPrompt.InnerHtml = "Please enter a valid response ('Yes' or 'No')."
+
+            query_execution_flag = False
+
+        End If
+
+        Dim temp_var_Issue As String
+        Dim temp_var_Resolution As String
+
+        temp_var_Issue = TempTextBox_CARBIssue.Text
+        temp_var_Resolution = TempTextBox_CARBResolution.Text
+
+        If (query_execution_flag = True) Then
+
+            Dim CARB_Comm As SqlCommand
+            CARB_Comm = New SqlCommand("DECLARE @CARBID UNIQUEIDENTIFIER DECLARE @FINALCARBDATE DATETIME" & " SET @CARBID = NEWID() SET @FINALCARBDATE = CONVERT(DATETIME, @temp_var_date, 101) " & "UPDATE CF_CARB_Communication SET CARBDate = @FINALCARBDATE, CARBHappened = @temp_var_Happened, CARBIssue = @temp_var_Issue, CARBResolution = @temp_var_Resolution WHERE ChassisVIN = @ChassisVIN", CARB_conn)
+
+            CARB_Comm.Parameters.Add("@temp_var_date", SqlDbType.DateTime)
+            CARB_Comm.Parameters("@temp_var_date").Value = temp_var_date
+
+            CARB_Comm.Parameters.Add("@temp_var_Happened", SqlDbType.VarChar, 3)
+            CARB_Comm.Parameters("@temp_var_Happened").Value = temp_var_Happened
+
+            CARB_Comm.Parameters.Add("@temp_var_Issue", SqlDbType.VarChar, -1)
+            CARB_Comm.Parameters("@temp_var_Issue").Value = temp_var_Issue
+
+            CARB_Comm.Parameters.Add("@temp_var_Resolution", SqlDbType.VarChar, -1)
+            CARB_Comm.Parameters("@temp_var_Resolution").Value = temp_var_Resolution
+
+            Dim URLString As String
+            'Dim VINfromURLString As String
+
+            URLString = Request.Url.ToString()
+            'VINfromURLString = Mid(URLString, InStr(URLString, "=") + 1, Len(URLString))
+
+            Flag.Text = URLString
+
+            CARB_Comm.Parameters.Add("@ChassisVIN", SqlDbType.VarChar, 50)
+            CARB_Comm.Parameters("@ChassisVIN").Value = ChassisVINHolder.Text
+
+            CARB_Comm.ExecuteNonQuery()
+
+            SuccessfulPrompt.Visible = True
+            SuccessfulPrompt.InnerHtml = "Update Successful."
+
+        End If
+
+        CARB_conn.Close()
+
+    End Sub
+
+    Protected Sub DeleteButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles DeleteButton.Click
+
+        DeletionPrompt.Visible = False
+
+        Dim connection_string As String
+
+        'Changing to CleanFleets for database in preparation for transition from DEV to Production; Andrew - 12/10/2019.
+        'Push made and reverting back; Andrew - 12/10/2019.
+
+        connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+
+        Dim CARB_conn As New SqlConnection(connection_string)
+
+        If CARB_conn.State = ConnectionState.Closed Then
+
+            CARB_conn.Open()
+
+        End If
+
+        Dim CARB_Comm As SqlCommand
+        CARB_Comm = New SqlCommand("DELETE FROM CF_CARB_Communication WHERE ChassisVIN = @ChassisVIN", CARB_conn)
+
+        CARB_Comm.Parameters.Add("@ChassisVIN", SqlDbType.VarChar, 50)
+        CARB_Comm.Parameters("@ChassisVIN").Value = ChassisVINHolder.Text
+
+        CARB_Comm.ExecuteNonQuery()
+
+        DeletionPrompt.Visible = True
+        DeletionPrompt.InnerHtml = "The record has been deleted."
+
+        CARB_conn.Close()
+
+        CType(FindControlIterative(Page, "fv_CF_CARB_Communication"), FormView).DataBind()
 
     End Sub
 
