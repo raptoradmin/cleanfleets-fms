@@ -17,6 +17,61 @@ Public Class report_opacity_testing_results
 
     ' End of what was added on 12/17/2019.
 
+    ' Added on 1/24/2020 to facilitate custom columns in the PSIP Report - Sam 
+
+     Dim columnList As New List(Of String)({"Location", "Unit No.", "VIN", "License Plate", 
+                                          "Vehicle Make", "Engine Manufacturer", "Engine Model Year", "DECS Level",
+                                          "Pass/Fail", "Test Avg (%)", "Date Tested", "Tester", "Mileage"})
+    Dim MIN_DATE As DateTime = New Date(1990, 1, 1)
+    Dim MAX_DATE = New Date(2099, 12, 31) ' Should this just be the current date? -Sam --TODO
+    
+    ' Generates a series of checkbox controls based on the columnList variable
+    Private Sub generateCheckboxes()
+        'Codes for A1 Metals -> on road -> on road
+        'Profile: 55
+        'Terminal: 1156
+        'Fleet: 1643
+
+        'Do a short query to get the columns being used  - seems to cause performance issues
+        'Dim dt As DataTable = New DataTable()
+        'Using conn As New SqlConnection(connectionString)
+         '           Using adapter As New SqlDataAdapter("EXEC ReportOpacityTestingResults @IDProfileAccount, @IDProfileTerminal, @IDProfileFleet, @FromDate, @ThroughDate", conn)
+          '              adapter.SelectCommand.Parameters.AddWithValue("@IDProfileAccount", 55)
+           '             adapter.SelectCommand.Parameters.AddWithValue("@IDProfileTerminal", 1156)
+            '            adapter.SelectCommand.Parameters.AddWithValue("@IDProfileFleet", 1643)
+             '           adapter.SelectCommand.Parameters.AddWithValue("@FromDate", DBNull.value)
+              '          adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", DBNull.value)
+               '         adapter.Fill(dt)
+                '    End Using
+        'End Using
+
+        Dim count As Integer = 0
+        For each col In columnList 
+            Dim checkbox As CheckBox = New CheckBox()
+            checkbox.ID = col 
+            checkbox.Text = col 
+            checkbox.Checked = True
+            ColumnPanel.Controls.Add(checkbox)
+            count = count + 1
+            If (count Mod 3) = 0 Then
+                ColumnPanel.Controls.Add(New HtmlGenericControl("br"))
+            End If
+
+        Next
+    End Sub
+
+    'Generates custom reporting checkboxes when the column panel is loaded
+    Private Sub ColumnPanel_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        generateCheckboxes
+    End Sub
+    ' End of custom PSIP reporting additions 
+
+   
+    
+
+   
+
+
     Protected Sub ddl_Account_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
 
         ' Added by Andrew on 12/17/2019 for the purpose of letting the user select all PSIP records.
@@ -43,7 +98,7 @@ Public Class report_opacity_testing_results
 
             ' RecordsButton.Text = ID_And_Name_DataTable.Rows(4).Item("IDProfileFleet")
 
-            RecordsButton.Text = ID_And_Name_DataTable.Rows.Count.ToString()
+            ' RecordsButton.Text = ID_And_Name_DataTable.Rows.Count.ToString()
 
             ' (SELECT CF_Profile_Terminal.IDProfileAccount FROM CF_Vehicles INNER JOIN CF_Profile_Fleet ON CF_Profile_Fleet.IDProfileFleet = CF_Vehicles.IDProfileFleet INNER JOIN CF_Profile_Terminal ON CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal WHERE CF_Vehicles.IDVehicles = @FINALIDVEHICLES
 
@@ -164,43 +219,12 @@ Public Class report_opacity_testing_results
         End If
     End Sub
 
-
-    Protected Sub btn_Report_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_Report.Click
-        Dim MIN_DATE As DateTime = New Date(1990, 1, 1)
-        Dim MAX_DATE = New Date(2099, 12, 31)
-
-        If Page.IsValid() Then
-
-            ' Added conditional statement for the purpose of allowing the user to generate a PSIP Report showing all the records; Andrew - 12/17/2019.
-
-            If (ddl_Account.SelectedItem.Text <> "Select All Vehicles") Then
-
-                Dim IDProfileFleet As Integer = 0
-                Integer.TryParse(ddl_Fleet.SelectedValue, IDProfileFleet)
-                Dim IDProfileTerminal As Integer = 0
-                Integer.TryParse(ddl_Terminal.SelectedValue, IDProfileTerminal)
-                Dim IDProfileAccount As Integer = CInt(ddl_Account.SelectedValue)
-                Dim AccountListItem As ListItem = ddl_Account.SelectedItem
-                Dim FleetListItem As ListItem = Nothing
-                FleetListItem = ddl_Fleet.SelectedItem
-                Dim TerminalListItem As ListItem = Nothing
-                TerminalListItem = ddl_Terminal.SelectedItem
-
-                Dim Filename As String = AccountListItem.Text & If(IDProfileTerminal > 0, "-" & TerminalListItem.Text, "") & If(IDProfileFleet > 0, "-" & FleetListItem.Text, "") & "_"
-                Filename = Filename.Replace(",", "")
-
-                Dim FromDate As DateTime = MIN_DATE
-                Dim ThroughDate As DateTime = MAX_DATE
-                Dim columnHeaderRow As Integer = 0
-                If DateTime.TryParse(Me.FromDate.Text, FromDate) = False Then
-                    FromDate = MIN_DATE
-                End If
-                If DateTime.TryParse(Me.ThroughDate.Text, ThroughDate) = False Then
-                    ThroughDate = MAX_DATE
-                End If
-
+    Private Function opacity_reporting_procedure(ByVal IDProfileAccount, ByVal IDProfileTerminal, ByVal IDProfileFleet, ByVal FromDate, ByVal ThroughDate) As DataTable
+                ' DataTable to store results
                 Dim dt As New DataTable()
 
+                ' Fetch data using the ReportOpacityTestingResults procedure in the database
+               
                 Using conn As New SqlConnection(connectionString)
                     Using adapter As New SqlDataAdapter("EXEC ReportOpacityTestingResults @IDProfileAccount, @IDProfileTerminal, @IDProfileFleet, @FromDate, @ThroughDate", conn)
                         adapter.SelectCommand.Parameters.AddWithValue("@IDProfileAccount", IDProfileAccount)
@@ -219,12 +243,70 @@ Public Class report_opacity_testing_results
                         adapter.Fill(dt)
                     End Using
                 End Using
+                Return dt 
+    End Function
+    Private Sub filterReport(ByRef dt As DataTable) 
+         ' Added by Sam 1/23 to test out selective reporting
+                For Each c As Control In ColumnPanel.Controls
+                    Dim check As Checkbox = TryCast(c, Checkbox)
+                    If check IsNot Nothing Then
+                        If check.Checked <> True Then
+                            dt.Columns.Remove(check.ID)
+                        End If
+                    End If
+                Next
+                ' End Sam
+    End Sub
+    Protected Sub btn_Report_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_Report.Click
+        If Page.IsValid() Then
+
+            ' Added conditional statement for the purpose of allowing the user to generate a PSIP Report showing all the records; Andrew - 12/17/2019.
+
+            If (ddl_Account.SelectedItem.Text <> "Select All Vehicles") Then
+                ' Get dates, set to MIN_DATE and MAX_DATE if there's any errors
+                Dim FromDate As DateTime = MIN_DATE
+                Dim ThroughDate As DateTime = MAX_DATE
+                Dim columnHeaderRow As Integer = 0
+                If DateTime.TryParse(Me.FromDate.Text, FromDate) = False Then
+                    FromDate = MIN_DATE
+                End If
+                If DateTime.TryParse(Me.ThroughDate.Text, ThroughDate) = False Then
+                    ThroughDate = MAX_DATE
+                End If
+                ' Get all the ID numbers
+                Dim IDProfileFleet As Integer = 0
+                Integer.TryParse(ddl_Fleet.SelectedValue, IDProfileFleet)
+
+                Dim IDProfileTerminal As Integer = 0
+                Integer.TryParse(ddl_Terminal.SelectedValue, IDProfileTerminal)
+
+                Dim IDProfileAccount As Integer = CInt(ddl_Account.SelectedValue)
+                Dim AccountListItem As ListItem = ddl_Account.SelectedItem
+
+                Dim FleetListItem As ListItem = Nothing
+                FleetListItem = ddl_Fleet.SelectedItem
+
+                Dim TerminalListItem As ListItem = Nothing
+                TerminalListItem = ddl_Terminal.SelectedItem
+
+                ' Setup the name of the file to be downloaded
+                Dim Filename As String = AccountListItem.Text & If(IDProfileTerminal > 0, "-" & TerminalListItem.Text, "") & If(IDProfileFleet > 0, "-" & FleetListItem.Text, "") & "_"
+                Filename = Filename.Replace(",", "")
+
+                ' Fetch data using the ReportOpacityTestingResults procedure in the database
+               Dim dt As DataTable = opacity_reporting_procedure(IDProfileAccount,IDProfileTerminal,IDProfileFleet,FromDate,ThroughDate)
 
                 If dt.Rows.Count = 0 Then
                     Messages.Text = "No records found"
                     Return
                 End If
 
+                'Adjust report based on column checkboxes
+                filterReport(dt)
+               
+
+
+                ' Add headers
                 'Dim newFile As New FileInfo(filepath)
                 Using package As New ExcelPackage()
                     Dim worksheet As ExcelWorksheet = package.Workbook.Worksheets.Add("PSIP Test Results")
@@ -260,7 +342,7 @@ Public Class report_opacity_testing_results
 
 
 
-                    'fill cells with data from table
+                    'fill cells with data from table and format
                     columnHeaderRow = row
                     worksheet.Cells("A" & row).LoadFromDataTable(dt, True)
                     Using range As ExcelRange = worksheet.Cells(row, 1, row, dt.Columns.Count)
@@ -339,7 +421,7 @@ Public Class report_opacity_testing_results
                 End Using
 
             ElseIf (ddl_Account.SelectedItem.Text = "Select All Vehicles") Then
-
+                Dim confirmation = MsgBox("Due to the large number of records, this download can take up to 17 minutes.", 0)
                 Dim FromDate As DateTime = MIN_DATE
                 Dim ThroughDate As DateTime = MAX_DATE
                 Dim columnHeaderRow As Integer = 0
@@ -485,6 +567,7 @@ Public Class report_opacity_testing_results
                         Messages.Text = "No records found"
                         Return
                     End If
+                    filterReport(dt)
 
                     ' I am adding the a Loop to append the "AccountName" to each value in the "Location" column; Andrew - 12/19/2019.
 
@@ -493,14 +576,6 @@ Public Class report_opacity_testing_results
                     For m = 1 To dt.Rows.Count
 
                         dt.Rows(m - 1).SetField("Location", Mid(ProfileAccountNameString, previous_position + 1, InStr(previous_position + 1, ProfileAccountNameString, "?") - previous_position - 1) & "/" & dt.Rows(m - 1).Item("Location").ToString())
-
-                        If (Err.Number > 0) Then
-
-                            RecordsButton.Text = "Row Number " & m & ": " & dt.Rows(m).Item("Location") & " - " & dt.Rows(m).Item("Unit No.")
-
-                            Exit For
-
-                        End If
 
                         previous_position = InStr(previous_position + 1, ProfileAccountNameString, "?")
 

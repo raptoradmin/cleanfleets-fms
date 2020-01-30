@@ -14,15 +14,6 @@ Option Explicit On
 Partial Public Class report_opacity_testing_results
     
     '''<summary>
-    '''RecordsButton control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents RecordsButton As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Label4 control.
     '''</summary>
     '''<remarks>
@@ -129,6 +120,15 @@ Partial Public Class report_opacity_testing_results
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Messages As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''ColumnPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ColumnPanel As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''btn_Report control.
