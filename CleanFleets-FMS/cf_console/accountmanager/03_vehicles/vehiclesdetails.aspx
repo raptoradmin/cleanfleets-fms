@@ -81,6 +81,7 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="RightColumnContentPlaceHolder">
+    <a href="../../../includes/imagemanager/imagefiles/2b6098e6-d499-4a8e-89a0-05933f7578ee_truck.jpg" data-lightbox="image-1" data-title="My caption">Image #1</a>
 
     <%--Added by Andrew on 10/25/2019--%>
 
@@ -832,7 +833,7 @@
                              
                     <asp:FormView ID="fv_VehicleImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesVehicle_fvw">
                         <ItemTemplate>
-                            <asp:Image ID="image" runat="server" ImageUrl='<%# Eval("Image") + "?Width=200" %>' Width="200" />
+                            <asp:Hyperlink NavigateURL='<%# Eval("Image")%>' ImageUrl='<%# Eval("Image") + "?Width=200" %>' data-lightbox="test" runat="server"><!--<asp:Image ID="image" runat="server" ImageUrl='<%# Eval("Image") + "?Width=200" %>' Width="200" />--></asp:Hyperlink>
                         </ItemTemplate>
                     </asp:FormView>
                              
@@ -1556,7 +1557,7 @@
                                     style="padding: 5px; border-left-style: solid; border-left-width: 1px; border-left-color: #9B9B9B">
                                     <asp:FormView ID="fv_EngineImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesEngines_fvw">
                                         <ItemTemplate>
-                                            <asp:Image ID="image0" runat="server" ImageUrl='<%#Eval("Image") + "?Width=200" %>' Width="200" />
+                                            <asp:Hyperlink ID="image0" data-lightbox='<%#Eval("Image")%>' NavigateUrl='<%#Eval("Image") %>' runat="server" ImageUrl='<%#Eval("Image") + "?Width=200" %>' Width="200" />
                                         </ItemTemplate>
                                     </asp:FormView>
                                 </td>
@@ -1782,7 +1783,7 @@
                                         valign="top">
                                         <asp:FormView ID="fv_DECSImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesDECs_fvw">
                                             <ItemTemplate>
-                                                <asp:Image ID="image1" runat="server" ImageUrl='<%#Eval("Image") + "?Width=200"%>' Width="200" />
+                                                <asp:Hyperlink ID="image1" data-lightbox='<%#Eval("Image")%>' NavigateUrl='<%#Eval("Image") %>' runat="server" ImageUrl='<%#Eval("Image") + "?Width=200"%>' Width="200" />
                                             </ItemTemplate>
                                         </asp:FormView>
                                     </td>
@@ -2315,7 +2316,7 @@
                                                                 <%--I am adding a Label control to see if I can pass it successfully to the SqlDataSource control ("sds_Files_DECS")
                                                                 Done by Andrew on 12/12/2019.--%>
 
-                                                                <asp:Label ID="DECSLabel" runat="server" Text='<%# Eval("IDDECS") %>' />
+                                                               <%-- <asp:Label ID="DECSLabel" runat="server" Text='<%# Eval("IDDECS") %>' /> --%>
 
                                                             </ItemTemplate>
                                                         </asp:FormView>

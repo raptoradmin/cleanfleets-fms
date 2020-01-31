@@ -9,9 +9,13 @@
 	<title>Fleet Compliance Management System</title>
 	<link rel="stylesheet" type="text/css" href="~/includes/styles/cf_style.css" />
     <link rel="stylesheet" type="text/css" href="/includes/javascript/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/includes/javascript/lightbox.css" />
 	<script type="text/javascript" src="/includes/javascript/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/includes/javascript/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/includes/javascript/cf_console_subs.js"></script>
+    <script type="text/javascript" src="/includes/javascript/lightbox.js"></script>
+    <!-- Fixes IE errors with lightbox -->
+    <script type="text/javascript"> if (!window.console) console = {log: function() {}}; </script>
 	
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>

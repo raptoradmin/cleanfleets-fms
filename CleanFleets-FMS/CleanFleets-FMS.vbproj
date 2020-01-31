@@ -323,6 +323,8 @@
     <Content Include="includes\javascript\jquery-ui.structure.min.css" />
     <Content Include="includes\javascript\jquery-ui.theme.css" />
     <Content Include="includes\javascript\jquery-ui.theme.min.css" />
+    <Content Include="includes\javascript\lightbox.css" />
+    <Content Include="includes\javascript\lightbox.js" />
     <Content Include="includes\javascript\masonry.pkgd.min.js" />
     <Content Include="includes\reports_client\05_vehicles_detailed.aspx" />
     <Content Include="includes\reports_client\06_vehicles_detailed_by_CARB.aspx" />
@@ -403,6 +405,9 @@
     <Compile Include="cf_console\accountmanager\03_vehicles\addCARBrecord.aspx.vb">
       <DependentUpon>addCARBrecord.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.designer.vb">
+      <DependentUpon>vehiclesdetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="controls\GroupedDropDownList.vb" />
     <Compile Include="App_Code\IHangfireJob.vb" />
@@ -677,9 +682,6 @@
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdel.aspx.vb">
       <DependentUpon>vehiclesdel.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.designer.vb">
-      <DependentUpon>vehiclesdetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.vb">
       <DependentUpon>vehiclesdetails.aspx</DependentUpon>

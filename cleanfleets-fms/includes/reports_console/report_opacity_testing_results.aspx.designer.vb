@@ -122,6 +122,15 @@ Partial Public Class report_opacity_testing_results
     Protected WithEvents Messages As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''ColumnPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ColumnPanel As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
     '''btn_Report control.
     '''</summary>
     '''<remarks>
