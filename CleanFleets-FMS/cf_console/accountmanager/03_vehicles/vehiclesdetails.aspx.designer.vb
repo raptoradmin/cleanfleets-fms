@@ -12,51 +12,7 @@ Option Explicit On
 
 
 Partial Public Class vehiclesdetails1
-     '''<summary>
-    '''UpdateButton control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents UpdateButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''btn_AddEngine control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''btn_AddEngine control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AddButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''btn_AddEngine control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents EditButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''btn_AddEngine control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
-
+    
     '''<summary>
     '''RadCodeBlock1 control.
     '''</summary>

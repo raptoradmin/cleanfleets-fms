@@ -81,7 +81,6 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="RightColumnContentPlaceHolder">
-    <a href="../../../includes/imagemanager/imagefiles/2b6098e6-d499-4a8e-89a0-05933f7578ee_truck.jpg" data-lightbox="image-1" data-title="My caption">Image #1</a>
 
     <%--Added by Andrew on 10/25/2019--%>
 

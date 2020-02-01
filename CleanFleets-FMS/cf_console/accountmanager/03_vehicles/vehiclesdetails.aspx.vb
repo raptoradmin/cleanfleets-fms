@@ -15,6 +15,21 @@ Imports System.Globalization
 Public Class vehiclesdetails1
     Inherits BaseWebForm
 
+    '****************************************************************************
+    ' Event Handlers 
+    ' For some reason, these do not autogenerate in the designer file
+    '****************************************************************************
+    Protected WithEvents UpdateButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents DeleteButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ddl_DPF_Records As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents AddButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents EditButton As Global.System.Web.UI.WebControls.Button
+
+
+
+
+
+
     '*********************************************************************************************************************
     'Page Events
     '*********************************************************************************************************************
