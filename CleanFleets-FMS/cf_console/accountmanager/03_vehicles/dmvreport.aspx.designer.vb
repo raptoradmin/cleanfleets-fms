@@ -50,6 +50,15 @@ Partial Public Class dmvreport
     Protected WithEvents PopulateFields As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''ChassisVIN_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ChassisVIN_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''ChassisVIN_Error control.
     '''</summary>
     '''<remarks>
@@ -68,6 +77,15 @@ Partial Public Class dmvreport
     Protected WithEvents FromDate As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''FromDate_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FromDate_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''ThroughDate control.
     '''</summary>
     '''<remarks>
@@ -75,6 +93,15 @@ Partial Public Class dmvreport
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ThroughDate As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''ThroughDate_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ThroughDate_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''cv_Date control.
@@ -149,6 +176,15 @@ Partial Public Class dmvreport
     Protected WithEvents LicensePlateNo As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''LicensePlateNo_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LicensePlateNo_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''BodyType control.
     '''</summary>
     '''<remarks>
@@ -194,6 +230,15 @@ Partial Public Class dmvreport
     Protected WithEvents DateIssued As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''DateIssued_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateIssued_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''CCAlco control.
     '''</summary>
     '''<remarks>
@@ -210,6 +255,15 @@ Partial Public Class dmvreport
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents DateFeeReceived As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''DateFeeReceived_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateFeeReceived_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Pic control.
@@ -230,6 +284,15 @@ Partial Public Class dmvreport
     Protected WithEvents StickerIssued As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''StickerIssued_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents StickerIssued_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''Name control.
     '''</summary>
     '''<remarks>
@@ -237,6 +300,33 @@ Partial Public Class dmvreport
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Name As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Name_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Name_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
+    '''AmountPaid control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AmountPaid As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''AmountPaid_Validator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AmountPaid_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''Address control.
@@ -248,13 +338,13 @@ Partial Public Class dmvreport
     Protected WithEvents Address As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''AmountPaid control.
+    '''Address_Validator control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AmountPaid As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Address_Validator As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''SubmitRegistration control.

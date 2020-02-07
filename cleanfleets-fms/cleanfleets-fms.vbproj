@@ -86,11 +86,6 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 10.0\Visual Studio Tools for Office\PIA\Office12\Microsoft.Office.Interop.Excel.dll</HintPath>
-    </Reference>
     <Reference Include="MimeKit, Version=1.2.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MimeKit.dll</HintPath>
@@ -207,6 +202,7 @@
     <Content Include="cf_console\accountmanager\02_fleets\fleetadd.aspx" />
     <Content Include="cf_console\accountmanager\02_fleets\fleetdetails.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\DECsadd.aspx" />
+    <Content Include="cf_console\accountmanager\03_vehicles\dmvreport.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\enginesadd.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx" />
@@ -323,6 +319,8 @@
     <Content Include="includes\javascript\jquery-ui.structure.min.css" />
     <Content Include="includes\javascript\jquery-ui.theme.css" />
     <Content Include="includes\javascript\jquery-ui.theme.min.css" />
+    <Content Include="includes\javascript\lightbox.css" />
+    <Content Include="includes\javascript\lightbox.js" />
     <Content Include="includes\javascript\masonry.pkgd.min.js" />
     <Content Include="includes\reports_client\05_vehicles_detailed.aspx" />
     <Content Include="includes\reports_client\06_vehicles_detailed_by_CARB.aspx" />
@@ -383,6 +381,13 @@
     <Compile Include="App_Code\DefaultModule.vb" />
     <Compile Include="App_Code\Director.vb" />
     <Compile Include="App_Code\GenericModule.vb" />
+    <Compile Include="cf_console\accountmanager\03_vehicles\dmvreport.aspx.designer.vb">
+      <DependentUpon>dmvreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\dmvreport.aspx.vb">
+      <DependentUpon>dmvreport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.designer.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
     </Compile>
@@ -403,6 +408,9 @@
     <Compile Include="cf_console\accountmanager\03_vehicles\addCARBrecord.aspx.vb">
       <DependentUpon>addCARBrecord.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.designer.vb">
+      <DependentUpon>vehiclesdetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="controls\GroupedDropDownList.vb" />
     <Compile Include="App_Code\IHangfireJob.vb" />
@@ -677,9 +685,6 @@
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdel.aspx.vb">
       <DependentUpon>vehiclesdel.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.designer.vb">
-      <DependentUpon>vehiclesdetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.vb">
       <DependentUpon>vehiclesdetails.aspx</DependentUpon>
@@ -1315,6 +1320,9 @@
     </PackageReference>
     <PackageReference Include="CodeCarvings.Piczard.ImageUpload">
       <Version>3.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="IronOcr">
+      <Version>4.4.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <Version>2.0.1</Version>

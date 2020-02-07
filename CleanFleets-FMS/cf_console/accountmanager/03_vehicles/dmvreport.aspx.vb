@@ -48,12 +48,12 @@ Public Class dmvreport
     ''' <summary>
     ''' Clears error labels
     ''' </summary>
-     Function ClearErrorLabels(ByVal ctrl As Control) As Control
+    Function ClearErrorLabels(ByVal ctrl As Control) As Control
         Dim c As Control = Nothing
 
         Dim lb As Label = TryCast(ctrl, Label)
         If lb IsNot Nothing Then
-            Debug.WriteLine("Found label: " & lb.ID)
+           ' Debug.WriteLine("Found label: " & lb.ID)
             If lb.ID.Contains("Error") Then
                 lb.Visible = "False"
             End If
@@ -116,6 +116,11 @@ Public Class dmvreport
         Return dt
     End Function
     
+    ''' <summary>
+    ''' Queries CF_DMV to see if a matching row already exists
+    ''' </summary>
+    ''' <param name="IDVehicles"></param>
+    ''' <returns></returns>
     Function CheckExistingRegistration(ByVal IDVehicles As String) As Boolean
         'Query CF_DMV to see if a row with this ID exists
         Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
@@ -132,6 +137,7 @@ Public Class dmvreport
             Return False
         End If
     End Function
+
     ''' <summary>
     ''' Runs an SQL query that fetches existing vehicle information based on 
     ''' the entered VIN, and then fills the corresponding boxes with that information
@@ -157,9 +163,9 @@ Public Class dmvreport
             Dim count As Integer = 0
             For Each column In row.ItemArray
                 Dim textbox = TryCast(FindControlRecursive(Me, dt.Columns.Item(count).ToString), TextBox)
-                Debug.WriteLine(dt.Columns.Item(count).ToString)
+               ' Debug.WriteLine(dt.Columns.Item(count).ToString)
                 If textbox IsNot Nothing Then
-                    Debug.WriteLine("Found a control")
+                '    Debug.WriteLine("Found a control")
                     textbox.Text = column.ToString
                 End If
                 count += 1
@@ -168,24 +174,57 @@ Public Class dmvreport
             ChassisVIN_Error.Visible = "True"
         End If
     End Sub
-    
+
+    ''' <summary>
+    ''' Loops through all controls on the page and adds them to a list that is passed by reference
+    ''' </summary>
+    ''' <param name="ctrl"></param>
+    ''' <param name="lst"></param>
+    Protected Sub GetFields(ByVal ctrl As Control, ByRef lst As List(Of Textbox)) 
+     For Each ctrl_loop As Control in Page.Controls
+            Dim tb = TryCast(ctrl_loop, TextBox)
+            If tb IsNot Nothing Then 
+                lst.Add(tb)
+            End If
+            For Each sub_ctrl As Control in ctrl_loop.Controls 
+               GetFields(sub_ctrl, lst)
+            Next
+     Next
+    End Sub     
+
     ''' <summary>
     ''' Inserts a new record into the CF_DMV table
     ''' </summary>
     ''' <param name="row"></param>
     Protected Sub InsertRegistrationRecord(ByVal row As DataRow)
-        Dim sql As String
-        Dim strConnString As String = ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString()
-        sql = 
-        "INSERT INTO 
-            CF_DMV (IDVehicles, FromDate, ThroughDate)
-            VALUES (@IDVehicles, @FromDate, @ThroughDate)"
-        Dim cn As New SqlConnection(strConnString)
-        Dim cmd As New SqlCommand(sql, cn)
+        'Get all the form fields
+        Dim lst As List(Of TextBox) = Page.Master.FindControl("RightColumnContentPlaceHolder").Controls.OfType(Of TextBox).ToList
+      
+        'Get rid of ChassisVIN
+        lst.RemoveAt(0)
+        Dim sql_columns As String = "(IDVehicles"
+        Dim sql_values As String = "(""" & row.Item("IDVehicles").ToString & """, "
+        For each tb As TextBox In lst
+            If tb.Text <> "" Then 
+                sql_columns += tb.ID 
+                sql_values +=  """"  & tb.Text & """" 
+                If tb Is lst.Last Then 
+                    sql_columns += ")"
+                    sql_values += ")"
+                Else 
+                    sql_columns += ", "
+                    sql_values += ", "
+                End If
+            End If
+        Next
 
-        cmd.Parameters.Add("@IDVehicles", SqlDbType.UniqueIdentifier).Value = row.Item("IDVehicles")
-        cmd.Parameters.Add("@FromDate", SqlDbType.Date).Value = FromDate.Text
-        cmd.Parameters.Add("@ThroughDate", SqlDbType.Date).Value = ThroughDate.Text
+        Dim query As String = "INSERT INTO CF_DMV " & sql_columns & " VALUES " & sql_values 
+        Debug.WriteLine(query)
+        Dim strConnString As String = ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString()
+        Dim cn As New SqlConnection(strConnString)
+        Dim cmd As New SqlCommand(query, cn)
+
+
 
         cmd.Connection.Open()
         cmd.ExecuteNonQuery()
@@ -223,6 +262,11 @@ Public Class dmvreport
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Protected Sub SubmitRegistration_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles SubmitRegistration.Click
+        ' Make sure all required validation is met
+        If Not Page.IsValid Then
+            Debug.WriteLine("Failed validation")
+            Return
+       End If
         'Get existing information 
         Dim VIN As String = ChassisVIN.Text
         Dim existing_dt As DataTable = QueryExistingInfo(VIN)
