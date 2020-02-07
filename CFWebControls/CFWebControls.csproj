@@ -72,10 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cleanfleets-fet\FleetEmissionsTracker\CFA.FETEntity\CFA.FETEntity.csproj">
-      <Project>{dfce04b7-d713-4339-a430-bac197e59bfc}</Project>
-      <Name>CFA.FETEntity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\cleanfleets-fet\FleetEmissionsTracker\CFUtilities\CFUtilities.vbproj">
       <Project>{36ebfd3c-6e3f-4957-b503-a735722f1628}</Project>
       <Name>CFUtilities</Name>

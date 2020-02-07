@@ -1163,7 +1163,8 @@ Public Class vehiclesdetails
     Public Function RefreshVehicleMileage(ByVal source As Object, ByVal e As Object) 'Handles rgd_LogMileage.ItemCreated, rgd_LogMileage.ItemDeleted, rgd_LogMileage.ItemUpdated
         Dim conn As SqlConnection
         Dim cmd As SqlCommand
-        Dim strconnection, strsqlvalidate As String
+        Dim strconnection As String
+        'Dim strsqlvalidate As String --WARNINGS moved to a seperate line and commented by Sam 2/20
         Dim IDVehicles As New Guid(Request.QueryString("IDVehicles"))
 
 
@@ -1187,7 +1188,8 @@ Public Class vehiclesdetails
     Public Function RefreshVehicleHours(ByVal source As Object, ByVal e As Object) 'Handles rgd_LogMileage.ItemCreated, rgd_LogMileage.ItemDeleted, rgd_LogMileage.ItemUpdated
         Dim conn As SqlConnection
         Dim cmd As SqlCommand
-        Dim strconnection, strsqlvalidate As String
+        Dim strconnection As String
+        'Dim strsqlvalidate As String --WARNINGS moved to a seperate line and commented by Sam 2/20
         Dim IDVehicles As New Guid(Request.QueryString("IDVehicles"))
 
 

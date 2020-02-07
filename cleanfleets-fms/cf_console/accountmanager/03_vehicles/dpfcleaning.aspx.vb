@@ -160,8 +160,8 @@ Public Class dpfcleaning
     Protected Sub importOpacityTests(ByVal TXTFileSpec As String, ByVal AttachToDBRecord As Boolean)
         Dim ScannerName As String = ""
         Dim myDataSet As New DataSet()
-        Dim col As DataColumn
-        Dim Contents As String
+        'Dim col As DataColumn  --WARNINGS commented out by due to not being used Sam 2/20
+        'Dim Contents As String  --WARNINGS commented out by due to not being used Sam 2/20
 
         ' Added by Andrew on 9/3/2019.
 
@@ -2145,7 +2145,7 @@ Public Class dpfcleaning
             Dim IDSignature As New Guid(dtRow.Item("IDSignature").ToString())
             Dim ScannerName As String = "unknown"
             Dim RawTestResults As String = dtRow("RawTestResults").ToString().Trim().TrimEnd(vbCr, vbLf, " ")
-            Dim CircleTop As Double
+            'Dim CircleTop As Double  --WARNINGS commented out by due to not being used Sam 2/20
             Dim CircleRight As Double
             Dim CircleBottom As Double
             Dim CircleLeft As Double

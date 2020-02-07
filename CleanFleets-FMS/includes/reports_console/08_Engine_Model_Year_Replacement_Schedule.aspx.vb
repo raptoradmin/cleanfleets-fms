@@ -177,27 +177,28 @@ Public Class _08_Engine_Model_Year_Replacement_Schedule
 
     Protected Function createEngineModelYearReplacementSchedule(IDProfileFleet As Integer, IDProfileTerminal As Integer, IDProfileAccount As Integer, IDEngineReplacementScheduleClass As Integer) As String
         ' depending on the option, we may need to open one of three files
-        Dim TemplateFileSpec
-        Dim ComplianceYearRowNumber As Integer
-        Dim EngineModelYearColumn As String
-        Dim AccountBACTOption As String
-        Dim VehicleWeightClass As String
-        Dim ReportParametersCell As String
-        Dim ReportDateCell As String
-        Dim ATFName As String
-        Dim login As String
+        ' = Nothing added by Sam 2/20 to fix warnings --WARNING
+        Dim TemplateFileSpec = Nothing
+        Dim ComplianceYearRowNumber As Integer = Nothing
+        Dim EngineModelYearColumn As String = Nothing
+        Dim AccountBACTOption As String = Nothing
+        Dim VehicleWeightClass As String = Nothing
+        Dim ReportParametersCell As String = Nothing
+        Dim ReportDateCell As String = Nothing
+        Dim ATFName As String = Nothing
+        Dim login As String = Nothing
         login = Membership.GetUser().UserName
         Dim filename As String = String.Format("{0}_engine_model_year_replacement_schedule_{1:yyyyMMdd-HHmmss}.pdf", login, DateTime.Now())
         Dim PathSpec = Server.MapPath("reports\")
-        Dim objReader As SqlDataReader
-        Dim terminalReader As SqlDataReader
-        Dim UserID As Guid
-        Dim MemUser As MembershipUser
+        Dim objReader As SqlDataReader = Nothing
+        Dim terminalReader As SqlDataReader = Nothing
+        Dim UserID As Guid = Nothing
+        Dim MemUser As MembershipUser = Nothing
         MemUser = Membership.GetUser()
         UserID = MemUser.ProviderUserKey
         ' set a default printer
-        Dim search As System.Management.ManagementObjectSearcher
-        Dim results As System.Management.ManagementObjectCollection
+        Dim search As System.Management.ManagementObjectSearcher = Nothing
+        Dim results As System.Management.ManagementObjectCollection = Nothing
         search = New System.Management.ManagementObjectSearcher("select * from win32_printer")
         results = search.Get()
         For Each printer As System.Management.ManagementObject In results
@@ -248,7 +249,7 @@ Public Class _08_Engine_Model_Year_Replacement_Schedule
             ATFName = "Account: " & DB.replaceNullStr(objReader("ATFName"), "") & " " & vbCrLf
             comm2.Parameters.Add("@IDProfileContact", IDProfileContact)
             comm2.Parameters.Add("@IDProfileAccount", IDProfileAccount)
-            Dim result As String
+            Dim result As String = Nothing
             comm2.Parameters.Add("@Result", result)
             comm2.Parameters("@Result").Direction = ParameterDirection.Output
             comm2.Parameters("@Result").Size = 40
@@ -524,8 +525,8 @@ Public Class _08_Engine_Model_Year_Replacement_Schedule
     '10/08/2012 IR: Fixed logical errors in code used to select the appropriate cell for the next vehicle. Since some model years shared the same column
     'they needed to be under the same key value in EMYComplianceCells. Had to change key values and mapping of model year to key value.
     Private Function getCellAndIncrement(ByVal EngineModelYear As String, ByVal VehicleWeightClass As String, ByVal AccountBACTOption As String, ByRef EMYComplianceCells As Dictionary(Of String, String)) As String
-        Dim key As String
-        Dim intModelYear As Integer
+        Dim key As String = Nothing
+        Dim intModelYear As Integer = Nothing
         Integer.TryParse(EngineModelYear, intModelYear)
         Select Case VehicleWeightClass
             Case "4-6"
@@ -616,7 +617,7 @@ Public Class _08_Engine_Model_Year_Replacement_Schedule
     End Function
 
     Private Function createPDF(Workbook As Object, Filespec As String) As String
-        Dim FileFormatStr As String
+        'Dim FileFormatStr As String  --WARNINGS commented out by due to not being used Sam 2/20
         Dim exportPDFPath As String
         exportPDFPath = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFiles),
           "Microsoft Shared\Office" & CInt(Workbook.Application.Version) & "\EXP_PDF.dll")

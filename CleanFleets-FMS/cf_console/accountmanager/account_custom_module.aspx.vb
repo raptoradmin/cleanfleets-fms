@@ -159,7 +159,7 @@ Public Class account_custom_module
         SQLStr = "SELECT ModuleName " &
                     "FROM CF_CustomModule " &
                     "WHERE IDCustomModule = @moduleID"
-        Dim moduleName As String
+        Dim moduleName As String = Nothing
         Using myConnection As New SqlConnection(connectionString)
             Dim myCommand As New SqlCommand(SQLStr, myConnection)
             myConnection.Open()
@@ -242,7 +242,7 @@ Public Class account_custom_module
 
         connectionString = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim moduleName = tb_moduleName.Text
-        Dim moduleID As String
+        'Dim moduleID As String --WARNINGS commented out by Sam 2/20
         SQLStr = "UPDATE CF_CustomModule SET ModuleName = @moduleName WHERE IDCustomModule = @moduleID"
         Using myConnection As New SqlConnection(connectionString)
             Dim myCommand As New SqlCommand(SQLStr, myConnection)

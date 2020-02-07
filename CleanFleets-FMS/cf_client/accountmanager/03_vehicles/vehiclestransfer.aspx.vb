@@ -119,7 +119,7 @@ Public Class vehiclestransfer
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim conn As New SqlConnection(connectionString)
         Dim comm As SqlCommand
-        Dim vehicleWeight As String
+        'Dim vehicleWeight As String  --WARNINGS commented out by Sam 2/20 because it wasn't being used
         Dim sqlStr = "UPDATE CF_Vehicles " &
                         "SET IDWeightDefinition = @WeightDefinition " &
                         "WHERE IDVehicles = @IDVehicles"

@@ -1165,7 +1165,7 @@ Public Class opacitytestsimport
             Dim IDSignature As New Guid(dtRow.Item("IDSignature").ToString())
             Dim ScannerName As String = "unknown"
             Dim RawTestResults As String = dtRow("RawTestResults").ToString().Trim().TrimEnd(vbCr, vbLf, " ")
-            Dim CircleTop As Double
+            'Dim CircleTop As Double  --WARNINGS commented out by due to not being used Sam 2/20
             Dim CircleRight As Double
             Dim CircleBottom As Double
             Dim CircleLeft As Double

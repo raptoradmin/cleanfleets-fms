@@ -7,7 +7,6 @@ Imports System.IO
 Imports System.Collections.Generic
 Imports Telerik.Web.UI
 Imports Ionic.Zip
-Imports Microsoft.Office.Interop.Excel
 Imports System.Management
 Imports Inspironix
 Public Class _07_fleet_calculation_export
@@ -310,7 +309,9 @@ Public Class _07_fleet_calculation_export
 
 
         Dim oExcel As Object = CreateObject("Excel.Application")
-        Dim wb As Object
+
+        ' = Nothing added by Sam 2/2/20 to fix warnings --WARNINGS
+        Dim wb As Object = Nothing
         Try
             oExcel.DisplayAlerts = False
             ' open workbook
@@ -420,7 +421,7 @@ Public Class _07_fleet_calculation_export
                 Dim terminalReader As SqlDataReader
                 comm2.Parameters.Add("@IDProfileContact", IDProfileContact)
                 comm2.Parameters.Add("@IDProfileAccount", IDProfileAccount)
-                Dim result As String
+                Dim result As String = Nothing
                 comm2.Parameters.Add("@Result", result)
                 comm2.Parameters("@Result").Direction = ParameterDirection.Output
                 comm2.Parameters("@Result").Size = 40

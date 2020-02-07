@@ -168,7 +168,7 @@ Public Class vehicleimport
     '07/17/2012 IR: Added ZIPFileSpec parameter to allow picture files to be unpacked onto the server
     Protected Sub importVehicles(ByVal XLSFileSpec As String, ByVal ZIPFileSpec As String, Routine As ImportRoutine)
         ' server requires 2007 Office System Driver Data Connectivity http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=23734
-        Dim ExcelSQLStr As String
+        'Dim ExcelSQLStr As String  --WARNINGS commented out by due to not being used Sam 2/20
         Dim ExcelConnStr As String
         Dim ExcelConn As OleDbConnection
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
@@ -249,11 +249,11 @@ Public Class vehicleimport
                 myDataAdapter.Fill(myDataSet)
             End If
 
-
-            Dim IDProfileAccount As Integer
-            Dim IDProfileTerminal As Integer
-            Dim IDProfileFleet As Integer
-            Dim IDVehicles As Guid
+            ' --WARNINGS commented out by due to not being used Sam 2/20
+            'Dim IDProfileAccount As Integer
+            'Dim IDProfileTerminal As Integer
+            'Dim IDProfileFleet As Integer
+            'Dim IDVehicles As Guid
             Dim col As DataColumn
 
 
@@ -1165,7 +1165,7 @@ Public Class vehicleimport
     Public Function getIDDECS(ByRef dtRow As DataRow) As Guid
         Dim IDVehicles As New Guid(dtRow.Item("IDVehicles").ToString())
         Dim IDEngines As New Guid(dtRow.Item("IDEngines").ToString())
-        Dim IDDECS As Guid
+        'Dim IDDECS As Guid  --WARNINGS commented out by due to not being used Sam 2/20
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim conn As New SqlConnection(connectionString)
         Dim comm As SqlCommand

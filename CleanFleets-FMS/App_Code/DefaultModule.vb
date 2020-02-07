@@ -30,7 +30,7 @@ Public Class DefaultModule
 		Me.accountID = accountID.Trim()
 		Me.contactID = contactID.Trim()
 		'moduleData = new DataTable()
-		Dim recordValue as String
+		Dim recordValue as String = Nothing
 		Select Case moduleType
             Case ModuleType.ComplianceCertification
 				recordValue = "ComplianceCertification"

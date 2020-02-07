@@ -82,7 +82,7 @@ Public Class _06_vehicles_detailed_by_CARB
 
 
     Protected Sub rg_Terminals_OnLoad(ByVal o As Object, ByVal e As EventArgs) Handles rg_Terminals.Load
-        Dim IDOptionList As Integer
+        'Dim IDOptionList As Integer  --WARNINGS commented out by due to not being used Sam 2/20
         'rg_Terminals.visible = (Integer.tryParse(ddl_CARBGroup.selectedValue.toString, IDOptionList) andAlso IDOptionList > 0) 
     End Sub
 

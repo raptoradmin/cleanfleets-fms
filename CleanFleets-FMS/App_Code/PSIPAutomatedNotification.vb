@@ -219,7 +219,7 @@ Public Class PSIPAutomatedNotification
 
                 client.Authenticate(IMAPUsername, IMAPPassword)
 
-                Dim draftsFolder As IMailFolder
+                Dim draftsFolder As IMailFolder = Nothing
                 Dim folders As New StringBuilder()
 
 

@@ -247,7 +247,7 @@ Public Class account_details1
             Dim extension As String = Path.GetExtension(uploadedFile.PostedFile.FileName).ToLower()
             Dim destinationFilePath As String = WebConfigurationManager.AppSettings("FileRepositoryFolder")
             Dim destinationFileName As String
-            Dim recordId As Guid
+            'Dim recordId As Guid  --WARNINGS commented out by due to not being used Sam 2/20
 
             If extension <> ".pdf" Then
                 messageLabel.Text = "Invalid file type [" & extension & "]."
@@ -382,7 +382,7 @@ Public Class account_details1
             Dim extension As String = Path.GetExtension(uploadedFile.PostedFile.FileName).ToLower()
             Dim destinationFilePath As String = WebConfigurationManager.AppSettings("FileRepositoryFolder")
             Dim destinationFileName As String
-            Dim recordId As Guid
+            'Dim recordId As Guid  --WARNINGS commented out by due to not being used Sam 2/20
 
             If extension <> ".pdf" Then
                 messageLabel.Text = "Invalid file type [" & extension & "]."
