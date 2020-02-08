@@ -14,22 +14,31 @@ Option Explicit On
 Partial Public Class dmvreport
     
     '''<summary>
-    '''FileUploadControl control.
+    '''RadTabStrip1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents FileUploadControl As Global.System.Web.UI.WebControls.FileUpload
+    Protected WithEvents RadTabStrip1 As Global.Telerik.Web.UI.RadTabStrip
     
     '''<summary>
-    '''TestButton control.
+    '''RadMultiPagetab control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TestButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents RadMultiPagetab As Global.Telerik.Web.UI.RadMultiPage
+    
+    '''<summary>
+    '''DMV_Add control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DMV_Add As Global.Telerik.Web.UI.RadPageView
     
     '''<summary>
     '''ChassisVIN control.
@@ -354,4 +363,31 @@ Partial Public Class dmvreport
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents SubmitRegistration As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''PageView2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PageView2 As Global.Telerik.Web.UI.RadPageView
+    
+    '''<summary>
+    '''RadGrid1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RadGrid1 As Global.Telerik.Web.UI.RadGrid
+    
+    '''<summary>
+    '''sds_Registration control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_Registration As Global.System.Web.UI.WebControls.SqlDataSource
 End Class
