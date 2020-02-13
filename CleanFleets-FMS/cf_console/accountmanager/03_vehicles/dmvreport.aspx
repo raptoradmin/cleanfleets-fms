@@ -8,6 +8,8 @@
             </telerik:RadTab>
             <telerik:RadTab Text="View Records">
             </telerik:RadTab>
+            <telerik:RadTab Text="Edit Record">
+            </telerik:RadTab>
         </Tabs>
     </telerik:RadTabStrip>
 
@@ -142,7 +144,7 @@
                     </td>
                     <td>
                         <p>Amount Paid<span style="color: red;">*</span></p>
-                        <asp:TextBox ID="AmountPaid" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="AmountPaid" runat="server">  </asp:TextBox>
                         <asp:RequiredFieldValidator runat="server" ID="AmountPaid_Validator" ControlToValidate="AmountPaid" ErrorMessage="Please enter the amount paid" />
 
                     </td>
@@ -150,7 +152,7 @@
                 <tr>
                     <td>
                         <p>Address<span style="color: red;">*</span></p>
-                        <asp:TextBox ID="Address" runat="server" MaxLength="200"></asp:TextBox>
+                        <asp:TextBox ID="Address" runat="server" MaxLength="200">  </asp:TextBox>
                         <asp:RequiredFieldValidator runat="server" ID="Address_Validator" ControlToValidate="Address" ErrorMessage="Please enter the address" />
 
                     </td>
@@ -164,9 +166,22 @@
                 });
             </script>
         </telerik:RadPageView>
-        <telerik:RadPageView ID="PageView2" runat="server">
-            <telerik:RadGrid ID="RadGrid1" runat="server" AllowSorting="True" DataSourceID="sds_Registration"
+        <telerik:RadPageView ID="DMV_Edit" runat="server">
+           
+
+ 
+
+            <h1>List of Records</h1>
+            <p>Click on a record to select it and edit it, or click on a column to sort the table by that column.</p>
+
+            <!-- RECORDS TABLE GRID !-->
+            <telerik:RadGrid ID="RecordsTable" runat="server" AllowSorting="True" DataSourceID="sds_Registration"
                 GridLines="None" Width="771px" Skin="Telerik">
+
+                <ClientSettings AllowKeyboardNavigation="true" EnablePostBackOnRowClick="true">
+                    <Selecting AllowRowSelect="true"></Selecting>
+                </ClientSettings>
+
                 <MasterTableView AutoGenerateColumns="False" DataSourceID="sds_Registration"
                     DataKeyNames="LicensePlateNo">
                     <RowIndicatorColumn>
@@ -176,6 +191,8 @@
                         <HeaderStyle Width="20px" />
                     </ExpandCollapseColumn>
                     <Columns>
+                        <telerik:GridBoundColumn DataField="IDVehicles" HeaderText="Vehicle ID" SortExpression="IDVehicles"
+                            UniqueName="IDVehicles"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="LicensePlateNo" HeaderText="License Number"
                             SortExpression="LicensePlateNo" UniqueName="LicensePlateNo">
                         </telerik:GridBoundColumn>
@@ -191,8 +208,116 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
+
+            <!-- sds_Registration: Pulls all records from CF_DMV !-->
             <asp:SqlDataSource ID="sds_Registration" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-                SelectCommand="SELECT LicensePlateNo, FromDate, ThroughDate, Name FROM [CF_DMV]"></asp:SqlDataSource>
+                SelectCommand="SELECT IDVehicles, LicensePlateNo, FromDate, ThroughDate, Name FROM [CF_DMV]">  </asp:SqlDataSource>
+          
+        </telerik:RadPageView>
+        <telerik:RadPageView ID="DMV_Record" runat="server">
+              
+            <style>
+                .recordTable td {
+                    border: 1px solid black;
+                }
+                .recordTable tr,td {
+                    padding: 10px;
+                }
+       
+            </style>
+            <table class="recordTable">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <span class="greendark">Valid From Date:</span>&nbsp;&nbsp;<asp:Label runat="server" id="FromDate_View"></asp:Label>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <span class="greendark">Valid Through Date:</span>&nbsp;&nbsp;<asp:Label runat="server" id="ThroughDate_View">  </asp:Label>                       
+                    </td>
+                </tr>
+                <!-- ROW BREAK IN PHYSICAL FORM !-->
+                <tr>
+                    <td>
+                        <span class="greendark">Make:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Make_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">YR Model:</span>&nbsp;&nbsp; <asp:Label runat="server" id="Year_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">YR 1st Sold:</span>&nbsp;&nbsp;<asp:Label runat="server" id="YrFirstSold_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">VLF Class:</span>&nbsp;&nbsp;<asp:Label runat="server" id="VlfClass_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Type Veh:</span>&nbsp;&nbsp;<asp:Label runat="server" id="TypeVeh_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Type LIC:</span>&nbsp;&nbsp;<asp:Label runat="server" id="TypeLic_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">License Number:</span>&nbsp;&nbsp;<asp:Label runat="server" id="LicensePlateNo_View">  </asp:Label>
+
+                    </td>
+                </tr>
+
+                <!-- ROW BREAK IN PHYSICAL FORM !-->
+                <tr>
+                    <td>
+                        <span class="greendark">Body Type Model:</span>&nbsp;&nbsp;<asp:Label runat="server" id="BodyType_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">MP:</span>&nbsp;&nbsp;<asp:Label runat="server" id="MP_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">MO:</span>&nbsp;&nbsp;<asp:Label runat="server" id="MO_View">  </asp:Label>
+                    </td>
+                </tr>
+
+                <!-- ROW BREAK IN PHYSICAL FROM !-->
+                <tr>
+                    <td>
+                        <span class="greendark">Type Vehicle Use:</span>&nbsp;&nbsp;<asp:Label runat="server" id="TypeVehicleUse_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Date Issued:</span>&nbsp;&nbsp;<asp:Label runat="server" id="DateIssued_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">CC/Alco:</span>&nbsp;&nbsp;<asp:Label runat="server" id="CCAlco_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Date Fee Received:</span>&nbsp;&nbsp;<asp:Label runat="server" id="DateFeeReceived_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">PIC:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Pic_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Sticker Issued:</span>&nbsp;&nbsp;<asp:Label runat="server" id="StickerIssued_View">  </asp:Label>
+
+                    </td>
+                </tr>
+
+                <!-- ROW BREAK IN PHYSICAL FORM !-->
+
+                <tr>
+                    <td>
+                        <span class="greendark">Name:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Name_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Amount Paid:</span>&nbsp;&nbsp;<asp:Label runat="server" id="AmountPaid_View">  </asp:Label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="greendark">Address:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Address_View">  </asp:Label>
+                    </td>
+                </tr>
+            </table> 
+            <!-- Form fields end !-->
+            <asp:Button ID="UpdateRecord" Text="Edit This Record" runat="server" CausesValidation="false" />
         </telerik:RadPageView>
     </telerik:RadMultiPage>
 </asp:Content>

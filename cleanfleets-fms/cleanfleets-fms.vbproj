@@ -205,6 +205,7 @@
     <Content Include="cf_console\accountmanager\03_vehicles\dmvreport.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\enginesadd.aspx" />
+    <Content Include="cf_console\accountmanager\03_vehicles\tabtest.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehicles.aspx" />
     <Content Include="cf_console\accountmanager\03_vehicles\vehiclesadd.aspx" />
@@ -394,6 +395,13 @@
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\tabtest.aspx.designer.vb">
+      <DependentUpon>tabtest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cf_console\accountmanager\03_vehicles\tabtest.aspx.vb">
+      <DependentUpon>tabtest.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\Testing_File.aspx.designer.vb">
       <DependentUpon>Testing_File.aspx</DependentUpon>

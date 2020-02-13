@@ -5,43 +5,43 @@
 
             <script type="text/javascript">
 
-            	function RowClick(sender, eventArgs) {
-            		var MasterTableView = eventArgs.get_tableView();
-            		var dataKeyValue = eventArgs.getDataKeyValue("IDImages");
-            		var oWnd = radopen("../../../includes/imagemanager/imagedisplay.aspx?IDImages=" + dataKeyValue);
-            	}
+                function RowClick(sender, eventArgs) {
+                    var MasterTableView = eventArgs.get_tableView();
+                    var dataKeyValue = eventArgs.getDataKeyValue("IDImages");
+                    var oWnd = radopen("../../../includes/imagemanager/imagedisplay.aspx?IDImages=" + dataKeyValue);
+                }
 
-            	function MyClickVehicles(sender, eventArgs) {
-            		var inputs = document.getElementById("<%= rg_VehicleImages.MasterTableView.ClientID %>").getElementsByTagName("input");
-            		for (var i = 0, l = inputs.length; i < l; i++) {
-            			var input = inputs[i];
-            			if (input.type != "radio" || input == sender)
-            				continue;
-            			input.checked = false;
-            		}
+                function MyClickVehicles(sender, eventArgs) {
+                    var inputs = document.getElementById("<%= rg_VehicleImages.MasterTableView.ClientID %>").getElementsByTagName("input");
+                    for (var i = 0, l = inputs.length; i < l; i++) {
+                        var input = inputs[i];
+                        if (input.type != "radio" || input == sender)
+                            continue;
+                        input.checked = false;
+                    }
 
-                
 
-            	}
 
-            	function MyClickEngines(sender, eventArgs) {
-            		var inputs = document.getElementById("<%= rg_EngineImages.MasterTableView.ClientID %>").getElementsByTagName("input");
-            		for (var i = 0, l = inputs.length; i < l; i++) {
-            			var input = inputs[i];
-            			if (input.type != "radio" || input == sender)
-            				continue;
-            			input.checked = false;
-            		}
-            	}
+                }
 
-            	function MyClickDECS(sender, eventArgs) {
-            		var inputs = document.getElementById("<%= rg_DECSImages.MasterTableView.ClientID %>").getElementsByTagName("input");
-            		for (var i = 0, l = inputs.length; i < l; i++) {
-            			var input = inputs[i];
-            			if (input.type != "radio" || input == sender)
-            				continue;
-            			input.checked = false;
-            		}
+                function MyClickEngines(sender, eventArgs) {
+                    var inputs = document.getElementById("<%= rg_EngineImages.MasterTableView.ClientID %>").getElementsByTagName("input");
+                    for (var i = 0, l = inputs.length; i < l; i++) {
+                        var input = inputs[i];
+                        if (input.type != "radio" || input == sender)
+                            continue;
+                        input.checked = false;
+                    }
+                }
+
+                function MyClickDECS(sender, eventArgs) {
+                    var inputs = document.getElementById("<%= rg_DECSImages.MasterTableView.ClientID %>").getElementsByTagName("input");
+                    for (var i = 0, l = inputs.length; i < l; i++) {
+                        var input = inputs[i];
+                        if (input.type != "radio" || input == sender)
+                            continue;
+                        input.checked = false;
+                    }
                 }
 
                 // Added by Andrew on 11/19/2019 to confirm whether the user wants to delete the CARB record.
@@ -59,22 +59,21 @@
 
          </telerik:radcodeblock>
 	<style type="text/css">
-		.RadPicker_Default
-		{
-			vertical-align: middle;
-		}
-		.RadPicker_Default .RadInput
-		{
-			vertical-align: baseline;
-		}
-		.RadInput_Default
-		{
-			font: 12px "segoe ui" ,arial,sans-serif;
-		}
-		.RadInput
-		{
-			vertical-align: middle;
-		}
+	    .RadPicker_Default {
+	        vertical-align: middle;
+	    }
+
+	        .RadPicker_Default .RadInput {
+	            vertical-align: baseline;
+	        }
+
+	    .RadInput_Default {
+	        font: 12px "segoe ui",arial,sans-serif;
+	    }
+
+	    .RadInput {
+	        vertical-align: middle;
+	    }
 	</style>
 
 	
@@ -157,6 +156,9 @@
                                     <%--End of what was added by Andrew on 11/12/2019.--%>
 
                                     <telerik:RadTab runat="server" PageViewID="rpv_Reports" Text="Reports">
+                                    </telerik:RadTab>
+
+                                    <telerik:RadTab runat="server" PageViewID="registration" Text="DMV Registration">
                                     </telerik:RadTab>
                                 </tabs>
                             </telerik:radtabstrip>
@@ -3515,6 +3517,109 @@
           </table>
         </telerik:RadPageView>
                    <%--End of what was added by Andrew on 11/12/2019 for the CARB_Communication--%>
+    <telerik:RadPageView ID="registration" runat="server">
+         
+            <style>
+                .recordTable td {
+                    border: 1px solid black;
+                }
+                .recordTable tr,td {
+                    padding: 10px;
+                }
+       
+            </style>
+            <table class="recordTable">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <span class="greendark">Valid From Date:</span>&nbsp;&nbsp;<asp:Label runat="server" id="FromDate_View"></asp:Label>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <span class="greendark">Valid Through Date:</span>&nbsp;&nbsp;<asp:Label runat="server" id="ThroughDate_View">  </asp:Label>                       
+                    </td>
+                </tr>
+                <!-- ROW BREAK IN PHYSICAL FORM !-->
+                <tr>
+                    <td>
+                        <span class="greendark">Make:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Make_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">YR Model:</span>&nbsp;&nbsp; <asp:Label runat="server" id="Year_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">YR 1st Sold:</span>&nbsp;&nbsp;<asp:Label runat="server" id="YrFirstSold_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">VLF Class:</span>&nbsp;&nbsp;<asp:Label runat="server" id="VlfClass_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Type Veh:</span>&nbsp;&nbsp;<asp:Label runat="server" id="TypeVeh_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Type LIC:</span>&nbsp;&nbsp;<asp:Label runat="server" id="TypeLic_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">License Number:</span>&nbsp;&nbsp;<asp:Label runat="server" id="LicensePlateNo_View">  </asp:Label>
+
+                    </td>
+                </tr>
+
+                <!-- ROW BREAK IN PHYSICAL FORM !-->
+                <tr>
+                    <td>
+                        <span class="greendark">Body Type Model:</span>&nbsp;&nbsp;<asp:Label runat="server" id="BodyType_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">MP:</span>&nbsp;&nbsp;<asp:Label runat="server" id="MP_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">MO:</span>&nbsp;&nbsp;<asp:Label runat="server" id="MO_View">  </asp:Label>
+                    </td>
+                </tr>
+
+                <!-- ROW BREAK IN PHYSICAL FROM !-->
+                <tr>
+                    <td>
+                        <span class="greendark">Type Vehicle Use:</span>&nbsp;&nbsp;<asp:Label runat="server" id="TypeVehicleUse_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Date Issued:</span>&nbsp;&nbsp;<asp:Label runat="server" id="DateIssued_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">CC/Alco:</span>&nbsp;&nbsp;<asp:Label runat="server" id="CCAlco_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Date Fee Received:</span>&nbsp;&nbsp;<asp:Label runat="server" id="DateFeeReceived_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">PIC:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Pic_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Sticker Issued:</span>&nbsp;&nbsp;<asp:Label runat="server" id="StickerIssued_View">  </asp:Label>
+
+                    </td>
+                </tr>
+
+                <!-- ROW BREAK IN PHYSICAL FORM !-->
+
+                <tr>
+                    <td>
+                        <span class="greendark">Name:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Name_View">  </asp:Label>
+                    </td>
+                    <td>
+                        <span class="greendark">Amount Paid:</span>&nbsp;&nbsp;<asp:Label runat="server" id="AmountPaid_View">  </asp:Label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="greendark">Address:</span>&nbsp;&nbsp;<asp:Label runat="server" id="Address_View">  </asp:Label>
+                    </td>
+                </tr>
+            </table> 
+    </telerik:RadPageView>
 
 </telerik:radmultipage>
 

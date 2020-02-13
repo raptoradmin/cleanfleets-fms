@@ -84,7 +84,7 @@ Public Class vehiclesdetails1
         Dim IDVehicles As String = Request.QueryString("IDVehicles")
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim queryString As String = "SELECT IDVehicles, UnitNo, ChassisVIN FROM CF_Vehicles WHERE IDVehicles = @IDVehicles"
-
+        PopulateRegistrationTab()
         ' Code added by Andrew on 10/22/2019
 
         'Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
@@ -2213,6 +2213,73 @@ Public Class vehiclesdetails1
 
         Response.Redirect("addCARBrecord.aspx?VIN=" & GlobalVINVar & "&" & "IDVehicles=" & fromURLString)
 
+    End Sub
+
+    ''' <summary>
+    ''' A function taken from stack overflow that works better than the built in 
+    ''' FindControl. See PopulateFields_Click for proper use
+    ''' </summary>
+    ''' <param name="ctrl"></param>
+    ''' <param name="id"></param>
+    ''' <returns></returns>
+    Function FindControlRecursive(ByVal ctrl As Control, ByVal id As String) As Control
+        Dim c As Control = Nothing
+
+        If ctrl.ID = id Then
+            c = ctrl
+        Else
+            For Each childCtrl In ctrl.Controls
+                Dim resCtrl As Control = FindControlRecursive(childCtrl, id)
+                If resCtrl IsNot Nothing Then c = resCtrl
+            Next
+        End If
+
+        Return c
+    End Function
+
+     ''' <summary>
+    ''' Queries CF_DMV to see if a matching row already exists
+    ''' </summary>
+    ''' <param name="IDVehicles"></param>
+    ''' <returns></returns>
+    Function GetExistingRegistration(ByVal IDVehicles As String) As DataTable
+        'Query CF_DMV to see if a row with this ID exists
+        Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+        Dim adapter As New SqlDataAdapter(
+          "SELECT * FROM CF_DMV WHERE IDVehicles=@IDVehicles", connection)
+        adapter.SelectCommand.Parameters.AddWithValue("@IDVehicles", IDVehicles)
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+        Return dt
+    End Function
+
+    ''' <summary>
+    ''' Populates the DMV Registration tab
+    ''' </summary>
+    Protected Sub PopulateRegistrationTab() 
+        Dim IDVehicles As String = Request.QueryString("IDVehicles")
+        Dim dt As DataTable = GetExistingRegistration(IDVehicles)
+        Dim row = dt.Rows.Item(0)
+        Dim page_recur = Page.Master.FindControl("RightColumnContentPlaceHolder").FindControl("rmp_Vehicle").FindControl("Registration")
+
+        ' Fill fields
+        Dim count As Integer = 0
+        For Each column In row.ItemArray
+            Dim label_ID As String = dt.Columns.Item(count).ToString & "_View"
+            Dim lab = TryCast(FindControlRecursive(page_recur, label_ID), Label)
+            ' Debug.WriteLine(dt.Columns.Item(count).ToString)
+            If lab IsNot Nothing Then
+                If label_ID.Contains("Date") Then
+                    Dim datestring As DateTime = DateTime.Parse(column.ToString)
+                    lab.Text = datestring.ToString("MM/dd/yyyy")
+                Else
+                    lab.Text = column.ToString
+                End If
+            Else
+                System.Diagnostics.Debug.WriteLine("Could not find " & label_ID)
+            End If
+            count += 1
+        Next
     End Sub
 
     Protected Sub UpdateButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles UpdateButton.Click
