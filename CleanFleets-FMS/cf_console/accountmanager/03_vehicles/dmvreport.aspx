@@ -4,7 +4,7 @@
     <telerik:RadTabStrip ID="RadTabStrip1" runat="server" MultiPageID="RadMultiPagetab" CausesValidation="false"
         Orientation="HorizontalTop" ShowBaseLine="true">
         <Tabs>
-            <telerik:RadTab Text="Add Registration" Selected="true">
+            <telerik:RadTab Text="Add or Update Registration" Selected="true">
             </telerik:RadTab>
             <telerik:RadTab Text="View Records">
             </telerik:RadTab>
@@ -19,10 +19,15 @@
             <p>VIN</p>
             <asp:TextBox ID="ChassisVIN" runat="server"></asp:TextBox>
             <asp:Button ID="PopulateFields" Text="Search Records" runat="server" CausesValidation="false"></asp:Button>
+            
+            <asp:DropDownList ID="YrDropDown"  AutoPostBack="true" runat="server"></asp:DropDownList>
+
             <br />
             <asp:RequiredFieldValidator runat="server" ID="ChassisVIN_Validator" ControlToValidate="ChassisVIN" ErrorMessage="Please enter the VIN" />
             <asp:Label ID="ChassisVIN_Error" runat="server" CssClass="ui-state-error" Visible="false" Text="VIN not found in existing records, please enter information manually"></asp:Label>
-            <h2>Test Fields</h2>
+            
+            
+            <h2>Registration Information</h2>
 
             <!-- Form fields begin !-->
 
@@ -191,8 +196,10 @@
                         <HeaderStyle Width="20px" />
                     </ExpandCollapseColumn>
                     <Columns>
-                        <telerik:GridBoundColumn DataField="IDVehicles" HeaderText="Vehicle ID" SortExpression="IDVehicles"
-                            UniqueName="IDVehicles"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="RowID" HeaderText="ID" SortExpression="RowID"
+                            UniqueName="RowID"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ChassisVIN" HeaderText="VIN" SortExpression="ChassisVIN" 
+                            UniqueName="ChassisVIN"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="LicensePlateNo" HeaderText="License Number"
                             SortExpression="LicensePlateNo" UniqueName="LicensePlateNo">
                         </telerik:GridBoundColumn>
@@ -211,7 +218,7 @@
 
             <!-- sds_Registration: Pulls all records from CF_DMV !-->
             <asp:SqlDataSource ID="sds_Registration" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-                SelectCommand="SELECT IDVehicles, LicensePlateNo, FromDate, ThroughDate, Name FROM [CF_DMV]">  </asp:SqlDataSource>
+                SelectCommand="SELECT RowID, ChassisVIN, LicensePlateNo, FromDate, ThroughDate, Name FROM [CF_DMV]">  </asp:SqlDataSource>
           
         </telerik:RadPageView>
         <telerik:RadPageView ID="DMV_Record" runat="server">

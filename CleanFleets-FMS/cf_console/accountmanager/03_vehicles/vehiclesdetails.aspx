@@ -3528,6 +3528,7 @@
                 }
        
             </style>
+            <asp:DropDownList ID="YrDropDown" AutoPostBack="true" runat="server"></asp:DropDownList>
             <table class="recordTable">
                 <tr>
                     <td>&nbsp;</td>

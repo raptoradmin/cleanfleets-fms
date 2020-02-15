@@ -114,12 +114,27 @@ Public Class dmvreport
     ''' </summary>
     ''' <param name="IDVehicles"></param>
     ''' <returns></returns>
-    Function GetExistingRegistration(ByVal IDVehicles As String) As DataTable
+    Function GetExistingRegistration(ByVal VIN As String) As DataTable
         'Query CF_DMV to see if a row with this ID exists
         Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
         Dim adapter As New SqlDataAdapter(
-          "SELECT * FROM CF_DMV WHERE IDVehicles=@IDVehicles", connection)
-        adapter.SelectCommand.Parameters.AddWithValue("@IDVehicles", IDVehicles)
+          "SELECT * FROM CF_DMV WHERE ChassisVIN=@VIN", connection)
+        adapter.SelectCommand.Parameters.AddWithValue("@VIN", VIN)
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+        Return dt
+    End Function
+
+    ''' <summary>
+    ''' Queries CF_DMV for an individual record
+    ''' </summary>
+    ''' <param name="RowID"></param>
+    ''' <returns></returns>
+    Function GetIndividualRegistration(ByVal RowID As String) As DataTable
+         Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+        Dim adapter As New SqlDataAdapter(
+          "SELECT * FROM CF_DMV WHERE RowID=@RowID", connection)
+        adapter.SelectCommand.Parameters.AddWithValue("@RowID", RowID)
         Dim dt As New DataTable()
         adapter.Fill(dt)
         Return dt
@@ -129,7 +144,7 @@ Public Class dmvreport
     ''' Populates fields in the first tab
     ''' </summary>
     ''' <param name="VIN"></param>
-    Protected Sub PopulateEditFields(ByVal VIN As String) 
+    Protected Sub PopulateEditFields_Existing(ByVal VIN As String) 
         'Grab the VIN before the page is cleared
 
         'Clear the page
@@ -139,8 +154,7 @@ Public Class dmvreport
         'Get existing information based on VIN
         Dim dt = QueryExistingInfo(VIN)
 
-        'Get any existing registration information
-        Dim existing_reg = GetExistingRegistration(dt.Rows.Item(0).Item("IDVehicles").ToString)
+       
 
         'If data is found, only one row is returned. Loop through the columns and fill textboxes
         'that have matching IDs with the column names
@@ -160,12 +174,22 @@ Public Class dmvreport
             ChassisVIN_Error.Visible = "True"
         End If
 
-        'Do the same for existing registration information 
-        If existing_reg.Rows.Count = 1 Then
-            Dim row As DataRow = existing_reg.Rows.Item(0)
-            Dim count As Integer = 0
-            For Each column In row.ItemArray
-                Dim textbox = TryCast(FindControlRecursive(Me, existing_reg.Columns.Item(count).ToString), TextBox)
+    End Sub
+
+    Protected Sub PopulateEditFields_Registration(ByVal RowID As String)
+        'Query CF_DMV to see if a row with this ID exists
+        Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+        Dim adapter As New SqlDataAdapter(
+          "SELECT * FROM CF_DMV WHERE RowID=@RowID", connection)
+        adapter.SelectCommand.Parameters.AddWithValue("@RowID", RowID)
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+
+        Dim row As DataRow = dt.Rows.Item(0)
+        Dim count As Integer = 0
+        
+        For Each column In row.ItemArray
+                Dim textbox = TryCast(FindControlRecursive(Me, dt.Columns.Item(count).ToString), TextBox)
                 If textbox IsNot Nothing Then
                     If textbox.ID.Contains("Date") Then
                         Debug.WriteLine("date field found")
@@ -178,7 +202,8 @@ Public Class dmvreport
                 End If
                 count += 1
             Next
-        End If
+
+
     End Sub
 
     ''' <summary>
@@ -190,7 +215,10 @@ Public Class dmvreport
     Protected Sub PopulateFields_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles PopulateFields.Click
         'Grab the VIN before the page is cleared
         Dim VIN = ChassisVIN.Text
-        PopulateEditFields(VIN)
+        ClearTextboxes(Me)
+        ClearErrorLabels(Me)
+        PopulateDropDownList(VIN)
+        PopulateEditFields_Existing(VIN)
     End Sub
 
     ''' <summary>
@@ -221,7 +249,6 @@ Public Class dmvreport
 
 
         'Get rid of ChassisVIN
-        lst.RemoveAt(0)
         Dim sql_columns As String = "(IDVehicles, "
         Dim sql_values As String = "('" & row.Item("IDVehicles").ToString & "', "
         For Each tb As TextBox In lst
@@ -260,8 +287,6 @@ Public Class dmvreport
         Dim lst As List(Of TextBox) =
             Page.Master.FindControl("RightColumnContentPlaceHolder").FindControl("RadMultiPageTab").FindControl("DMV_Add").Controls.OfType(Of TextBox).ToList
 
-        'Get rid of ChassisVIN
-        lst.RemoveAt(0)
         Dim sql As String = ""
         For Each tb As TextBox In lst
             If tb.Text <> "" Then
@@ -272,7 +297,7 @@ Public Class dmvreport
             End If
         Next
 
-        Dim query As String = "UPDATE CF_DMV SET " & sql & " WHERE IDVehicles='" & row.Item("IDVehicles").ToString & "'"
+        Dim query As String = "UPDATE CF_DMV SET " & sql & " WHERE RowID=" & YrDropDown.SelectedValue.ToString & ""
         Debug.WriteLine(query)
         Dim strConnString As String = ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString()
         Dim cn As New SqlConnection(strConnString)
@@ -282,6 +307,14 @@ Public Class dmvreport
         cmd.Connection.Close()
     End Sub
 
+    ''' <summary>
+    ''' Empties the YrDropDownList
+    ''' </summary>
+    Protected Sub EmptyDropDownList() 
+        Dim empty As List(Of ListItem) = New List(Of ListItem)
+        YrDropDown.DataSource = empty 
+        YrDropDown.DataBind()
+    End Sub
     ''' <summary>
     ''' Gathers existing info based on VIN, and then inserts a new row into the CF_DMV table
     ''' </summary>
@@ -299,31 +332,27 @@ Public Class dmvreport
 
         'Cancel process if we don't have a matching VIN
         If existing_dt.Rows.Count <> 1 Then
-            MsgBox("No matching VIN found, please add the vehicle before adding its registration")
             Return
         End If
         Dim existing_row As DataRow = existing_dt.Rows.Item(0)
 
         'Make sure the row doesn't already exist
-        Dim existingReg As Boolean = GetExistingRegistration(existing_row.Item("IDVehicles").ToString()).Rows.Count <> 0
-        If existingReg Then
-            Dim result As MsgBoxResult = MsgBox("Registration for this vehicle already exists, would you like to update the information?", vbYesNo)
-            If result = MsgBoxResult.Yes Then
-                UpdateRow(existing_row)
-            Else
-                Return
-            End If
+        Dim update As Boolean = GetIndividualRegistration(YrDropDown.SelectedValue.ToString).Rows.Count <> 0
+            If update Then
+            UpdateRow(existing_row)
         Else
             'If the row doesn't exist, create it 
             InsertRegistrationRecord(existing_row)
         End If
 
+        Dim grid As RadGrid = FindControlRecursive(Me, "RecordsTable")
+        grid.Rebind()
 
-
+        
         'Reset the page to default
+        EmptyDropDownList()
         ClearErrorLabels(Me)
         ClearTextboxes(Me)
-        MsgBox("Registration information stored successfully!")
     End Sub
 
     ''' <summary>
@@ -340,14 +369,14 @@ Public Class dmvreport
         radpage.SelectedIndex = 2
 
         'Get all the labels to be filled
-        Dim lst As List(Of Label) = Page.Master.FindControl("RightColumnContentPlaceHolder").FindControl("RadMultiPageTab").FindControl("DMV_Record").Controls.OfType(Of Label)
+        Dim lst As List(Of Label) = Page.Master.FindControl("RightColumnContentPlaceHolder").FindControl("RadMultiPageTab").FindControl("DMV_Record").Controls.OfType(Of Label).ToList
 
 
         'Get the data for filling 
         Dim grid As RadGrid = FindControlRecursive(Me, "RecordsTable")
         Dim selected_row As GridDataItem = grid.SelectedItems.Item(0)
-        Dim IDV As String = selected_row.Item("IDVehicles").Text
-        Dim dt As DataTable = GetExistingRegistration(IDV)
+        Dim RowID As String = selected_row.Item("RowID").Text
+        Dim dt As DataTable = GetIndividualRegistration(RowID)
         Dim row = dt.Rows.Item(0)
 
         ' Fill fields
@@ -374,29 +403,82 @@ Public Class dmvreport
 
     End Sub
 
+    ''' <summary>
+    ''' Switches to the first tab and fills it with information based on the individual record being viewed
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Protected Sub UpdateRecord_Click(ByVal sender As Object, ByVal e As EventArgs) Handles UpdateRecord.Click 
         'Gather information 
         Dim grid As RadGrid = FindControlRecursive(Me, "RecordsTable")
         Dim selected_row As GridDataItem = grid.SelectedItems.Item(0)
-        Dim IDV As String = selected_row.Item("IDVehicles").Text
-        Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
-        Dim adapter As New SqlDataAdapter(
-           "SELECT
-	            [ChassisVIN] 
-        FROM [CleanFleets-DEV].[dbo].[CF_Vehicles]
-        WHERE [CF_Vehicles].[IDVehicles] = @IDVehicles", connection)
-        adapter.SelectCommand.Parameters.AddWithValue("@IDVehicles", IDV)
-        Dim dt As New DataTable()
-        adapter.Fill(dt)
-        Dim VIN As String = dt.Rows.Item(0).Item(0).ToString
-        Debug.WriteLine(VIN)
-        PopulateEditFields(VIN)
+        Dim RowID As String = selected_row.Item("RowID").Text
+        Dim VIN As String = selected_row.Item("ChassisVIN").Text 
+       
+        'Fill Fields 
+        PopulateEditFields_Existing(VIN)
+        PopulateEditFields_Registration(RowID)
+
+        'Populate and select drop down list 
+        PopulateDropDownList(VIN)
+        YrDropDown.SelectedValue = RowID
 
         'Focus the tab
         Dim tabStrip As RadTabStrip = FindControlRecursive(Me, "RadTabStrip1")
         tabStrip.SelectedIndex = 0
         Dim radpage As RadMultiPage = FindControlRecursive(Me, "RadMultiPagetab")
         radpage.SelectedIndex = 0
+    End Sub
+
+    ''' <summary>
+    ''' Populates the items of the drop down list in the format "yyyy - yyyy" for each registration entry in the db
+    ''' </summary>
+    ''' <param name="VIN"></param>
+    Protected Sub PopulateDropDownList(ByVal VIN As String)
+
+        'Get any existing registration information
+        Dim existing_reg = GetExistingRegistration(VIN)
+
+        'Return if no existing reg 
+        If existing_reg Is Nothing Or existing_reg.Rows.Count = 0 Then 
+            EmptyDropDownList() 
+            Return
+        End If
+
+        Dim arr_lst As List(Of ListItem) = New List(Of ListItem)
+        arr_lst.Add(New ListItem(" - Select Registration - ", "0"))
+        YrDropDown.DataSource = arr_lst
+        'Do the same for existing registration information 
+        For Each row As DataRow In existing_reg.Rows
+            Dim from_date As String = row.Item("FromDate").year 
+            Dim through_date As String = row.Item("ThroughDate").year 
+            Dim entry As ListItem = New ListItem(from_date & " - " & through_date, row.Item("RowID")) 
+            Debug.WriteLine("Entry value is " & entry.Value)
+            arr_lst.Add(entry)
+        Next
+
+        YrDropDown.DataTextField = "Text"
+        YrDropDown.DataValueField = "Value"
+        YrDropDown.DataBind()
+        
+        'Fill fields with info from first row
+        
+    End Sub
+
+    Protected Sub YrDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles YrDropDown.SelectedIndexChanged
+
+        Dim selected As ListItem = YrDropDown.SelectedItem
+        Debug.WriteLine(YrDropDown.SelectedValue)
+        Debug.WriteLine(selected.Text & ": " & selected.Value)
+
+        'Don't do anything for the "select registration" item
+        If YrDropDown.SelectedIndex = 0 Then 
+            Return
+        End If
+        
+        PopulateEditFields_Registration(selected.Value)
+        
+
     End Sub
 
 

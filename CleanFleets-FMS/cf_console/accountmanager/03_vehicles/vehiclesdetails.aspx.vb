@@ -84,7 +84,9 @@ Public Class vehiclesdetails1
         Dim IDVehicles As String = Request.QueryString("IDVehicles")
         Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
         Dim queryString As String = "SELECT IDVehicles, UnitNo, ChassisVIN FROM CF_Vehicles WHERE IDVehicles = @IDVehicles"
-        PopulateRegistrationTab()
+        If ViewState.Item("FirstLoad") <> "False" Then
+            PopulateRegistrationDropDown()
+        End If
         ' Code added by Andrew on 10/22/2019
 
         'Dim TestLabel_lbl_InvoiceNo As Label = CType(fv_CFV_DPF.FindControl("lbl_InvoiceNo"), Label)
@@ -2253,12 +2255,34 @@ Public Class vehiclesdetails1
         Return dt
     End Function
 
-    ''' <summary>
-    ''' Populates the DMV Registration tab
+     ''' <summary>
+    ''' Queries CF_DMV for an individual record
     ''' </summary>
-    Protected Sub PopulateRegistrationTab() 
-        Dim IDVehicles As String = Request.QueryString("IDVehicles")
-        Dim dt As DataTable = GetExistingRegistration(IDVehicles)
+    ''' <param name="RowID"></param>
+    ''' <returns></returns>
+    Function GetIndividualRegistration(ByVal RowID As String) As DataTable
+         Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+        Dim adapter As New SqlDataAdapter(
+          "SELECT * FROM CF_DMV WHERE RowID=@RowID", connection)
+        adapter.SelectCommand.Parameters.AddWithValue("@RowID", RowID)
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+        Return dt
+    End Function
+
+    ''' <summary>
+    ''' Fills fields based on the registration picked
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Protected Sub YrDropDown_OnSelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles YrDropDown.SelectedIndexChanged
+        'Cancel if no registration selected
+        If YrDropDown.SelectedIndex = 0 Then 
+            Return
+        End If
+
+        'Get data
+        Dim dt As DataTable = GetIndividualRegistration(YrDropDown.SelectedValue.ToString)
         Dim row = dt.Rows.Item(0)
         Dim page_recur = Page.Master.FindControl("RightColumnContentPlaceHolder").FindControl("rmp_Vehicle").FindControl("Registration")
 
@@ -2280,6 +2304,30 @@ Public Class vehiclesdetails1
             End If
             count += 1
         Next
+    End Sub
+
+    ''' <summary>
+    ''' Populates the DMV Registration tab
+    ''' </summary>
+    Protected Sub PopulateRegistrationDropDown() 
+        ViewState.Item("FirstLoad") = "False"
+        Dim IDVehicles As String = Request.QueryString("IDVehicles")
+        Dim dt As DataTable = GetExistingRegistration(IDVehicles)
+
+        Dim arr_lst As List(Of ListItem) = New List(Of ListItem) 
+        arr_lst.Add(New ListItem("- Select Registration - ", 0))
+        YrDropDown.DataSource = arr_lst
+        'Do the same for existing registration information 
+        For Each reg As DataRow In dt.Rows
+            Dim from_date As String = reg.Item("FromDate").year 
+            Dim through_date As String = reg.Item("ThroughDate").year 
+            Dim entry As ListItem = New ListItem(from_date & " - " & through_date, reg.Item("RowID")) 
+            arr_lst.Add(entry)
+        Next
+
+        YrDropDown.DataTextField = "Text"
+        YrDropDown.DataValueField = "Value"
+        YrDropDown.DataBind()
     End Sub
 
     Protected Sub UpdateButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles UpdateButton.Click

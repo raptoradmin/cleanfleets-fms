@@ -59,6 +59,15 @@ Partial Public Class dmvreport
     Protected WithEvents PopulateFields As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''YrDropDown control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents YrDropDown As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''ChassisVIN_Validator control.
     '''</summary>
     '''<remarks>

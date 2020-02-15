@@ -527,6 +527,15 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents registration As Global.Telerik.Web.UI.RadPageView
     
     '''<summary>
+    '''YrDropDown control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents YrDropDown As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''FromDate_View control.
     '''</summary>
     '''<remarks>

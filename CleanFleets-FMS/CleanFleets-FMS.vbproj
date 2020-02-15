@@ -42,6 +42,7 @@
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>cleanfleets-fms.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1286,6 +1287,7 @@
     <None Include="My Project\PublishProfiles\FMSFolderProfile.pubxml" />
     <None Include="My Project\PublishProfiles\FolderProfile.pubxml" />
     <None Include="My Project\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="My Project\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="My Project\PublishProfiles\PublishFMSToProdProfile.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
