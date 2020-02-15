@@ -421,7 +421,6 @@ Public Class report_opacity_testing_results
                 End Using
 
             ElseIf (ddl_Account.SelectedItem.Text = "Select All Vehicles") Then
-                Dim confirmation = MsgBox("Due to the large number of records, this download can take up to 17 minutes.", 0)
                 Dim FromDate As DateTime = MIN_DATE
                 Dim ThroughDate As DateTime = MAX_DATE
                 Dim columnHeaderRow As Integer = 0

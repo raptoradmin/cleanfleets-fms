@@ -518,6 +518,213 @@ Partial Public Class vehiclesdetails1
     Protected WithEvents fv_CF_CARB_Communication As Global.System.Web.UI.WebControls.FormView
     
     '''<summary>
+    '''registration control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents registration As Global.Telerik.Web.UI.RadPageView
+    
+    '''<summary>
+    '''YrDropDown control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents YrDropDown As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''FromDate_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FromDate_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''ThroughDate_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ThroughDate_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Make_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Make_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Year_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Year_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''YrFirstSold_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents YrFirstSold_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''VlfClass_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents VlfClass_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''TypeVeh_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TypeVeh_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''TypeLic_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TypeLic_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''LicensePlateNo_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LicensePlateNo_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''BodyType_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents BodyType_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''MP_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents MP_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''MO_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents MO_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''TypeVehicleUse_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TypeVehicleUse_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''DateIssued_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateIssued_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''CCAlco_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CCAlco_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''DateFeeReceived_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateFeeReceived_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Pic_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Pic_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''StickerIssued_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents StickerIssued_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Name_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Name_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''AmountPaid_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AmountPaid_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Address_View control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Address_View As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''RadWindowManager1 control.
     '''</summary>
     '''<remarks>
