@@ -19,12 +19,12 @@ Public Class report_opacity_testing_results
 
     ' Added on 1/24/2020 to facilitate custom columns in the PSIP Report - Sam 
 
-     Dim columnList As New List(Of String)({"Location", "Unit No.", "VIN", "License Plate", 
-                                          "Vehicle Make", "Engine Manufacturer", "Engine Model Year", "DECS Level",
-                                          "Pass/Fail", "Test Avg (%)", "Date Tested", "Tester", "Mileage"})
+    Dim columnList As New List(Of String)({"Location", "Unit No.", "VIN", "License Plate",
+                                         "Vehicle Make", "Engine Manufacturer", "Engine Model Year", "DECS Level",
+                                         "Pass/Fail", "Test Avg (%)", "Date Tested", "Tester", "Mileage"})
     Dim MIN_DATE As DateTime = New Date(1990, 1, 1)
     Dim MAX_DATE = New Date(2099, 12, 31) ' Should this just be the current date? -Sam --TODO
-    
+
     ' Generates a series of checkbox controls based on the columnList variable
     Private Sub generateCheckboxes()
         'Codes for A1 Metals -> on road -> on road
@@ -35,21 +35,21 @@ Public Class report_opacity_testing_results
         'Do a short query to get the columns being used  - seems to cause performance issues
         'Dim dt As DataTable = New DataTable()
         'Using conn As New SqlConnection(connectionString)
-         '           Using adapter As New SqlDataAdapter("EXEC ReportOpacityTestingResults @IDProfileAccount, @IDProfileTerminal, @IDProfileFleet, @FromDate, @ThroughDate", conn)
-          '              adapter.SelectCommand.Parameters.AddWithValue("@IDProfileAccount", 55)
-           '             adapter.SelectCommand.Parameters.AddWithValue("@IDProfileTerminal", 1156)
-            '            adapter.SelectCommand.Parameters.AddWithValue("@IDProfileFleet", 1643)
-             '           adapter.SelectCommand.Parameters.AddWithValue("@FromDate", DBNull.value)
-              '          adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", DBNull.value)
-               '         adapter.Fill(dt)
-                '    End Using
+        '           Using adapter As New SqlDataAdapter("EXEC ReportOpacityTestingResults @IDProfileAccount, @IDProfileTerminal, @IDProfileFleet, @FromDate, @ThroughDate", conn)
+        '              adapter.SelectCommand.Parameters.AddWithValue("@IDProfileAccount", 55)
+        '             adapter.SelectCommand.Parameters.AddWithValue("@IDProfileTerminal", 1156)
+        '            adapter.SelectCommand.Parameters.AddWithValue("@IDProfileFleet", 1643)
+        '           adapter.SelectCommand.Parameters.AddWithValue("@FromDate", DBNull.value)
+        '          adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", DBNull.value)
+        '         adapter.Fill(dt)
+        '    End Using
         'End Using
 
         Dim count As Integer = 0
-        For each col In columnList 
+        For Each col In columnList
             Dim checkbox As CheckBox = New CheckBox()
-            checkbox.ID = col 
-            checkbox.Text = col 
+            checkbox.ID = col
+            checkbox.Text = col
             checkbox.Checked = True
             ColumnPanel.Controls.Add(checkbox)
             count = count + 1
@@ -62,14 +62,14 @@ Public Class report_opacity_testing_results
 
     'Generates custom reporting checkboxes when the column panel is loaded
     Private Sub ColumnPanel_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        generateCheckboxes
+        generateCheckboxes()
     End Sub
     ' End of custom PSIP reporting additions 
 
-   
-    
 
-   
+
+
+
 
 
     Protected Sub ddl_Account_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -220,42 +220,42 @@ Public Class report_opacity_testing_results
     End Sub
 
     Private Function opacity_reporting_procedure(ByVal IDProfileAccount, ByVal IDProfileTerminal, ByVal IDProfileFleet, ByVal FromDate, ByVal ThroughDate) As DataTable
-                ' DataTable to store results
-                Dim dt As New DataTable()
+        ' DataTable to store results
+        Dim dt As New DataTable()
 
-                ' Fetch data using the ReportOpacityTestingResults procedure in the database
-               
-                Using conn As New SqlConnection(connectionString)
-                    Using adapter As New SqlDataAdapter("EXEC ReportOpacityTestingResults @IDProfileAccount, @IDProfileTerminal, @IDProfileFleet, @FromDate, @ThroughDate", conn)
-                        adapter.SelectCommand.Parameters.AddWithValue("@IDProfileAccount", IDProfileAccount)
-                        adapter.SelectCommand.Parameters.AddWithValue("@IDProfileTerminal", IDProfileTerminal)
-                        adapter.SelectCommand.Parameters.AddWithValue("@IDProfileFleet", IDProfileFleet)
-                        If FromDate > MIN_DATE Then
-                            adapter.SelectCommand.Parameters.AddWithValue("@FromDate", FromDate)
-                        Else
-                            adapter.SelectCommand.Parameters.AddWithValue("@FromDate", DBNull.Value)
-                        End If
-                        If ThroughDate < MAX_DATE Then
-                            adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", ThroughDate)
-                        Else
-                            adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", DBNull.Value)
-                        End If
-                        adapter.Fill(dt)
-                    End Using
-                End Using
-                Return dt 
+        ' Fetch data using the ReportOpacityTestingResults procedure in the database
+
+        Using conn As New SqlConnection(connectionString)
+            Using adapter As New SqlDataAdapter("EXEC ReportOpacityTestingResults @IDProfileAccount, @IDProfileTerminal, @IDProfileFleet, @FromDate, @ThroughDate", conn)
+                adapter.SelectCommand.Parameters.AddWithValue("@IDProfileAccount", IDProfileAccount)
+                adapter.SelectCommand.Parameters.AddWithValue("@IDProfileTerminal", IDProfileTerminal)
+                adapter.SelectCommand.Parameters.AddWithValue("@IDProfileFleet", IDProfileFleet)
+                If FromDate > MIN_DATE Then
+                    adapter.SelectCommand.Parameters.AddWithValue("@FromDate", FromDate)
+                Else
+                    adapter.SelectCommand.Parameters.AddWithValue("@FromDate", DBNull.Value)
+                End If
+                If ThroughDate < MAX_DATE Then
+                    adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", ThroughDate)
+                Else
+                    adapter.SelectCommand.Parameters.AddWithValue("@ThroughDate", DBNull.Value)
+                End If
+                adapter.Fill(dt)
+            End Using
+        End Using
+        Return dt
     End Function
-    Private Sub filterReport(ByRef dt As DataTable) 
-         ' Added by Sam 1/23 to test out selective reporting
-                For Each c As Control In ColumnPanel.Controls
-                    Dim check As Checkbox = TryCast(c, Checkbox)
-                    If check IsNot Nothing Then
-                        If check.Checked <> True Then
-                            dt.Columns.Remove(check.ID)
-                        End If
-                    End If
-                Next
-                ' End Sam
+    Private Sub filterReport(ByRef dt As DataTable)
+        ' Added by Sam 1/23 to test out selective reporting
+        For Each c As Control In ColumnPanel.Controls
+            Dim check As CheckBox = TryCast(c, CheckBox)
+            If check IsNot Nothing Then
+                If check.Checked <> True Then
+                    dt.Columns.Remove(check.ID)
+                End If
+            End If
+        Next
+        ' End Sam
     End Sub
     Protected Sub btn_Report_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_Report.Click
         If Page.IsValid() Then
@@ -294,7 +294,7 @@ Public Class report_opacity_testing_results
                 Filename = Filename.Replace(",", "")
 
                 ' Fetch data using the ReportOpacityTestingResults procedure in the database
-               Dim dt As DataTable = opacity_reporting_procedure(IDProfileAccount,IDProfileTerminal,IDProfileFleet,FromDate,ThroughDate)
+                Dim dt As DataTable = opacity_reporting_procedure(IDProfileAccount, IDProfileTerminal, IDProfileFleet, FromDate, ThroughDate)
 
                 If dt.Rows.Count = 0 Then
                     Messages.Text = "No records found"
@@ -303,7 +303,7 @@ Public Class report_opacity_testing_results
 
                 'Adjust report based on column checkboxes
                 filterReport(dt)
-               
+
 
 
                 ' Add headers
@@ -443,7 +443,17 @@ Public Class report_opacity_testing_results
 
                 End If
 
-                Dim Sql_Adapter = New SqlDataAdapter("SELECT CF_Profile_Account.IDProfileAccount, CF_Profile_Account.AccountName, CF_Profile_Terminal.IDProfileTerminal, CF_Profile_Terminal.TerminalName, CF_Profile_Fleet.IDProfileFleet, CF_Profile_Fleet.FleetName FROM CF_Profile_Fleet INNER JOIN CF_Profile_Terminal On CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal INNER JOIN CF_Profile_Account On CF_Profile_Account.IDProfileAccount = CF_Profile_Terminal.IDProfileAccount", Sql_Conn)
+                Dim Sql_Adapter = New SqlDataAdapter(
+                    "SELECT CF_Profile_Account.IDProfileAccount, 
+                    CF_Profile_Account.AccountName, 
+                    CF_Profile_Terminal.IDProfileTerminal, 
+                    CF_Profile_Terminal.TerminalName, 
+                    CF_Profile_Fleet.IDProfileFleet, 
+                    CF_Profile_Fleet.FleetName 
+                    FROM 
+                    CF_Profile_Fleet 
+                    INNER JOIN CF_Profile_Terminal On CF_Profile_Terminal.IDProfileTerminal = CF_Profile_Fleet.IDProfileTerminal 
+                    INNER JOIN CF_Profile_Account On CF_Profile_Account.IDProfileAccount = CF_Profile_Terminal.IDProfileAccount", Sql_Conn)
 
                 Sql_Adapter.Fill(ID_And_Name_DataTable)
 
@@ -520,7 +530,7 @@ Public Class report_opacity_testing_results
                         '    End If
                         '    adapter.Fill(dt)
                         'End Using
-
+                        Dim count = 1
                         For j = 1 To ID_And_Name_DataTable.Rows.Count
 
                             Dim temp_dt As New DataTable()
@@ -558,6 +568,8 @@ Public Class report_opacity_testing_results
                             Next
 
                             dt.Merge(temp_dt)
+                            Debug.WriteLine("Finished iteration " & count)
+                            count += 1
 
                         Next
 

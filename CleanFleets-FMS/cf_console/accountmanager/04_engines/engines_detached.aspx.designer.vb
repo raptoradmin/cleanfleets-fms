@@ -23,6 +23,15 @@ Partial Public Class engines_detached1
     Protected WithEvents RadCodeBlock1 As Global.Telerik.Web.UI.RadCodeBlock
     
     '''<summary>
+    '''fileLabel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents fileLabel As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''RadTabStrip1 control.
     '''</summary>
     '''<remarks>
@@ -93,6 +102,15 @@ Partial Public Class engines_detached1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rmp_EngineFiles As Global.Telerik.Web.UI.RadPageView
+    
+    '''<summary>
+    '''fu_AddEngineImage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents fu_AddEngineImage As Global.System.Web.UI.WebControls.FileUpload
     
     '''<summary>
     '''btn_AddEngineImage control.

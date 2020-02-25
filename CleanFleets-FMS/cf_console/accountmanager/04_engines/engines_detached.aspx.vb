@@ -81,7 +81,10 @@ Public Class engines_detached1
         Dim IDEngines As String = IDEngine.Value
         Dim item As GridDataItem = DirectCast(TryCast(sender, RadioButton).NamingContainer, GridDataItem)
         Dim rdBtn As RadioButton = TryCast(sender, RadioButton)
-        Dim IDImages As String = item.OwnerTableView.DataKeyValues(item.ItemIndex)("IDImages")
+        Dim IDImages As String = item.OwnerTableView.DataKeyValues(item.ItemIndex)("IDImages").ToString
+
+        Dim selected_row As GridDataItem = rg_engines.SelectedItems.Item(0)
+        Dim IDEngines_sam As String = selected_row.Item("IDEngines").Text
 
         If rdBtn.Checked = True Then
 
@@ -90,9 +93,8 @@ Public Class engines_detached1
             sql = "UPDATE CF_Images SET DefaultImage = @Value WHERE IDEngines = @IDEngines AND IDDECS IS NULL"
             Dim connection As New SqlConnection(strConnString)
             Dim command As New SqlCommand(sql, connection)
-
             command.Parameters.Add("@Value", SqlDbType.Int).Value = "0"
-            command.Parameters.Add("@IDEngines", SqlDbType.Int).Value = IDEngines
+            command.Parameters.Add("@IDEngines", SqlDbType.UniqueIdentifier).Value = GUID.Parse(IDEngines)
 
             command.Connection.Open()
             command.ExecuteNonQuery()
@@ -105,7 +107,7 @@ Public Class engines_detached1
             Dim command1 As New SqlCommand(sql1, connection1)
 
             command1.Parameters.Add("@Value", SqlDbType.Int).Value = "1"
-            command1.Parameters.Add("@IDImages", SqlDbType.Int).Value = IDImages
+            command1.Parameters.Add("@IDImages", SqlDbType.UniqueIdentifier).Value = Guid.Parse(IDImages)
             command1.Connection.Open()
             command1.ExecuteNonQuery()
             command1.Connection.Close()
@@ -163,22 +165,46 @@ Public Class engines_detached1
 
     End Sub
 
+    Protected Sub SaveEngineImage(ByVal file As HttpPostedFile, ByVal filename As String)
+        Dim extension = file.FileName.Substring(file.FileName.LastIndexOf("."))
+        Dim savePath As String = "/includes/imagemanager/imagefiles/" & filename & extension 
+        fu_AddEngineImage.SaveAs(Server.MapPath(savePath))
+        fileLabel.Text = Server.MapPath(savePath).ToString
+    End Sub
 
     Protected Sub btn_AddEngineImage_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_AddEngineImage.Click
 
-        Dim IDEngine As HiddenField = CType(fv_EngineDetails.FindControl("hf_IDEngines"), HiddenField)
-        Dim IDEngines As String = IDEngine.Value
+        If (fu_AddEngineImage.HasFile <> True) 
+            Return 
+        End If
+
+
+        Dim selected_row As GridDataItem = rg_engines.SelectedItems.Item(0)
+        Dim IDEngines As String = selected_row.Item("IDEngines").Text
+       
+        'Dim IDEngine As HiddenField = CType(fv_EngineDetails.FindControl("hf_IDEngines"), HiddenField)
+        'Dim IDEngines As String = IDEngine.Value
         Dim sbScript As New StringBuilder()
+        Dim UserName As String = Membership.GetUser().UserName
+          Dim connection As New SqlConnection(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
+        Dim adapter As New SqlDataAdapter(
+          "EXEC InsertEngineImage @UserName = @UserName_P, @IDEngines = @IDEngines_P", connection)
+        adapter.SelectCommand.Parameters.AddWithValue("@IDEngines_P", IDEngines)
+        adapter.SelectCommand.Parameters.AddWithValue("@UserName_P", UserName)
 
-        sbScript.Append("<script language='javascript'>")
-        sbScript.Append("window.open('")
-        sbScript.Append("../../../includes/imagemanager/imageupload_engines.aspx?IDEngines=" & IDEngines)
-        sbScript.Append("', 'CustomPopUp',")
-        sbScript.Append("'width=800, height=600, menubar=yes, resizable=yes');<")
-        sbScript.Append("/script>")
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+        Dim fileName As String = dt.Rows.Item(0).Item("FileName").ToString
+        SaveEngineImage(fu_AddEngineImage.PostedFile, fileName)
+        'sbScript.Append("<script language='javascript'>")
+        'sbScript.Append("window.open('")
+        'sbScript.Append("../../../includes/imagemanager/imageupload_engines.aspx?IDEngines=" & IDEngines)
+        'sbScript.Append("', 'CustomPopUp',")
+        'sbScript.Append("'width=800, height=600, menubar=yes, resizable=yes');<")
+        'sbScript.Append("/script>")
 
-        ' Make use ScriptManager to register the script
-        ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "@@@@MyPopUpScript", sbScript.ToString(), False)
+        '' Make use ScriptManager to register the script
+        'ScriptManager.RegisterStartupScript(Me, Me.[GetType](), "@@@@MyPopUpScript", sbScript.ToString(), False)
 
     End Sub
 

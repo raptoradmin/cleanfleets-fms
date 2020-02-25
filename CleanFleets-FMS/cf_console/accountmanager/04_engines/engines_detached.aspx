@@ -3,23 +3,23 @@
 <asp:Content runat="server" ContentPlaceHolderID="head">
 
 	<script type="text/javascript">
-		function RowClick(sender, eventArgs) {
-			var MasterTableView = eventArgs.get_tableView();
-			var cell = MasterTableView.getCellByColumnUniqueName(MasterTableView.get_dataItems()[eventArgs.get_itemIndexHierarchical()], "IDImages");
-			var oWnd = radopen("../../imagemanager/imagedisplay.aspx?IDImages=" + cell.innerHTML);
-		}
+        function RowClick(sender, eventArgs) {
+            var MasterTableView = eventArgs.get_tableView();
+            var cell = MasterTableView.getCellByColumnUniqueName(MasterTableView.get_dataItems()[eventArgs.get_itemIndexHierarchical()], "IDImages");
+            var oWnd = radopen("../../imagemanager/imagedisplay.aspx?IDImages=" + cell.innerHTML);
+        }
 	</script>
 
 	<telerik:radcodeblock id="RadCodeBlock1" runat="server">
 
             <script type="text/javascript">
 
-            	function RowClick(sender, eventArgs) {
-            		var MasterTableView = eventArgs.get_tableView();
-            		var dataKeyValue = eventArgs.getDataKeyValue("IDImages");
-            		var oWnd = radopen("../../../includes/imagemanager/imagedisplay.aspx?IDImages=" + dataKeyValue);
-            	}
-             
+                function RowClick(sender, eventArgs) {
+                    var MasterTableView = eventArgs.get_tableView();
+                    var dataKeyValue = eventArgs.getDataKeyValue("IDImages");
+                    var oWnd = radopen("../../../includes/imagemanager/imagedisplay.aspx?IDImages=" + dataKeyValue);
+                }
+
             </script>
 
         
@@ -28,36 +28,37 @@
                     
             <script type="text/javascript">
 
-            	function MyClickEngines(sender, eventArgs) {
-            		var inputs = document.getElementById("<%= rg_EngineImages.MasterTableView.ClientID %>").getElementsByTagName("input");
-            		for (var i = 0, l = inputs.length; i < l; i++) {
-            			var input = inputs[i];
-            			if (input.type != "radio" || input == sender)
-            				continue;
-            			input.checked = false;
-            		}
-            	}
-                         
+                function MyClickEngines(sender, eventArgs) {
+                    var inputs = document.getElementById("<%= rg_EngineImages.MasterTableView.ClientID %>").getElementsByTagName("input");
+                    for (var i = 0, l = inputs.length; i < l; i++) {
+                        var input = inputs[i];
+                        if (input.type != "radio" || input == sender)
+                            continue;
+                        input.checked = false;
+                    }
+                }
+
             </script>
             
             
             <script type="text/javascript">
 
-            	function MyClickDECS(sender, eventArgs) {
-            		var inputs = document.getElementById("<%= rg_DECSImages.MasterTableView.ClientID %>").getElementsByTagName("input");
-            		for (var i = 0, l = inputs.length; i < l; i++) {
-            			var input = inputs[i];
-            			if (input.type != "radio" || input == sender)
-            				continue;
-            			input.checked = false;
-            		}
-            	}
-                         
+                function MyClickDECS(sender, eventArgs) {
+                    var inputs = document.getElementById("<%= rg_DECSImages.MasterTableView.ClientID %>").getElementsByTagName("input");
+                    for (var i = 0, l = inputs.length; i < l; i++) {
+                        var input = inputs[i];
+                        if (input.type != "radio" || input == sender)
+                            continue;
+                        input.checked = false;
+                    }
+                }
+
             </script>            
 
          </telerik:radcodeblock>
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="RightColumnContentPlaceHolder">
+    <asp:Label ID="fileLabel" runat="server"></asp:Label>
 	<span style="color: #ED8701; font-size: medium; font-weight: bold">Detached Engines<br />
 	</span>
 	<table cellpadding="0" cellspacing="0" style="width: 100%">
@@ -324,7 +325,8 @@
                             <td style="padding: 5px; border-left-style: solid; border-left-width: 1px; border-left-color: #9B9B9B" valign="top">
                                 <asp:FormView ID="fv_EngineImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesEngines_fvw">
                                     <ItemTemplate>
-                                        <asp:Image ID="image0" runat="server" Height="133" ImageUrl='<%#Eval("Image") %>' Width="200" />
+                                        <asp:Image ID="image0" runat="server" Height="133" ImageUrl='<%#Server.MapPath(Eval("Image")).ToString %>' Width="200" />
+                                        <asp:Label ID="label1" runat="server" Text='<%# Server.MapPath(Eval("Image")).ToString %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:FormView>
                                 <br />
@@ -511,7 +513,9 @@
                             <td style="padding: 5px; border-left-style: solid; border-left-width: 1px; border-left-color: #9B9B9B" valign="top">
                                 <asp:FormView ID="fv_DECSImage" runat="server" DataKeyNames="IDImages" DataSourceID="sds_ImagesDECs_fvw">
                                     <ItemTemplate>
-                                        <asp:Image ID="image1" runat="server" Height="133" ImageUrl='<%#Eval("Image") %>' Width="200" />
+                                        <asp:Image ID="image1" runat="server" Height="133" ImageUrl='<%#Server.MapPath(Eval("Image")).ToString %>' Width="200" />
+                                        <asp:Label ID="label1" runat="server" Text='<%# Server.MapPath(Eval("Image")).ToString %>'></asp:Label>
+
                                     </ItemTemplate>
                                 </asp:FormView>
                             </td>
@@ -532,6 +536,7 @@
                                                         <table cellpadding="0" cellspacing="0" style="width: 100%">
                                                             <tr>
                                                                 <td>
+                                                                    <asp:FileUpload ID="fu_AddEngineImage" runat="server" />
                                                                     <asp:Button ID="btn_AddEngineImage" runat="server" Text="Add Image" />
                                                                 </td>
                                                             </tr>

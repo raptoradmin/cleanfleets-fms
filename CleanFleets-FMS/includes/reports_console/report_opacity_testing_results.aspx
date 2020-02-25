@@ -8,7 +8,12 @@
     <%-- <asp:TextBox ID="RecordsButton" runat="server" Text="Temp_Text_sam" /> --%>
 
     <%--End of what was added by Andrew.--%>
-
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 	<h1>PSIP Report to Client</h1>
 	<p>&nbsp;
 		
@@ -60,7 +65,7 @@
 			    <tbody>
 				    <tr>
 					    <td colspan="2" align="left"><br/>
-						    <asp:Label ID="Messages" runat="server" />
+						    <asp:Label ID="Messages" CssClass="highlight" runat="server" />
 					    </td>
 				    </tr>
 			    </tbody>
