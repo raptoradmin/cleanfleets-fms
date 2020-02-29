@@ -59,8 +59,8 @@
     <p>
         &nbsp;</p>
     <p>
-        <telerik:RadScriptManager ID="RadScriptManager1" Runat="server">
-        </telerik:RadScriptManager>
+        <%-- <telerik:RadScriptManager ID="RadScriptManager1" Runat="server">
+        </telerik:RadScriptManager> --%>
     </p>
     <p>
         <telerik:RadFormDecorator ID="RadFormDecorator1" Runat="server" DecoratedControls="All" Skin="WebBlue" />

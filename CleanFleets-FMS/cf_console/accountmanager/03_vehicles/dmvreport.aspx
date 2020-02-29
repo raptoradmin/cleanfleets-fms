@@ -227,7 +227,7 @@
                 .recordTable td {
                     border: 1px solid black;
                 }
-                .recordTable tr,td {
+                .recordTable tr,.recordTable td {
                     padding: 10px;
                 }
        

@@ -3523,12 +3523,19 @@
                 .recordTable td {
                     border: 1px solid black;
                 }
-                .recordTable tr,td {
+                .recordTable tr, .recordTable td {
                     padding: 10px;
+                }
+
+                .dropDownClass {
+                    width: 150px;
+                    height: 40px;
                 }
        
             </style>
-            <asp:DropDownList ID="YrDropDown" AutoPostBack="true" runat="server"></asp:DropDownList>
+            <h1>Select Registration Year</h1>
+            <asp:DropDownList ID="YrDropDown" AutoPostBack="true" CssClass="dropDownClass" runat="server"></asp:DropDownList>
+            <hr />
             <table class="recordTable">
                 <tr>
                     <td>&nbsp;</td>
