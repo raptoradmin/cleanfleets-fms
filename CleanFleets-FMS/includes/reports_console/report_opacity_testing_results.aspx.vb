@@ -506,7 +506,7 @@ Public Class report_opacity_testing_results
                     ' I am going to comment out the connection string shown below and manually enter a connection string with a timeout property set; Andrew - 12/19/2019.
 
                     Dim ManualConnectionString As String
-                    ManualConnectionString = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1;Connection Timeout=1000"
+                    ManualConnectionString = ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString
 
                     Using conn As New SqlConnection(ManualConnectionString)
 

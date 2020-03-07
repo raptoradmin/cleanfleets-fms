@@ -93,7 +93,7 @@
         SelectCommand="SELECT * FROM [CF_Profile_Account] ORDER BY [AccountName]"></asp:SqlDataSource>--%>
     <%--Push made and reverting back; Andrew - 12/10/2019.--%>
 
-    <asp:SqlDataSource ID="sds_ddl_Account" runat="server" ConnectionString="Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+    <asp:SqlDataSource ID="sds_ddl_Account" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
         SelectCommand="SELECT * FROM [CF_Profile_Account] ORDER BY [AccountName]"></asp:SqlDataSource>
 
     <%--End of change made by Andrew on 12/10/2019.--%>

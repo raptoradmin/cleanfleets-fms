@@ -98,7 +98,7 @@ Public Class dmvreport
 	            [IDChassisMake],
 	            CFO1.[DisplayValue] AS [Make],
 	            CFO2.[DisplayValue] AS [Year] 
-        FROM [CleanFleets-DEV].[dbo].[CF_Vehicles] 
+        FROM [CF_Vehicles] 
 	        INNER JOIN [CF_Option_List] CFO1 ON [CF_Vehicles].[IDChassisMake] = CFO1.[IDOptionList]
 	        INNER JOIN [CF_Option_List] CFO2 ON [CF_Vehicles].[IDChassisModelYear] = CFO2.[IDOptionList]
         WHERE [CF_Vehicles].[ChassisVIN] = @VIN", connection)

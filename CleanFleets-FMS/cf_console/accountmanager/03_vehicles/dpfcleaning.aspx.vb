@@ -291,10 +291,11 @@ Public Class dpfcleaning
 
             Dim connection_string As String
 
-            ' Making changes to CleanFleets for database from CleanFleets-DEV in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
+            ' Making changes to CleanFleets for database from 
+            'in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
             'Push made and reverting back; Andrew - 12/10/2019.
 
-            connection_string = "Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1"
+            connection_string = ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString
 
             Dim DPF_conn As New SqlConnection(connection_string)
 
