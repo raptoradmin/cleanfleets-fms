@@ -3731,12 +3731,12 @@
 
     <%-- Added by Andrew on 10/18/2019 --%>
 
-    <%--Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+    <%--Changing the table from CF_DPF_Final to CF_DPF_Final_Final due to their being an existing CF_DPF_Final table in CleanFleets that
     was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
     Push made and reverting back; Andrew - 12/10/2019. --%>
 
     <asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
-        SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CF_DPF]"> 
+        SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CF_DPF_Final]"> 
         <%--<SelectParameters>
             <asp:ControlParameter Name="ChassisVINHolderParam" ControlID="ChassisVINHolder" Type="String" />
             <asp:ControlParameter Name="ThisFlag" ControlID="Flag" Type="String" />
@@ -3749,7 +3749,7 @@
 
    <%--<asp:SqlDataSource ID="sds_CFV_DPF_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
         SelectCommand="SELECT [IDDPF], [IDModifiedUser], [ModifiedDate], [IDVehicles], [InvoiceNumber], [PONumber], [Company], [VINNumber], [Make], [Model], [Plate], [Miles], [Hours], [FilterMake], [SerialNumber], [PartNumber], [Substrate], [DocCleaned], [Condition], [DPFInitWeight], [DPFFinalWeight], [DPFWeightDiff], [DOCInitWeight], [DOCFinalWeight], [DOCWeightDiff], [DPFInitFR], [DPFFinalFR], [DPFFRDiff], [WTResults], [CleaningTech], [MultipleCleanings], [Notes] FROM [CFV_DPF] WHERE ([IDDPF] = @IDDPF)" 
-        UpdateCommand="UPDATE [CF_DPF] SET [IDModifiedUser] = @IDModifiedUser, [ModifiedDate] = @ModifiedDate, [InvoiceNumber] = @InvoiceNumber, [PONumber] = @PONumber, [Company] = @Company, [VINNumber] = @VINNumber, [Make] = @Make, [Model] = @Model, [Plate] = @Plate, [Miles] = @Miles, [Hours] = @Hours, [FilterMake] = @FilterMake, [SerialNumber] = @SerialNumber, [PartNumber] = @PartNumber, [Substrate] = @Substrate, [DocCleaned] = @DocCleaned, [Condition] = @Condition, [DPFInitWeight] = @DPFInitWeight, [DPFFinalWeight] = @DPFFinalWeight, [DPFWeightDiff] = @DPFWeightDiff, [DOCInitWeight] = @DOCInitWeight, [DOCFinalWeight] = @DOCFinalWeight, [DOCWeightDiff] = @DOCWeightDiff, [DPFInitFR] = @DPFInitFR, [DPFFinalFR] = @DPFFinalFR, [DPFFRDiff] = @DPFFRDiff, [WTResults] = @WTResults, [CleaningTech] = @CleaningTech, [MultipleCleanings] = @MultipleCleanings, [Notes] = @Notes  WHERE [IDDPF] = @IDDPF"> 
+        UpdateCommand="UPDATE [CF_DPF_Final] SET [IDModifiedUser] = @IDModifiedUser, [ModifiedDate] = @ModifiedDate, [InvoiceNumber] = @InvoiceNumber, [PONumber] = @PONumber, [Company] = @Company, [VINNumber] = @VINNumber, [Make] = @Make, [Model] = @Model, [Plate] = @Plate, [Miles] = @Miles, [Hours] = @Hours, [FilterMake] = @FilterMake, [SerialNumber] = @SerialNumber, [PartNumber] = @PartNumber, [Substrate] = @Substrate, [DocCleaned] = @DocCleaned, [Condition] = @Condition, [DPFInitWeight] = @DPFInitWeight, [DPFFinalWeight] = @DPFFinalWeight, [DPFWeightDiff] = @DPFWeightDiff, [DOCInitWeight] = @DOCInitWeight, [DOCFinalWeight] = @DOCFinalWeight, [DOCWeightDiff] = @DOCWeightDiff, [DPFInitFR] = @DPFInitFR, [DPFFinalFR] = @DPFFinalFR, [DPFFRDiff] = @DPFFRDiff, [WTResults] = @WTResults, [CleaningTech] = @CleaningTech, [MultipleCleanings] = @MultipleCleanings, [Notes] = @Notes  WHERE [IDDPF] = @IDDPF"> 
     <DeleteParameters> 
         <asp:Parameter Name="IDDPF" /> 
     </DeleteParameters> 
@@ -4151,12 +4151,12 @@
 
     <%-- Added by Andrew on 10/17/2019 --%>
 
-    <%--Changing the table from CF_DPF to CF_DPF_Final due to their being an existing CF_DPF table in CleanFleets that
+    <%--Changing the table from CF_DPF_Final to CF_DPF_Final_Final due to their being an existing CF_DPF_Final table in CleanFleets that
     was not editable. This is for the purpose of moving from development to production; Andrew - 12/10/2019.
     Push made and reverting back; Andrew - 12/10/2019.--%>
 	
 	<asp:SqlDataSource ID="sds_DPF" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [EnterDate], [ModifiedDate], [IDDPF], CONCAT('EnterDate: ', [EnterDate], ' | ', 'Last Modified Date: ', [ModifiedDate]) [CombinedDates] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [CombinedDates]">
+		SelectCommand="SELECT [EnterDate], [ModifiedDate], [IDDPF], CONCAT('EnterDate: ', [EnterDate], ' | ', 'Last Modified Date: ', [ModifiedDate]) [CombinedDates] FROM [CF_DPF_Final] WHERE [VINNUMBER] = @ChassisVINHolderParam ORDER BY [CombinedDates]">
 		<SelectParameters>
 		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
 				Type="Int32" />--%>
@@ -4165,7 +4165,7 @@
 	</asp:SqlDataSource>
 
     <%--<asp:SqlDataSource ID="sds_DPF_2" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF] WHERE [VINNUMBER] = @ChassisVINTextBoxParam ORDER BY [EnterDate]">
+		SelectCommand="SELECT [EnterDate], [IDDPF] FROM [CF_DPF_Final] WHERE [VINNUMBER] = @ChassisVINTextBoxParam ORDER BY [EnterDate]">
 		<SelectParameters>--%>
 		<%--<asp:QueryStringParameter Name="VINNumber" QueryStringField="VINNUmber"
 				Type="Int32" />--%>

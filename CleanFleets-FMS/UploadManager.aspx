@@ -83,7 +83,6 @@
             display: none;
         }
     </style>
-        <script type="text/javascript" src="/includes/javascript/jquery-1.7.2.min.js"></script>
 </head>
 <body>
     <form runat="server">
@@ -193,144 +192,142 @@
             if (hfType.Value == "vf" || hfType.Value == "ef" || hfType.Value == "df") $('#fileElem').attr('accept', '".xlsx,.xls,.doc,.docx,.ppt,.pptx,.txt,.pdf"');
 
         });
-            // ************************ Drag and drop ***************** //
-            let dropArea = document.getElementById("drop-area")
+        // ************************ Drag and drop ***************** //
+        let dropArea = document.getElementById("drop-area")
 
-                // Prevent default drag behaviors
-                ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                    dropArea.addEventListener(eventName, preventDefaults, false)
-                })
+            // Prevent default drag behaviors
+            ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false)
+            })
 
-                // Highlight drop area when item is dragged over it
-                ;['dragenter', 'dragover'].forEach(eventName => {
-                    dropArea.addEventListener(eventName, highlight, false)
-                })
+            // Highlight drop area when item is dragged over it
+            ;['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, highlight, false)
+            })
 
-                ;['dragleave', 'drop'].forEach(eventName => {
-                    dropArea.addEventListener(eventName, unhighlight, false)
-                })
+            ;['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, unhighlight, false)
+            })
 
-            // Handle dropped files
-            dropArea.addEventListener('drop', handleDrop, false)
+        // Handle dropped files
+        dropArea.addEventListener('drop', handleDrop, false)
 
-            function preventDefaults(e) {
-                e.preventDefault()
-                e.stopPropagation()
+        function preventDefaults(e) {
+            e.preventDefault()
+            e.stopPropagation()
+        }
+
+        function highlight(e) {
+            dropArea.classList.add('highlight')
+        }
+
+        function unhighlight(e) {
+            dropArea.classList.remove('active')
+        }
+
+        function handleDrop(e) {
+            var dt = e.dataTransfer
+            var files = dt.files
+
+            handleFiles(files)
+        }
+
+        let uploadProgress = []
+        let progressBar = document.getElementById('progress-bar')
+
+        function initializeProgress(numFiles) {
+            progressBar.value = 0
+            uploadProgress = []
+
+            for (let i = numFiles; i > 0; i--) {
+                uploadProgress.push(0)
             }
+        }
 
-            function highlight(e) {
-                dropArea.classList.add('highlight')
+        function updateProgress(fileNumber, percent) {
+            uploadProgress[fileNumber] = percent
+            let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
+            //console.debug('update', fileNumber, percent, total)
+            progressBar.value = total
+        }
+
+        function handleFiles(files) {
+            files = [...files]
+            initializeProgress(files.length)
+            files.forEach(uploadFile)
+            files.forEach(previewFile)
+        }
+
+        function SetAccept() {
+            if (true){
+                return "image/*";
             }
-
-            function unhighlight(e) {
-                dropArea.classList.remove('active')
+            else {
+                return ".doc,.docx,.pdf,.txt,.xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
             }
+        }
 
-            function handleDrop(e) {
-                var dt = e.dataTransfer
-                var files = dt.files
+        function previewFile(file) {
+            let reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onloadend = function () {
+                
+                let img = document.createElement('img');
 
-                handleFiles(files)
-            }
-
-            let uploadProgress = []
-            let progressBar = document.getElementById('progress-bar')
-
-            function initializeProgress(numFiles) {
-                progressBar.value = 0
-                uploadProgress = []
-
-                for (let i = numFiles; i > 0; i--) {
-                    uploadProgress.push(0)
+                img.src = reader.result;
+                
+                if (file.name.indexOf('.txt') !== -1) {
+                    img.src = '../../../images/dox.png';
                 }
-            }
-
-            function updateProgress(fileNumber, percent) {
-                uploadProgress[fileNumber] = percent
-                let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
-                //console.debug('update', fileNumber, percent, total)
-                progressBar.value = total
-            }
-
-            function handleFiles(files) {
-                files = [...files]
-                initializeProgress(files.length)
-                files.forEach(uploadFile)
-                files.forEach(previewFile)
-            }
-
-            function SetAccept() {
-                if (true) {
-                    return "image/*";
+                else if (file.name.indexOf('.pdf') !== -1) {
+                   img.src = '../../../images/pdf.png';
+                }
+                else if (file.name.indexOf('.doc') !== -1 || file.name.indexOf('.docx') !== -1) {
+                    img.src = '../../../images/word.png';
+                }
+                else if (file.name.indexOf('.xls') !== -1 || file.name.indexOf('.xlsx') !== -1) {
+                    img.src = '../../../images/xl.jpg';
+                }
+                else if (file.name.indexOf('.zip') !== -1) {
+                    img.src = '../../../images/zip.jpg';
                 }
                 else {
-                    return ".doc,.docx,.pdf,.txt,.xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
-                }
-            }
-
-            function previewFile(file) {
-                let reader = new FileReader()
-                reader.readAsDataURL(file)
-                reader.onloadend = function () {
-
-                    let img = document.createElement('img');
-
                     img.src = reader.result;
-
-                    if (file.name.indexOf('.txt') !== -1) {
-                        img.src = '../../../images/dox.png';
-                    }
-                    else if (file.name.indexOf('.pdf') !== -1) {
-                        img.src = '../../../images/pdf.png';
-                    }
-                    else if (file.name.indexOf('.doc') !== -1 || file.name.indexOf('.docx') !== -1) {
-                        img.src = '../../../images/word.png';
-                    }
-                    else if (file.name.indexOf('.xls') !== -1 || file.name.indexOf('.xlsx') !== -1) {
-                        img.src = '../../../images/xl.jpg';
-                    }
-                    else if (file.name.indexOf('.zip') !== -1) {
-                        img.src = '../../../images/zip.jpg';
-                    }
-                    else {
-                        img.src = reader.result;
-                    }
-                    document.getElementById('gallery').appendChild(img);
                 }
+                document.getElementById('gallery').appendChild(img);
             }
+        }
 
-            function uploadFile(file, i) {
-                var url = '../../includes/uploadmanager/uploadmanager.aspx'
-                var xhr = new XMLHttpRequest()
-                var formData = new FormData()
-                xhr.open('POST', url, true)
-                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
-                xhr.setRequestHeader('UploadRequest', 'true')
+        function uploadFile(file, i) {
+            var url = '../../includes/uploadmanager/uploadmanager.aspx'
+            var xhr = new XMLHttpRequest()
+            var formData = new FormData()
+            xhr.open('POST', url, true)
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
 
-                // Update progress (can be used to show progress indicator)
-                xhr.upload.addEventListener("progress", function (e) {
-                    updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
-                })
+            // Update progress (can be used to show progress indicator)
+            xhr.upload.addEventListener("progress", function (e) {
+                updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
+            })
 
-                xhr.addEventListener('readystatechange', function (e) {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        updateProgress(i, 100) // <- Add this
-                    }
-                    else if (xhr.readyState == 4 && xhr.status != 200) {
-                        // Error. Inform the user
-                    }
-                })
+            xhr.addEventListener('readystatechange', function (e) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    updateProgress(i, 100) // <- Add this
+                }
+                else if (xhr.readyState == 4 && xhr.status != 200) {
+                    // Error. Inform the user
+                }
+            })
 
-                formData.append('upload_preset', 'ujpu6gyk')
-                formData.append('file', file)
-                xhr.send(formData)
-            }
+            formData.append('upload_preset', 'ujpu6gyk')
+            formData.append('file', file)
+            xhr.send(formData)
+        }
 
-            function Close() {
-                window.opener.document.forms[0].submit();
-                self.close();
-            }
-        
+        function Close() {
+            window.opener.document.forms[0].submit();
+            self.close();
+        }
 
 
     </script>

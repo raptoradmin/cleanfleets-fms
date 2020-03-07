@@ -2,6 +2,7 @@
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Web
+Imports System.IO
 Imports Radactive.WebControls.ILoad
 Imports Radactive.WebControls.ILoad.Core
 
@@ -12,18 +13,31 @@ Public Class UploadManager
 
     Private rootImageUrl As String = String.Empty '"~/includes/imagemanager/imagefiles/"
     Private rootFileUrl As String = String.Empty '"~/includes/filemanager/files/"
-
+    
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        'Dim filestream As FileStream = New FileStream("C:\Websites\cleanfleets-fms\test-deploy\log.txt", FileMode.Create)
+        'Dim streamwriter As StreamWriter = New StreamWriter(filestream)
+        'streamwriter.AutoFlush = true
+        'Console.SetOut(streamwriter)
+        'Console.SetError(streamwriter)
         If Not Page.IsPostBack Then
 
-
+            For Each q In Request.QueryString 
+                Console.WriteLine(q)
+            Next
+            Console.WriteLine("*********************")
             If Not String.IsNullOrWhiteSpace(Request.QueryString("t")) Then
                 'check querystring parameters and save to Session properties
                 ClearValues()
                 SetupValues()
             End If
-            If Request.Headers("Referer").Contains("uploadmanager") Then
+            
+
+            If Request.Headers("UploadRequest") Is Nothing Then 
+                Return
+            End If
+
+            If Request.Headers("UploadRequest").Contains("true") Then
                 'save Image Or file
                 FileCollection = Request.Files
 
@@ -84,6 +98,7 @@ Public Class UploadManager
     End Sub
 
     Private Sub SetupValues()
+        '''MsgBox("SetupValues")
         Dim currentUser As MembershipUser = Membership.GetUser(User.Identity.Name)
         UserId = CType(currentUser.ProviderUserKey, Guid).ToString()
 
@@ -171,7 +186,8 @@ Public Class UploadManager
     End Sub
 
     Private Function BuildFilePath(ByVal name As String) As String
-        Dim path As String = If(UploadType.Contains("i"), System.Configuration.ConfigurationManager.AppSettings("RootImagePath"), System.Configuration.ConfigurationManager.AppSettings("RootFilePath"))
+        'TESTING CHANGES FROM RootImagePath to ImageRepositoryFolder
+        Dim path As String = HttpContext.Current.Server.MapPath(If(UploadType.Contains("i"), ConfigurationManager.AppSettings("ImageRepositoryFolder"), ConfigurationManager.AppSettings("FileRepositoryFolder")))
         Return String.Format("{0}{1}", path, name)
     End Function
 
@@ -183,6 +199,7 @@ Public Class UploadManager
         rootFileUrl = ConfigurationManager.AppSettings("FileRepositoryFolder")
         RecordId = Guid.NewGuid().ToString()
         SaveFileToDisk(file)
+        ''MsgBox(UploadType)
         If UploadType.Contains("v") Then
             SaveVehicleFileDBReference()
         ElseIf UploadType.Contains("e") Then
@@ -364,6 +381,7 @@ Public Class UploadManager
         RecordId = Guid.NewGuid().ToString()
 
         SaveImageToDisk(image)
+        'MsgBox(UploadType)
         If UploadType.Contains("v") Then
             SaveVehicleImageDBReference()
         ElseIf UploadType.Contains("e") Then
