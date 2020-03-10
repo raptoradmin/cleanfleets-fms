@@ -7,7 +7,9 @@ Imports Telerik.Web.UI
 Public Class bluereport
     Inherits BaseWebForm
     Protected vehicleView As DataView
+    Protected dmvView As DataView
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         vehicleView = CType(sds_ReportEnginesDECS.Select(DataSourceSelectArguments.Empty), DataView)
+        dmvView = CType(sds_ReportDMV.Select(DataSourceSelectArguments.Empty), DataView)
     End Sub
 End Class

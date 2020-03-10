@@ -59,6 +59,15 @@ Partial Public Class bluereport
     Protected WithEvents sds_ReportVehicles As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
+    '''sds_ReportDMV control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ReportDMV As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
     '''sds_ReportEnginesDECS control.
     '''</summary>
     '''<remarks>

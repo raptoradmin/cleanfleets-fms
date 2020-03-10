@@ -104,6 +104,7 @@
 		
 <% If vehicleView.Count > 0 Then %>
 <% Dim vehicleRow = vehicleView(0) %>
+<% Dim dmvRow = dmvView(0) %>
 	<div class="reportContainer">
                 <h2>Vehicle Information</h2>
 	<table width="100%">
@@ -340,6 +341,72 @@
 				</td>
 		</tr>
 	</table>
+    <hr />
+	<h2>DMV Registration Information</h2>
+	<table width="100%">
+		<tr>
+			<td style="width: 135px; " class="tabletld">
+				Valid From Date:</td>
+			<td style="width: 227px">
+				<%= dmvRow("FromDate") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td style="width: 135px; " class="tabletld">
+				Valid Through Date:</td>
+			<td style="width: 227px">
+				<%= dmvRow("ThroughDate") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td style="width: 135px; " class="tabletld">
+				Date Issued:</td>
+			<td style="width: 227px">
+				<%= dmvRow("DateIssued") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td style="width: 135px;" class="tabletld">
+				Date Fee Received:</td>
+			<td style="width: 227px">
+				<%= dmvRow("DateFeeReceived") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td style="width: 135px;" class="tabletld">
+				Sticker Issued:</td>
+			<td style="width: 227px">
+				<%= dmvRow("StickerIssued") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td class="tabletld" style="width: 135px;">&nbsp;
+				</td>
+			<td style="width: 227px">&nbsp;
+				</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td class="tabletld" style="width: 135px;">&nbsp;
+				</td>
+			<td style="width: 227px">&nbsp;
+				</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+	</table>
+   
 	</div>
 <% Else %>
 <p>No vehicle information found.</p>
@@ -390,13 +457,34 @@
     <InsertParameters>
     </InsertParameters>
 </asp:SqlDataSource>
-
+    <asp:SqlDataSource ID="sds_ReportDMV" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>" 
+        SelectCommand="SELECT TOP(1) 
+                        FORMAT([FromDate], 'MM/dd/yyyy', 'en-US') AS FromDate, 
+                        FORMAT([ThroughDate], 'MM/dd/yyyy', 'en-US') AS ThroughDate, 
+                        FORMAT([DateFeeReceived], 'MM/dd/yyyy', 'en-US') AS DateFeeReceived, 
+                        FORMAT([DateIssued], 'MM/dd/yyyy', 'en-US') AS DateIssued, 
+                        [StickerIssued]
+                        FROM CF_DMV
+                        WHERE ([IDVehicles] = @IDVehicles)
+                        ORDER BY [FromDate] DESC">
+        <SelectParameters>
+            <asp:QueryStringParameter Name="IDVehicles" QueryStringField="IDVehicles" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <asp:SqlDataSource ID="sds_ReportEnginesDECS" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-        SelectCommand="SELECT [IDVehicles], RDEV.[IDProfileFleet], [IDEngines], [UnitNo], [ChassisVIN], [ChassisModelYear], [RuleCode], [PlannedComplianceDate], [ActualComplianceDate], [CARBGroup], [RetireStatusDate], [ImageVehicle], [SerialNum], [FamilyName], [SeriesModelNo], [Horsepower], [Hours], [Miles], [EngineManufacturer], [EngineModel], [EngineStatus], [EngineFuelType], [ModelYear], [IDDECS], [SerialNo], [DECSName], [IDDECSManufacturer], [DECSManufacturer], [IDDECSLevel], [DECSLevel], [DECSInstallationDate], [ImageEngine], [ImageDECS], [Displacement], AccountName, TerminalName, FleetName, RDEV.[VehicleStatus], [GrossVehicleWeight], [WeightDefinition], [SpecialProvision]
+        SelectCommand="SELECT [IDVehicles], RDEV.[IDProfileFleet], [IDEngines], [UnitNo], [ChassisVIN], 
+        [ChassisModelYear], [RuleCode], [PlannedComplianceDate], [ActualComplianceDate], [CARBGroup], 
+        [RetireStatusDate], [ImageVehicle], [SerialNum], 
+        [FamilyName], [SeriesModelNo], [Horsepower], [Hours], [Miles], 
+        [EngineManufacturer], [EngineModel], [EngineStatus], [EngineFuelType], [ModelYear], [IDDECS], 
+        [SerialNo], [DECSName], [IDDECSManufacturer], [DECSManufacturer], [IDDECSLevel], [DECSLevel], 
+        [DECSInstallationDate], [ImageEngine], [ImageDECS], [Displacement], AccountName, TerminalName, 
+        FleetName, RDEV.[VehicleStatus], [GrossVehicleWeight], [WeightDefinition], [SpecialProvision]
 FROM [CFV_Report_D_to_E_to_V] RDEV
   LEFT JOIN CF_Profile_Fleet F ON RDEV.IDProfileFleet = F.IDProfileFleet
   LEFT JOIN CF_Profile_Terminal T ON F.IDProfileTerminal = T.IDProfileTerminal
-  LEFT JOIN CF_Profile_Account A ON T.IDProfileAccount = A.IDProfileAccount WHERE ([IDVehicles] = @IDVehicles)">
+  LEFT JOIN CF_Profile_Account A ON T.IDProfileAccount = A.IDProfileAccount 
+        WHERE ([IDVehicles] = @IDVehicles)">
     <SelectParameters>
         <asp:QueryStringParameter Name="IDVehicles" QueryStringField="IDVehicles" />
     </SelectParameters>

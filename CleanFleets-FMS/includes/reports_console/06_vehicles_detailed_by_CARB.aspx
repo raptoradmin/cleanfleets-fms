@@ -341,6 +341,30 @@
                     HeaderText="DECSInstallationDate" SortExpression="DECSInstallationDate" 
                     UniqueName="DECSInstallationDate" DataFormatString="{0:MM/dd/yyyy}">
                 </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="FromDate" 
+                    DataType="System.DateTime" DefaultInsertValue="" 
+                    HeaderText="DMV Valid From" SortExpression="FromDate" 
+                    UniqueName="FromDate" DataFormatString="{0:MM/dd/yyyy}">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="ThroughDate" 
+                    DataType="System.DateTime" DefaultInsertValue="" 
+                    HeaderText="DMV Valid Through" SortExpression="ThroughDate" 
+                    UniqueName="ThroughDate" DataFormatString="{0:MM/dd/yyyy}">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="DateFeeReceived" 
+                    DataType="System.DateTime" DefaultInsertValue="" 
+                    HeaderText="DMV Fee Received" SortExpression="DateFeeReceived" 
+                    UniqueName="DateFeeReceived" DataFormatString="{0:MM/dd/yyyy}">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="DateIssued" 
+                    DataType="System.DateTime" DefaultInsertValue="" 
+                    HeaderText="DMV Date Issued" SortExpression="DateIssued" 
+                    UniqueName="DateIssued" DataFormatString="{0:MM/dd/yyyy}">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn DataField="StickerIssued" DefaultInsertValue="" 
+                    HeaderText="DMV Sticker Issued" SortExpression="StickerIssued" UniqueName="StickerIssued">
+                </telerik:GridBoundColumn>
+
             </Columns>
         
 
