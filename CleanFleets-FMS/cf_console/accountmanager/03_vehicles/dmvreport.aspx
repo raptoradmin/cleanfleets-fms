@@ -20,6 +20,8 @@
             <asp:TextBox ID="ChassisVIN" runat="server"></asp:TextBox>
             <asp:Button ID="PopulateFields" Text="Search Records" runat="server" CausesValidation="false"></asp:Button>
             
+            <br />
+            <p>Select Existing Registration Year</p>
             <asp:DropDownList ID="YrDropDown"  AutoPostBack="true" runat="server"></asp:DropDownList>
 
             <br />
