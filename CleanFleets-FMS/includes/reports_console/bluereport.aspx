@@ -104,7 +104,6 @@
 		
 <% If vehicleView.Count > 0 Then %>
 <% Dim vehicleRow = vehicleView(0) %>
-<% Dim dmvRow = dmvView(0) %>
 	<div class="reportContainer">
                 <h2>Vehicle Information</h2>
 	<table width="100%">
@@ -342,6 +341,8 @@
 		</tr>
 	</table>
     <hr />
+    <% If dmvView.Count > 0 Then %>
+    <% Dim dmvRow = dmvView(0) %>
 	<h2>DMV Registration Information</h2>
 	<table width="100%">
 		<tr>
@@ -406,6 +407,7 @@
 				</td>
 		</tr>
 	</table>
+    <% End If %>
    
 	</div>
 <% Else %>
