@@ -9,7 +9,7 @@ Imports Telerik.Web.UI
 Public Class report_opacity_testing_results
     Inherits BaseWebForm
 
-    Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString, String)
+    Dim connectionString As String = DirectCast(ConfigurationManager.ConnectionStrings("CF_SQL_Connection_timeout").ConnectionString, String)
 
     ' Added on 12/17/2019 for the purpose of letting the user export a PSIP Report for all the vehicles.
 
