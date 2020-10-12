@@ -377,6 +377,7 @@
     <Compile Include="App_Code\BaseWebForm.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Settings.vb" />
     <Content Include="App_Code\BasicAuth.vb" />
     <Compile Include="App_Code\CustomModule.vb" />
     <Compile Include="App_Code\CustomStorageManager.vb" />
