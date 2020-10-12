@@ -42,6 +42,62 @@
 				</span></b>
 			</td>
 		</tr>
+        <tr><%-- jacky's edit 8-27-20--%>
+			<td style="width: 115px;" class="tdtable">
+				Fed Taxpayer ID:
+			</td>
+			<td>
+				<b><span style="font-size: medium; color: #2C7500">
+					<telerik:radmaskedtextbox ID="tb_FederalTaxpayerID" runat="server"  mask="##-#######" TabIndex="3"></telerik:radmaskedtextbox>
+                    <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "tb_FederalTaxpayerID" ID="RegularExpressionValidator1" 
+                        ValidationExpression = "^[\s\S]{9,}$" runat="server" ErrorMessage="Minimum 9 Number required."></asp:RegularExpressionValidator>
+				</span></b>
+			</td>
+		</tr>
+        <tr>
+			<td style="width: 115px;" class="tdtable">
+				TRUCRS ID:
+			</td>
+			<td>
+				<b><span style="font-size: medium; color: #2C7500">
+					<asp:TextBox ID="tb_TRUCRSID" runat="server" TabIndex="3"></asp:TextBox>
+                    
+				</span></b>
+			</td>
+		</tr>
+        <tr>
+			<td style="width: 115px;" class="tdtable">
+				NAICS Code #:
+			</td>
+			<td>
+				<b><span style="font-size: medium; color: #2C7500">
+					<asp:TextBox ID="tb_NAICScode" runat="server" TabIndex="3"></asp:TextBox>
+                    
+				</span></b>
+			</td>
+		</tr>
+        <tr>
+			<td style="width: 115px;" class="tdtable">
+				USDOT #:
+			</td>
+			<td>
+				<b><span style="font-size: medium; color: #2C7500">
+					<asp:TextBox ID="tb_USDOT" runat="server" TabIndex="3"></asp:TextBox>
+                    
+				</span></b>
+			</td>
+		</tr>
+        <tr>
+			<td style="width: 115px;" class="tdtable">
+				Other Permit:
+			</td>
+			<td>
+				<b><span style="font-size: medium; color: #2C7500">
+					<asp:TextBox ID="tb_OtherPermit" runat="server" TabIndex="3"></asp:TextBox>
+                    
+				</span></b>
+			</td>
+		</tr><%-- end of jacky's edit 8-27-20--%>
 	</table>
 	<p style="font-size: medium; font-weight: bold; color: #ED8701">
 		Account Details</p>

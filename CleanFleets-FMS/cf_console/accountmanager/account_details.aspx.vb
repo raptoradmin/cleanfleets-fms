@@ -18,6 +18,8 @@ Public Class account_details1
 
     Protected IDProfileAccount As String
 
+   
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If IsPostBack Then
             If (FormView1.CurrentMode = FormViewMode.Edit) Then

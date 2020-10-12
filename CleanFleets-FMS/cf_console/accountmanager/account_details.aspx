@@ -74,6 +74,37 @@
                             <td style="width: 120px" class="tdtable">Referred By:</td>
                             <td><asp:TextBox ID="ReferredByTextBox" runat="server" Text='<%# Bind("ReferredBy") %>' /></td>
                         </tr>
+                        <tr><%-- jacky's edit 8-27-20--%>
+                            <td style="width: 120px" class="tdtable">Fed Taxpayer ID:</td>   
+                            <td><telerik:radmaskedtextbox ID="FederalTaxpayerIDTextBox" runat="server" Text='<%# Bind("FederalTaxpayerID") %>' mask="##-#######"></telerik:radmaskedtextbox></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px" class="tdtable">TRUCRS ID:</td>   
+                            <td><asp:TextBox ID="TRUCRSIDTestBox" runat="server" Text='<%# Bind("TRUCRSID") %>' />
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px" class="tdtable">NAICS Code #:</td>   
+                            <td><asp:TextBox ID="NAICScodeTextBox" runat="server" Text='<%# Bind("NAICScode") %>' />
+                                
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td style="width: 120px" class="tdtable">USDOT #:</td>   
+                            <td><asp:TextBox ID="USDOTTextBox" runat="server" Text='<%# Bind("USDOT") %>' />
+                           
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td style="width: 120px" class="tdtable">Other Permit:</td>   
+                            <td><asp:TextBox ID="OtherPermitTextBox" runat="server" Text='<%# Bind("OtherPermit") %>' />
+                           
+                            </td>
+                           
+                        </tr><%-- end of jacky's edit 8-27-20--%>
                     </table>
                     <br />
                     
@@ -267,6 +298,26 @@
                             <td style="width: 115px" class="tdtable">Referred By:</td>
                             <td><asp:Label ID="ReferredByLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("ReferredBy") %>'></asp:Label></td>
                         </tr>
+                        <tr><%-- jacky's edit 8-27-20--%>
+                            <td style="width: 115px" class="tdtable">Fed Taxpayer ID:</td>
+                            <td><asp:Label ID="FederalTaxpayerIDLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("FederalTaxpayerID", "{0:##-#######}") %>'></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 115px" class="tdtable">TRUCRS ID:</td>
+                            <td><asp:Label ID="TRUCRSIDLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("TRUCRSID") %>'></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 115px" class="tdtable">NAICS Code #:</td>
+                            <td><asp:Label ID="NAICScodeLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("NAICScode") %>'></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 115px" class="tdtable">USDOT #:</td>
+                            <td><asp:Label ID="USDOTLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("USDOT") %>'></asp:Label></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 115px" class="tdtable">Other Permit:</td>
+                            <td><asp:Label ID="OtherPermitLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("OtherPermit") %>'></asp:Label></td>
+                        </tr><%-- end of jacky's edit 8-27-20--%>
                     </table>
                     <br />
                     
@@ -848,7 +899,7 @@
     <!-- DataSource: Account Details (sdsfvAccountDetails) -->
 	<asp:SqlDataSource ID="sdsfvAccountDetails" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
 	  SelectCommand="
-      	SELECT [IDProfileAccount], [AccountName], [AccountNum], [ContractNum], [ReferredBy], [Address1], [Address2], [City], [State], [County], [Country], [Zip], [MailMergeCode], 
+      	SELECT [IDProfileAccount], [AccountName], [AccountNum], [ContractNum], [ReferredBy], [FederalTaxpayerID], [TRUCRSID], [NAICScode], [USDOT],[OtherPermit], [Address1], [Address2], [City], [State], [County], [Country], [Zip], [MailMergeCode], 
           [Telephone1], [Ext1], [Telephone2], [Ext2], [Telephone3], [Ext3], [Fax1], [Fax2], [WebSite], [IDClass78BACTReplacementSchedule], 
           [dbo].[GetIDOptionListRecordValue](IDClass78BACTReplacementSchedule) AS [Class78BACTReplacementSchedule], CASE WHEN [PSIPNotificationEmail] = 'Y' THEN 1 ELSE 0 END [PSIPNotificationEmail], ISNULL([PSIPMonth], 'None') [PSIPMonth]
         FROM [CF_Profile_Account] 
@@ -856,7 +907,7 @@
 	  UpdateCommand="
       	UPDATE [CF_Profile_Account] 
         SET [IDModifiedUser] = @IDModifiedUser, [ModifiedDate] = @ModifiedDate,[AccountName] = @AccountName, [AccountNum] = @AccountNum, [ContractNum] = @ContractNum, 
-          [ReferredBy] = @ReferredBy,  [Address1] = @Address1, [Address2] = @Address2, [City] = @City, [State] = @State, [County] = @County, [Country] = @Country, [Zip] = @Zip, 
+          [ReferredBy] = @ReferredBy,[FederalTaxpayerID] = @FederalTaxpayerID,[TRUCRSID] = @TRUCRSID,[NAICScode] = @NAICScode,[USDOT] = @USDOT,[OtherPermit]=@OtherPermit,  [Address1] = @Address1, [Address2] = @Address2, [City] = @City, [State] = @State, [County] = @County, [Country] = @Country, [Zip] = @Zip, 
           [MailMergeCode] = @MailMergeCode, [Telephone1] = @Telephone1, [Ext1] = @Ext1, [Telephone2] = @Telephone2, [Ext2] = @Ext2, [Telephone3] = @Telephone3, [Ext3] = @Ext3, 
           [Fax1] = @Fax1, [Fax2] = @Fax2, [WebSite] = @WebSite, [IDClass78BACTReplacementSchedule] = @IDClass78BACTReplacementSchedule, [PSIPNotificationEmail] = CASE WHEN UPPER(@PSIPNotificationEmail) = 'TRUE' THEN 'Y' ELSE 'N' END, [PSIPMonth] = @PSIPMonth
         WHERE [IDProfileAccount] = @IDProfileAccount"
@@ -874,6 +925,11 @@
 			<asp:Parameter Name="AccountNum" Type="String" />
 			<asp:Parameter Name="ContractNum" Type="String" />
 			<asp:Parameter Name="ReferredBy" Type="String" />
+            <asp:Parameter Name="FederalTaxpayerID" Type="String" />
+            <asp:Parameter Name="TRUCRSID" Type="String" />
+            <asp:Parameter Name="NAICScode" Type="String" />
+            <asp:Parameter Name="USDOT" Type="String" />
+            <asp:Parameter Name="OtherPermit" Type="String" />
 			<asp:Parameter Name="Address1" Type="String" />
 			<asp:Parameter Name="Address2" Type="String" />
 			<asp:Parameter Name="City" Type="String" />

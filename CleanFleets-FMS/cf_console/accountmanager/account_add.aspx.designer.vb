@@ -50,6 +50,51 @@ Partial Public Class account_add
     Protected WithEvents tb_ReferredBy As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''tb_FederalTaxpayerID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_FederalTaxpayerID As Global.Telerik.Web.UI.RadMaskedTextBox
+
+    '''<summary>
+    '''tb_TRUCRSID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_TRUCRSID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''tb_NAICScode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_NAICScode As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''tb_USDOT control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_USDOT As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''tb_OtherPermit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_OtherPermit As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''tb_Address1 control.
     '''</summary>
     '''<remarks>

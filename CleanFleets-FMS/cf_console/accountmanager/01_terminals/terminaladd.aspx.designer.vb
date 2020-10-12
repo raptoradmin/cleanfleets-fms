@@ -165,6 +165,15 @@ Partial Public Class terminaladd1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents tb_Email As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''tb_FederalTaxpayerIDT control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_FederalTaxpayerIDT As Global.Telerik.Web.UI.RadMaskedTextBox
     
     '''<summary>
     '''tb_Notes control.

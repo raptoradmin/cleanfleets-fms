@@ -61,7 +61,7 @@
 				</table>
                 <table width="100%">
                     <tr>
-                        <td rowspan="3" style="text-align: center; width: 20px; ">&nbsp;
+                        <td rowspan="8" style="text-align: center; width: 20px; ">&nbsp;
                             </td>
                         <td style="font-weight: bold; color: #2C7500; text-align: right; width: 105px; font-size: small">
                             Account Name:</td>
@@ -90,6 +90,61 @@
                             Fleet Name:</td>
                         <td style="width: 131px">
                             <asp:Label ID="FleetNameLabel" runat="server" Text='<%# Bind("FleetName") %>' />
+                        </td>
+                        <td style="font-size: small; font-weight: bold; color: #2C7500; text-align: right; width: 95px;">&nbsp;
+                            </td>
+                        <td>&nbsp;
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; color: #2C7500; text-align: right; width: 105px; font-size: small">
+                            Federal Taxpayer ID:</td>
+                        <td style="width: 131px">
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("FederalTaxpayerID") %>' />
+                        </td>
+                        <td style="font-size: small; font-weight: bold; color: #2C7500; text-align: right; width: 95px;">&nbsp;
+                            </td>
+                        <td>&nbsp;
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; color: #2C7500; text-align: right; width: 105px; font-size: small">
+                            USDOT #:</td>
+                        <td style="width: 131px">
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("USDOT") %>' />
+                        </td>
+                        <td style="font-size: small; font-weight: bold; color: #2C7500; text-align: right; width: 95px;">&nbsp;
+                            </td>
+                        <td>&nbsp;
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; color: #2C7500; text-align: right; width: 105px; font-size: small">
+                            TRUCRS ID:</td>
+                        <td style="width: 131px">
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("TRUCRSID") %>' />
+                        </td>
+                        <td style="font-size: small; font-weight: bold; color: #2C7500; text-align: right; width: 95px;">&nbsp;
+                            </td>
+                        <td>&nbsp;
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; color: #2C7500; text-align: right; width: 105px; font-size: small">
+                            NAICS Code:</td>
+                        <td style="width: 131px">
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("NAICScode") %>' />
+                        </td>
+                        <td style="font-size: small; font-weight: bold; color: #2C7500; text-align: right; width: 95px;">&nbsp;
+                            </td>
+                        <td>&nbsp;
+                            </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; color: #2C7500; text-align: right; width: 105px; font-size: small">
+                            Other Permit:</td>
+                        <td style="width: 131px">
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("OtherPermit") %>' />
                         </td>
                         <td style="font-size: small; font-weight: bold; color: #2C7500; text-align: right; width: 95px;">&nbsp;
                             </td>
@@ -175,6 +230,44 @@
 			<td>&nbsp;
 				</td>
 		</tr>
+        
+        <tr>
+			<td style="width: 135px; " class="tabletld">
+				Based Outside CA:</td>
+			<td>
+				<%= vehicleRow("BasedOutsideCA") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+        <tr>
+			<td style="width: 135px; " class="tabletld">
+				Equipped with GPS:</td>
+			<td>
+				<%= vehicleRow("GPSEquipped") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+        <tr>
+			<td style="width: 135px; " class="tabletld">
+				All-Wheel Drive/ 4-Wheel Drive:</td>
+			<td>
+				<%= vehicleRow("AllWheelDrive") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+        <tr>
+			<td style="width: 135px; " class="tabletld">
+				Weight Class Bin:</td>
+			<td>
+				<%= vehicleRow("WeightClassBin") %>
+			</td>
+			<td>&nbsp;
+				</td>
+		</tr>
+
 		<tr>
 			<td style="width: 135px; " class="tabletld">
 				Status:</td>
@@ -450,7 +543,7 @@
     </telerik:RadScriptManager>
 
     <asp:SqlDataSource ID="sds_ReportVehicles" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-        SelectCommand="SELECT [IDVehicles], [AccountName], [TerminalName], [FleetName], [UnitNo], [ChassisVIN], [ChassisModelYear], [GrossVehicleWeight], [RuleCode], [CARBGroup], [PlannedComplianceDate], [BackupStatusDate], [ActualComplianceDate], [RetireStatusDate], [VehicleStatus], [SpecialProvision], [WeightDefinition], [IDImages], [Image] FROM [CFV_Report_Vehicle_w_Image] WHERE ([IDVehicles] = @IDVehicles)">
+        SelectCommand="SELECT [IDVehicles], [AccountName], [TerminalName], [FederalTaxpayerID], [USDOT],[OtherPermit], [TRUCRSID], [NAICScode], [FleetName], [UnitNo], [ChassisVIN], [ChassisModelYear], [BasedOutsideCA], [GPSEquipped], [AllWheelDrive], [WeightClassBin], [GrossVehicleWeight], [RuleCode], [CARBGroup], [PlannedComplianceDate], [BackupStatusDate], [ActualComplianceDate], [RetireStatusDate], [VehicleStatus], [SpecialProvision], [WeightDefinition], [IDImages], [Image] FROM [CFV_Report_Vehicle_w_Image] WHERE ([IDVehicles] = @IDVehicles)">
     <SelectParameters>
         <asp:QueryStringParameter Name="IDVehicles" QueryStringField="IDVehicles" />
     </SelectParameters>
@@ -476,8 +569,8 @@
     <asp:SqlDataSource ID="sds_ReportEnginesDECS" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
         SelectCommand="SELECT [IDVehicles], RDEV.[IDProfileFleet], [IDEngines], [UnitNo], [ChassisVIN], 
         [ChassisModelYear], [RuleCode], [PlannedComplianceDate], [ActualComplianceDate], [CARBGroup], 
-        [RetireStatusDate], [ImageVehicle], [SerialNum], 
-        [FamilyName], [SeriesModelNo], [Horsepower], [Hours], [Miles], 
+        [RetireStatusDate], [ImageVehicle], [SerialNum], [BasedOutsideCA], [GPSEquipped], [AllWheelDrive], [WeightClassBin], 
+        [FamilyName], [SeriesModelNo], [Horsepower], [Hours], [Miles], USDOT, OtherPermit, TRUCRSID, NAICScode, FederalTaxpayerID,
         [EngineManufacturer], [EngineModel], [EngineStatus], [EngineFuelType], [ModelYear], [IDDECS], 
         [SerialNo], [DECSName], [IDDECSManufacturer], [DECSManufacturer], [IDDECSLevel], [DECSLevel], 
         [DECSInstallationDate], [ImageEngine], [ImageDECS], [Displacement], AccountName, TerminalName, 

@@ -149,6 +149,10 @@
 						<asp:TextBox ID="WebsiteTextBox" runat="server" Text='<%# Bind("Website") %>' />
 					</td>
 				</tr>
+                <tr>
+                    <td style="width: 275px" class="tdtable">Fed Taxpayer ID:</td>   
+                    <td><telerik:radmaskedtextbox ID="FederalTaxpayerIDTTextBox" runat="server" Text='<%# Bind("FederalTaxpayerIDT") %>' mask="##-#######"></telerik:radmaskedtextbox></td>
+                </tr>
 			</table>
 			<br />
 			<b><span style="font-weight: bold; font-size: medium; color: #ED8701">Notes</span></b><br />
@@ -355,6 +359,10 @@
 					<td class="tdtable">Website:</td>
 					<td style="width: 275px"><asp:HyperLink ID="WebsiteLabel" runat="server" Text='<%# Bind("Website") %>' NavigateUrl='<%# Eval("Website") %>' Target="_blank"></asp:HyperLink></td>
 				</tr>
+                <tr>
+                    <td style="width: 275px" class="tdtable">Fed Taxpayer ID:</td>
+                    <td><asp:Label ID="FederalTaxpayerIDTLabel" runat="server" Style="font-family: Arial, Helvetica, sans-serif; font-size: small" Text='<%# Bind("FederalTaxpayerIDT", "{0:##-#######}") %>'></asp:Label></td>
+                </tr>
 			</table>
 			<br />
 			<b><span style="font-weight: bold; font-size: medium; color: #ED8701">Notes</span></b><br />
@@ -478,18 +486,18 @@
 	<asp:SqlDataSource ID="sds_cfv_Profile_Terminal" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
       SelectCommand="
       	SELECT [IDProfileTerminal], [IDProfileAccount], [AccountName], [TerminalName], [Address1], [Address2], [City], [State], [County], [Country], [Zip], 
-          [Telephone1], [Ext1], [Telephone2], [Ext2], [Telephone3], [Ext3], [Fax1],  [WebSite], [Notes], [NotesCF] 
+          [FederalTaxpayerIDT],[Telephone1], [Ext1], [Telephone2], [Ext2], [Telephone3], [Ext3], [Fax1],  [WebSite], [Notes], [NotesCF] 
         FROM [CFV_Profile_Terminal] 
         WHERE ([IDProfileTerminal] = @IDProfileTerminal)"
       InsertCommand="
-      	INSERT INTO [CF_Profile_Terminal] ([TerminalName], [Address1], [Address2], [City], [State], [County], [Country], [Zip], [MailMergeCode], [Telephone1], 
+      	INSERT INTO [CF_Profile_Terminal] ([TerminalName], [Address1], [Address2], [City], [State], [County], [Country], [Zip],[FederalTaxpayerIDT],[MailMergeCode], [Telephone1], 
           [Ext1], [Telephone2], [Ext2], [Telephone3], [Ext3], [CellPhone], [Fax1], [Fax2], [WebSite], [Notes], [NotesCF]) 
-        VALUES (@AccountName, @TerminalName, @Address1, @Address2, @City, @State, @County, @Country, @Zip, @MailMergeCode, @Telephone1, @Ext1, @Telephone2, 
+        VALUES (@AccountName, @TerminalName, @Address1, @Address2, @City, @State, @County, @Country, @Zip,@FederalTaxpayerIDT, @MailMergeCode, @Telephone1, @Ext1, @Telephone2, 
           @Ext2, @Telephone3, @Ext3, @CellPhone, @Fax1, @Fax2, @WebSite, @Notes, @NotesCF)"
       UpdateCommand="
       	UPDATE [CF_Profile_Terminal] 
         SET [IDModifiedUser] = @IDModifiedUser, [ModifiedDate] = @ModifiedDate, [TerminalName] = @TerminalName, [Address1] = @Address1, [Address2] = @Address2, 
-          [City] = @City, [State] = @State, [County] = @County, [Country] = @Country, [Zip] = @Zip, [Telephone1] = @Telephone1, [Ext1] = @Ext1, [Telephone2] = @Telephone2, 
+          [City] = @City, [State] = @State, [County] = @County, [Country] = @Country, [Zip] = @Zip,[FederalTaxpayerIDT]=@FederalTaxpayerIDT, [Telephone1] = @Telephone1, [Ext1] = @Ext1, [Telephone2] = @Telephone2, 
           [Ext2] = @Ext2, [Telephone3] = @Telephone3, [Ext3] = @Ext3, [Fax1] = @Fax1, [WebSite] = @WebSite, [Notes] = @Notes, [NotesCF] = @NotesCF 
         WHERE [IDProfileTerminal] = @IDProfileTerminal"
 	  DeleteCommand="
@@ -510,6 +518,7 @@
 			<asp:Parameter Name="County" Type="String" />
 			<asp:Parameter Name="Country" Type="String" />
 			<asp:Parameter Name="Zip" Type="String" />
+            <asp:Parameter Name="FederalTaxpayerIDT" Type="String" />
 			<asp:Parameter Name="Telephone1" Type="String" />
 			<asp:Parameter Name="Ext1" Type="String" />
 			<asp:Parameter Name="Telephone2" Type="String" />
@@ -534,6 +543,7 @@
 			<asp:Parameter Name="County" Type="String" />
 			<asp:Parameter Name="Country" Type="String" />
 			<asp:Parameter Name="Zip" Type="String" />
+            <asp:Parameter Name="FederalTaxpayerIDT" Type="String" />
 			<asp:Parameter Name="Telephone1" Type="String" />
 			<asp:Parameter Name="Ext1" Type="String" />
 			<asp:Parameter Name="Telephone2" Type="String" />

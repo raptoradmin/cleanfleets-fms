@@ -24,10 +24,10 @@ Public Class account_add
 
         strconnection = (ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
         strsqlinsert = "Insert into CF_Profile_Account ( "
-        strsqlinsert += "IDModifiedUser,EnterDate,ModifiedDate,AccountName,AccountNum,ContractNum,ReferredBy,Address1,Address2,City,State,Zip,Telephone1,Ext1,Telephone2,Ext2,Telephone3,Ext3,Fax1,Email,Notes,NotesCF"
+        strsqlinsert += "IDModifiedUser,EnterDate,ModifiedDate,AccountName,AccountNum,ContractNum,ReferredBy,FederalTaxpayerID,TRUCRSID,NAICScode,USDOT,OtherPermit,Address1,Address2,City,State,Zip,Telephone1,Ext1,Telephone2,Ext2,Telephone3,Ext3,Fax1,Email,Notes,NotesCF"
         strsqlinsert += ")"
         strsqlinsert += " values ("
-        strsqlinsert += "@IDModifiedUser,@EnterDate,@ModifiedDate,@AccountName,@AccountNum,@ContractNum,@ReferredBy,@Address1,@Address2,@City,@State,@Zip,@Telephone1,@Ext1,@Telephone2,@Ext2,@Telephone3,@Ext3,@Fax1,@Email,@Notes,@NotesCF"
+        strsqlinsert += "@IDModifiedUser,@EnterDate,@ModifiedDate,@AccountName,@AccountNum,@ContractNum,@ReferredBy,@FederalTaxpayerID,@TRUCRSID,@NAICScode,@USDOT,@OtherPermit,@Address1,@Address2,@City,@State,@Zip,@Telephone1,@Ext1,@Telephone2,@Ext2,@Telephone3,@Ext3,@Fax1,@Email,@Notes,@NotesCF"
         strsqlinsert += ")"
         strsqlinsert += "; SELECT SCOPE_IDENTITY() ; "
         conn = New SqlConnection(strconnection)
@@ -39,6 +39,11 @@ Public Class account_add
         cmd.Parameters.Add("@AccountNum", SqlDbType.VarChar, 50).Value = tb_AccountNum.Text
         cmd.Parameters.Add("@ContractNum", SqlDbType.VarChar, 50).Value = tb_ContractNum.Text
         cmd.Parameters.Add("@ReferredBy", SqlDbType.VarChar, 50).Value = tb_ReferredBy.Text
+        cmd.Parameters.Add("@FederalTaxpayerID", SqlDbType.VarChar, 50).Value = tb_FederalTaxpayerID.Text
+        cmd.Parameters.Add("@TRUCRSID", SqlDbType.VarChar, 50).Value = tb_TRUCRSID.Text
+        cmd.Parameters.Add("@NAICScode", SqlDbType.VarChar, 50).Value = tb_NAICScode.Text
+        cmd.Parameters.Add("@USDOT", SqlDbType.VarChar, 50).Value = tb_USDOT.Text
+        cmd.Parameters.Add("@OtherPermit", SqlDbType.VarChar, 50).Value = tb_OtherPermit.Text
         cmd.Parameters.Add("@Address1", SqlDbType.VarChar, 50).Value = tb_Address1.Text
         cmd.Parameters.Add("@Address2", SqlDbType.VarChar, 50).Value = tb_Address2.Text
         cmd.Parameters.Add("@City", SqlDbType.VarChar, 50).Value = tb_City.Text

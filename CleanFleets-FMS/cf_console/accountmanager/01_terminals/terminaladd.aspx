@@ -177,6 +177,18 @@
 				<asp:TextBox ID="tb_Email" runat="server" TabIndex="18" Width="225px"></asp:TextBox>
 			</td>
 		</tr>
+        <tr>
+			<td style="width: 105px;" class="tdtable">
+				Fed Taxpayer ID:
+			</td>
+			<td>
+				<b><span style="font-size: medium; color: #2C7500">
+					<telerik:radmaskedtextbox ID="tb_FederalTaxpayerIDT" runat="server"  mask="##-#######" TabIndex="9"></telerik:radmaskedtextbox>
+                    <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "tb_FederalTaxpayerIDT" ID="RegularExpressionValidator1" 
+                        ValidationExpression = "^[\s\S]{9,}$" runat="server" ErrorMessage="Minimum 9 Number required."></asp:RegularExpressionValidator>
+				</span></b>
+			</td>
+		</tr>
 	</table>
 	<p style="font-size: medium; font-weight: bold; color: #ED8701">
 		Notes</p>

@@ -17,10 +17,10 @@ Public Class terminaladd1
 
         strconnection = (ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
         strsqlinsert = "Insert into CF_Profile_Terminal ( "
-        strsqlinsert += "IDModifiedUser,EnterDate,ModifiedDate,IDProfileAccount,TerminalName,Address1,Address2,City,State,Zip,Telephone1,Ext1,Telephone2,Ext2,Telephone3,Ext3,Fax1,Email,Notes,NotesCF"
+        strsqlinsert += "IDModifiedUser,EnterDate,ModifiedDate,IDProfileAccount,TerminalName,Address1,Address2,City,State,Zip,Telephone1,Ext1,Telephone2,Ext2,Telephone3,Ext3,Fax1,Email,FederalTaxpayerIDT,Notes,NotesCF"
         strsqlinsert += ")"
         strsqlinsert += " values ("
-        strsqlinsert += "@IDModifiedUser,@EnterDate,@ModifiedDate,@IDProfileAccount,@TerminalName,@Address1,@Address2,@City,@State,@Zip,@Telephone1,@Ext1,@Telephone2,@Ext2,@Telephone3,@Ext3,@Fax1,@Email,@Notes,@NotesCF"
+        strsqlinsert += "@IDModifiedUser,@EnterDate,@ModifiedDate,@IDProfileAccount,@TerminalName,@Address1,@Address2,@City,@State,@Zip,@Telephone1,@Ext1,@Telephone2,@Ext2,@Telephone3,@Ext3,@Fax1,@Email,@FederalTaxpayerIDT,@Notes,@NotesCF"
         strsqlinsert += ")"
         strsqlinsert += "; SELECT SCOPE_IDENTITY() ; "
         conn = New SqlConnection(strconnection)
@@ -44,6 +44,7 @@ Public Class terminaladd1
         cmd.Parameters.Add("@Ext3", SqlDbType.VarChar, 10).Value = tb_Ext3.Text
         cmd.Parameters.Add("@Fax1", SqlDbType.VarChar, 10).Value = tb_Fax1.Text
         cmd.Parameters.Add("@Email", SqlDbType.VarChar, 100).Value = tb_Email.Text
+        cmd.Parameters.Add("@FederalTaxpayerIDT", SqlDbType.VarChar, 100).Value = tb_FederalTaxpayerIDT.Text
         cmd.Parameters.Add("@Notes", SqlDbType.VarChar, 8000).Value = tb_Notes.Text
         cmd.Parameters.Add("@NotesCF", SqlDbType.VarChar, 8000).Value = tb_NotesCF.Text
         cmd.Connection.Open()
