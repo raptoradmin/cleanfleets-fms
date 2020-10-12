@@ -73,7 +73,7 @@ namespace FMS.Repository
                 // Changing database back to CleanFleets in preparation for a migration from DEV to Production; Andrew - 12/10/2019.
                 // Push made and reverting back; Andrew - 12/10/2019.
 
-                optionsBuilder.UseSqlServer(@"Server=tcp:SQL16\CFNET;Database=CleanFleets-DEV;User ID=sa;Password=Cl3anFl33ts1");
+                optionsBuilder.UseSqlServer(@"Server=tcp:SQL16\CFNET;Database=CleanFleets;User ID=sa;Password=Cl3anFl33ts1");
 
                 // End of change made by Andrew on 12/10/2019.
 
