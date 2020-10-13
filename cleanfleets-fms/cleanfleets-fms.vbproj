@@ -391,14 +391,12 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dmvreport.aspx.vb">
       <DependentUpon>dmvreport.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.designer.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\tabtest.aspx.designer.vb">
       <DependentUpon>tabtest.aspx</DependentUpon>
@@ -619,7 +617,6 @@
     </Compile>
     <Compile Include="CF_Console.Master.vb">
       <DependentUpon>CF_Console.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\01_terminals\terminal.aspx.designer.vb">
       <DependentUpon>terminal.aspx</DependentUpon>
@@ -700,7 +697,6 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.vb">
       <DependentUpon>vehiclesdetails.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesearch.aspx.designer.vb">
       <DependentUpon>vehiclesearch.aspx</DependentUpon>
@@ -721,7 +717,6 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\04_engines\engines_detached.aspx.vb">
       <DependentUpon>engines_detached.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\04_engines\engine_attach.aspx.designer.vb">
       <DependentUpon>engine_attach.aspx</DependentUpon>
@@ -798,7 +793,6 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\account_list.aspx.vb">
       <DependentUpon>account_list.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\account_user_add.aspx.designer.vb">
       <DependentUpon>account_user_add.aspx</DependentUpon>
@@ -1001,7 +995,6 @@
     </Compile>
     <Compile Include="estimator\Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="estimator\estimate.aspx.designer.vb">
       <DependentUpon>estimate.aspx</DependentUpon>
@@ -1137,7 +1130,6 @@
     </Compile>
     <Compile Include="includes\reports_console\06_vehicles_detailed_by_CARB.aspx.vb">
       <DependentUpon>06_vehicles_detailed_by_CARB.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="includes\reports_console\07_fleet_calculation_export.aspx.designer.vb">
       <DependentUpon>07_fleet_calculation_export.aspx</DependentUpon>
@@ -1165,7 +1157,6 @@
     </Compile>
     <Compile Include="includes\reports_console\bluereport.aspx.vb">
       <DependentUpon>bluereport.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="includes\reports_console\bluereport_fleet.aspx.designer.vb">
       <DependentUpon>bluereport_fleet.aspx</DependentUpon>
