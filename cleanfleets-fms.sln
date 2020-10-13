@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "cleanfleets-fms", "cleanfleets-fms\cleanfleets-fms.vbproj", "{ADF11345-AB95-4AD3-89B4-4CA70A469D30}"
+	ProjectSection(ProjectDependencies) = postProject
+		{36EBFD3C-6E3F-4957-B503-A735722F1628} = {36EBFD3C-6E3F-4957-B503-A735722F1628}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dox", "dox", "{AE7DAF90-31B9-4831-BDAB-AE09A15D858B}"
 	ProjectSection(SolutionItems) = preProject
@@ -42,8 +45,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{A4
 		packages\Telerik.Web.UI.dll.refresh = packages\Telerik.Web.UI.dll.refresh
 	EndProjectSection
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CFUtilities", "..\cleanfleets-fet\FleetEmissionsTracker\CFUtilities\CFUtilities.vbproj", "{36EBFD3C-6E3F-4957-B503-A735722F1628}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMS.Entity", "FMS.Entity\FMS.Entity.csproj", "{A5EBC7E8-0B5C-43ED-BA0A-8B9FD311DE43}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMS.ServiceFacade", "FMS.ServiceFacade\FMS.ServiceFacade.csproj", "{6EFB16AC-545D-41E0-8ABD-DBE2123C3EAD}"
@@ -51,6 +52,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMS.Business", "FMS.Business\FMS.Business.csproj", "{33401798-CE86-4584-896A-D3A2B0984AAD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FMS.Repository", "FMS.Repository\FMS.Repository.csproj", "{2E881159-CDF9-4CA0-8C83-D1FCD057EDAF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CFUtilities", "CFUtilities\CFUtilities.vbproj", "{36EBFD3C-6E3F-4957-B503-A735722F1628}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,14 +89,6 @@ Global
 		{DA41BA36-AAC9-4015-A847-36ED3F625DDE}.Release|x86.ActiveCfg = Release|x86
 		{DA41BA36-AAC9-4015-A847-36ED3F625DDE}.Release|x86.Build.0 = Release|x86
 		{DA41BA36-AAC9-4015-A847-36ED3F625DDE}.Release|x86.Deploy.0 = Release|x86
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|x86.Build.0 = Debug|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|x86.ActiveCfg = Release|Any CPU
-		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|x86.Build.0 = Release|Any CPU
 		{A5EBC7E8-0B5C-43ED-BA0A-8B9FD311DE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5EBC7E8-0B5C-43ED-BA0A-8B9FD311DE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5EBC7E8-0B5C-43ED-BA0A-8B9FD311DE43}.Debug|x86.ActiveCfg = Debug|x86
@@ -126,6 +121,14 @@ Global
 		{2E881159-CDF9-4CA0-8C83-D1FCD057EDAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E881159-CDF9-4CA0-8C83-D1FCD057EDAF}.Release|x86.ActiveCfg = Release|x86
 		{2E881159-CDF9-4CA0-8C83-D1FCD057EDAF}.Release|x86.Build.0 = Release|x86
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Debug|x86.Build.0 = Debug|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|x86.ActiveCfg = Release|Any CPU
+		{36EBFD3C-6E3F-4957-B503-A735722F1628}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

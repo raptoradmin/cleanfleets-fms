@@ -57,7 +57,7 @@
   <ItemGroup>
     <Reference Include="ABCpdf, Version=7.0.1.9, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ABCpdf.dll</HintPath>
+      <HintPath>..\git-bin\ABCpdf.dll</HintPath>
     </Reference>
     <Reference Include="AjaxControlToolkit, Version=3.0.31106.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -99,9 +99,8 @@
       <HintPath>bin\Radactive.WebControls.ILoad.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Buffers">
+      <HintPath>..\git-bin\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -1284,6 +1283,7 @@
     <Content Include="includes\reports_console\templates\Class 7-8 Engine Model Year Replacement Schedule Option 1.xls" />
     <Content Include="includes\reports_console\templates\Class 7-8 Engine Model Year Replacement Schedule Option 2.xls" />
     <Content Include="includes\reports_console\templates\STB Phase-In Template.xls" />
+    <Content Include="libman.json" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1308,8 +1308,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cleanfleets-fet\FleetEmissionsTracker\CFUtilities\CFUtilities.vbproj">
-      <Project>{36ebfd3c-6e3f-4957-b503-a735722f1628}</Project>
+    <ProjectReference Include="..\CFUtilities\CFUtilities.vbproj">
+      <Project>{36EBFD3C-6E3F-4957-B503-A735722F1628}</Project>
       <Name>CFUtilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\CFWebControls\CFWebControls.csproj">
@@ -1346,6 +1346,9 @@
     <PackageReference Include="MSBUILD.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBuild.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBuild.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
+    <PackageReference Include="System.Buffers">
+      <Version>4.5.1</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
