@@ -45,11 +45,11 @@ namespace FMS.Business
                 };
 
                 var m2 = (from m in context.CfVehiclesLogMileage
-                          where v.Vehicle.Idvehicles == m.Idvehicles && (DateTime.Now.Year - 2) == ((DateTime)m.EnterDate).Year
+                          where v.Vehicle.Idvehicles == m.Idvehicles && (DateTime.Now.Year - 2) == ((DateTime)m.MileageDate).Year
                           select m).OrderByDescending(d => d.EnterDate).FirstOrDefault();
                 if (null != m2)
                 {
-                    dto.MileageDateTwoYearsAgo = ((DateTime)m2.EnterDate).ToShortDateString();
+                    dto.MileageDateTwoYearsAgo = ((DateTime)m2.MileageDate).ToShortDateString();
                     dto.MileageTwoYearsAgo = m2.Mileage.ToString();
                 }
                 else
@@ -59,11 +59,11 @@ namespace FMS.Business
                 }
 
                 var m1 = (from m in context.CfVehiclesLogMileage
-                          where v.Vehicle.Idvehicles == m.Idvehicles && (DateTime.Now.Year - 1) == ((DateTime)m.EnterDate).Year
+                          where v.Vehicle.Idvehicles == m.Idvehicles && (DateTime.Now.Year - 1) == ((DateTime)m.MileageDate).Year
                           select m).OrderByDescending(d => d.EnterDate).FirstOrDefault();
                 if (null != m1)
                 {
-                    dto.MileageDateLastYear = ((DateTime)m1.EnterDate).ToShortDateString();
+                    dto.MileageDateLastYear = ((DateTime)m1.MileageDate).ToShortDateString();
                     dto.MileageLastYear = m1.Mileage.ToString();
                 }
                 else
@@ -74,12 +74,12 @@ namespace FMS.Business
 
 
                 var mc = (from m in context.CfVehiclesLogMileage
-                          where v.Vehicle.Idvehicles == m.Idvehicles && (DateTime.Now.Year) == ((DateTime)m.EnterDate).Year
+                          where v.Vehicle.Idvehicles == m.Idvehicles && (DateTime.Now.Year) == ((DateTime)m.MileageDate).Year
                           select m).OrderByDescending(d => d.EnterDate).FirstOrDefault();
 
                 if (null != mc)
                 {
-                    dto.MileageDateCurrentYear = ((DateTime)mc.EnterDate).ToShortDateString();
+                    dto.MileageDateCurrentYear = ((DateTime)mc.MileageDate).ToShortDateString();
                     dto.MileageCurrentYear = mc.Mileage.ToString();
                 }
                 else
