@@ -1342,6 +1342,9 @@
     <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
       <Version>2.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.ReportViewer.WebForms">
+      <Version>10.0.40219.1</Version>
+    </PackageReference>
     <PackageReference Include="MSBUILD.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBUILD.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBuild.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
