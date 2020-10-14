@@ -1308,8 +1308,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cleanfleets-fet\FleetEmissionsTracker\CFUtilities\CFUtilities.vbproj">
-      <Project>{36ebfd3c-6e3f-4957-b503-a735722f1628}</Project>
+    <ProjectReference Include="..\CFUtilities\CFUtilities.csproj">
+      <Project>{36EBFD3C-6E3F-4957-B503-A735722F1628}</Project>
       <Name>CFUtilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\CFWebControls\CFWebControls.csproj">
