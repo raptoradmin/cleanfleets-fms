@@ -57,7 +57,7 @@
   <ItemGroup>
     <Reference Include="ABCpdf, Version=7.0.1.9, Culture=neutral, PublicKeyToken=a7a0b3f5184f2169, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\git-bin\ABCpdf.dll</HintPath>
+      <HintPath>bin\ABCpdf.dll</HintPath>
     </Reference>
     <Reference Include="AjaxControlToolkit, Version=3.0.31106.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -99,8 +99,9 @@
       <HintPath>bin\Radactive.WebControls.ILoad.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers">
-      <HintPath>..\git-bin\System.Buffers.dll</HintPath>
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -391,12 +392,14 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dmvreport.aspx.vb">
       <DependentUpon>dmvreport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.designer.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\dpfcleaning.aspx.vb">
       <DependentUpon>dpfcleaning.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\tabtest.aspx.designer.vb">
       <DependentUpon>tabtest.aspx</DependentUpon>
@@ -617,6 +620,7 @@
     </Compile>
     <Compile Include="CF_Console.Master.vb">
       <DependentUpon>CF_Console.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\01_terminals\terminal.aspx.designer.vb">
       <DependentUpon>terminal.aspx</DependentUpon>
@@ -697,6 +701,7 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesdetails.aspx.vb">
       <DependentUpon>vehiclesdetails.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\03_vehicles\vehiclesearch.aspx.designer.vb">
       <DependentUpon>vehiclesearch.aspx</DependentUpon>
@@ -717,6 +722,7 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\04_engines\engines_detached.aspx.vb">
       <DependentUpon>engines_detached.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\04_engines\engine_attach.aspx.designer.vb">
       <DependentUpon>engine_attach.aspx</DependentUpon>
@@ -793,6 +799,7 @@
     </Compile>
     <Compile Include="cf_console\accountmanager\account_list.aspx.vb">
       <DependentUpon>account_list.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="cf_console\accountmanager\account_user_add.aspx.designer.vb">
       <DependentUpon>account_user_add.aspx</DependentUpon>
@@ -995,6 +1002,7 @@
     </Compile>
     <Compile Include="estimator\Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="estimator\estimate.aspx.designer.vb">
       <DependentUpon>estimate.aspx</DependentUpon>
@@ -1130,6 +1138,7 @@
     </Compile>
     <Compile Include="includes\reports_console\06_vehicles_detailed_by_CARB.aspx.vb">
       <DependentUpon>06_vehicles_detailed_by_CARB.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="includes\reports_console\07_fleet_calculation_export.aspx.designer.vb">
       <DependentUpon>07_fleet_calculation_export.aspx</DependentUpon>
@@ -1157,6 +1166,7 @@
     </Compile>
     <Compile Include="includes\reports_console\bluereport.aspx.vb">
       <DependentUpon>bluereport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="includes\reports_console\bluereport_fleet.aspx.designer.vb">
       <DependentUpon>bluereport_fleet.aspx</DependentUpon>
@@ -1274,7 +1284,6 @@
     <Content Include="includes\reports_console\templates\Class 7-8 Engine Model Year Replacement Schedule Option 1.xls" />
     <Content Include="includes\reports_console\templates\Class 7-8 Engine Model Year Replacement Schedule Option 2.xls" />
     <Content Include="includes\reports_console\templates\STB Phase-In Template.xls" />
-    <Content Include="libman.json" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1299,8 +1308,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CFUtilities\CFUtilities.vbproj">
-      <Project>{36EBFD3C-6E3F-4957-B503-A735722F1628}</Project>
+    <ProjectReference Include="..\..\cleanfleets-fet\FleetEmissionsTracker\CFUtilities\CFUtilities.vbproj">
+      <Project>{36ebfd3c-6e3f-4957-b503-a735722f1628}</Project>
       <Name>CFUtilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\CFWebControls\CFWebControls.csproj">
@@ -1337,9 +1346,6 @@
     <PackageReference Include="MSBUILD.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBuild.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
     <PackageReference Include="MSBuild.Microsoft.VisualStudio.Web.Targets" Version="14.0.0.3" />
-    <PackageReference Include="System.Buffers">
-      <Version>4.5.1</Version>
-    </PackageReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
