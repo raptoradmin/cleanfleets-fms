@@ -1308,6 +1308,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    
     <ProjectReference Include="..\CFUtilities\CFUtilities.csproj">
       <Project>{36EBFD3C-6E3F-4957-B503-A735722F1628}</Project>
       <Name>CFUtilities</Name>

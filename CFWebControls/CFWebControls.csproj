@@ -72,12 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cleanfleets-fet\FleetEmissionsTracker\CFUtilities\CFUtilities.vbproj">
-      <Project>{36ebfd3c-6e3f-4957-b503-a735722f1628}</Project>
-      <Name>CFUtilities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
