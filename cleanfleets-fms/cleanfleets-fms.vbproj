@@ -255,6 +255,7 @@
     <Content Include="cf_console\analysis\excel.aspx" />
     <Content Include="cf_console\analysis\pregrouped.aspx" />
     <Content Include="cf_console\analysis\ungrouped.aspx" />
+    <Content Include="cf_console\changelog.aspx" />
     <Content Include="cf_console\default.aspx" />
     <Content Include="controls\Footer.ascx" />
     <Content Include="csv_exporter\getCsv.aspx" />
@@ -379,6 +380,13 @@
   <ItemGroup>
     <Compile Include="App_Code\BaseWebForm.vb">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cf_console\changelog.aspx.designer.vb">
+      <DependentUpon>changelog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cf_console\changelog.aspx.vb">
+      <DependentUpon>changelog.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
     <Content Include="App_Code\BasicAuth.vb" />
