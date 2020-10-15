@@ -1296,12 +1296,9 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\PublishProfiles\FMSFolderProfile.pubxml" />
-    <None Include="My Project\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="My Project\PublishProfiles\FolderProfile1.pubxml" />
-    <None Include="My Project\PublishProfiles\Production.pubxml" />
-    <None Include="My Project\PublishProfiles\PublishFMSToProdProfile.pubxml" />
-    <None Include="My Project\PublishProfiles\TestDeploy.pubxml" />
+    <None Include="My Project\PublishProfiles\PublishToFolder-Debug.pubxml" />
+    <None Include="My Project\PublishProfiles\PublishToFolder.pubxml" />
+    <None Include="My Project\PublishProfiles\PublishToHtdocs.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
