@@ -6,9 +6,9 @@ Imports System.Data.SqlClient
 Imports Telerik.Web.UI
 Imports System.Data.OleDb
 Imports System.Collections.Generic
-Imports WebSupergoo.ABCpdf7
-Imports WebSupergoo.ABCpdf7.Objects
-Imports WebSupergoo.ABCpdf7.Atoms
+Imports WebSupergoo.ABCpdf11
+Imports WebSupergoo.ABCpdf11.Objects
+Imports WebSupergoo.ABCpdf11.Atoms
 Imports System.IO
 Imports Inspironix
 Imports System.Globalization
