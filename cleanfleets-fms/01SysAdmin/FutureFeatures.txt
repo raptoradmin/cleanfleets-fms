@@ -1,7 +1,0 @@
-﻿
-Future Features
-
-Reassign Process
-
-Vehicles between terminals
-Terminals between fleets
