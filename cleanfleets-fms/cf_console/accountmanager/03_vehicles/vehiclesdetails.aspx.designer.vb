@@ -309,6 +309,8 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rg_VehicleImages As Global.Telerik.Web.UI.RadGrid
+
+ 
     
     '''<summary>
     '''btn_AddVehicleFile control.
@@ -930,7 +932,24 @@ Partial Public Class vehiclesdetails1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_VehicleKey As Global.System.Web.UI.WebControls.SqlDataSource
+
+     '''<summary>
+    '''sds_ddl_BasedOutsideCA control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_BasedOutsideCA As Global.System.Web.UI.WebControls.SqlDataSource
     
+    '''<summary>
+    '''sds_ddl_WeightClassBin control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_WeightClassBin As Global.System.Web.UI.WebControls.SqlDataSource
     '''<summary>
     '''sds_CFV_DECs_lv control.
     '''</summary>

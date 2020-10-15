@@ -1,0 +1,774 @@
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc. 
+VIN: WT WHITE
+LIC PLATE: NONE
+Vehicle Mileage: 4914
+Inspector: Sean Edgar
+ENG YEAR: 1992
+STACK SIZE (in): 5
+Horsepower: Greater than 300
+TEST DATE:  10/08/2020
+TEST TIME:  11:27:26
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 67.1
+Relative Humidity = 32.0
+Barometric Pressure = 26.8
+
+Preliminary Results:
+Test1   0.8
+Test2   3.2
+Test3  13.5
+PRE SNAP SPREAD  16.4
+Actual Results:
+Test1  11.4
+Test2  12.0
+Test3  10.7
+OFFICIAL	SNAP SPREAD   1.6
+AVERAGE 11.4
+ZERO DRIFT   2.0
+VEHICLE FAILED TEST !!
+TESTER _____________________
+Record Number  874
+
+
+
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: 129971
+LIC PLATE: 27020D2
+Vehicle Mileage: 127590
+Inspector: Sean Edgar
+ENG YEAR: 2011
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  12:15:11
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 77.0
+Relative Humidity = 15.1
+Barometric Pressure = 25.1
+
+Preliminary Results:
+Test1   0.0
+Test2   0.0
+Test3   0.0
+PRE SNAP SPREAD  0.0
+Actual Results:
+Test1   0.0
+Test2   0.0
+Test3   0.6
+OFFICIAL	SNAP SPREAD   1.3
+AVERAGE 0.2
+ZERO DRIFT   0.0
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  876
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: 131967
+LIC PLATE: 70896G2
+Vehicle Mileage: 76917
+Inspector: Sean Edgar
+ENG YEAR: 2016
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  12:25:21
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 80.6
+Relative Humidity = 14.1
+Barometric Pressure = 25.0
+
+Preliminary Results:
+Test1   0.0
+Test2   0.0
+Test3   0.2
+PRE SNAP SPREAD  0.4
+Actual Results:
+Test1   0.0
+Test2   0.0
+Test3   0.0
+OFFICIAL	SNAP SPREAD   0.0
+AVERAGE 0.0
+ZERO DRIFT   1.2
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  877
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: 127343
+LIC PLATE: 54732U1
+Vehicle Mileage: 185418
+Inspector: Sean Edgar
+ENG YEAR: 2009
+STACK SIZE (in): 5
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  12:40:43
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 81.5
+Relative Humidity = 12.6
+Barometric Pressure = 25.2
+
+Preliminary Results:
+Test1   1.5
+Test2   1.5
+Test3   1.5
+PRE SNAP SPREAD  0.0
+Actual Results:
+Test1   1.5
+Test2   1.5
+Test3   1.5
+OFFICIAL	SNAP SPREAD   0.1
+AVERAGE 1.5
+ZERO DRIFT   0.7
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  878
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: MT2
+LIC PLATE: 99149U1
+Vehicle Mileage: 100806
+Inspector: Sean Edgar
+ENG YEAR: 2013
+STACK SIZE (in): 5
+Horsepower: Greater than 300
+TEST DATE:  10/08/2020
+TEST TIME:  13:30:04
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 90.5
+Relative Humidity = 11.4
+Barometric Pressure = 26.9
+
+Preliminary Results:
+Test1   0.9
+Test2   0.3
+Test3   4.2
+PRE SNAP SPREAD  5.9
+Actual Results:
+Test1   0.0
+Test2   0.0
+Test3   0.0
+OFFICIAL	SNAP SPREAD   0.0
+AVERAGE 0.0
+ZERO DRIFT   0.0
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  879
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: WT2 137584
+LIC PLATE: 04577M1
+Vehicle Mileage: 23612
+Inspector: Sean Edgar
+ENG YEAR: 2013
+STACK SIZE (in): 5
+Horsepower: Greater than 300
+TEST DATE:  10/08/2020
+TEST TIME:  13:35:33
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 93.2
+Relative Humidity = 12.8
+Barometric Pressure = 27.0
+
+Preliminary Results:
+Test1   0.5
+Test2   0.5
+Test3   0.5
+PRE SNAP SPREAD  0.1
+Actual Results:
+Test1   0.5
+Test2   0.6
+Test3   0.7
+OFFICIAL	SNAP SPREAD   0.2
+AVERAGE 0.6
+ZERO DRIFT   1.2
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  880
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: F550 131959
+LIC PLATE: 70895G2
+Vehicle Mileage: 86917
+Inspector: Sean Edgar
+ENG YEAR: 2017
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  13:42:48
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 93.2
+Relative Humidity = 11.3
+Barometric Pressure = 26.9
+
+Preliminary Results:
+Test1   1.0
+Test2   1.2
+Test3   1.1
+PRE SNAP SPREAD  0.3
+Actual Results:
+Test1   1.2
+Test2   1.0
+Test3   1.0
+OFFICIAL	SNAP SPREAD   0.3
+AVERAGE 1.0
+ZERO DRIFT   1.4
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  881
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: CT2 122868
+LIC PLATE: 68792E1
+Vehicle Mileage: 192003
+Inspector: Sean Edgar
+ENG YEAR: 2006
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  13:51:14
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 90.5
+Relative Humidity = 12.6
+Barometric Pressure = 27.0
+
+Preliminary Results:
+Test1   1.1
+Test2   0.6
+Test3   0.7
+PRE SNAP SPREAD  0.8
+Actual Results:
+Test1   0.6
+Test2   0.6
+Test3   0.6
+OFFICIAL	SNAP SPREAD   0.0
+AVERAGE 0.6
+ZERO DRIFT   0.0
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  882
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: TT4 105195
+LIC PLATE: 8S36223
+Vehicle Mileage: 88315
+Inspector: Sean Edgar
+ENG YEAR: 2008
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  14:14:15
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 84.2
+Relative Humidity = 19.8
+Barometric Pressure = 27.6
+
+Preliminary Results:
+Test1   0.0
+Test2   0.0
+Test3   0.0
+PRE SNAP SPREAD  0.0
+Actual Results:
+Test1   0.0
+Test2   0.0
+Test3   0.0
+OFFICIAL	SNAP SPREAD   0.0
+AVERAGE 0.0
+ZERO DRIFT   0.0
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  883
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: F550 97771
+LIC PLATE: 8L35220
+Vehicle Mileage: 112712
+Inspector: Sean Edgar
+ENG YEAR: 2004
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  14:57:50
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 89.6
+Relative Humidity = 14.0
+Barometric Pressure = 28.3
+
+Preliminary Results:
+Test1   0.5
+Test2   1.2
+Test3   1.1
+PRE SNAP SPREAD  0.9
+Actual Results:
+Test1   0.9
+Test2   0.8
+Test3   0.7
+OFFICIAL	SNAP SPREAD   0.3
+AVERAGE 0.8
+ZERO DRIFT   0.2
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  884
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: F550 124484
+LIC PLATE: 8Y34800
+Vehicle Mileage: 153870
+Inspector: Sean Edgar
+ENG YEAR: 2004
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  15:13:52
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 96.8
+Relative Humidity = 12.1
+Barometric Pressure = 28.0
+
+Preliminary Results:
+Test1   5.1
+Test2   4.2
+Test3   5.0
+PRE SNAP SPREAD  1.3
+Actual Results:
+Test1   4.5
+Test2   4.7
+Test3   5.9
+OFFICIAL	SNAP SPREAD   1.9
+AVERAGE 5.0
+ZERO DRIFT   2.6
+VEHICLE FAILED TEST !!
+TESTER _____________________
+Record Number  885
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: F450 273541
+LIC PLATE: 5U12230
+Vehicle Mileage: 217929
+Inspector: Sean Edgar
+ENG YEAR: 1998
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  15:22:01
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 97.7
+Relative Humidity = 12.6
+Barometric Pressure = 28.1
+
+Preliminary Results:
+Test1   1.0
+Test2   0.8
+Test3   3.1
+PRE SNAP SPREAD  3.2
+Actual Results:
+Test1   1.1
+Test2   2.1
+Test3   1.7
+OFFICIAL	SNAP SPREAD   1.4
+AVERAGE 1.6
+ZERO DRIFT   0.0
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  886
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: FRA 255036
+LIC PLATE: 3T61820
+Vehicle Mileage: 138735
+Inspector: Sean Edgar
+ENG YEAR: 1988
+STACK SIZE (in): 4
+Horsepower: 201 to 300
+TEST DATE:  10/08/2020
+TEST TIME:  15:27:57
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 98.6
+Relative Humidity = 11.4
+Barometric Pressure = 28.0
+
+Preliminary Results:
+Test1  25.7
+Test2  23.6
+Test3  20.9
+PRE SNAP SPREAD  6.0
+Actual Results:
+Test1  25.7
+Test2  23.5
+Test3  24.0
+OFFICIAL	SNAP SPREAD   2.7
+AVERAGE 24.4
+ZERO DRIFT   0.0
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  887
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+WAGER: WIRELESS MODEL RHW
+
+SH SerialNum:   999
+SH,HC Firmware Ver: 2.05, 1.68Y
+TM Firmware Ver: 0.00
+User Filter Verification date:
+10/07/2020
+
+     Test Facility:
+ZERO EMISSIONS PRTR
+1240 FOOTHILL BLVD
+SUIT S
+SYLMAR CA 91342
+Phone Num:  888 8 JULIAN
+ADMIN@ZEPLLC.COM
+InspCtrl: SEAN EDGAR
+
+     Vehicle Data:
+Company: J.F. Shea Construction Inc.  
+VIN: WT5 121081
+LIC PLATE: 86732C1
+Vehicle Mileage: 50102
+Inspector: Sean Edgar
+ENG YEAR: 2006
+STACK SIZE (in): 5
+Horsepower: Greater than 300
+TEST DATE:  10/08/2020
+TEST TIME:  15:50:43
+Amb Correction: ON !!
+     Ambient Conditions:
+Temperature = 95.0
+Relative Humidity = 11.5
+Barometric Pressure = 28.2
+
+Preliminary Results:
+Test1   6.1
+Test2   1.7
+Test3   1.6
+PRE SNAP SPREAD  5.9
+Actual Results:
+Test1   3.3
+Test2   3.4
+Test3   5.6
+OFFICIAL	SNAP SPREAD   3.0
+AVERAGE 4.1
+ZERO DRIFT   0.8
+VEHICLE PASSED TEST !!
+TESTER _____________________
+Record Number  888
+
+
+
+
+--------------------------END OF REPORT----------------------------
+
+

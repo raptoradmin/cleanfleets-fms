@@ -210,7 +210,7 @@ Partial Public Class vehiclesadd1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents tbx_ActualHours As Global.System.Web.UI.WebControls.TextBox
-    
+
     '''<summary>
     '''ddl_IDCARBGroup control.
     '''</summary>
@@ -219,7 +219,43 @@ Partial Public Class vehiclesadd1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ddl_IDCARBGroup As Global.System.Web.UI.WebControls.DropDownList
-    
+
+    '''<summary>
+    '''ddl_BasedOutsideCA control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddl_BasedOutsideCA As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''ddl_GPSEquipped control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddl_GPSEquipped As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''ddl_AllWheelDrive control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddl_AllWheelDrive As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''ddl_WeightClassBin control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddl_WeightClassBin As Global.System.Web.UI.WebControls.DropDownList
+
     '''<summary>
     '''RequiredFieldValidator5 control.
     '''</summary>
@@ -246,6 +282,42 @@ Partial Public Class vehiclesadd1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents RequiredFieldValidator4 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''BasedOutsideCAValidator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents BasedOutsideCAdValidator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''GPSEquippedValidator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GPSEquippedValidator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''AllWheelDriveValidator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AllWheelDriveValidator As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''WeightClassBinValidator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents WeightClassBinValidator As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
     '''rdp_PlannedComplianceDate control.
@@ -444,7 +516,7 @@ Partial Public Class vehiclesadd1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_Year As Global.System.Web.UI.WebControls.SqlDataSource
-    
+
     '''<summary>
     '''sds_ddl_Op_State control.
     '''</summary>
@@ -453,4 +525,38 @@ Partial Public Class vehiclesadd1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sds_ddl_Op_State As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''sds_ddl_BasedOutsideCA control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_BasedOutsideCA As Global.System.Web.UI.WebControls.SqlDataSource
+    '''<summary>
+    '''sds_ddl_BasedOutsideCA1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_BasedOutsideCA1 As Global.System.Web.UI.WebControls.SqlDataSource
+    '''<summary>
+    '''sds_ddl_BasedOutsideCA2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_BasedOutsideCA2 As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''sds_ddl_WeightClassBin control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sds_ddl_WeightClassBin As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

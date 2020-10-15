@@ -15,7 +15,7 @@ Imports System.Globalization
 Imports System.Text
 Imports System.Drawing
 Imports System.Web.Configuration
-Imports WebSupergoo.ABCpdf11
+Imports WebSupergoo.ABCpdf7
 Public Class opacitytestsimport
     Inherits BaseWebForm
 

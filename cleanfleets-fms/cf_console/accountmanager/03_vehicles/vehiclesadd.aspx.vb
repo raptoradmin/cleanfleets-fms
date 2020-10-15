@@ -82,10 +82,10 @@ Public Class vehiclesadd1
 
             strconnection = (ConfigurationManager.ConnectionStrings("CF_SQL_Connection").ConnectionString)
             strsqlinsert = "Insert into CF_Vehicles ( "
-            strsqlinsert += "IDVehicles, ActualRetirementDate, PlannedRetirementDate, EstReplacementCost, IDModifiedUser, ModifiedDate, IDProfileFleet, IDEquipmentType, IDEquipmentCategory, IDVehicleStatus, IDCARBGroup, LicensePlateState, LicensePlateNo, ChassisVIN, IDChassisMake, ChassisModel, IDChassisModelYear, UnitNo, Description, AnnualMiles, AnnualHours, ActualMiles, ActualHours, GrossVehicleWeight, PlannedComplianceDate, ActualComplianceDate, BackupStatusDate, RetireStatusDate, Notes, NotesCF, LastOpacityTestDate, IDWeightDefinition"
+            strsqlinsert += "IDVehicles, ActualRetirementDate, PlannedRetirementDate, EstReplacementCost, IDModifiedUser, ModifiedDate, IDProfileFleet, IDEquipmentType, IDEquipmentCategory, IDVehicleStatus, IDCARBGroup, LicensePlateState, LicensePlateNo, ChassisVIN, IDChassisMake, ChassisModel, IDChassisModelYear, UnitNo, Description, AnnualMiles, AnnualHours, ActualMiles, ActualHours, BasedOutsideCA, GPSEquipped, AllWheelDrive, WeightClassBin, GrossVehicleWeight, PlannedComplianceDate, ActualComplianceDate, BackupStatusDate, RetireStatusDate, Notes, NotesCF, LastOpacityTestDate, IDWeightDefinition"
             strsqlinsert += ")"
             strsqlinsert += " values ("
-            strsqlinsert += "@IDVehicles, @ActualRetirementDate, @PlannedRetirementDate, @EstReplacementCost, @IDModifiedUser, @ModifiedDate, @IDProfileFleet, @IDEquipmentType, @IDEquipmentCategory, @IDVehicleStatus, @IDCARBGroup, @LicensePlateState, @LicensePlateNo, @ChassisVIN, @IDChassisMake, @ChassisModel, @IDChassisModelYear, @UnitNo, @Description, @AnnualMiles, @AnnualHours, @ActualMiles, @ActualHours, @GrossVehicleWeight, @PlannedComplianceDate, @ActualComplianceDate, @BackupStatusDate, @RetireStatusDate, @Notes, @NotesCF, @LastOpacityTestDate, @IDWeightDefinition"
+            strsqlinsert += "@IDVehicles, @ActualRetirementDate, @PlannedRetirementDate, @EstReplacementCost, @IDModifiedUser, @ModifiedDate, @IDProfileFleet, @IDEquipmentType, @IDEquipmentCategory, @IDVehicleStatus, @IDCARBGroup, @LicensePlateState, @LicensePlateNo, @ChassisVIN, @IDChassisMake, @ChassisModel, @IDChassisModelYear, @UnitNo, @Description, @AnnualMiles, @AnnualHours, @ActualMiles, @ActualHours, @BasedOutsideCA, @GPSEquipped, @AllWheelDrive, @WeightClassBin, @GrossVehicleWeight, @PlannedComplianceDate, @ActualComplianceDate, @BackupStatusDate, @RetireStatusDate, @Notes, @NotesCF, @LastOpacityTestDate, @IDWeightDefinition"
             strsqlinsert += ")"
             strsqlinsert += "; SELECT SCOPE_IDENTITY() ; "
             conn = New SqlConnection(strconnection)
@@ -111,6 +111,10 @@ Public Class vehiclesadd1
             cmd.Parameters.Add("@AnnualHours", SqlDbType.VarChar, 50).Value = tbx_AnnualHours.Text
             cmd.Parameters.Add("@ActualMiles", SqlDbType.VarChar, 50).Value = tbx_ActualMiles.Text
             cmd.Parameters.Add("@ActualHours", SqlDbType.VarChar, 50).Value = tbx_ActualHours.Text
+            cmd.Parameters.Add("@BasedOutsideCA", SqlDbType.VarChar, 50).Value = ddl_BasedOutsideCA.SelectedValue
+            cmd.Parameters.Add("@GPSEquipped", SqlDbType.VarChar, 50).Value = ddl_GPSEquipped.SelectedValue
+            cmd.Parameters.Add("@AllWheelDrive", SqlDbType.VarChar, 50).Value = ddl_AllWheelDrive.SelectedValue
+            cmd.Parameters.Add("@WeightClassBin", SqlDbType.VarChar, 50).Value = ddl_WeightClassBin.SelectedValue
             cmd.Parameters.Add("@EstReplacementCost", SqlDbType.Money).Value = tbx_EstReplacementCost.Text
             cmd.Parameters.Add("@GrossVehicleWeight", SqlDbType.VarChar, 50).Value = tbx_GrossVehicleWeight.Text
             cmd.Parameters.Add("@Notes", SqlDbType.VarChar, 8000).Value = tbx_Notes.Text

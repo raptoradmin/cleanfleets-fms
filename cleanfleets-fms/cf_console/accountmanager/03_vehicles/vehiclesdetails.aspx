@@ -246,7 +246,7 @@
                             </table>
                             <table style="width: 100%">
                                 <tr>
-                                    <td style="width: 90px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Annual Miles:
                                     </td>
                                     <td style="width: 67px">
@@ -267,7 +267,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 90px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Annual Hours:
                                     </td>
                                     <td style="width: 67px">
@@ -321,7 +321,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 90px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Actual Miles:
                                     </td>
                                     <td style="width: 67px">
@@ -347,7 +347,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 90px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Actual Hours:
                                     </td>
                                     <td style="width: 67px">
@@ -363,7 +363,7 @@
                                     </td>
                                     <td style="width: 155px; " class="tdtable">
                                         Model Year: </td>
-                                    <td>
+                                    <td >
                                         <asp:DropDownList ID="ddl_ChassisModelYear" runat="server" 
                                             AppendDataBoundItems="True" DataSourceID="sds_ddl_Op_Year" 
                                             DataTextField="DisplayValue" DataValueField="IDOptionList" 
@@ -371,6 +371,63 @@
 											CssClass="forest">
                                             <asp:ListItem Text="Select" Value="0" />
                                         </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 115px; " class="tdtable">
+                                        Based Outside CA?:
+                                    </td>
+                                   
+                                    <td>
+                                        <asp:DropDownList ID="ddl_BasedOutsideCA" runat="server" 
+                                         DataSourceID="sds_ddl_BasedOutsideCA" 
+                                        DataTextField="DisplayValue" DataValueField="RecordValue"  
+                                        SelectedValue='<%# Bind("BasedOutsideCA") %>'  
+                                        CssClass="forest">   
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="BasedOutsideCAValidator" runat="server" ControlToValidate="ddl_BasedOutsideCA" ErrorMessage="*" style="font-size: x-large"></asp:RequiredFieldValidator>
+                                    </td>
+                                    <td style="width: 117px; " class="tdtable">
+                                        GPS Equipped?:
+                                    </td>
+                                   
+                                    <td>
+                                        <asp:DropDownList ID="ddl_GPSEquipped" runat="server" 
+                                         DataSourceID="sds_ddl_BasedOutsideCA" 
+                                        DataTextField="DisplayValue" DataValueField="RecordValue"  
+                                        SelectedValue='<%# Bind("GPSEquipped") %>'  
+                                        CssClass="forest">   
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="GPSEquippedValidator" runat="server" ControlToValidate="ddl_GPSEquipped" ErrorMessage="*" style="font-size: x-large"></asp:RequiredFieldValidator>
+                                    </td>
+                                    <td style="width: 155px; " class="tdtable">
+                                        All-Wheel Drive/4 Wheel Drive?:
+                                    </td>
+                                   
+                                    <td>
+                                        <asp:DropDownList ID="ddl_AllWheelDrive" runat="server" 
+                                         DataSourceID="sds_ddl_BasedOutsideCA" 
+                                        DataTextField="DisplayValue" DataValueField="RecordValue"  
+                                        SelectedValue='<%# Bind("AllWheelDrive") %>'  
+                                        CssClass="forest">   
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="AllWheelDriveValidator" runat="server" ControlToValidate="ddl_AllWheelDrive" ErrorMessage="*" style="font-size: x-large"></asp:RequiredFieldValidator>
+                                    </td>
+                                
+                                </tr>
+                                <tr>
+                                    <td style="width: 115px; " class="tdtable">
+                                        Weight Class Bin:
+                                    </td>
+                                   
+                                    <td>
+                                        <asp:DropDownList ID="ddl_WeightClassBin" runat="server" 
+                                         DataSourceID="sds_ddl_WeightClassBin" 
+                                        DataTextField="DisplayValue" DataValueField="RecordValue"  
+                                        SelectedValue='<%# Bind("WeightClassBin") %>'  
+                                        CssClass="forest">   
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="WeightClassBinValidator" runat="server" ControlToValidate="ddl_WeightClassBin" ErrorMessage="*" style="font-size: x-large"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
                             </table>
@@ -607,7 +664,7 @@
                             </table>
                             <table>
                                 <tr>
-                                    <td style="width: 95px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Estimated Annual Miles:
                                     </td>
                                     <td style="width: 95px">
@@ -627,7 +684,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 95px;" class="tdtable">
+                                    <td style="width: 115px;" class="tdtable">
                                         Estimated Annual Hours:
                                     </td>
                                     <td style="width: 95px">
@@ -662,7 +719,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 95px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Actual Miles:
                                     </td>
                                     <td style="width: 95px">
@@ -682,7 +739,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 95px; " class="tdtable">
+                                    <td style="width: 115px; " class="tdtable">
                                         Actual Hours:
                                     </td>
                                     <td style="width: 95px">
@@ -699,6 +756,34 @@
                                     <td>
                                         <asp:Label ID="lbl_ChModYear0" runat="server" 
                                             Text='<%# Bind("ChassisModelYear") %>' />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 115px; " class="tdtable">
+                                        Based Outside CA?:
+                                    </td>
+                                    <td style="width: 95px">
+                                        <asp:Label ID="lbl_BasedOutsideCA" runat="server" Text='<%# Eval("BasedOutsideCA") %>' />
+                                    </td>
+                                    <td style="width: 105px; " class="tdtable">
+                                        GPS Equipped?:
+                                    </td>
+                                    <td style="width: 95px">
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("GPSEquipped") %>' />
+                                    </td>
+                                    <td style="width: 115px; " class="tdtable">
+                                        All-Wheel Drive/ 4 Wheel Drive?:
+                                    </td>
+                                    <td style="width: 95px">
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("AllWheelDrive") %>' />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 115px; " class="tdtable">
+                                        Weight Class Bin:
+                                    </td>
+                                    <td style="width: 95px">
+                                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("WeightClassBin") %>' />
                                     </td>
                                 </tr>
                             </table>
@@ -1853,7 +1938,9 @@
 															DefaultInsertValue="" HeaderText="IDImages" ReadOnly="True"
 															SortExpression="IDImages" UniqueName="IDImages" Visible="False">
 															</telerik:GridBoundColumn>
-														</Columns>           
+                
+														</Columns> 
+                                                        
 														<NoRecordsTemplate>
 															<div>No Images to Display.</div>
 														</NoRecordsTemplate>                 
@@ -1888,9 +1975,11 @@
 															
 														</telerik:GridBoundColumn>
                                                         <telerik:GridHyperLinkColumn DataNavigateUrlFields="FilePath,FileName" DataNavigateUrlFormatString="{0}{1}" DataTextField="IDVehicles" DataTextFormatString="View" Target="_Blank" Text="View" UniqueName="View">
-                                                            <ItemStyle CssClass="radgrid" />
+                                                            <ItemStyle CssClass="radgrid" /><%-- next edit--%>
                                                         </telerik:GridHyperLinkColumn>
                                                     </Columns>
+                                                  
+
 													<NoRecordsTemplate>
 														<div>No Files to Display.</div>
 													</NoRecordsTemplate>
@@ -2064,7 +2153,7 @@
                                                                         <%--Commenting out GridTemplateColumn tags to see if that changes behavior.--%>
                                                                         <telerik:GridTemplateColumn DefaultInsertValue="" HeaderText="Default" UniqueName="rbt_VehicleImage">
                                                                             <ItemTemplate>
-                                                                                <asp:RadioButton ID="rbt_DECSImage" runat="server" AutoPostBack="True" checked='<%# IF(Eval("DefaultImage") is DBNull.Value, False, Eval("DefaultImage")) %>' GroupName="MyGroupDECS" oncheckedchanged="rbt_DECSImage_CheckedChanged" onclick="MyClickDECS(this,event)" />
+                                                                                <asp:RadioButton ID="rbt_DECSImage" runat="server" AutoPostBack="True" checked='<%# If(Eval("DefaultImage") Is DBNull.Value, False, Eval("DefaultImage")) %>' GroupName="MyGroupDECS" oncheckedchanged="rbt_DECSImage_CheckedChanged" onclick="MyClickDECS(this,event)" />
                                                                             </ItemTemplate>
                                                                         </telerik:GridTemplateColumn>
                                                                         <%--Changed from DataImageURLFields to FilePath, FileName from FilePath, Image; I also added the ImageURL property (ImageUrl="C:\Websites\cleanfleets-fms\htdocs\includes\imagemanager\imagefiles\0075e20f-fe9f-43d2-a3bf-9afa312d6dda_diode.PNG") and I took out UniqueName property--%>
@@ -3672,16 +3761,16 @@
 		</SelectParameters>
 	</asp:SqlDataSource>
 	<asp:SqlDataSource ID="sds_CFV_Vehicles" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [IDVehicles], [IDModifiedUser], [EnterDate], [ModifiedDate], [IDProfileAccount], [AccountName], [IDProfileTerminal], [TerminalName], [IDProfileFleet], [FleetName], [EquipmentType], [EquipmentCategory], [SpecialProvision], [VehicleStatus], [CARBGroup], [LicensePlateNo], [ChassisVIN], [ChassisMake], [ChassisModelYear], [UnitNo], [Description], [AnnualMiles], [AnnualHours], [ActualMiles], [ActualHours], [PlannedComplianceDate], [ActualComplianceDate], [BackupStatusDate], [RetireStatusDate], [LastOpacityTestDate], [Notes], [NotesCF] FROM [CFV_Vehicles] WHERE ([IDProfileFleet] = @IDProfileFleet)">
+		SelectCommand="SELECT [IDVehicles], [IDModifiedUser], [EnterDate], [ModifiedDate], [IDProfileAccount], [AccountName], [IDProfileTerminal], [TerminalName], [IDProfileFleet], [FleetName], [EquipmentType], [EquipmentCategory], [SpecialProvision], [VehicleStatus], [CARBGroup], [LicensePlateNo], [ChassisVIN], [ChassisMake], [ChassisModelYear], [UnitNo], [Description], [AnnualMiles], [AnnualHours], [ActualMiles], [ActualHours],[BasedOutsideCA],[GPSEquipped],[AllWheelDrive],[WeightClassBin], [PlannedComplianceDate], [ActualComplianceDate], [BackupStatusDate], [RetireStatusDate], [LastOpacityTestDate], [Notes], [NotesCF] FROM [CFV_Vehicles] WHERE ([IDProfileFleet] = @IDProfileFleet)">
 		<SelectParameters>
 			<asp:QueryStringParameter Name="IDProfileFleet" QueryStringField="IDProfileFleet"
 				Type="Int32" />
 		</SelectParameters>
 	</asp:SqlDataSource>
 	<asp:SqlDataSource ID="sds_CFV_Vehicles_fv" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
-		SelectCommand="SELECT [IDVehicles], [IDModifiedUser], [EnterDate], [ModifiedDate], [PlannedRetirementDate], [ActualRetirementDate], [EstReplacementCost], [IDProfileAccount], [AccountName], [IDProfileTerminal], [TerminalName], [IDProfileFleet], [FleetName], [IDEquipmentType], [EquipmentType], [IDEquipmentCategory], [EquipmentCategory], [IDVehicleStatus], [VehicleStatus], [IDCARBGroup], [CARBGroup], [IDVehicleKey], [InPossession], [LicensePlateState], [LicensePlateNo], [ChassisVIN], [ChassisModel], [IDChassisMake], [ChassisMake], [IDChassisModelYear], [ChassisModelYear], [UnitNo], [Description], [AnnualMiles], [AnnualHours], [ActualMiles], [ActualHours], [GrossVehicleWeight], [ActualInServiceDate], [EstimatedInServiceDate], [PlannedComplianceDate], [ActualComplianceDate], [BackupStatusDate], [RetireStatusDate], [LastOpacityTestDate], [Notes], [NotesCF] FROM [CFV_Vehicles] WHERE ([IDVehicles] = @IDVehicles)"
+		SelectCommand="SELECT [IDVehicles], [IDModifiedUser], [EnterDate], [ModifiedDate], [PlannedRetirementDate], [ActualRetirementDate], [EstReplacementCost], [IDProfileAccount], [AccountName], [IDProfileTerminal], [TerminalName], [IDProfileFleet], [FleetName], [IDEquipmentType], [EquipmentType], [IDEquipmentCategory], [EquipmentCategory], [IDVehicleStatus], [VehicleStatus], [IDCARBGroup], [CARBGroup], [IDVehicleKey], [InPossession], [LicensePlateState], [LicensePlateNo], [ChassisVIN], [ChassisModel], [IDChassisMake], [ChassisMake], [IDChassisModelYear], [ChassisModelYear], [UnitNo], [Description], [AnnualMiles], [AnnualHours], [ActualMiles], [ActualHours],[BasedOutsideCA],[GPSEquipped],[AllWheelDrive],[WeightClassBin], [GrossVehicleWeight], [ActualInServiceDate], [EstimatedInServiceDate], [PlannedComplianceDate], [ActualComplianceDate], [BackupStatusDate], [RetireStatusDate], [LastOpacityTestDate], [Notes], [NotesCF] FROM [CFV_Vehicles] WHERE ([IDVehicles] = @IDVehicles)"
 		DeleteCommand="DELETE FROM [CF_Vehicles] WHERE [IDVehicles] = @IDVehicles"
-		UpdateCommand="UPDATE [CF_Vehicles] SET [IDModifiedUser] = @IDModifiedUser, [PlannedRetirementDate] = @PlannedRetirementDate, [ActualRetirementDate] = @ActualRetirementDate, [EstReplacementCost] = @EstReplacementCost, [ModifiedDate] = @ModifiedDate, [IDEquipmentType] = @IDEquipmentType, [IDEquipmentCategory] = @IDEquipmentCategory, [IDVehicleKey] = @IDVehicleKey, [InPossession] = @InPossession, [IDVehicleStatus] = @IDVehicleStatus, [IDCARBGroup] = @IDCARBGroup, [LicensePlateState] = UPPER(@LicensePlateState), [LicensePlateNo] = @LicensePlateNo, [ChassisVIN] = @ChassisVIN, [ChassisModel] = @ChassisModel, [IDChassisMake] = @IDChassisMake, [IDChassisModelYear] = @IDChassisModelYear, [UnitNo] = @UnitNo, [Description] = @Description, [AnnualMiles] = @AnnualMiles, [AnnualHours] = @AnnualHours, [ActualMiles] = @ActualMiles, [ActualHours] = @ActualHours, [GrossVehicleWeight] = @GrossVehicleWeight, [ActualInServiceDate] = @ActualInServiceDate, [EstimatedInServiceDate] = @EstimatedInServiceDate, [PlannedComplianceDate] = @PlannedComplianceDate, [ActualComplianceDate] = @ActualComplianceDate, [BackupStatusDate] = @BackupStatusDate, [RetireStatusDate] = @RetireStatusDate, [LastOpacityTestDate] = @LastOpacityTestDate, [Notes] = @Notes, [NotesCF] = @NotesCF WHERE [IDVehicles] = @IDVehicles">
+		UpdateCommand="UPDATE [CF_Vehicles] SET [IDModifiedUser] = @IDModifiedUser, [PlannedRetirementDate] = @PlannedRetirementDate, [ActualRetirementDate] = @ActualRetirementDate, [EstReplacementCost] = @EstReplacementCost, [ModifiedDate] = @ModifiedDate, [IDEquipmentType] = @IDEquipmentType, [IDEquipmentCategory] = @IDEquipmentCategory, [IDVehicleKey] = @IDVehicleKey, [InPossession] = @InPossession, [IDVehicleStatus] = @IDVehicleStatus, [IDCARBGroup] = @IDCARBGroup, [LicensePlateState] = UPPER(@LicensePlateState), [LicensePlateNo] = @LicensePlateNo, [ChassisVIN] = @ChassisVIN, [ChassisModel] = @ChassisModel, [IDChassisMake] = @IDChassisMake, [IDChassisModelYear] = @IDChassisModelYear, [UnitNo] = @UnitNo, [Description] = @Description, [AnnualMiles] = @AnnualMiles, [AnnualHours] = @AnnualHours, [ActualMiles] = @ActualMiles, [ActualHours] = @ActualHours,[BasedOutsideCA]=@BasedOutsideCA,[GPSEquipped]=@GPSEquipped,[AllWheelDrive]=@AllWheelDrive,[WeightClassBin]=@WeightClassBin, [GrossVehicleWeight] = @GrossVehicleWeight, [ActualInServiceDate] = @ActualInServiceDate, [EstimatedInServiceDate] = @EstimatedInServiceDate, [PlannedComplianceDate] = @PlannedComplianceDate, [ActualComplianceDate] = @ActualComplianceDate, [BackupStatusDate] = @BackupStatusDate, [RetireStatusDate] = @RetireStatusDate, [LastOpacityTestDate] = @LastOpacityTestDate, [Notes] = @Notes, [NotesCF] = @NotesCF WHERE [IDVehicles] = @IDVehicles">
 		<SelectParameters>
 			<asp:QueryStringParameter Name="IDVehicles" QueryStringField="IDVehicles" />
 		</SelectParameters>
@@ -3709,6 +3798,10 @@
 			<asp:Parameter Name="AnnualHours" Type="String" />
 			<asp:Parameter Name="ActualMiles" Type="String" />
 			<asp:Parameter Name="ActualHours" Type="String" />
+            <asp:Parameter Name="BasedOutsideCA" Type="String" />
+            <asp:Parameter Name="GPSEquipped" Type="String" />
+            <asp:Parameter Name="AllWheelDrive" Type="String" />
+            <asp:Parameter Name="WeightClassBin" Type="String" />
 			<asp:Parameter Name="GrossVehicleWeight" Type="String" />
 			<asp:Parameter Name="ActualInServiceDate" Type="DateTime" />
 			<asp:Parameter Name="EstimatedInServiceDate" Type="DateTime" />
@@ -4023,6 +4116,25 @@
 		ORDER BY [DisplayValue]">
 		<SelectParameters>
 			<asp:QueryStringParameter DefaultValue="Year" Name="OptionName" QueryStringField="OptionName"
+				Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+    </asp:SqlDataSource>
+	<asp:SqlDataSource ID="sds_ddl_BasedOutsideCA" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) 
+		UNION SELECT NULL AS [IDOptionList], '' AS [RecordValue], '' AS [DisplayValue], @OptionName AS [OptionName]  
+		ORDER BY [DisplayValue]">
+		<SelectParameters>
+			<asp:QueryStringParameter DefaultValue="BasedOutsideCA" Name="OptionName" QueryStringField="OptionName"
+				Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+    <asp:SqlDataSource ID="sds_ddl_WeightClassBin" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) 
+		UNION SELECT NULL AS [IDOptionList], '' AS [RecordValue], '' AS [DisplayValue], @OptionName AS [OptionName]  
+		ORDER BY [DisplayValue]">
+		<SelectParameters>
+			<asp:QueryStringParameter DefaultValue="WeightClassBin" Name="OptionName" QueryStringField="OptionName"
 				Type="String" />
 		</SelectParameters>
 	</asp:SqlDataSource>

@@ -208,6 +208,62 @@
 					ErrorMessage="*" InitialValue="0" Style="font-size: x-large"></asp:RequiredFieldValidator>
 			</td>
 		</tr>
+
+
+
+        <tr>
+			<td style="width: 90px" class="inputTitle">
+				Based Outside CA?:
+			</td>
+			<td >
+				<asp:DropDownList ID="ddl_BasedOutsideCA" runat="server" 
+                DataSourceID="sds_ddl_BasedOutsideCA" 
+                DataTextField="DisplayValue" DataValueField="RecordValue" 
+                CssClass="forest">   
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="BasedOutsideCAValidator" runat="server" ControlToValidate="ddl_BasedOutsideCA"
+					ErrorMessage="*" InitialValue="0" Style="font-size: x-large"></asp:RequiredFieldValidator>
+			</td>
+			<td style="width: 150px" class="inputTitle">
+				GPS Equipped?:
+			</td>
+			<td>
+				<asp:DropDownList ID="ddl_GPSEquipped" runat="server" 
+                DataSourceID="sds_ddl_BasedOutsideCA1" 
+                DataTextField="DisplayValue" DataValueField="RecordValue" 
+                CssClass="forest">   
+                </asp:DropDownList>
+				<asp:RequiredFieldValidator ID="GPSEquippedValidator" runat="server" ControlToValidate="ddl_GPSEquipped"
+					ErrorMessage="*" InitialValue="0" Style="font-size: x-large"></asp:RequiredFieldValidator>
+			</td>
+			<td style="width: 165px;" class="inputTitle">
+				All-Wheel Drive/4 Wheel Drive?:
+			</td>
+			<td>
+				<asp:DropDownList ID="ddl_AllWheelDrive" runat="server" 
+                DataSourceID="sds_ddl_BasedOutsideCA2" 
+                DataTextField="DisplayValue" DataValueField="RecordValue" 
+                CssClass="forest">   
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="AllWheelDriveValidator" runat="server" ControlToValidate="ddl_AllWheelDrive"
+					ErrorMessage="*" InitialValue="0" Style="font-size: x-large"></asp:RequiredFieldValidator>
+			</td>
+		</tr>
+        <tr>
+            <td style="width: 115px; " class="tdtable">
+                Weight Class Bin:
+            </td>                     
+            <td>
+                <asp:DropDownList ID="ddl_WeightClassBin" runat="server" 
+                DataSourceID="sds_ddl_WeightClassBin"
+                DataTextField="DisplayValue" DataValueField="RecordValue" 
+                CssClass="forest"> 
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="WeightClassBinValidator" runat="server" ControlToValidate="ddl_WeightClassBin"
+					ErrorMessage="*" InitialValue="0" Style="font-size: x-large"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+
 	</table>
 	<br />
 	<table style="width: 100%" id="datesTable">
@@ -409,6 +465,35 @@
 		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) ORDER BY [DisplayValue]">
 		<SelectParameters>
 			<asp:QueryStringParameter DefaultValue="Year" Name="OptionName" QueryStringField="OptionName"
+				Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+    <asp:SqlDataSource ID="sds_ddl_BasedOutsideCA" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) ORDER BY [DisplayValue]">
+		<SelectParameters>
+			<asp:QueryStringParameter DefaultValue="BasedOutsideCA" Name="OptionName" QueryStringField="OptionName"
+				Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+    <asp:SqlDataSource ID="sds_ddl_BasedOutsideCA1" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) ORDER BY [DisplayValue]">
+		<SelectParameters>
+			<asp:QueryStringParameter DefaultValue="BasedOutsideCA" Name="OptionName" QueryStringField="OptionName"
+				Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+    <asp:SqlDataSource ID="sds_ddl_BasedOutsideCA2" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) ORDER BY [DisplayValue]">
+		<SelectParameters>
+			<asp:QueryStringParameter DefaultValue="BasedOutsideCA" Name="OptionName" QueryStringField="OptionName"
+				Type="String" />
+		</SelectParameters>
+	</asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="sds_ddl_WeightClassBin" runat="server" ConnectionString="<%$ ConnectionStrings:CF_SQL_Connection %>"
+		SelectCommand="SELECT [IDOptionList], [RecordValue], [DisplayValue], [OptionName] FROM [CF_Option_List] WHERE ([OptionName] = @OptionName) ORDER BY [DisplayValue]">
+		<SelectParameters>
+			<asp:QueryStringParameter DefaultValue="WeightClassBin" Name="OptionName" QueryStringField="OptionName"
 				Type="String" />
 		</SelectParameters>
 	</asp:SqlDataSource>
